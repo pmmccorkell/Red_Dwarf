@@ -21,12 +21,6 @@ class PCA9685:
 		self._period = 1000/self.freq()
 		self._max = 400
 
-#	def clampESC(self,n, minn, maxn):
-	def clampESC(self,n):
-		minn = self._max * -1
-		maxn = self._max
-		return min(max(n, minn), maxn)
-
 	# def _write(self, address, value):
 	# 	self.i2c.writeto_mem(self.address, address, bytearray([value]))
 
