@@ -130,5 +130,5 @@ def freqChange(f):
 	return update(0)
 
 def calFreq(true_freq):
-	fwd_port._
+	servoboard.cal_period(true_freq)
 
