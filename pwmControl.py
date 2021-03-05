@@ -36,9 +36,9 @@ aft_port = Thruster(servoboard,3,-1)	# servo ch 3
 aft_star = Thruster(servoboard,4,1)	# servo ch 4
 
 def setupPCA9685():
-	servoboard.reset()
-	servoboard.freq(400)
-	update(0)
+	servoboard.reset()		# reset the servo hat
+	servoboard.freq(400)	# set frequency to 400 Hz
+	update(0)				# set everything to 1.5ms
 
 
 horizonLock = 0
@@ -97,11 +97,11 @@ thrusterFunctions = {
 	'aftPort':aftPort,
 	'aftStar':aftStar
 }
-speeds = {
-}
 def update(v = None):
+	speeds = {}
 	for key in thrusterFunctions:
 		speeds[key] = thrusterFunctions[key](v)
+	return speeds
 
 
 def getProperties(thruster):
