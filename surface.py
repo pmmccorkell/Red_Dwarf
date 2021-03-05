@@ -105,8 +105,6 @@ def azThrusterLogic():
 	fwd_port_speed=(trig_speed['sin'] + heading_speed);
 	aft_star_speed=(trig_speed['sin'] - heading_speed);
 
-def clampESC(n, minn, maxn):
-	return min(max(n, minn), maxn)
 
 def stopAllPersistent():
 	persistent_heading=-1
