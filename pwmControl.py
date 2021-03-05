@@ -127,8 +127,7 @@ def freqChange(f):
 	fwd_star.set_period()
 	aft_port.set_period()
 	aft_star.set_period()
-	update(0)
-	return speeds
+	return update(0)
 
 def calFreq(true_freq):
 	fwd_port._
