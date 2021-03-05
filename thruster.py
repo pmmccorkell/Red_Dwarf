@@ -9,6 +9,12 @@ class Thruster:
 #	def cal_period(self,f):
 #		self._period = 1000/f
 
+#	def clampESC(self,n, minn, maxn):
+	def clampESC(self,n):
+		minn = self._max * -1
+		maxn = self._max
+		return min(max(n, minn), maxn)
+
 	def set_pw(self,val):
 		if (val>self._period):
 ########################### Add log functionality here:
@@ -23,12 +29,13 @@ class Thruster:
 	def set_speed(self,v):
 		if (self._lock == 1):
 			self.set_pw(self._base_pw)
-		elif (abs(v) > self._max):
+		#elif (abs(v) > self._max):
 ########################### Add log functionality here:
-			print("max speed exceeded: "+str(v))
+		#	print("max speed exceeded: "+str(v))
 		else:
+			vel = self.clampESC(v)
 			# transform us to ms, and add to base 1.5 ms
-			target_pw = (self._dir * v / 1000) + self._base_pw
+			target_pw = (self._dir * vel / 1000) + self._base_pw
 			# current_pw = self.get_pw()
 			# diff_pw = abs(target_pw-current_pw)
 			# if (diff_pw > self._tolerance_pw):

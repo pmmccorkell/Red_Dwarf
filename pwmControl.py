@@ -53,8 +53,8 @@ def EventHorizon():
 	horizonCount+=1
 	log.info("Enter Event Horizon. Counts:" + str(horizonCount))
 
-	sleep(10)
 
+def clearHorizon():
 	fwd_port.clearEvent()
 	fwd_star.clearEvent()
 	aft_port.clearEvent()

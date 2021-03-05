@@ -21,7 +21,10 @@ class PCA9685:
 		self._period = 1000/self.freq()
 		self._max = 400
 
-	def clampESC(self,n, minn=-1*self._max, maxn=self._max):
+#	def clampESC(self,n, minn, maxn):
+	def clampESC(self,n):
+		minn = self._max * -1
+		maxn = self._max
 		return min(max(n, minn), maxn)
 
 	# def _write(self, address, value):
@@ -65,7 +68,6 @@ class PCA9685:
 	def set_max(self,new_max):
 		if (abs(new_max)<=500):
 			self._max = (new_max)
-			self._min = -1 * self._max
 	def get_max(self):
 		return self._max
 
