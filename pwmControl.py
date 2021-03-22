@@ -7,22 +7,24 @@ import logging
 import logging.handlers
 from datetime import datetime
 
+DEBUG = 1
+
 #					   #
 #-----Logging Setup-----#
 #					   #
 #filename = datetime.now().strftime('./log/AUV_%Y%m%d_%H:%M:%s.log')
-filename=datetime.now().strftime('/var/www/auv_logs/thrusters_%Y%m%d_%H:%M:%s.log')
-log = logging.getLogger()
-log.setLevel(logging.INFO)
-format = logging.Formatter('%(asctime)s : %(message)s')
-file_handler = logging.FileHandler(filename)
-file_handler.setLevel(logging.INFO)
-file_handler.setFormatter(format)
-log.addHandler(file_handler)
+# filename=datetime.now().strftime('/var/www/auv_logs/thrusters_%Y%m%d_%H:%M:%s.log')
+# log = logging.getLogger()
+# log.setLevel(logging.INFO)
+# format = logging.Formatter('%(asctime)s : %(message)s')
+# file_handler = logging.FileHandler(filename)
+# file_handler.setLevel(logging.INFO)
+# file_handler.setFormatter(format)
+# log.addHandler(file_handler)
 
-#					   #
-#-----Thruster Setup----#
-#					   #
+#					     #
+#-----Thruster Setup-----#
+#					     #
 i2c = busio.I2C(SCL,SDA)				# i2c bus
 servoboard = PCA9685(i2c)				# PCA9685 driver
 servoboard.freq(400)					# UFrequency is universal for all channels
@@ -40,6 +42,12 @@ def setupPCA9685():
 	servoboard.freq(400)	# set frequency to 400 Hz
 	update(0)				# set everything to 1.5ms
 
+def stopAllThrusters():
+	fwd_port.set_speed(0)
+	fwd_star.set_speed(0)
+	aft_port.set_speed(0)
+	aft_star.set_speed(0)
+
 
 horizonLock = 0
 horizonCount = 0
@@ -51,7 +59,7 @@ def EventHorizon():
 	aft_port.setEvent()
 	aft_star.setEvent()
 	horizonCount+=1
-	log.info("Enter Event Horizon. Counts:" + str(horizonCount))
+	# log.info("Enter Event Horizon. Counts:" + str(horizonCount))
 
 
 def clearHorizon():
@@ -59,7 +67,7 @@ def clearHorizon():
 	fwd_star.clearEvent()
 	aft_port.clearEvent()
 	aft_star.clearEvent()
-	log.info("Exit Event Horizon.")
+	# log.info("Exit Event Horizon.")
 	horizonLock = 0
 	setupPCA9685()
 
@@ -123,10 +131,6 @@ def getProperties(thruster):
 
 def freqChange(f):
 	print(servoboard.freq(f))
-	fwd_port.set_period()
-	fwd_star.set_period()
-	aft_port.set_period()
-	aft_star.set_period()
 	return update(0)
 
 def calFreq(true_freq):

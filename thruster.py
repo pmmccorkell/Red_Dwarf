@@ -33,6 +33,7 @@ class Thruster:
 ########################### Add log functionality here:
 		#	print("max speed exceeded: "+str(v))
 		else:
+			v*self._max
 			vel = self.clampESC(v)
 			# transform us to ms, and add to base 1.5 ms
 			target_pw = (self._dir * vel / 1000) + self._base_pw
@@ -42,7 +43,7 @@ class Thruster:
 			self.set_pw(target_pw)
 		return self.get_speed()
 	def get_speed(self):
-		sp = (self.get_pw() - self._base_pw) * 1000
+		sp = ((self.get_pw() - self._base_pw) * 1000) / self._max
 		return sp
 
 	def __init__(self,pca,channel,direction):
