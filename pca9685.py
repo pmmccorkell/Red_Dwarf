@@ -4,7 +4,6 @@ from adafruit_register.i2c_struct import UnaryStruct
 from adafruit_register.i2c_struct_array import StructArray
 from adafruit_bus_device import i2c_device
 
-
 class PCA9685:
 	REGISTER_MODE1 = UnaryStruct(0x00, "<B")
 	REGISTER_PRESCALE = UnaryStruct(0xFE, "<B")
@@ -55,7 +54,8 @@ class PCA9685:
 		self._period = (1000 / self.freq())
 		return self.get_period()
 	def cal_period(self,f_meas):
-		self._period = 1000 / f_meas
+		if f_meas is not None:
+			self._period = 1000 / f_meas
 		return self.get_period()
 
 
@@ -83,7 +83,6 @@ class PCA9685:
 		#define LED0_OFF_L 0x8
 		#define LED0_OFF_H 0x9	Off 0xH + 0xL --> delay to turn off (out of 4095)
 			#absolute count, not relative to on
-		# self.i2c.writeto_mem(self.address, 0x06 + 4 * index,  data)
 		self.REGISTER_PWM[index] = (on,off)
 
 	def duty(self, index, value=None, invert=False):
@@ -108,6 +107,12 @@ class PCA9685:
 		else:
 			self.pwm(index, 0, value)
 
+	def zeroout(self):
+		for i in range(16):
+			#print('turning off channel '+str(i))
+			self.pwm(i,0,4096)
 
 	def __exit__(self, exception_type, exception_value, traceback):
+		self.zeroout()
 		self.reset()
+		print("pca9685 uninitialized")

@@ -12,8 +12,6 @@ from math import sqrt, pi, atan
 from math import tau as twopi
 from time import sleep
 from surface import *
-import threading
-
 
 joystick = xbox.Joystick()
 
@@ -82,8 +80,6 @@ def check_maintain():
 		maintain_facing*=-1
 	# print(maintain_facing)
 
-
-
 def main():
 	global max_speed, values, maintain_facing, commandQueue, valueQueue
 	# redDwarf = threading.Thread(target=run,args=(commandQueue,valueQueue))
@@ -91,7 +87,7 @@ def main():
 	# surfaceSetup()
 	maximum = max_speed / 1.2
 	fail=0
-	servoboard.set_max(maximum)
+	thrusters.servoboard.set_max(maximum)
 	while(fail<100):
 		try:
 			sample()

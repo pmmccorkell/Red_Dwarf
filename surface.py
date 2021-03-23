@@ -1,14 +1,19 @@
-from pwmControl import *
-#from ticker import ticker
+from pwmControl import pwmControl
 from pid import PID
-
 from time import sleep
 from math import sin, cos
 from math import tau as twopi
 import logging
 import logging.handlers
 from datetime import datetime
+from threading import Thread
+import atexit
 
+
+DEBUG = 1
+
+thrusters = pwmControl()
+atexit.register(thrusters.exitProgram)
 #						#
 #-----Logging Setup-----#
 #						#
@@ -65,13 +70,6 @@ def headingController():
 				current_heading=current_heading-180
 				desired_heading=desired_heading+180
 		speed = pidHeading.process(desired_heading,current_heading)
-
-	# if ((abs(speed)<minThrusterBias) and (abs(diff)>az_tolerance)):
-	# 	if (speed<0):
-	# 		speed=(-1(minThrusterBias))
-	# 	else:
-	# 		speed=minThrusterBias
-
 	return speed
 
 def trigSpeedController():
@@ -80,17 +78,12 @@ def trigSpeedController():
 		'cos' : 0,
 		'sin' : 0
 	}
-	offset_factor=0
-	if (persistent_offset != 999):
-		# convert offset to radians
-		offset_factor = (twopi / 360) * persistent_offset
+	# convert offset to radians, and add 45deg for angled thrusters
+	offset_factor = ((twopi / 360) * persistent_offset) + (twopi/8)
 	
-		# add 45deg to offset for motors being angled
-		offset_factor += (twopi/8)
-
-		# transform the forward speed to trig
-		desired_speed['cos'] = (persistent_speed * cos(offset_factor))#/1000
-		desired_speed['sin'] = (persistent_speed * sin(offset_factor))#/1000
+	# transform the forward speed to trig
+	desired_speed['cos'] = (persistent_speed * cos(offset_factor))#/1000
+	desired_speed['sin'] = (persistent_speed * sin(offset_factor))#/1000
 	return desired_speed
 
 
@@ -98,8 +91,6 @@ def azThrusterLogic():
 	# Get the values from each controller.
 	trig_speed=trigSpeedController()
 	heading_speed = headingController()
-	
-	
 
 	# Form a superposition of the two controllers.
 	fwd_star_speed=(trig_speed['cos'] - heading_speed)
@@ -110,10 +101,10 @@ def azThrusterLogic():
 		print("azL trig:"+str(trig_speed))
 		print("azL h:"+str(heading_speed))
 		print("azL fw port:"+str(fwd_port_speed))
-	foreStar(fwd_star_speed)
-	aftPort(aft_port_speed)
-	forePort(fwd_port_speed)
-	aftStar(aft_star_speed)
+	thrusters.foreStar(fwd_star_speed)
+	thrusters.aftPort(aft_port_speed)
+	thrusters.forePort(fwd_port_speed)
+	thrusters.aftStar(aft_star_speed)
 
 
 def stopAll():
@@ -121,7 +112,7 @@ def stopAll():
 	persistent_speed = 0
 	persistent_offset = 0
 	pidHeading.clear()
-	stopAllThrusters()
+	thrusters.stopAllThrusters()
 
 def incrementHeading(magnitude):
 	heading_resolution=3	# degrees
@@ -194,10 +185,10 @@ def hkdCommand(val):
 	heading_Kd=val
 
 def allClearCommand(val):
-	clearHorizon()
+	thrusters.clearHorizon()
 
 def horizonCommand(val):
-	EventHorizon()
+	thrusters.EventHorizon()
 
 commands = {
 	'hea' :  heaCommand,
@@ -237,7 +228,3 @@ def surfaceLoop():
 			#processCommand(commandQueue.pop(0),None)
 		isCom = len(commandQueue)
 
-def surfaceSetup():
-	ticker(ticker_rate,trigSpeedController)
-	ticker(ticker_rate,headingController)
-	ticker(ticker_rate,surfaceLoop)
