@@ -1,6 +1,6 @@
 from pwmControl import pwmControl
 from pid import PID
-from time import sleep
+from time import sleep, time
 from math import sin, cos
 from math import tau as twopi
 import logging
@@ -10,7 +10,7 @@ from threading import Thread
 import atexit
 
 
-DEBUG = 1
+DEBUG = 0
 
 thrusters = pwmControl()
 atexit.register(thrusters.exitProgram)
@@ -106,6 +106,14 @@ def azThrusterLogic():
 	thrusters.forePort(fwd_port_speed)
 	thrusters.aftStar(aft_star_speed)
 
+def threadedController():
+	while(1):
+		start = time()
+		azThrusterLogic()
+		sleep(max(ticker_rate - (time()-start)),0.0)
+
+controllerThread = Thread(target=threadedController)
+controllerThread.start()
 
 def stopAll():
 	persistent_heading = False 
