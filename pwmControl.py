@@ -1,7 +1,7 @@
 from pca9685 import PCA9685
 import busio
 from board import SCL,SDA
-from time import sleep, time
+from time import sleep
 from thruster import Thruster
 from json import dumps
 from pca9685config import *
@@ -24,11 +24,13 @@ class pwmControl:
 		self.fwd_star = Thruster(self.servoboard,1,-1)	# servo ch 1
 		self.aft_port = Thruster(self.servoboard,3,-1)	# servo ch 3
 		self.aft_star = Thruster(self.servoboard,4,1)	# servo ch 4
+		self.test_thruster = Thruster(self.servoboard,15,1) # for test purposes
 		self.thrusterFunctions = {
 			'forePort':self.forePort,
 			'foreStar':self.foreStar,
 			'aftPort':self.aftPort,
-			'aftStar':self.aftStar
+			'aftStar':self.aftStar,
+			'testThruster':self.testThruster
 		}
 		self.setupPCA9685()
 
@@ -88,6 +90,12 @@ class pwmControl:
 			return self.aft_star.get_speed()
 		elif not self.horizonLock:
 			return self.aft_star.set_speed(v)
+			# update()
+	def testThruster(self,v=None):
+		if v is None:
+			return self.test_thruster.get_speed()
+		elif not self.horizonLock:
+			return self.test_thruster.set_speed(v)
 			# update()
 
 
