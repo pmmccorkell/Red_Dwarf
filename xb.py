@@ -12,6 +12,43 @@ from math import sqrt, pi, atan
 from math import tau as twopi
 from time import sleep
 from surface import *
+import atexit
+
+class event_flags:
+	def __init__(self):
+		self.set_flag(1)
+
+	def set_flag(self,val=None):
+		if val is not None:
+			self.run_flag = val
+		return self.run_flag
+
+run_flag = event_flags()
+
+def threadedController():
+	while(run_flag.set_flag()):
+		start = time()
+		azThrusterLogic()
+		now=time()
+		diff = now-start
+		sleeptime = max(0.05 - diff, 0.0)
+		if (DEBUG):
+			print('thread:'+str(sleeptime))
+			print(run_flag.set_flag())
+		sleep(sleeptime)
+		#sleep(max(ticker_rate - (time()-start)),0.0)
+
+controllerThread = Thread(target=threadedController,daemon=True)
+controllerThread.start()
+
+def exitProgram():
+	print("exiting program")
+	run_flag.set_flag(0)
+	thrusters.exitProgram()
+
+atexit.register(exitProgram)
+
+
 
 joystick = xbox.Joystick()
 
@@ -82,6 +119,8 @@ def check_maintain():
 
 def main():
 	global max_speed, values, maintain_facing, commandQueue, valueQueue
+
+
 	# redDwarf = threading.Thread(target=run,args=(commandQueue,valueQueue))
 	# redDwarf.start()
 	# surfaceSetup()
@@ -131,9 +170,7 @@ def main():
 			# speed_command(str(s+400))
 			issueCommand('vel',s)
 		surfaceLoop()
-		#trigSpeedController()
-		#headingController()
-		azThrusterLogic()
+		#azThrusterLogic()
 		sleep(0.01)
 	close()
 

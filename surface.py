@@ -7,13 +7,11 @@ import logging
 import logging.handlers
 from datetime import datetime
 from threading import Thread
-import atexit
 
-
-DEBUG = 0
+DEBUG = 1
 
 thrusters = pwmControl()
-atexit.register(thrusters.exitProgram)
+
 #						#
 #-----Logging Setup-----#
 #						#
@@ -26,7 +24,6 @@ file_handler = logging.FileHandler(filename)
 file_handler.setLevel(logging.INFO)
 file_handler.setFormatter(format)
 log.addHandler(file_handler)
-
 
 ############## PID Setup ##############
 
@@ -106,14 +103,6 @@ def azThrusterLogic():
 	thrusters.forePort(fwd_port_speed)
 	thrusters.aftStar(aft_star_speed)
 
-def threadedController():
-	while(1):
-		start = time()
-		azThrusterLogic()
-		sleep(max(ticker_rate - (time()-start)),0.0)
-
-controllerThread = Thread(target=threadedController)
-controllerThread.start()
 
 def stopAll():
 	persistent_heading = False 
