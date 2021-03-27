@@ -16,8 +16,7 @@ class pwmControl:
 		i2c = busio.I2C(SCL,SDA)				# i2c bus
 		self.servoboard = PCA9685(i2c)				# PCA9685 driver
 		self.servoboard.freq(400)					# UFrequency is universal for all channels
-		#freq_meas = 405.6						# Based on actual measured frequency using Oscope
-		self.servoboard.cal_period(freq_meas)
+		self.calFreq()
 
 		# Instantiate Thrusters
 		self.fwd_port = Thruster(self.servoboard,0,1)	# servo ch 0
@@ -127,8 +126,16 @@ class pwmControl:
 		print(self.servoboard.freq(f))
 		return self.update(0)
 
-	def calFreq(self,true_freq):
-		self.servoboard.cal_period(true_freq)
+	def calFreq(self):
+		try:
+			self.servoboard.cal_period(freq_meas)
+		except:
+			print()
+			print("#### PCA9685 CALIBRATION ERROR DETECTED ####")
+			print("Instructions to clear error:")
+			print("Measure frequency of servo board, and update freq_meas in pca9685config.py")
+			print()
+			raise
 
 	# Return a string of thruster data for MQTT stuff later
 	def __str__(self):
