@@ -14,39 +14,47 @@ from time import sleep
 from surface import *
 import atexit
 
-class event_flags:
-	def __init__(self):
-		self.set_flag(1)
+# class event_flags:
+# 	def __init__(self):
+# 		self.set_flag(1)
 
-	def set_flag(self,val=None):
-		if val is not None:
-			self.run_flag = val
-		return self.run_flag
+# 	def set_flag(self,val=None):
+# 		if val is not None:
+# 			self.run_flag = val
+# 		return self.run_flag
 
-run_flag = event_flags()
+# run_flag = event_flags()
 
 def threadedController():
-	while(run_flag.set_flag()):
-		start = time()
-		azThrusterLogic()
-		now=time()
-		diff = now-start
-		sleeptime = max(0.05 - diff, 0.0)
-		if (DEBUG):
-			print('thread:'+str(sleeptime))
-			print(run_flag.set_flag())
-		sleep(sleeptime)
-		#sleep(max(ticker_rate - (time()-start)),0.0)
+# 	while(run_flag.set_flag()):
+#	global persistent_speed, persistent_offset, persistent_heading, heading
+	azThrusterLogic()
+# 		start = time()
+#	azThrusterLogic(persistent_speed, persistent_offset, persistent_heading, heading)	
+	#fwd_port_speed, fwd_star_speed, aft_port_speed, aft_star_speed = azThrusterLogic(persistent_speed, persistent_offset, persistent_heading, heading)
+	#thrusters.foreStar(fwd_star_speed)
+	#thrusters.aftPort(aft_port_speed)
+	#thrusters.forePort(fwd_port_speed)
+	#thrusters.aftStar(aft_star_speed)
 
-controllerThread = Thread(target=threadedController,daemon=True)
-controllerThread.start()
+# 		now=time()
+# 		diff = now-start
+# 		sleeptime = max(0.05 - diff, 0.0)
+# 		if (DEBUG):
+# 			print('thread:'+str(sleeptime))
+# 			print(run_flag.set_flag())
+# 		sleep(sleeptime)
+# 		#sleep(max(ticker_rate - (time()-start)),0.0)
 
-def exitProgram():
-	print("exiting program")
-	run_flag.set_flag(0)
-	thrusters.exitProgram()
+# controllerThread = Thread(target=threadedController,daemon=True)
+# controllerThread.start()
 
-atexit.register(exitProgram)
+# def exitProgram():
+# 	print("exiting program")
+# 	run_flag.set_flag(0)
+# 	thrusters.exitProgram()
+
+# atexit.register(exitProgram)
 
 
 
@@ -54,6 +62,7 @@ joystick = xbox.Joystick()
 
 max_speed = 400
 maintain_facing=1
+thrusters.servoboard.set_max(max_speed/1.2)
 
 values = {
 	'scalar1':999,
@@ -117,63 +126,62 @@ def check_maintain():
 		maintain_facing*=-1
 	# print(maintain_facing)
 
-def main():
+def run():
 	global max_speed, values, maintain_facing, commandQueue, valueQueue
+	try:
+		sample()
+		fail=0
+	except:
+		fail+=1
+		print("try failed: " + str(fail))
+		stop_thrusters_command()
+		sleep(0.5)
+	if (check_quit()):
+		fail = 9000
+	if (fail==0):
+		check_maintain()
+		#print(values)
+		# f = round(values['vector2'])
+		f = round(values['vector2_x2'])
+		o = round(values['vector1'])
+		s = round(max_speed*values['scalar1'])
+		if (DEBUG):
+			#print()
+			print('f:'+str(f))
+			print('o:'+str(o))
+			print('s:'+str(s))
+			#print()
+		if (maintain_facing==1):
+			# if (h==0):
+				# h=999
+			# heading_command(str(f))
+			issueCommand('hea',f)
+		else:
+			# heading_command(str(999))
+			issueCommand('hea',999)
+		# sleep(0.05)
+		if (o==0):
+			o=999
+		# offset_command(str(o))
+		issueCommand('off',o)
+		# sleep(0.05)
+		if (s<10):
+			s=999
+		# speed_command(str(s+400))
+		issueCommand('vel',s)
+	surfaceLoop()
+	#azThrusterLogic()
+	return fail
 
 
-	# redDwarf = threading.Thread(target=run,args=(commandQueue,valueQueue))
-	# redDwarf.start()
-	# surfaceSetup()
-	maximum = max_speed / 1.2
-	fail=0
-	thrusters.servoboard.set_max(maximum)
-	while(fail<100):
-		try:
-			sample()
-			fail=0
-		except:
-			fail+=1
-			print("try failed: " + str(fail))
-			# stop_thrusters_command()
-			# sleep(0.5)
-		if (check_quit()):
-			fail = 9000
-		if (fail==0):
-			check_maintain()
-			#print(values)
-			# f = round(values['vector2'])
-			f = round(values['vector2_x2'])
-			o = round(values['vector1'])
-			s = round(max_speed*values['scalar1'])
-			if (DEBUG):
-				#print()
-				print('f:'+str(f))
-				print('o:'+str(o))
-				print('s:'+str(s))
-				#print()
-			if (maintain_facing==1):
-				# if (h==0):
-					# h=999
-				# heading_command(str(f))
-				issueCommand('hea',f)
-			else:
-				# heading_command(str(999))
-				issueCommand('hea',999)
-			# sleep(0.05)
-			if (o==0):
-				o=999
-			# offset_command(str(o))
-			issueCommand('off',o)
-			# sleep(0.05)
-			if (s<10):
-				s=999
-			# speed_command(str(s+400))
-			issueCommand('vel',s)
-		surfaceLoop()
-		#azThrusterLogic()
+
+def main():
+	nfails=0
+	while(nfails<100):
+		nfails = run()
 		sleep(0.01)
 	close()
 
-
-main()
+if __name__ == '__main__':
+	main()
 

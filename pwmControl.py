@@ -145,7 +145,7 @@ class pwmControl:
 
 	def exitProgram(self):
 		self.stopAllThrusters()
-		sleep(2)
+		sleep(1)
 		self.servoboard.zeroout()
 		print(self)
 

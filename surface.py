@@ -7,7 +7,7 @@ import logging
 import logging.handlers
 from datetime import datetime
 from threading import Thread
-from numba import njit, vectorize
+#from numba import njit, vectorize
 
 DEBUG = 1
 
@@ -53,10 +53,9 @@ roll = 0xffff
 
 ######## Az Controller #########
 
-@njit 
-def headingController(heading_target, current_heading):
+def headingController(desired_heading, current_heading):
 	speed=0
-	desired_heading=heading_in
+	#desired_heading=heading_target
 	if (desired_heading != False):
 		diff = abs(desired_heading-current_heading)
 		if (diff>180):
@@ -67,37 +66,39 @@ def headingController(heading_target, current_heading):
 				current_heading=current_heading-180
 				desired_heading=desired_heading+180
 		speed = pidHeading.process(desired_heading,current_heading)
-	return desired_speed
+	return speed
 
-@njit 
 def trigSpeedController(speed_in, offset_in):
 	# convert offset to radians, and add 45deg for angled thrusters
 	offset_factor = ((twopi / 360) * offset_in) + (twopi/8)
 	
 	# transform the forward speed to trig
-	cos_out = (speed_in * cos(offset_factor))#/1000
-	sin_out = (speed_in * sin(offset_factor))#/1000
-	return cos_out, sin_out
+	speed['cos'] = (speed_in * cos(offset_factor)) #/1000
+	speed['sin'] = (speed_in * sin(offset_factor)) #/1000
+	return speed
 
+#def azThrusterLogic(p_speed, p_offset, p_heading, c_heading):
 def azThrusterLogic():
 	global persistent_speed, persistent_offset, persistent_heading, heading
 	# Get the values from each controller.
-	trig_cos, trig_sin = trigSpeedController(persistent_speed, persistent_offset)
+	trig_speed = trigSpeedController(persistent_speed, persistent_offset)
 	heading_speed = headingController(persistent_heading, heading)
 
 	# Form a superposition of the two controllers.
-	fwd_star_speed=(trig_cos - heading_speed)
-	aft_port_speed=(trig_cos + heading_speed)
-	fwd_port_speed=(trig_sin + heading_speed)
-	aft_star_speed=(trig_sin - heading_speed)
+	fwd_star_speed=(trig_speed['cos'] - heading_speed)
+	aft_port_speed=(trig_speed['cos']  + heading_speed)
+	fwd_port_speed=(trig_speed['sin']  + heading_speed)
+	aft_star_speed=(trig_speed['sin']  - heading_speed)
 	if (DEBUG):
 		print("azL trig:"+str(trig_speed))
 		print("azL h:"+str(heading_speed))
 		print("azL fw port:"+str(fwd_port_speed))
+	#return fwd_port_speed, fwd_star_speed, aft_port_speed, aft_star_speed
 	thrusters.foreStar(fwd_star_speed)
 	thrusters.aftPort(aft_port_speed)
 	thrusters.forePort(fwd_port_speed)
 	thrusters.aftStar(aft_star_speed)
+	print(thrusters)
 
 
 def stopAll():
