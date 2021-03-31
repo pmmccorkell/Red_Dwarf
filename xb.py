@@ -1,8 +1,8 @@
-#run with sudo privileges
-#add user to the root group:
+# run with sudo privileges
+# add user to the root group:
 #	sudo usermod -a -G root pi
 #
-#create permissions file using nano
+# create permissions file using nano
 #	sudo nano /etc/udev/rules.d/55-permissions-uinput.rules
 #	enter rules:
 #		
@@ -13,6 +13,7 @@ from math import tau as twopi
 from time import sleep
 from surface import *
 import atexit
+import mqttQualisys_sub as qtm
 
 class event_flags:
 	def __init__(self):
