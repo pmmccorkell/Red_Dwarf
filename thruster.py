@@ -46,6 +46,9 @@ class Thruster:
 		sp = ((self.get_pw() - self._base_pw) * 1000) / self._max
 		return sp
 
+	def update_period(self):
+		self._period = self._pca._period
+
 	def __init__(self,pca,channel,direction):
 		self._pca = pca						# pca9685 class
 		self._channel = channel				# [0, 15] servo channel

@@ -16,13 +16,9 @@ clientname="RedDwarf"		# submarine
 
 # default_directory='/Users/Levi DeVries/Downloads/'
 # default_directory='/mnt/c/Python/Qualisys_MQTT/log/'
-# default_directory='/mnt/c/python_code/Qualisys_MQTT/log/'
-default_directory = '/home/pi'
+default_directory='/mnt/c/Python/Qualisys_MQTT/log/'
+# default_directory = '/home/pi'
 
-topiclist=[
-	'timestamp',
-    'RedDwarf/orientation'
-]
 
 DEBUGGING=0
 #DEBUGGING=1

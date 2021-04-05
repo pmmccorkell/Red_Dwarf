@@ -13,7 +13,6 @@ from math import tau as twopi
 from time import sleep
 from surface import *
 import atexit
-import mqttQualisys_sub as qtm
 
 class event_flags:
 	def __init__(self):
@@ -30,24 +29,22 @@ def threadedController():
 	while(run_flag.set_flag()):
 		start = time()
 		azThrusterLogic()
-		now=time()
-		diff = now-start
-		sleeptime = max(0.05 - diff, 0.0)
-		if (DEBUG):
-			print('thread:'+str(sleeptime))
-			print(run_flag.set_flag())
+		sleeptime = max(0.05 + start - time(), 0.0)
+		#if (DEBUG):
+		#	print('thread:'+str(sleeptime))
+		#	print(run_flag.set_flag())
 		sleep(sleeptime)
 		#sleep(max(ticker_rate - (time()-start)),0.0)
 
 controllerThread = Thread(target=threadedController,daemon=True)
 controllerThread.start()
 
-def exitProgram():
+def exit_program():
 	print("exiting program")
 	run_flag.set_flag(0)
 	thrusters.exitProgram()
 
-atexit.register(exitProgram)
+atexit.register(exit_program)
 
 
 
@@ -121,6 +118,7 @@ def check_maintain():
 def main():
 	global max_speed, values, maintain_facing, commandQueue, valueQueue
 
+	qtm.mqtt_connect()
 
 	# redDwarf = threading.Thread(target=run,args=(commandQueue,valueQueue))
 	# redDwarf.start()
@@ -137,8 +135,10 @@ def main():
 			print("try failed: " + str(fail))
 			# stop_thrusters_command()
 			# sleep(0.5)
+
 		if (check_quit()):
 			fail = 9000
+
 		if (fail==0):
 			check_maintain()
 			#print(values)
@@ -152,27 +152,23 @@ def main():
 				print('o:'+str(o))
 				print('s:'+str(s))
 				#print()
+
 			if (maintain_facing==1):
-				# if (h==0):
-					# h=999
-				# heading_command(str(f))
 				issueCommand('hea',f)
 			else:
-				# heading_command(str(999))
 				issueCommand('hea',999)
-			# sleep(0.05)
+
 			if (o==0):
 				o=999
-			# offset_command(str(o))
 			issueCommand('off',o)
-			# sleep(0.05)
+
 			if (s<10):
 				s=999
-			# speed_command(str(s+400))
 			issueCommand('vel',s)
+
 		surfaceLoop()
-		#azThrusterLogic()
-		sleep(0.01)
+		# azThrusterLogic()
+		sleep(0.05)
 	close()
 
 

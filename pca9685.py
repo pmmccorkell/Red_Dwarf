@@ -45,6 +45,7 @@ class PCA9685:
 			self.REGISTER_MODE1 = old_mode # Mode 1
 			sleep(0.005)
 			self.REGISTER_MODE1 = old_mode | 0xA1  # Mode 1, autoincrement on
+			self.set_period()
 		return int(scalar / (self.REGISTER_PRESCALE + 1) + 0.5)
 
 	def get_period(self):

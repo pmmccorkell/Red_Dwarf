@@ -14,16 +14,24 @@ class pwmControl:
 		self.horizonLock = 0
 		self.horizonCount = 0
 		i2c = busio.I2C(SCL,SDA)				# i2c bus
-		self.servoboard = PCA9685(i2c)				# PCA9685 driver
-		self.servoboard.freq(400)					# UFrequency is universal for all channels
-		self.calFreq()
+		self.servoboard = PCA9685(i2c)			# PCA9685 driver
+		self.servoboard.freq(400)				# Frequency is universal for all channels
+		# self.cal_freq()
 
 		# Instantiate Thrusters
+		# Pass the pca9685 class, servo channel #, and direction of the blades.
 		self.fwd_port = Thruster(self.servoboard,0,1)	# servo ch 0
-		self.fwd_star = Thruster(self.servoboard,1,-1)	# servo ch 1
-		self.aft_port = Thruster(self.servoboard,3,-1)	# servo ch 3
+		self.fwd_star = Thruster(self.servoboard,1,-1)	# servo ch 1, blades reversed
+		self.aft_port = Thruster(self.servoboard,3,-1)	# servo ch 3, blades reversed
 		self.aft_star = Thruster(self.servoboard,4,1)	# servo ch 4
 		self.test_thruster = Thruster(self.servoboard,15,1) # for test purposes
+		self.thruster_objects = {
+			'fwd_port':self.fwd_port,
+			'fwd_star':self.fwd_star,
+			'aft_port':self.aft_port,
+			'aft_star':self.aft_star,
+			'test_thruster':self.test_thruster
+		}
 		self.thrusterFunctions = {
 			'forePort':self.forePort,
 			'foreStar':self.foreStar,
@@ -31,8 +39,7 @@ class pwmControl:
 			'aftStar':self.aftStar,
 			'testThruster':self.testThruster
 		}
-		self.setupPCA9685()
-
+		self.stopAllThrusters()
 
 
 	def setupPCA9685(self):
@@ -122,31 +129,37 @@ class pwmControl:
 		}
 		return properties
 
-	def freqChange(self,f):
+	def change_freq(self,f):
 		print(self.servoboard.freq(f))
+		for key in self.thruster_objects:
+			#print(key)
+			print(self.thruster_objects[key].update_period())
 		return self.update(0)
 
-	def calFreq(self):
+	def cal_freq(self):
 		try:
 			self.servoboard.cal_period(freq_meas)
 		except:
 			print()
 			print("#### PCA9685 CALIBRATION ERROR DETECTED ####")
 			print("Instructions to clear error:")
-			print("Measure frequency of servo board, and update freq_meas in pca9685config.py")
+			print("Measure frequency of servo hat, and update freq_meas in pca9685config.py")
 			print()
 			raise
-
-	# Return a string of thruster data for MQTT stuff later
-	def __str__(self):
-		return dumps(self.update())
-	def __repr__(self):
-		return self.__str__()
 
 	def exitProgram(self):
 		self.stopAllThrusters()
 		sleep(2)
 		self.servoboard.zeroout()
 		print(self)
+
+	def __exit__(self):
+		self.exitProgram()
+
+	# Return a string of thruster data for MQTT stuff later
+	def __str__(self):
+		return dumps(self.update())
+	def __repr__(self):
+		return self.__str__()
 
 	
