@@ -36,12 +36,28 @@ pwm = {
 def pwm_controller( ... ARGS ...):
 	global pwm
 	interval = 0.02
-	for k in measured_active:
-		measured_active[k] = (qtm[k] * xbox['mode']) + (bno[k] * (not xbox['mode']))
+
+
+	#############
+	# This part better in xbox process ?
+	#############
+	# for k in measured_active:
+	# 	measured_active[k] = (qtm[k] * xbox['mode']) + (bno[k] * (not xbox['mode']))
 	# print(measured_active)
+
+
 	executor = concurrent.futures.ProcessPoolExecutor(max_workers=3)
 	while(pwm_flag.set_flag()):
 		start = time()
+
+		################# CHECK THIS ####################
+		##################################
+		##############################
+		# def process_commands():
+		for k,v in incoming_commands:
+			surface.issueCommand(k,v)
+			return surface.thrusters.update()
+
 
 		############ COME BACK TO THIS ONE ############
 		pwm_process = executor.submit(surface. ????, measured_active)
@@ -93,14 +109,19 @@ def xbox_process_thread():
 		incoming_commands = {}
 
 		xbox_process = executor.submit(mbed.get_angles)
-		xbox = xbox_process.result()
+		xbox_buffer = xbox_process.result()
 
-		xbox_flag.set_flag(xbox['quit'])
 
-		def process_commands():
-			for k,v in incoming_commands:
-				surface.issueCommand(k,v)
-				return surface.thrusters.update()
+		# if xbox_buffer['mode'] = 1, use QTM MoCap data for control
+		# if xbox_buffer['mode'] = 0, use BNO-055 IMU data for control
+		for k in measured_active:
+			measured_active[k] = xbox_buffer['mode'] * qtm[k]) + (not xbox_buffer['mode']) * bno[k]
+
+
+		# Quit if quit signal is sent
+		xbox_flag.set_flag(xbox_buffer['quit'])
+
+		xbox = xbox_buffer
 
 		sleeptime  = max(interval + start - time(), 0.0)
 		sleep(sleeptime)
@@ -134,6 +155,7 @@ def mbed_process_thread():
 
 def plotting():
 	global bno,qtm,xbox,pwm
+	interval = 1.0
 	while(plot_flag.set_flag()):
 		start = time()
 
@@ -143,7 +165,6 @@ def plotting():
 		sleeptime = max(interval + start - time(), 0.0)
 	
 
-############## SEE THREAD PATTERN ###########
 pwm_thread = Thread(target=pwm_process_thread,daemon=True)
 pwm_thread.start()
 
