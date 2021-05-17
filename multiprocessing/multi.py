@@ -6,6 +6,11 @@ import mbed
 from time import sleep, time
 import atexit
 import gc
+####### Implement this:
+### import [[[qtm library]]] as mocap
+
+max_speed = 400
+surface.thrusters.servoboard.set_max(max_speed/1.2)
 
 class event_flags:
 	def __init__(self):
@@ -56,8 +61,7 @@ def pwm_controller( ... ARGS ...):
 		# def process_commands():
 		for k,v in incoming_commands:
 			surface.issueCommand(k,v)
-			return surface.thrusters.update()
-
+			# return surface.thrusters.update()
 
 		############ COME BACK TO THIS ONE ############
 		pwm_process = executor.submit(surface. ????, measured_active)
@@ -83,7 +87,7 @@ def qtm_process_thread():
 	while(qtm_flag.set_flag()):
 
 		##################################################################
-		qtm_process = executor.submit(qtm. ############# WRITE THIS #######)
+		qtm_process = executor.submit(mocap. ############# WRITE THIS #######)
 		qtm = qtm_process.result()
 
 		sleeptime  = max(interval + start - time(), 0.0)
@@ -203,44 +207,8 @@ def exit_program():
 
 atexit.register(exit_program)
 
-
-#######################################################
-
-############### CHECK THESE #####################
-
-#############################################################
-
-max_speed = 400
-maintain_facing = 1
-
-in main:
-	qtm.mqtt_connect()
-
-	maximum = max_speed / 1.2
-	fail=0
-	thrusters.servoboard.set_max(maximum)
-
-	check_maintain()
-
-			if (maintain_facing==1):
-				issueCommand('hea',f)
-			else:
-				issueCommand('hea',999)
-
-			if (o==0):
-				o=999
-			issueCommand('off',o)
-
-			if (s<10):
-				s=999
-			issueCommand('vel',s)
-
-		surfaceLoop()
-		# azThrusterLogic()
-		sleep(0.05)
-
-
-
-
-
+def setup():
+	global max_speed
+	
+	
 
