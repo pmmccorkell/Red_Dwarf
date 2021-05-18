@@ -1,3 +1,10 @@
+# Patrick McCorkell
+# April 2021
+# US Naval Academy
+# Robotics and Control TSD
+#
+
+
 import time
 import serial
 import logging

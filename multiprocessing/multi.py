@@ -1,3 +1,9 @@
+# Patrick McCorkell
+# April 2021
+# US Naval Academy
+# Robotics and Control TSD
+#
+
 import concurrent.futures
 from threading import Thread
 import surface
@@ -7,7 +13,7 @@ from time import sleep, time
 import atexit
 import gc
 ####### Implement this:
-### import [[[qtm library]]] as mocap
+import mocap
 
 max_speed = 400
 surface.thrusters.servoboard.set_max(max_speed/1.2)
@@ -38,7 +44,7 @@ measured_active = {
 pwm = {
 	##### Thruster Values ?? ####
 }
-def pwm_controller( ... ARGS ...):
+def pwm_process_thread( ... ARGS ...):
 	global pwm
 	interval = 0.02
 
@@ -51,7 +57,7 @@ def pwm_controller( ... ARGS ...):
 	# print(measured_active)
 
 
-	executor = concurrent.futures.ProcessPoolExecutor(max_workers=3)
+	executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	while(pwm_flag.set_flag()):
 		start = time()
 
@@ -83,7 +89,7 @@ qtm = {
 def qtm_process_thread():
 	global qtm
 	interval = 0.008
-	executor = concurrent.futures.ProcessPoolExecutor(max_workers=3)
+	executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	while(qtm_flag.set_flag()):
 
 		##################################################################
@@ -107,7 +113,8 @@ xbox = {
 def xbox_process_thread():
 	global xbox
 	interval = 0.01
-	executor = concurrent.futures.ProcessPoolExecutor(max_workers=3)
+	executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
+	xbox_buffer = xbox
 	while(xbox_flag.set_flag()):
 		start = time()
 		incoming_commands = {}
@@ -145,7 +152,7 @@ bno = {
 def mbed_process_thread():
 	global bno
 	interval = 0.03
-	executor = concurrent.futures.ProcessPoolExecutor(max_workers=3)
+	executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	while(mbed_flag.set_flag()):
 		start = time()
 		mbed_process = executor.submit(mbed.get_angles)
@@ -188,10 +195,10 @@ plot_thread.start()
 def exit_program():
 	print("exiting program")
 	pwm_flag.set_flag(0)
+	qtm_flag.set_flag(0)
+	xbox_flag.set_flag(0)
 	pwm_flag.set_flag(0)
-	pwm_flag.set_flag(0)
-	pwm_flag.set_flag(0)
-	pwm_flag.set_flag(0)
+	plot_flag.set_flag(0)
 
 	print()
 	print('Exiting Program.')
@@ -207,8 +214,7 @@ def exit_program():
 
 atexit.register(exit_program)
 
+
 def setup():
-	global max_speed
-	
-	
+	mocap.qualisys_connect()
 

@@ -1,3 +1,9 @@
+# Patrick McCorkell
+# April 2021
+# US Naval Academy
+# Robotics and Control TSD
+#
+
 # run with sudo privileges
 # add user to the root group:
 #	sudo usermod -a -G root pi
@@ -7,14 +13,14 @@
 #	enter rules:
 #		
 
-import xbox
+from xbox import Joystick
 from math import sqrt, pi, atan
 from math import tau as twopi
 from time import sleep
 # from surface import *
 # import atexit
 
-joystick = xbox.Joystick()
+joystick = Joystick()
 
 values = {
 	'scalar1':999,

@@ -1,3 +1,10 @@
+# Patrick McCorkell
+# March 2021
+# US Naval Academy
+# Robotics and Control TSD
+#
+
+
 from pwmControl import pwmControl
 from pid import PID
 from time import sleep, time

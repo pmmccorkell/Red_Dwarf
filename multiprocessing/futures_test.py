@@ -1,3 +1,10 @@
+# Patrick McCorkell
+# March 2021
+# US Naval Academy
+# Robotics and Control TSD
+#
+
+
 import concurrent.futures
 from time import sleep, time
 import atexit
