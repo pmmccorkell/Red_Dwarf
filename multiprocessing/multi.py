@@ -81,20 +81,23 @@ def pwm_process_thread( ... ARGS ...):
 	executor.shutdown(wait=False,cancel_futures=True)
 
 
-qtm = {
+qtm_data = {
 	'heading' : 999,
 	'roll' : 999,
 	'pitch' : 999,
+	'x' : 999,
+	'y' : 999
+	'z' : 999
 }
 def qtm_process_thread():
-	global qtm
+	global qtm_data
 	interval = 0.008
 	executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	while(qtm_flag.set_flag()):
 
 		##################################################################
-		qtm_process = executor.submit(mocap. ############# WRITE THIS #######)
-		qtm = qtm_process.result()
+		qtm_process = executor.submit(mocap. )############# WRITE THIS #######)
+		qtm_data = qtm_process.result()
 
 		sleeptime  = max(interval + start - time(), 0.0)
 		sleep(sleeptime)
@@ -216,5 +219,7 @@ atexit.register(exit_program)
 
 
 def setup():
-	mocap.qualisys_connect()
+	surface.pwmControl.servoboard.set_max(max_speed)
+	surface.stopAll()
+	
 

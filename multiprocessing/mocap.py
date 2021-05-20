@@ -8,80 +8,56 @@
 import qtm
 import xml.etree.ElementTree as ET
 from math import isnan
-# import asyncio
+import asyncio
 from gc import collect as trash
 from time import sleep
-from config import *
+
+def main(qtm_IP):
+	mocap = Motion_Capture(qtm_IP)
+	create_qualisys_connection = asyncio.create_task(mocap.qualisys_connect())
+	[qs_conn, body_names] = await create_qualisys_connection
+
 
 class Motion_Capture:
-	def __init__(self):
+	def __init__(host_IP='192.168.5.4'):
+		self.connected = 0
 		self.body_names=[]
-		asyncio.ensure_future(self.setup())
+		self.server = host_IP
+		self.data = {
+			'heading':999,
+			'roll':999,
+			'pitch':999,
+			'name':None,
+			'x':999,
+			'y':999,
+			'z':999,
+		}
+
+		self.connection = asyncio.create_task(self.connect())
+		await self.connection
+		await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
 		asyncio.get_event_loop().run_forever()
 
-	async def setup(self):
-		
 
-##########################
-	def parseXML(xml):
+	def parseXML(self,xml):
 		root = ET.fromstring(xml)
 		body_names=[]
 		for rigbod in root.iter('Name'):
 			if (rigbod.text != None):
 				body_names.append(str(rigbod.text))
 
-	# --------------------------------------------------------------------------
-	async def qualisys_connect():
-		# --------------------------------------------------------------------------
+	def on_packet(packet):
+		index=str(packet.framenumber)
+
+	async def connect(self):
 
 		# Make connection to Qualisys system.
-		connection = await qtm.connect("192.168.5.4")
+		connection_status = await qtm.connect(self.server)
 
-		if connection is None:
+		if connection_status is None:
 			return
-		tmp = await connection.get_parameters(parameters=["6d"])
+		tmp = await connection_status.get_parameters(parameters=["6d"])
 
-		# Saving the xml file. 
-		# with open('test.xml', 'wb') as f:
-		#    f.write(tmp)
-
-		# Parse xml file to pull out rigid body names.
-		# body_names = parseXML('test.xml')
-		body_names = parseXML(tmp)
-
-		return [connection, body_names]
-
-
-	# --------------------------------------------------------------------------
-	async def qualisys_get_info(connection, body_names, veh_name):
-		# --------------------------------------------------------------------------
-
-		# Get packet from Qualisys.
-		packet = await connection.get_current_frame(components=["6deuler"])
-		[header, rigid_bodies_euler] = packet.get_6d_euler()
-		count = 0
-
-		# Go through all returned rigid bodies.
-		for rigid_body_euler in rigid_bodies_euler:
-
-			# Pick out a select vehicle.
-			# print(body_names[count])
-
-			if (body_names[count]) == veh_name and not isnan(rigid_body_euler[0][0]):
-				rgd_bdy_eul = rigid_body_euler
-
-				# Get vehicle information.
-				x = rgd_bdy_eul[0][0] / 1000.0
-				y = rgd_bdy_eul[0][1] / 1000.0
-				z = rgd_bdy_eul[0][2] / 1000.0
-				hdg = np.radians(rgd_bdy_eul[1][2])
-				break
-			else:
-				# print("Rigid body not found.")
-				x = -1
-				y = -1
-				hdg = -1
-
-			count = count + 1
-
-		return [x, y, hdg]
+		self.body_names = parseXML(tmp)
+		self.connected = connection_status
+		
