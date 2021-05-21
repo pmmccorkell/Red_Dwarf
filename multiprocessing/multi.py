@@ -11,12 +11,14 @@ import xb
 import mbed
 from time import sleep, time
 import atexit
-import gc
-####### Implement this:
+from gc import trash
 import mocap
 
-max_speed = 400
-surface.thrusters.servoboard.set_max(max_speed/1.2)
+qtm_server='192.168.5.4'   # IP of PC running QTM Motive
+
+max_speed = 400   # us		speed limit
+
+rigid_body_name = 'RED Dwarf'
 
 class event_flags:
 	def __init__(self):
@@ -76,30 +78,6 @@ def pwm_process_thread( ... ARGS ...):
 
 		pwm = pwm_process.result()
 		sleeptime = max(interval + start - time(), 0.0)
-		sleep(sleeptime)
-	print("shutting down executor")
-	executor.shutdown(wait=False,cancel_futures=True)
-
-
-qtm_data = {
-	'heading' : 999,
-	'roll' : 999,
-	'pitch' : 999,
-	'x' : 999,
-	'y' : 999
-	'z' : 999
-}
-def qtm_process_thread():
-	global qtm_data
-	interval = 0.008
-	executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
-	while(qtm_flag.set_flag()):
-
-		##################################################################
-		qtm_process = executor.submit(mocap. )############# WRITE THIS #######)
-		qtm_data = qtm_process.result()
-
-		sleeptime  = max(interval + start - time(), 0.0)
 		sleep(sleeptime)
 	print("shutting down executor")
 	executor.shutdown(wait=False,cancel_futures=True)
@@ -179,29 +157,16 @@ def plotting():
 		sleeptime = max(interval + start - time(), 0.0)
 	
 
-pwm_thread = Thread(target=pwm_process_thread,daemon=True)
-pwm_thread.start()
-
-qtm_thread = Thread(target=qtm_process_thread,daemon=True)
-qtm_thread.start()
-
-xbox_thread = Thread(target=xbox_process_thread,daemon=True)
-xbox_thread.start()
-
-mbed_thread = Thread(target=mbed_process_thread,daemon=True)
-mbed_thread.start()
-
-plot_thread = Thread(target=plotting,daemon=True)
-plot_thread.start()
-
-
 def exit_program():
+	global qtm
 	print("exiting program")
 	pwm_flag.set_flag(0)
 	qtm_flag.set_flag(0)
 	xbox_flag.set_flag(0)
 	pwm_flag.set_flag(0)
 	plot_flag.set_flag(0)
+
+	qtm.connected.disconnect()
 
 	print()
 	print('Exiting Program.')
@@ -218,8 +183,31 @@ def exit_program():
 atexit.register(exit_program)
 
 
-def setup():
-	surface.pwmControl.servoboard.set_max(max_speed)
-	surface.stopAll()
-	
+def qtm_setup():
+	global qtm, qtm_server
+	qtm = mocap.Motion_Capture(qtm_server)
+	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 
+
+def setup():
+	surface.pwmControl.servoboard.set_max(max_speed/1.2)
+	surface.stopAll()
+
+	pwm_thread = Thread(target=pwm_process_thread,daemon=True)
+	pwm_thread.start()
+
+	qtm_setup() 
+	# qtm_thread = Thread(target=qtm_process_thread,daemon=True)
+	# qtm_thread.start()
+
+	xbox_thread = Thread(target=xbox_process_thread,daemon=True)
+	xbox_thread.start()
+
+	mbed_thread = Thread(target=mbed_process_thread,daemon=True)
+	mbed_thread.start()
+
+	plot_thread = Thread(target=plotting,daemon=True)
+	plot_thread.start()
+
+
+setup()
