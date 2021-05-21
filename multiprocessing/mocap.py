@@ -44,10 +44,13 @@ class Motion_Capture:
 		}
 		root = ET.fromstring(xml)
 		for rigbod in root.iter('Name'):
+			print('iterations: '+str(rigbod))
 			if (rigbod.text != None):
 				self.body_names.append(str(rigbod.text))
+		print('all names: '+str(self.body_names))
 		for body_name in self.body_names:
 			self.data[body_name] = init_data
+			print('name: '+str(body_name))
 
 
 	def on_packet(self,packet):
