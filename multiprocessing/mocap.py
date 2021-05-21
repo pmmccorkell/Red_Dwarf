@@ -47,10 +47,12 @@ class Motion_Capture:
 			print('iterations: '+str(rigbod))
 			if (rigbod.text != None):
 				self.body_names.append(str(rigbod.text))
-		print('all names: '+str(self.body_names))
+				print('appended '+str(rigbod.text))
+		print('body names 1: '+str(self.body_names))
 		for body_name in self.body_names:
 			self.data[body_name] = init_data
 			print('name: '+str(body_name))
+		print('body names 2: '+str(self.body_names))
 
 
 	def on_packet(self,packet):
