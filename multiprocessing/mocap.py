@@ -84,6 +84,6 @@ class Motion_Capture:
 		tmp = await connection_status.get_parameters(parameters=["6d"])
 
 		self.connected = connection_status
-		self.body_names = parseXML(tmp)
+		self.body_names = self.parseXML(tmp)
 		# return connection_status
 
