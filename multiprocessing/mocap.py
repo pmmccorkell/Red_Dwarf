@@ -19,13 +19,14 @@ class Motion_Capture:
 		self.body_names=[]
 		self.server = host_IP
 		self.data = {}
-		# asyncio.run(self.setup())
+		asyncio.run(self.setup())
+		asyncio.get_event_loop().run_forever()
 	
 	async def setup(self):
 		self.connection = asyncio.create_task(self.connect())
 		await self.connection
 		await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
-		asyncio.get_event_loop().run_forever()
+		
 		# while(not self.exit_state):
 		# 	trash()
 		# 	sleep(1)
