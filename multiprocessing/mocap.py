@@ -98,5 +98,6 @@ class Motion_Capture:
 
 
 if __name__ == "main":
+	print('running as main')
 	a = Motion_Capture('127.0.0.1')
 	a.run_forever()
