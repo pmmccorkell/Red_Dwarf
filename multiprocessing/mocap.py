@@ -67,7 +67,7 @@ class Motion_Capture:
 				if not isnan(rigidbody[0][0]):
 					print('data: '+str(self.data))
 					print('body_count: '+str(body_count))
-					print('body names: '+str(self.body_names))
+					print('body_names: '+str(self.body_names))
 					self.data[self.body_names[body_count]] = {
 						'index':index,
 						'x':rigidbody[0][0],
@@ -93,5 +93,6 @@ class Motion_Capture:
 		tmp = await connection_status.get_parameters(parameters=["6d"])
 
 		self.connected = connection_status
+		self.parseXML(tmp)
 		# return connection_status
 
