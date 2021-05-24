@@ -97,7 +97,7 @@ class Motion_Capture:
 		# return connection_status
 
 
-if __name__ == "main":
+if __name__ == "__main__":
 	print('running as main')
 	a = Motion_Capture('127.0.0.1')
 	a.run_forever()
