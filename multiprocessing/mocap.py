@@ -19,12 +19,17 @@ class Motion_Capture:
 		self.body_names=[]
 		self.server = host_IP
 		self.data = {}
-		asyncio.run(self.setup())
+		# asyncio.run(self.setup())
+		self.setup()
 	
-	async def setup(self):
-		self.connection = asyncio.create_task(self.connect())
-		await self.connection
-		await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
+	# async def setup(self):
+		# self.connection = asyncio.create_task(self.connect())
+		# await self.connection
+		# await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
+	
+	def setup(self)
+		asyncio.ensure_future(self.connect())
+		asyncio.get_event_loop().run_forever()
 
 	def run_forever(self):
 		while(not self.exit_state):
@@ -94,8 +99,8 @@ class Motion_Capture:
 
 		self.connected = connection_status
 		self.parseXML(tmp)
-		# return connection_status
-
+		
+		await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
 
 if __name__ == "__main__":
 	print('running as main')
