@@ -10,32 +10,22 @@ from math import isnan
 import asyncio
 from gc import collect as trash
 from time import sleep
+from multiprocessing import Process, Queue, Pipe
+
 
 
 class Motion_Capture:
-	def __init__(self,host_IP='192.168.5.4'):
+	def __init__(self,communictr,host_IP='192.168.5.4'):
+		self.comms = communictr
 		self.exit_state = 0
 		self.connected = 0
 		self.body_names=[]
 		self.server = host_IP
 		self.data = {}
-		# asyncio.run(self.setup())
-		self.setup()
-	
-	# async def setup(self):
-		# self.connection = asyncio.create_task(self.connect())
-		# await self.connection
-		# await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
-	
-	def setup(self)
+
+	def start(self):
 		asyncio.ensure_future(self.connect())
 		asyncio.get_event_loop().run_forever()
-
-	def run_forever(self):
-		while(not self.exit_state):
-		 	trash()
-		 	sleep(1)
-		self.connected.disconnect()
 
 	def parseXML(self,xml):
 		init_data = {
@@ -49,30 +39,28 @@ class Motion_Capture:
 		}
 		root = ET.fromstring(xml)
 		for rigbod in root.iter('Name'):
-			print('iterations: '+str(rigbod))
+			# print('iterations: '+str(rigbod))
 			if (rigbod.text != None):
 				self.body_names.append(str(rigbod.text))
-				print('appended '+str(rigbod.text))
-		print('body names 1: '+str(self.body_names))
+				# print('appended '+str(rigbod.text))
+		# print('body names 1: '+str(self.body_names))
 		for body_name in self.body_names:
 			self.data[body_name] = init_data
-			print('name: '+str(body_name))
-		print('body names 2: '+str(self.body_names))
-
+			# print('name: '+str(body_name))
+		print('Rigid Body names discovered: '+str(self.body_names))
 
 	def on_packet(self,packet):
 		index=packet.framenumber
 		#print("Framenumber: {}".format(packet.framenumber))
 		if qtm.packet.QRTComponentType.Component6dEuler in packet.components:
-			#print("6D Euler Angle Packet")
 			header,rigidbodies = packet.get_6d_euler()
 
 			body_count = 0	# let them hit the floor
 			for rigidbody in rigidbodies:
 				if not isnan(rigidbody[0][0]):
-					print('data: '+str(self.data))
-					print('body_count: '+str(body_count))
-					print('body_names: '+str(self.body_names))
+					# print('data: '+str(self.data))
+					# print('body_count: '+str(body_count))
+					# print('body_names: '+str(self.body_names))
 					self.data[self.body_names[body_count]] = {
 						'index':index,
 						'x':rigidbody[0][0],
@@ -84,6 +72,9 @@ class Motion_Capture:
 						# 'name':self.body_names[body_count]
 					}
 				body_count+=1
+			# self.comms.put(self.data)
+			self.comms.send(self.data)
+			
 		else:
 			print("Unidentified packet type")
 
@@ -102,7 +93,28 @@ class Motion_Capture:
 		
 		await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
 
-if __name__ == "__main__":
+
+def stream_data():
+	global data_in
+	# communicator = Queue()
+	# qualisys = Motion_Capture(communicator)
+	parent_pipe, child_pipe = Pipe()
+	qualisys = Motion_Capture(child_pipe)
+	print('start qtm process')
+	data_in = {}
+	mocap_process = Process(target=qualisys.start)
+	mocap_process.start()
+
+	while(1):
+		sleep(0.001)
+		# data_in = communicator.get()
+		buffer={}
+		while (parent_pipe.poll()):
+			buffer = parent_pipe.recv()
+		if buffer:
+			data_in = buffer
+
+
+if __name__ == '__main__':
 	print('running as main')
-	a = Motion_Capture('127.0.0.1')
-	a.run_forever()
+	stream_data()
