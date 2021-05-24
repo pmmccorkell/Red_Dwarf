@@ -25,7 +25,7 @@ class Motion_Capture:
 		self.connection = asyncio.create_task(self.connect())
 		await self.connection
 		await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
-		# asyncio.get_event_loop().run_forever()
+		asyncio.get_event_loop().run_forever()
 
 		# while(not self.exit_state):
 		# 	trash()
