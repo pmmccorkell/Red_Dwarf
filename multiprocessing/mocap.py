@@ -65,7 +65,7 @@ class Motion_Capture:
 			body_count = 0	# let them hit the floor
 			for rigidbody in rigidbodies:
 				if not isnan(rigidbody[0][0]):
-					print('data: '+str(data))
+					print('data: '+str(self.data))
 					print('body_count: '+str(body_count))
 					self.data[self.body_names[body_count]] = {
 						'index':index,
