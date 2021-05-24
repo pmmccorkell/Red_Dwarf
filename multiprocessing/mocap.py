@@ -26,6 +26,7 @@ class Motion_Capture:
 		await self.connection
 		await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
 
+	def run_forever(self):
 		while(not self.exit_state):
 		 	trash()
 		 	sleep(1)
@@ -95,3 +96,7 @@ class Motion_Capture:
 		self.parseXML(tmp)
 		# return connection_status
 
+
+if __name__ == "main":
+	a = Motion_Capture('127.0.0.1')
+	a.run_forever()
