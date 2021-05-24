@@ -67,6 +67,7 @@ class Motion_Capture:
 				if not isnan(rigidbody[0][0]):
 					print('data: '+str(self.data))
 					print('body_count: '+str(body_count))
+					print('body names: '+str(self.body_names))
 					self.data[self.body_names[body_count]] = {
 						'index':index,
 						'x':rigidbody[0][0],
