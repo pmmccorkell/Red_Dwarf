@@ -169,25 +169,26 @@ qtm = {
 			'pitch':999,
 			'heading':999
 }
-def qtm_read():
-	global qtm_pipe_in, rigid_body_name, qtm
+def qtm_read(name):
+	global qtm_pipe_in, , qtm
 	read_pipe = qtm_pipe_in
-	name = rigid_body_name
+	# name = rigid_body_name
 	buffer = {}
 	while (read_pipe.poll()):
 		buffer = read_pipe.recv().get(rigid_body_name)
 	if buffer:
 		qtm = buffer
 def qtm_stream():
-	global qtm, qtm_flag
+	global qtm, qtm_flag, rigid_body_name
 	interval = 0.005
-	start=time()
+	r_name = rigid_body_name
 	while(qtm_flag.set_flag()):
-		qtm_read()
-		# print(qtm)
-
-		sleeptime = max(interval + start - time(), 0.0)
+		start=time()
+		qtm_read(r_name)
+		diff = interval+start-time()
+		sleeptime = max(diff, 0)
 		sleep(sleeptime)
+		# print(qtm)
 
 
 
