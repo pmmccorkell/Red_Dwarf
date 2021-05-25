@@ -18,23 +18,26 @@ def qtm_setup():
 
 # avg of 50us in this function when sampled at 10ms, 20ms, and 50ms intervals, over 1000 iterations each time.
 # def read_qtm(read_pipe=qtm_pipe_in):
-def read_qtm():
-	global qtm_pipe_in, rigid_body_name
+def read_qtm(name):
+	global qtm_pipe_in, qtm
 	read_pipe = qtm_pipe_in
+	# name = rigid_body_name
 	buffer = {}
 	while (read_pipe.poll()):
-		buffer = read_pipe.recv().get(rigid_body_name)
+		buffer = read_pipe.recv().get(name)
 	if buffer:
 		qtm = buffer
 
 def stream_qtm():
-	global qtm
+	global qtm,rigid_body_name
 	interval = 0.005
-	start = time()
 	while(1):
-		qtm_read()
-		sleeptime = max(interval+start-time(),0.0)
+		start = time()
+		read_qtm(rigid_body_name)
+		diff = interval+start-time()
+		sleeptime = max(diff,0)
 		sleep(sleeptime)
+		# print('index: '+str(qtm['index']) + ', time: '+str(sleeptime))
 
 
 qtm_setup()
