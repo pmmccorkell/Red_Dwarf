@@ -170,8 +170,9 @@ qtm = {
 			'heading':999
 }
 def qtm_read():
-	global qtm_pipe_in, rigid_body_name
+	global qtm_pipe_in, rigid_body_name, qtm
 	read_pipe = qtm_pipe_in
+	name = rigid_body_name
 	buffer = {}
 	while (read_pipe.poll()):
 		buffer = read_pipe.recv().get(rigid_body_name)
