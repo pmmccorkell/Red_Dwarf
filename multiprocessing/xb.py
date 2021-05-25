@@ -20,83 +20,92 @@ from time import sleep
 # from surface import *
 # import atexit
 
-joystick = Joystick()
+class XBoxController:
+	def __init__(self,communicator):
+		self.DEBUG = 0
+		self.joystick = Joystick()
+		self.comms = communicator
 
-values = {
-	'scalar1':999,
-	'vector1':999,
-	'scalar2':999,
-	'vector2':999,
-	'vector2_x2':999,
-	'maintain' : 1,
-	'mode' : 1
-}
+		self.values = {
+			'scalar1':999,
+			'vector1':999,
+			'scalar2':999,
+			'vector2':999,
+			'vector2_x2':999,
+			'maintain' : 1,
+			'mode' : 1
+		}
 
-def scalar(a,b):
-	# rescale_factor = 1.414213562373095
-	returnval = sqrt(a**2+b**2)
-	return returnval
+	def scalar(self,a,b):
+		# rescale_factor = 1.414213562373095
+		returnval = sqrt(a**2+b**2)
+		return returnval
 
-def angle(a,b):
-	degree_conversion = 360 / twopi
-	if (a==0):
-		a=0.000001
-	returnval = atan(b/a)
-	if (a < 0):
-		returnval += pi
-	elif (b < 0):
-		returnval += twopi
-	return returnval * degree_conversion
+	def angle(self,a,b):
+		degree_conversion = 360 / twopi
+		if (a==0):
+			a=0.000001
+		returnval = atan(b/a)
+		if (a < 0):
+			returnval += pi
+		elif (b < 0):
+			returnval += twopi
+		return returnval * degree_conversion
 
-def relative(x):
-	returnval = (round(x*3))+834
-	return returnval
+	def relative(self,x):
+		returnval = (round(x*3))+834
+		return returnval
 
-def check_quit():
-	return (joystick.leftBumper() and joystick.rightBumper())
+	def check_quit(self):
+		return (self.joystick.leftBumper() and self.joystick.rightBumper())
 
-def sample():
-	global values
-	#tuple scaled and normalized [-1.0,1.0]
-	(x1,y1) = joystick.leftStick()
-	#print(x1,y1)
-	(x2,y2) = joystick.rightStick()
+	def sample(self):
+		self.values
+		#tuple scaled and normalized [-1.0,1.0]
+		(x1,y1) = self.joystick.leftStick()
+		#print(x1,y1)
+		(x2,y2) = self.joystick.rightStick()
 
-	new_values = {
-		'scalar1':scalar(x1,y1),
-		'vector1':angle(y1,x1),
-		'scalar2':scalar(x2,y2),
-		'vector2':angle(y2,x2),
-		'vector2_x2':relative(x2),
-		'maintain' : values['maintain'] ^ joystick.rightBumper(),
-		'mode' : values['mode'] ^ joystick.leftBumper(),
-		'quit' : check_quit()
-	}
-	values = new_values
-	if (DEBUG):
-		print(values)
-	return new_values
+		new_values = {
+			'scalar1':scalar(x1,y1),
+			'vector1':angle(y1,x1),
+			'scalar2':scalar(x2,y2),
+			'vector2':angle(y2,x2),
+			'vector2_x2':relative(x2),
+			'maintain' : values['maintain'] ^ joystick.rightBumper(),
+			'mode' : values['mode'] ^ joystick.leftBumper(),
+			'quit' : check_quit()
+		}
+		self.values = new_values
+		if (self.DEBUG):
+			print(self.values)
+		return new_values
 
-def process():
-	samples = sample()
+	def process(self):
+		samples = self.sample()
 
-	return_dict = {
-		'facing' : round(samples['vector2_x2']),
-		'offset' : round(samples['vector1']),
-		'speed' : max(round(max_speed*samples['scalar1']) - 10, 0),		# if speed is < 10, set to 0
-		'maintain' : samples['maintain'],
-		'mode' : samples['mode'],
-		'quit' : samples['quit']
-	}
-	if (DEBUG):
-		print()
-		for k,v in return_dict:
-			print(str(k)+": "+str(v))
-		print()
-	return return_dict
+		self.return_dict = {
+			'facing' : round(samples['vector2_x2']),
+			'offset' : round(samples['vector1']),
+			'speed' : max(round(max_speed*samples['scalar1']) - 10, 0),		# if speed is < 10, set to 0
+			'maintain' : samples['maintain'],
+			'mode' : samples['mode'],
+			'quit' : samples['quit']
+		}
+		if (self.DEBUG):
+			print()
+			for k,v in self.return_dict:
+				print(str(k)+": "+str(v))
+			print()
+		self.comms.send(self.return_dict)
+		# return return_dict
 
-def close():
-	sleep(0.1)
-	stop_thrusters_command()
-	print("turning off xbox controller")
-	joystick.close()
+	def stream(self):
+		while(1):
+			self.process()
+			sleep(0.008)
+
+	def close(self):
+		sleep(0.1)
+		print("turning off xbox controller")
+		self.joystick.close()

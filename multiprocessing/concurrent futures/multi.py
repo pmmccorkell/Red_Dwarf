@@ -19,7 +19,7 @@ qtm_server='192.168.5.4'   # IP of PC running QTM Motive
 
 max_speed = 400   # us		speed limit
 
-rigid_body_name = 'RedDwarf'
+rigid_body_name = 'RED Dwarf'
 
 class event_flags:
 	def __init__(self):
@@ -56,18 +56,49 @@ pwm = {
 def pwm_setup():
 	global pwm_pipe_in
 	pwm_pipe_in,pwm_pipe_out = Pipe()
-	pwm_process = surface #. #####################
+	pwm_process = surface. #####################
 	##############################################
 	##############################################
 	##############################################
 
+# def pwm_process_thread( ... ARGS ...):
+# 	global pwm, pwm_interval
+# 	interval = pwm_interval
 
 
+# 	#############
+# 	# This part better in xbox process ?
+# 	#############
+# 	# for k in measured_active:
+# 	# 	measured_active[k] = (qtm[k] * xbox['mode']) + (bno[k] * (not xbox['mode']))
+# 	# print(measured_active)
 
 
+# 	executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
+# 	while(pwm_flag.set_flag()):
+# 		start = time()
+
+# 		################# CHECK THIS ####################
+# 		##################################
+# 		##############################
+# 		# def process_commands():
+# 		for k,v in incoming_commands:
+# 			surface.issueCommand(k,v)
+# 			# return surface.thrusters.update()
+
+# 		############ COME BACK TO THIS ONE ############
+# 		pwm_process = executor.submit(surface. ????, measured_active)
+# 		surface.azThrusterLogic()
+# 		###############################################
+
+# 		pwm = pwm_process.result()
+# 		sleeptime = max(interval + start - time(), 0.0)
+# 		sleep(sleeptime)
+# 	print("shutting down executor")
+# 	executor.shutdown(wait=False,cancel_futures=True)
 
 
-def xbox_process_setup():
+def xbox_setup():
 	global xb_pipe_in,xbox_process,xbox_controller
 	xb_pipe_in, xb_pipe_out = Pipe()
 	xbox_controller = xb.XBoxController(xb_pipe_in)
@@ -91,25 +122,47 @@ def xbox_read():
 	if buffer:
 		xbox = buffer
 def xbox_stream():
-	global xbox, measured_active, xbox_interval, xbox_flag
+	global xbox
 	interval = xbox_interval
-	while(xbox_flag.set_flag()):
+	while(1):
 		start = time()
 		xbox_read()
-		for k in measured_active:
-			measured_active[k] = (xbox['mode'] * qtm[k]) + ((not xbox['mode']) * bno[k])
 		diff = interval+start-time()
 		sleeptime=max(diff,0)
 		sleep(sleeptime)
 		# print('xbox: '+str(xbox))
 
+# def xbox_process_thread():
+# 	global xb, xbox_interval
+# 	interval = xbox_interval
+# 	executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
+# 	xbox_buffer = xbox
+# 	while(xbox_flag.set_flag()):
+# 		start = time()
+# 		incoming_commands = {}
 
-def mbed_process_setup():
-	global mbed_pipe_in,mbed_process,imu
-	mbed_pipe_in,mbed_pipe_out = Pipe()
-	imu = mbed_wrapper.BNO(mbed_pipe_in)
-	mbed_process = Process(target=imu.stream,daemon=True)
-	mbed_process.start()
+# 		xbox_process = executor.submit(mbed.get_angles)
+# 		xbox_buffer = xbox_process.result()
+
+
+# 		# if xbox_buffer['mode'] = 1, use QTM MoCap data for control
+# 		# if xbox_buffer['mode'] = 0, use BNO-055 IMU data for control
+# 		for k in measured_active:
+# 			measured_active[k] = (xbox_buffer['mode'] * qtm[k]) + ((not xbox_buffer['mode']) * bno[k])
+
+
+# 		# Quit if quit signal is sent
+# 		xbox_flag.set_flag(xbox_buffer['quit'])
+
+# 		xbox = xbox_buffer
+
+# 		sleeptime  = max(interval + start - time(), 0.0)
+# 		sleep(sleeptime)
+# 	print("shutting down executor")
+# 	executor.shutdown(wait=False,cancel_futures=True)
+# 	exit_program()
+
+
 
 bno = {
 	'heading':999,
@@ -118,24 +171,18 @@ bno = {
 	'calibration':999,
 	'status':999
 }
-def mbed_read():
-	global mbed_pipe_in, bno
-	read_pipe = mbed_pipe_in
-	buffer = {}
-	while (read_pipe.poll()):
-		buffer = read_pipe.recv()
-	if buffer:
-		bno = buffer
-def mbed_stream():
-	global mbed_interval, mbed_flag
+def mbed_process_thread():
+	global bno, mbed_interval
 	interval = mbed_interval
+	executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	while(mbed_flag.set_flag()):
 		start = time()
-		mbed_read()
-		diff = interval+start-time()
-		sleeptime=max(diff,0)
+		mbed_process = executor.submit(mbed.get_angles)
+		bno = mbed_process.result()
+		sleeptime = max(interval + start - time(), 0.0)
 		sleep(sleeptime)
-		# print('bno: '+str(bno))
+	print("shutting down executor")
+	executor.shutdown(wait=False,cancel_futures=True)
 
 
 def qtm_process_setup():
@@ -146,6 +193,7 @@ def qtm_process_setup():
 	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	mocap_process = Process(target=qualisys.start,daemon=True)
 	mocap_process.start()
+
 
 qtm = {
 			'index':0xffff,
@@ -191,36 +239,27 @@ def plotting():
 	
 
 def exit_program():
-	global qualisys,imu,xb_controller
-	print("Shutting down threads.")
+	global qtm
+	print("exiting program")
 	pwm_flag.set_flag(0)
 	qtm_flag.set_flag(0)
 	xbox_flag.set_flag(0)
 	mbed_flag.set_flag(0)
 	plot_flag.set_flag(0)
-	print()
 
-	for i in range(3):
-		surface.thrusters.exitProgram()
-		print(f'STOPPING THRUSTERS: {i}')
-		sleep(0.3)
-	print()
-
-	print('Disconnecting QTM connection.')
-	qualisys.connected.disconnect()
-
-	print('Closing xbox controller.')
-	xb_controller.close()
-
-	print('Shutting down mbed Serial.')
-	imu.close()
-
-	# print('Shutting down graphs.')
+	qtm.connected.disconnect()
 
 	print()
 	print('Exiting Program.')
 	print()
 
+	xb.close()
+	for i in range(3):
+		surface.thrusters.exitProgram()
+		print(f'STOPPING THRUSTERS: {i}')
+		sleep(0.3)
+
+	print()
 
 atexit.register(exit_program)
 
@@ -238,17 +277,14 @@ def setup():
 	qtm_thread = Thread(target=qtm_stream,daemon=True)
 	qtm_thread.start()
 
-	xbox_process_setup()
 	xbox_thread = Thread(target=xbox_stream,daemon=True)
 	xbox_thread.start()
 
-	mbed_process_setup()
-	mbed_thread = Thread(target=mbed_stream,daemon=True)
+	mbed_thread = Thread(target=mbed_process_thread,daemon=True)
 	mbed_thread.start()
 
-	# plot_thread = Thread(target=plotting,daemon=True)
-	# plot_thread.start()
+	plot_thread = Thread(target=plotting,daemon=True)
+	plot_thread.start()
 
 
 setup()
-plotting()

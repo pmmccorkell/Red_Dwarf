@@ -10,13 +10,13 @@ from math import isnan
 import asyncio
 from gc import collect as trash
 from time import sleep
-from multiprocessing import Process, Queue, Pipe
+from multiprocessing import Process, Pipe
 
 
 
 class Motion_Capture:
-	def __init__(self,communictr,host_IP='192.168.5.4'):
-		self.comms = communictr
+	def __init__(self,communictor,host_IP='192.168.5.4'):
+		self.comms = communictor
 		self.exit_state = 0
 		self.connected = 0
 		self.body_names=[]

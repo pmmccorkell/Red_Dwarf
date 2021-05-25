@@ -1,3 +1,10 @@
+# Patrick McCorkell
+# April 2021
+# US Naval Academy
+# Robotics and Control TSD
+#
+
+
 import mocap
 from threading import Thread
 from time import sleep, time
@@ -8,7 +15,7 @@ qtm={}
 rigid_body_name='RedDwarf'
 
 def qtm_setup():
-	global qualisys, qtm_server,qtm_pipe_in
+	global qtm_server,qtm_pipe_in
 	qtm_pipe_in, qtm_pipe_out = Pipe()
 	qualisys = mocap.Motion_Capture(qtm_pipe_out,qtm_server)
 
