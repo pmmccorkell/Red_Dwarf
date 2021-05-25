@@ -35,6 +35,12 @@ xbox_flag = event_flags()
 mbed_flag = event_flags()
 plot_flag = event_flags()
 
+pwm_interval = 0.02		# 20 ms
+qtm_interval = 0.005	# 5 ms
+xbox_interval = 0.01	# 10 ms
+mbed_interval = 0.02	# 20 ms
+plot_interval = .1		# 100 ms
+
 measured_active = {
 	'heading' : 0xffff
 }
@@ -47,8 +53,8 @@ pwm = {
 	##### Thruster Values ?? ####
 }
 def pwm_process_thread( ... ARGS ...):
-	global pwm
-	interval = 0.02
+	global pwm, pwm_interval
+	interval = pwm_interval
 
 
 	#############
@@ -92,8 +98,8 @@ xbox = {
 	'quit':0
 }
 def xbox_process_thread():
-	global xbox
-	interval = 0.01
+	global xbox, xbox_interval
+	interval = xbox_interval
 	executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	xbox_buffer = xbox
 	while(xbox_flag.set_flag()):
@@ -131,8 +137,8 @@ bno = {
 	'status':999
 }
 def mbed_process_thread():
-	global bno
-	interval = 0.03
+	global bno, mbed_interval
+	interval = mbed_interval
 	executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	while(mbed_flag.set_flag()):
 		start = time()
@@ -144,10 +150,49 @@ def mbed_process_thread():
 	executor.shutdown(wait=False,cancel_futures=True)
 
 
+def qtm_process_setup():
+	global qualisys, qtm_server,qtm_pipe_in
+	qtm_pipe_in, qtm_pipe_out = Pipe()
+	qualisys = mocap.Motion_Capture(qtm_pipe_out,qtm_server)
+
+	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
+	mocap_process = Process(target=qualisys.start,daemon=True)
+	mocap_process.start()
+
+
+qtm = {
+			'index':0xffff,
+			'x':999,
+			'y':999,
+			'z':999,
+			'roll':999,
+			'pitch':999,
+			'heading':999
+}
+def qtm_read():
+	global qtm_pipe_in, rigid_body_name
+	read_pipe = qtm_pipe_in
+	buffer = {}
+	while (read_pipe.poll()):
+		buffer = read_pipe.recv().get(rigid_body_name)
+	if buffer:
+		qtm = buffer
+def qtm_stream():
+	global qtm, qtm_flag
+	interval = 0.005
+	start=time()
+	while(qtm_flag.set_flag()):
+		qtm_read()
+		# print(qtm)
+
+		sleeptime = max(interval + start - time(), 0.0)
+		sleep(sleeptime)
+
+
 
 def plotting():
-	global bno,qtm,xbox,pwm
-	interval = 1.0
+	global bno,qtm,xbox,pwm,plotting_interval
+	interval = plotting_interval
 	while(plot_flag.set_flag()):
 		start = time()
 
@@ -163,7 +208,7 @@ def exit_program():
 	pwm_flag.set_flag(0)
 	qtm_flag.set_flag(0)
 	xbox_flag.set_flag(0)
-	pwm_flag.set_flag(0)
+	mbed_flag.set_flag(0)
 	plot_flag.set_flag(0)
 
 	qtm.connected.disconnect()
@@ -183,10 +228,6 @@ def exit_program():
 atexit.register(exit_program)
 
 
-def qtm_setup():
-	global qtm, qtm_server
-	qtm = mocap.Motion_Capture(qtm_server)
-	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 
 
 def setup():
@@ -196,9 +237,10 @@ def setup():
 	pwm_thread = Thread(target=pwm_process_thread,daemon=True)
 	pwm_thread.start()
 
-	qtm_setup() 
-	# qtm_thread = Thread(target=qtm_process_thread,daemon=True)
-	# qtm_thread.start()
+	qtm_setup()
+	########## DAEMON MAY NOT WORK #############
+	qtm_thread = Thread(target=qtm_stream,daemon=True)
+	qtm_thread.start()
 
 	xbox_thread = Thread(target=xbox_process_thread,daemon=True)
 	xbox_thread.start()
