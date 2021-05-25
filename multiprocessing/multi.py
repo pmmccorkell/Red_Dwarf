@@ -113,7 +113,7 @@ def xbox_process_thread():
 		# if xbox_buffer['mode'] = 1, use QTM MoCap data for control
 		# if xbox_buffer['mode'] = 0, use BNO-055 IMU data for control
 		for k in measured_active:
-			measured_active[k] = xbox_buffer['mode'] * qtm[k]) + (not xbox_buffer['mode']) * bno[k]
+			measured_active[k] = (xbox_buffer['mode'] * qtm[k]) + ((not xbox_buffer['mode']) * bno[k])
 
 
 		# Quit if quit signal is sent
@@ -170,7 +170,7 @@ qtm = {
 			'heading':999
 }
 def qtm_read(name):
-	global qtm_pipe_in, , qtm
+	global qtm_pipe_in, qtm
 	read_pipe = qtm_pipe_in
 	# name = rigid_body_name
 	buffer = {}
@@ -189,7 +189,6 @@ def qtm_stream():
 		sleeptime = max(diff, 0)
 		sleep(sleeptime)
 		# print(qtm)
-
 
 
 def plotting():
@@ -239,8 +238,7 @@ def setup():
 	pwm_thread = Thread(target=pwm_process_thread,daemon=True)
 	pwm_thread.start()
 
-	qtm_setup()
-	########## DAEMON MAY NOT WORK #############
+	qtm_process_setup()
 	qtm_thread = Thread(target=qtm_stream,daemon=True)
 	qtm_thread.start()
 
