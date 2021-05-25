@@ -1,51 +1,7 @@
 import mocap
 from threading import Thread
 from time import sleep
-import concurrent.futures
-import asyncio
-from multiprocessing import Process, Queue, Pipe
-
-# a=mocap.Motion_Capture()
-
-# def start_mocap():
-	#1
-	# asyncio.ensure_future(a.connect())	
-	# asyncio.get_event_loop().run_forever()
-
-	#2
-	# some_future = asyncio.get_event_loop().create_future()
-	# asyncio.get_event_loop().run_until_complete(some_future)
-
-	#3
-	# global some_await
-	# some_await = asyncio.create_task(a.connect())
-
-
-# async def main():
-def main():
-	# global some_await
-	# mocap_thread = Thread(target=mocap.stream_data)
-	# mocap_thread.start()
-	# mocap_thread.start()
-
-	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
-	# mocap_process = executor.submit(a.start)
-	# start_mocap()
-
-	mocap.stream_data()
-
-
-	print('got past asyncio')
-
-
-	while(1):
-		sleep(1)
-		print('data: '+str(mocap.data_in))
-	# await some_await
-
-
-# main()
-# asyncio.run(main())
+from multiprocessing import Process, Pipe
 
 qtm_server='192.168.5.4'
 qtm={}
@@ -55,30 +11,38 @@ def qtm_setup():
 	qtm_pipe_in, qtm_pipe_out = Pipe()
 	qualisys = mocap.Motion_Capture(qtm_pipe_out,qtm_server)
 
-	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	mocap_process = Process(target=qualisys.start,daemon=True)
 	mocap_process.start()
 
 # avg of 50us in this function when sampled at 10ms, 20ms, and 50ms intervals, over 1000 iterations each time.
-def read_qtm(read_pipe=qtm_pipe_in):
+# def read_qtm(read_pipe=qtm_pipe_in):
+def read_qtm():
+	read_pipe = qtm_pipe_in
 	buffer = {}
 	while (read_pipe.poll()):
 		buffer = read_pipe.recv()
+	# print(buffer)
 	return buffer
 
+qtm= {}
 def stream_qtm():
-	global qtm, qtm_pipe_in, qualisys
-	mocap_process = Process(target=qualisys.start,daemon=True)
-	mocap_process.start()
-
+	global qtm
 	while(1):
-		sleep(0.0001)
-		buffer = {}
-		while (qtm_pipe_in.poll()):
-			buffer = qtm_pipe_in.recv()
-		if buffer:
-			qtm = buffer
-		print(qtm)
+		placeholder = read_qtm()
+		if placeholder:
+			qtm = placeholder
+		#print(qtm)
+
 
 qtm_setup()
-#stream_qtm()
+my_thread = Thread(target=stream_qtm)
+
+def main():
+	global qtm
+	while(1):
+		print(qtm)
+		sleep(1)
+
+if __name__ == '__main__':
+	my_thread.start()
+	main()
