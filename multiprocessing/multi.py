@@ -14,6 +14,7 @@ from time import sleep, time
 import atexit
 from gc import trash
 import mocap
+import surface
 
 qtm_server='192.168.5.4'   # IP of PC running QTM Motive
 
@@ -46,20 +47,44 @@ measured_active = {
 	'heading' : 0xffff
 }
 
+
+
+def pwm_setup():
+	vessel = surface.Controller()
+	vessel.stopAll()
+
+def pwm_controller_thread():
+	interval = pwm_interval
+	while(pwm_flag.set_flag()):
+		start=time()
+		vessel.azThrusterLogic()
+		diff = (interval + start - time())
+		sleeptime=max(diff,0)
+		sleep(sleeptime)
+
+def pwm_commands_thread():
+	global xbox
+	interval = pwm_interval*2
+	while(pwm_flag.set_flag()):
+		start=time()
+		vessel.surfaceLoop()
+		diff
+
+
 ###############################################################
 #################################################################
 
 ############ COME BACK TO THIS ONE ############
-pwm = {
-	##### Thruster Values ?? ####
-}
-def pwm_setup():
-	global pwm_pipe_in
-	pwm_pipe_in,pwm_pipe_out = Pipe()
-	pwm_process = surface #. #####################
-	##############################################
-	##############################################
-	##############################################
+# pwm = {
+# 	##### Thruster Values ?? ####
+# }
+# def pwm_setup():
+# 	global pwm_pipe_in
+# 	pwm_pipe_in,pwm_pipe_out = Pipe()
+# 	pwm_process = surface #. #####################
+# 	##############################################
+# 	##############################################
+# 	##############################################
 
 
 
@@ -188,7 +213,7 @@ def plotting():
 
 
 		sleeptime = max(interval + start - time(), 0.0)
-	
+
 
 def exit_program():
 	global qualisys,imu,xb_controller
@@ -229,8 +254,8 @@ atexit.register(exit_program)
 
 def setup():
 	surface.pwmControl.servoboard.set_max(max_speed/1.2)
-	surface.stopAll()
 
+	pwm_setup()
 	pwm_thread = Thread(target=pwm_process_thread,daemon=True)
 	pwm_thread.start()
 
@@ -246,9 +271,10 @@ def setup():
 	mbed_thread = Thread(target=mbed_stream,daemon=True)
 	mbed_thread.start()
 
-	# plot_thread = Thread(target=plotting,daemon=True)
-	# plot_thread.start()
+
+
+	plot_thread = Thread(target=plotting,daemon=True)
+	plot_thread.start()
 
 
 setup()
-plotting()
