@@ -12,7 +12,6 @@ from math import tau as twopi
 import logging
 import logging.handlers
 from datetime import datetime
-# from threading import Thread
 
 #						#
 #-----Logging Setup-----#
