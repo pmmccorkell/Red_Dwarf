@@ -8,7 +8,7 @@ from threading import Thread
 from multiporcessing import Process, Pipe
 import surface
 import xb
-import mbed
+import mbed_wrapper
 from time import sleep, time
 import atexit
 from gc import trash
@@ -345,7 +345,7 @@ def setup():
 	mbed_thread.start()
 
 	plot_thread = Thread(target=plotting,daemon=True)
-	plot_thread.start()
+	# plot_thread.start()
 
 
 setup()
