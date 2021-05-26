@@ -4,7 +4,6 @@
 # Robotics and Control TSD
 #
 
-# import concurrent.futures
 from threading import Thread
 from multiporcessing import Process, Pipe
 import surface
@@ -16,12 +15,20 @@ from gc import trash
 import mocap
 import surface
 
+max_speed = 400   # us		speed limit
+rigid_body_name = 'RedDwarf'
 qtm_server='192.168.5.4'   # IP of PC running QTM Motive
 
-max_speed = 400   # us		speed limit
+pwm_interval = 0.02		# 20 ms
+qtm_interval = 0.005	# 5 ms
+xbox_interval = 0.01	# 10 ms
+mbed_interval = 0.02	# 20 ms
+plot_interval = .1		# 100 ms
 
-rigid_body_name = 'RedDwarf'
 
+##########################################
+# Event Flags to send signals to threads.
+##########################################
 class event_flags:
 	def __init__(self):
 		self.set_flag(1)
@@ -37,16 +44,17 @@ xbox_flag = event_flags()
 mbed_flag = event_flags()
 plot_flag = event_flags()
 
-pwm_interval = 0.02		# 20 ms
-qtm_interval = 0.005	# 5 ms
-xbox_interval = 0.01	# 10 ms
-mbed_interval = 0.02	# 20 ms
-plot_interval = .1		# 100 ms
+
+
+
+#########################################################################
+#########################################################################
+###################### PCA9685 PWM and ESC Section ######################
+#########################################################################
 
 measured_active = {
 	'heading' : 0xffff
 }
-
 
 
 def pwm_setup():
@@ -57,45 +65,55 @@ def pwm_controller_thread():
 	interval = pwm_interval
 	while(pwm_flag.set_flag()):
 		start=time()
+		vessel.surfaceLoop()
 		vessel.azThrusterLogic()
 		diff = (interval + start - time())
 		sleeptime=max(diff,0)
 		sleep(sleeptime)
 
-def pwm_commands_thread():
+def pwm_commands():
 	global xbox
-	interval = pwm_interval*2
+
+	# if (xbox['maintain']==1):
+	# 	vessel.issueCommand('hea',xbox['facing'])
+	# else:
+	# 	vessel.issueCommand('hea',999)
+	vessel.persistent_heading = bool(xbox['maintain']) and xbox['facing']
+
+	# if (xbox['offset']==0):
+	# 	vessel.issueCommand('off',999)
+	# else:
+	# 	vessel.issueCommand('off',xbox['offset'])
+	vessel.persistent_offset = xbox['offset']
+
+	# if (xbox['speed']>10):
+	# 	vessel.issueCommand('vel',xbox['speed'])
+	# else:
+	# 	vessel.issueCommand('vel',999)
+	vessel.persistent_speed = xbox['speed']
+
+def pwm_commands_thread():
+	interval = xbox_interval
 	while(pwm_flag.set_flag()):
 		start=time()
-		vessel.surfaceLoop()
-		diff
-
-
-###############################################################
-#################################################################
-
-############ COME BACK TO THIS ONE ############
-# pwm = {
-# 	##### Thruster Values ?? ####
-# }
-# def pwm_setup():
-# 	global pwm_pipe_in
-# 	pwm_pipe_in,pwm_pipe_out = Pipe()
-# 	pwm_process = surface #. #####################
-# 	##############################################
-# 	##############################################
-# 	##############################################
+		pwm_commands()
+		diff = (interval + start - time())
+		sleeptime=max(diff,0)
+		sleep(sleeptime)
 
 
 
-
-
+##################################################################################
+##################################################################################
+###################### Xbox 360 Wireless Controller Section ######################
+##################################################################################
 
 
 def xbox_process_setup():
 	global xb_pipe_in,xbox_process,xbox_controller
 	xb_pipe_in, xb_pipe_out = Pipe()
 	xbox_controller = xb.XBoxController(xb_pipe_in)
+	xbox_controller.max_speed = max_speed
 	xbox_process = Process(target=xbox_controller.poll,daemon=True)
 	xbox_process.start()
 
@@ -109,28 +127,57 @@ xbox = {
 }
 def xbox_read():
 	global xbox_pipe_in, xbox
+	global vessel, qtm, bno, measured_active
 	read_pipe = xbox_pipe_in
 	buffer = {}
 	while (read_pipe.poll()):
 		buffer = read_pipe.recv()
 	if buffer:
+
+	# if (xbox['maintain']==1):
+	# 	vessel.issueCommand('hea',xbox['facing'])
+	# else:
+	# 	vessel.issueCommand('hea',999)
+		vessel.persistent_heading = bool(buffer['maintain']) and buffer['facing']
+
+	# if (xbox['offset']==0):
+	# 	vessel.issueCommand('off',999)
+	# else:
+	# 	vessel.issueCommand('off',xbox['offset'])
+		vessel.persistent_offset = buffer['offset']
+
+	# if (xbox['speed']>10):
+	# 	vessel.issueCommand('vel',xbox['speed'])
+	# else:
+	# 	vessel.issueCommand('vel',999)
+		vessel.persistent_speed = bool(max(buffer['speed']-10,0)) * buffer['speed']
+
+		for k in measured_active:
+			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
+
 		xbox = buffer
+
 def xbox_stream():
 	global xbox, measured_active, xbox_interval, xbox_flag
 	interval = xbox_interval
 	while(xbox_flag.set_flag()):
 		start = time()
 		xbox_read()
-		for k in measured_active:
-			measured_active[k] = (xbox['mode'] * qtm[k]) + ((not xbox['mode']) * bno[k])
+		# for k in measured_active:
+		# 	measured_active[k] = (xbox['mode'] * qtm[k]) + ((not xbox['mode']) * bno[k])
 		diff = interval+start-time()
 		sleeptime=max(diff,0)
 		sleep(sleeptime)
 		# print('xbox: '+str(xbox))
 
 
+#########################################################################
+#########################################################################
+###################### BNO on MBED LPC1768 Section ######################
+#########################################################################
+
 def mbed_process_setup():
-	global mbed_pipe_in,mbed_process,imu
+	global mbed_pipe_in,mbed_process,imu,mbed_process
 	mbed_pipe_in,mbed_pipe_out = Pipe()
 	imu = mbed_wrapper.BNO(mbed_pipe_in)
 	mbed_process = Process(target=imu.stream,daemon=True)
@@ -164,13 +211,13 @@ def mbed_stream():
 
 
 def qtm_process_setup():
-	global qualisys, qtm_server,qtm_pipe_in,mocap_process
+	global qualisys, qtm_server,qtm_pipe_in,qtm_process
 	qtm_pipe_in, qtm_pipe_out = Pipe()
 	qualisys = mocap.Motion_Capture(qtm_pipe_out,qtm_server)
 
 	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
-	mocap_process = Process(target=qualisys.start,daemon=True)
-	mocap_process.start()
+	qtm_process = Process(target=qualisys.start,daemon=True)
+	qtm_process.start()
 
 qtm = {
 			'index':0xffff,
@@ -216,6 +263,8 @@ def plotting():
 
 
 def exit_program():
+	global pwm_flag,qtm_flag,xbox_flag,mbed_flag,plot_flag
+	global xbox_process,mbed_process,qtm_process
 	global qualisys,imu,xb_controller
 	print("Shutting down threads.")
 	pwm_flag.set_flag(0)
@@ -226,9 +275,15 @@ def exit_program():
 	print()
 
 	for i in range(3):
-		surface.thrusters.exitProgram()
+		vessel.thrusters.exitProgram()
 		print(f'STOPPING THRUSTERS: {i}')
 		sleep(0.3)
+	print()
+
+	print("Killing child processes.")
+	xbox_process.kill()
+	mbed_process.kill()
+	qtm_process.kill()
 	print()
 
 	print('Disconnecting QTM connection.')
@@ -251,9 +306,8 @@ atexit.register(exit_program)
 
 
 
-
 def setup():
-	surface.pwmControl.servoboard.set_max(max_speed/1.2)
+	vessel.thrusters.servoboard.set_max(max_speed/1.2)
 
 	pwm_setup()
 	pwm_thread = Thread(target=pwm_process_thread,daemon=True)
@@ -270,8 +324,6 @@ def setup():
 	mbed_process_setup()
 	mbed_thread = Thread(target=mbed_stream,daemon=True)
 	mbed_thread.start()
-
-
 
 	plot_thread = Thread(target=plotting,daemon=True)
 	plot_thread.start()

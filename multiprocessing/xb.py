@@ -25,6 +25,7 @@ class XBoxController:
 		self.DEBUG = 0
 		self.joystick = Joystick()
 		self.comms = communicator
+		self.max_speed = 500
 
 		self.values = {
 			'scalar1':999,
@@ -87,7 +88,7 @@ class XBoxController:
 		self.return_dict = {
 			'facing' : round(samples['vector2_x2']),
 			'offset' : round(samples['vector1']),
-			'speed' : max(round(max_speed*samples['scalar1']) - 10, 0),		# if speed is < 10, set to 0
+			'speed' : round(self.max_speed*samples['scalar1']),		# if speed is < 10, set to 0
 			'maintain' : samples['maintain'],
 			'mode' : samples['mode'],
 			'quit' : samples['quit']
