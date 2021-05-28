@@ -23,7 +23,7 @@ bno = {
 	'calibration':0x33,
 	'status':0xff
 }
-
+               
 qtm = {
 			'index':1000,
 			'x':51,
