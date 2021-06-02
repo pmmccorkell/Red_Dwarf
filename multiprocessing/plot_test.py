@@ -70,8 +70,11 @@ a_data_frame = {
 			'qtm':qtm['heading'],
 			'bno':bno['heading'],
 			'active':measured_active['heading'],
-			'desires':xbox['facing']
-		}
+			'desired_facing':xbox['facing'],
+			'desired_direction':xbox['offset']
+		},
+		'thrust' : pwm,
+				
 
 	}
 }
