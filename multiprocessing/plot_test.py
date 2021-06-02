@@ -61,7 +61,10 @@ plot_types = {
 }
 
 a_data_frame = {
-	
+	'x axis': {
+		'index':qtm['index']
+		'time':time
+	}
 }
 
 def plotting():
