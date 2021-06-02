@@ -78,11 +78,11 @@ a_data_frame = {
 		'thrust' : pwm,
 	}
 }
-
+asdfasdfa
 def plotting():
 	
 	hea_plot = pd.DataFrame()
-
+  
 
 	# data_frames = read_csv()
 
