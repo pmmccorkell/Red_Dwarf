@@ -52,7 +52,7 @@ plot_types = {
 		'heading':measured_active['heading'],
 		'facing':xbox['facing'],
 		'offset':xbox['offset'],
-		'speed':0xffff
+		'speed':0xffff,
 		'forePort':0xffff,
 		'foreStar':0xffff,
 		'aftPort':0xffff,
@@ -76,13 +76,11 @@ a_data_frame = {
 		# 'roll': {
 		# 'pitch': {
 		'thrust' : pwm,
-				
-
 	}
 }
 
 def plotting():
-	hea_dict = 
+	
 	hea_plot = pd.DataFrame()
 
 
