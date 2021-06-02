@@ -81,7 +81,7 @@ a_data_frame = {
 
 def plotting():
 	
-	hea_plot = pd.DataFrame.
+	hea_plot = pd.DataFrame.from_dict(a_data_frame['x_axis'])
 
 
 	# data_frames = read_csv()
