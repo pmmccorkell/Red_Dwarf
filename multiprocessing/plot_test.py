@@ -61,9 +61,18 @@ plot_types = {
 }
 
 a_data_frame = {
-	'x axis': {
-		'index':qtm['index']
+	'x_axis': {
+		'index':qtm['index'],
 		'time':monotonic
+	}
+	'y_axis':{
+		'heading': {
+			'qtm':qtm['heading'],
+			'bno':bno['heading'],
+			'active':measured_active['heading'],
+			'desires':xbox['facing']
+		}
+
 	}
 }
 
