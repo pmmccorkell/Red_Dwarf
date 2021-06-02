@@ -64,7 +64,7 @@ a_data_frame = {
 	'x_axis': {
 		'index':qtm['index'],
 		'time':monotonic
-	}
+	},
 	'y_axis':{
 		'heading': {
 			'qtm':qtm['heading'],
@@ -73,6 +73,8 @@ a_data_frame = {
 			'desired_facing':xbox['facing'],
 			'desired_direction':xbox['offset']
 		},
+		# 'roll': {
+		# 'pitch': {
 		'thrust' : pwm,
 				
 
