@@ -1,5 +1,5 @@
 from threading import Thread
-from time import sleep, time
+from time import sleep, monotonic
 import pandas as pd
 import matplotlib as plt
 
@@ -63,7 +63,7 @@ plot_types = {
 a_data_frame = {
 	'x axis': {
 		'index':qtm['index']
-		'time':time
+		'time':monotonic
 	}
 }
 
