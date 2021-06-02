@@ -60,6 +60,10 @@ plot_types = {
 	}
 }
 
+a_data_frame = {
+	
+}
+
 def plotting():
 	hea_dict = 
 	hea_plot = pd.DataFrame()
