@@ -23,7 +23,7 @@ bno = {
 	'calibration':0x33,
 	'status':0xff
 }
-               
+
 qtm = {
 			'index':1000,
 			'x':51,
@@ -34,7 +34,31 @@ qtm = {
 			'heading':293
 }
 
+pwm = {
+	'forePort':300,
+	'foreStar':301,
+	'aftPort':302,
+	'aftStar':303
+}
 
+plot_types = {
+	'orientation': {
+		'heading':0xffff,
+		'roll':0xffff,
+		'pitch':0xffff
+	},
+	'position':0xffff,
+	'thrust': {
+		'heading':measured_active['heading'],
+		'facing':xbox['facing'],
+		'offset':xbox['offset'],
+		'speed':0xffff
+		'forePort':0xffff,
+		'foreStar':0xffff,
+		'aftPort':0xffff,
+		'aftStar':0xffff
+	}
+}
 
 def plotting():
 	hea_dict = 
@@ -54,7 +78,12 @@ def plotting():
 
 def setup():
 	plot_thread = Thread(target=plotting,daemon=True)
-	plot_thread.start()
+	#plot_thread.start()
 
-setup()
+#setup()
 
+if __name__ == "__main__":
+	print("running as main")
+	while(1):
+		plotting()
+		sleep(0.1)
