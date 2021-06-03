@@ -239,6 +239,7 @@ class Plotting:
 		plt.show(block=True)
 
 	def run_animation(self):
+		plt.ioff()
 		set_core_affinity(0)
 		style.use('fivethirtyeight')
 		fig = plt.figure()
