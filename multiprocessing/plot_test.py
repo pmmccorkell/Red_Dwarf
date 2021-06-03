@@ -277,7 +277,6 @@ class Plotting:
 		# ani1 = animation.FuncAnimation(fig,self.animate_bno,interval=20,blit=True)
 		# Do not change #s on axis to scientific notation.
 		plt.ticklabel_format(style='plain')
-		plt.title('qtm vs bno heading')
 
 		plt.show()
 
