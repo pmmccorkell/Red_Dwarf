@@ -268,8 +268,8 @@ class Plotting:
 		self.y1 = [0.0]*100
 		self.y2 = [0.0]*100
 
-		self.line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
-		self.line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
+		self.line1,=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
+		self.line2,=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		self.ax1.legend()
 
 		self.start_time=monotonic()
@@ -279,12 +279,6 @@ class Plotting:
 		plt.ticklabel_format(style='plain')
 
 		plt.show()
-
-	def init(self):
-		print(self.line1)
-		self.line1.set_data(self.x,self.y1)
-		self.line2.set_data(self.x,self.y2)
-		return self.line1,self.line2
 
 	def animate_qtm(self,i):
 		# self.read_in_data()
