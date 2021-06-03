@@ -247,6 +247,7 @@ class Plotting:
 		fig.set_label('bno')
 
 		self.ax1 = fig.add_subplot(1,1,1)
+		self.ax1.set_ylim(-800,1300)
 
 		self.x = [0.0]*100
 		self.y1 = [0.0]*100
@@ -269,7 +270,6 @@ class Plotting:
 		self.x.pop(0)
 		self.y1.pop(0)
 		self.y2.pop(0)
-		self.ax1.set_ylim(-800,1300)
 
 		current_time=round(monotonic()-self.start_time,2)
 		self.x.append(current_time)
