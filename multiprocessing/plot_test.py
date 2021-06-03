@@ -286,7 +286,8 @@ class Plotting:
 		self.ax1.legend()
 		# artists = [line1,line2]
 		Artists = namedtuple("Artists",("bno","qtm"))
-		return Artists(line1,line2)
+		artists = Artists(line1,line2)
+		return artists
 
 	def animate_bno(self,i):
 		# self.read_in_data()
