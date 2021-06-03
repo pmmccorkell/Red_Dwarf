@@ -240,6 +240,12 @@ class Plotting:
 
 	def run_animation(self):
 		plt.ioff()
+		# Heading for the plot.
+		plt.title('qtm vs bno heading')
+
+		# Do not change #s on axis to scientific notation.
+		plt.ticklabel_format(style='plain')
+
 		set_core_affinity(0)
 		style.use('fivethirtyeight')
 		fig = plt.figure()
