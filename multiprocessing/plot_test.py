@@ -239,7 +239,8 @@ class Plotting:
 
 def plot_process_setup():
 	cores = os.cpu_count()
-	os.sched_setaffinity()
+	my_pid = os.getpid()
+	os.sched_setaffinity(my_pid,{cores-1})
 	global plot_pipe_in,plot_pipe_out,plot_process
 	plot_pipe_in,plot_pipe_out = Pipe()
 	plotting = Plotting(plot_pipe_in)
