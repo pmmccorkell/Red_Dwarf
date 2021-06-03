@@ -260,7 +260,6 @@ class Plotting:
 		plt.ticklabel_format(style='plain')
 		plt.title('qtm vs bno heading')
 
-
 		plt.show()
 
 	def animate(self,i):
