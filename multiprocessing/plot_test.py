@@ -282,6 +282,7 @@ class Plotting:
 		plt.show()
 
 	def init(self):
+		print(self.line1)
 		self.line1.set_data(self.x,self.y1)
 		self.line2.set_data(self.x,self.y2)
 		return self.line1,self.line2
