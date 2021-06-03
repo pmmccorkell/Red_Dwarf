@@ -226,7 +226,8 @@ class Plotting:
 		line2.set_xdata(x)
 
 		self.ax1.clear()
-		self.ax1.plot(self.x, self.y)
+		self.ax1.plot(self.x, self.y1)
+		self.ax1.plot(self.x, self.y2)
 		
 
 	def last_test(self):
@@ -290,7 +291,8 @@ def plot_process_setup():
 	set_core_affinity(1)
 	plot_pipe_in,plot_pipe_out = Pipe()
 	plotting = Plotting(plot_pipe_in)
-	plot_process = Process(target=plotting.last_test,daemon=True)
+	# plot_process = Process(target=plotting.last_test,daemon=True)
+	plot_process = Process(target=plotting.run_animation)
 	plot_process.start()
 
 
