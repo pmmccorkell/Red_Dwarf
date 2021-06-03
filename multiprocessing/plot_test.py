@@ -187,6 +187,8 @@ class Plotting:
 			self.bno = buffer['bno']
 			self.qtm = buffer['qtm']
 
+	def animate(self):
+		
 
 	def last_test(self):
 		# global bno,qtm,start_time
@@ -210,7 +212,7 @@ class Plotting:
 
 		# Heading for the plot.
 		plt.title('qtm vs bno heading')
-		
+
 		# Do not change #s on axis to scientific notation.
 		plt.ticklabel_format(style='plain')
 
