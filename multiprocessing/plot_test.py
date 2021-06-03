@@ -254,7 +254,7 @@ class Plotting:
 
 
 		self.start_time=monotonic()
-		ani = animation.FuncAnimation(fig,self.animate,interval=20)
+		ani = animation.FuncAnimation(fig,self.animate,interval=20,blit=True)
 		# Do not change #s on axis to scientific notation.
 		plt.ticklabel_format(style='plain')
 		plt.title('qtm vs bno heading')
@@ -283,6 +283,7 @@ class Plotting:
 		self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		self.ax1.legend()
+		return self.ax1
 
 
 def set_core_affinity(x=0):
