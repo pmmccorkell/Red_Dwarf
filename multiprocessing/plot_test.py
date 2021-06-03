@@ -289,10 +289,6 @@ class Plotting:
 		# self.ax1.clear()
 		# line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		# line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
-		# self.ax1.legend()
-		# artists = [line1,line2]
-		# Artists = namedtuple("Artists",("bno","qtm"))
-		# artists = Artists(line1,line2)
 		return self.line1,self.line2
 
 	def animate_bno(self,i):
