@@ -254,7 +254,7 @@ class Plotting:
 		plt.ticklabel_format(style='plain')
 
 		self.start_time=monotonic()
-		ani = animation.FuncAnimation(fig,self.animate,interval=1000)
+		ani = animation.FuncAnimation(fig,self.animate,interval=100)
 		plt.show()
 
 	def animate(self,i):
