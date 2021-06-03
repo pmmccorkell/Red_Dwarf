@@ -270,7 +270,7 @@ class Plotting:
 
 
 		self.start_time=monotonic()
-		ani2 = animation.FuncAnimation(fig,self.animate_qtm,interval=20,blit=True)
+		ani2 = animation.FuncAnimation(fig,self.animate_qtm,init_func=self.init,fargs=(line1,line2),interval=20,blit=True)
 		# ani1 = animation.FuncAnimation(fig,self.animate_bno,interval=20,blit=True)
 		# Do not change #s on axis to scientific notation.
 		plt.ticklabel_format(style='plain')
