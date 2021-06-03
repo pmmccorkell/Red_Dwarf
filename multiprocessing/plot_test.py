@@ -188,48 +188,6 @@ class Plotting:
 			self.bno = buffer['bno']
 			self.qtm = buffer['qtm']
 
-	def run_animation(self):
-		style.use('fivethirtyeight')
-		fig = plt.figure()
-		self.ax1 = fig.add_subplot(1,1,1)
-
-		self.x = [0.0]*100
-		self.y1 = [0.0]*100
-		self.y2 = [0.0]*100
-
-		# Heading for the plot.
-		plt.title('qtm vs bno heading')
-
-		# Do not change #s on axis to scientific notation.
-		plt.ticklabel_format(style='plain')
-
-		self.start_time=monotonic()
-		ani = animation.FuncAnimation(fig,self.animate,interval=1000)
-		plt.show()
-
-	def animate(self,i):
-		# graph_data = open('example.txt','r').read()
-		# lines = graph_data.split('\n')
-		self.read_in_data()
-		self.x.pop(0)
-		self.y1.pop(0)
-		self.y2.pop(0)
-
-		current_time=round(monotonic()-self.start_time,2)
-		self.x.append(current_time)
-		self.y1.append(self.bno['heading'])
-		self.y2.append(self.qtm['heading'])
-
-		line1.set_ydata(y1)
-		line1.set_xdata(x)
-		line2.set_ydata(y2)
-		line2.set_xdata(x)
-
-		self.ax1.clear()
-		self.ax1.plot(self.x, self.y1)
-		self.ax1.plot(self.x, self.y2)
-		
-
 	def last_test(self):
 		# global bno,qtm,start_time
 		set_core_affinity(0)
@@ -279,6 +237,48 @@ class Plotting:
 
 		print('test stop: '+str(monotonic()-self.start_time))
 		plt.show(block=True)
+
+	def run_animation(self):
+		style.use('fivethirtyeight')
+		fig = plt.figure()
+		self.ax1 = fig.add_subplot(1,1,1)
+
+		self.x = [0.0]*100
+		self.y1 = [0.0]*100
+		self.y2 = [0.0]*100
+
+		# Heading for the plot.
+		plt.title('qtm vs bno heading')
+
+		# Do not change #s on axis to scientific notation.
+		plt.ticklabel_format(style='plain')
+
+		self.start_time=monotonic()
+		ani = animation.FuncAnimation(fig,self.animate,interval=1000)
+		plt.show()
+
+	def animate(self,i):
+		# graph_data = open('example.txt','r').read()
+		# lines = graph_data.split('\n')
+		self.read_in_data()
+		self.x.pop(0)
+		self.y1.pop(0)
+		self.y2.pop(0)
+
+		current_time=round(monotonic()-self.start_time,2)
+		self.x.append(current_time)
+		self.y1.append(self.bno['heading'])
+		self.y2.append(self.qtm['heading'])
+
+		line1.set_ydata(y1)
+		line1.set_xdata(x)
+		line2.set_ydata(y2)
+		line2.set_xdata(x)
+
+		self.ax1.clear()
+		self.ax1.plot(self.x, self.y1)
+		self.ax1.plot(self.x, self.y2)
+
 
 def set_core_affinity(x=0):
 	cores = os.cpu_count() - 1
