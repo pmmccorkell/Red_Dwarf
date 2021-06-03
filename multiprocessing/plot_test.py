@@ -256,6 +256,7 @@ class Plotting:
 		plt.autoscale(False)
 		self.ax1 = fig.add_subplot(111)
 		self.ax1.autoscale(False,'y')
+		self.ax1.autoscale(True,'x')
 		self.x = [0.0]*100
 		self.y1 = [0.0]*100
 		self.y2 = [0.0]*100
