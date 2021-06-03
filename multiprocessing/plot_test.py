@@ -190,14 +190,6 @@ class Plotting:
 				self.bno = buffer['bno']
 				self.qtm = buffer['qtm']
 
-				self.x.pop(0)
-				self.y1.pop(0)
-				self.y2.pop(0)
-
-				current_time=round(monotonic()-self.start_time,2)
-				self.x.append(current_time)
-				self.y1.append(self.bno['heading'])
-				self.y2.append(self.qtm['heading'])
 
 			sleep(0.01)
 
@@ -273,15 +265,23 @@ class Plotting:
 		self.ax1.legend()
 
 		self.start_time=monotonic()
-		ani2 = animation.FuncAnimation(fig,self.animate_qtm,interval=20,blit=True)
+		ani1 = animation.FuncAnimation(fig,self.animate,interval=20,blit=True)
 		# ani1 = animation.FuncAnimation(fig,self.animate_bno,interval=20,blit=True)
 		# Do not change #s on axis to scientific notation.
 		plt.ticklabel_format(style='plain')
 
 		plt.show()
 
-	def animate_qtm(self,i):
+	def animate(self,i):
 		# self.read_in_data()
+		self.x.pop(0)
+		self.y1.pop(0)
+		self.y2.pop(0)
+
+		current_time=round(monotonic()-self.start_time,2)
+		self.x.append(current_time)
+		self.y1.append(self.bno['heading'])
+		self.y2.append(self.qtm['heading'])
 
 		self.line1.set_data(self.x,self.y1)
 		self.line2.set_data(self.x,self.y2)
@@ -290,24 +290,6 @@ class Plotting:
 		# line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		# line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		return self.line1,self.line2
-
-	def animate_bno(self,i):
-		# self.read_in_data()
-		self.x.pop(0)
-		self.y1.pop(0)
-		# self.y2.pop(0)
-
-		current_time=round(monotonic()-self.start_time,2)
-		self.x.append(current_time)
-		self.y1.append(self.bno['heading'])
-		# self.y2.append(self.qtm['heading'])
-
-		# self.ax1.clear()
-		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
-		# line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
-		self.ax1.legend()
-		return line1
-
 
 
 def set_core_affinity(x=0):
