@@ -270,8 +270,10 @@ class Plotting:
 		plt.show()
 
 	def init(self):
-		line1.set_data([],[])
-		line2.set_data([],[])
+		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
+		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
+		# line1.set_data([],[])
+		# line2.set_data([],[])
 		return line1,line2
 
 	def animate_qtm(self,i,line1,line2):
