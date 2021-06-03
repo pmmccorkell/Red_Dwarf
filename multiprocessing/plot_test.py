@@ -233,8 +233,7 @@ class Plotting:
 			axes.set_ylim(min([min(y1),min(y2)]),max([max(y1),max(y2)])+1) # +1 to avoid singular transformation warning
 			axes.set_xlim(min(x),max(x)+1)
 			plt.draw()
-			#plt.pause(0.0000001)
-			plt.show()
+			plt.pause(0.0000001)
 
 		print('test stop: '+str(monotonic()-self.start_time))
 		plt.show(block=True)
