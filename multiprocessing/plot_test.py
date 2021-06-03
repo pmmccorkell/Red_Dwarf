@@ -255,7 +255,7 @@ class Plotting:
 		plt.ticklabel_format(style='plain')
 
 		self.start_time=monotonic()
-		ani = animation.FuncAnimation(fig,self.animate,interval=100)
+		ani = animation.FuncAnimation(fig,self.animate,interval=10)
 		plt.show()
 
 	def animate(self,i):
@@ -293,7 +293,7 @@ def plot_process_setup():
 	plot_pipe_in,plot_pipe_out = Pipe()
 	plotting = Plotting(plot_pipe_in)
 	# plot_process = Process(target=plotting.last_test,daemon=True)
-	plot_process = Process(target=plotting.run_animation)
+	plot_process = Process(target=plotting.run_animation,daemon=True)
 	plot_process.start()
 
 
