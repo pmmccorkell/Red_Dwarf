@@ -188,9 +188,21 @@ class Plotting:
 			self.qtm = buffer['qtm']
 
 	def run_animation(self):
-		ani = animation.FuncAnimation(fig,animate,interval=1000)
+		ani = animation.FuncAnimation(fig,self.animate,interval=1000)
 
-	def animate(self):
+	def animate(self,i):
+		graph_data = open('example.txt','r').read()
+		lines = graph_data.split('\n')
+		xs = []
+		ys = []
+		for line in lines:
+			if len(line) > 1:
+				x, y = line.split(',')
+				xs.append(float(x))
+				ys.append(float(y))
+		ax1.clear()
+		ax1.plot(xs, ys)
+		
 		
 
 	def last_test(self):
