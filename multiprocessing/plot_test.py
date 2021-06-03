@@ -188,7 +188,7 @@ class Plotting:
 			if (buffer):
 				self.bno = buffer['bno']
 				self.qtm = buffer['qtm']
-			sleep(0.005)
+			sleep(0.01)
 
 	def last_test(self):
 		# global bno,qtm,start_time
@@ -265,9 +265,7 @@ class Plotting:
 
 		plt.show()
 
-	def animate(self,i):
-		# graph_data = open('example.txt','r').read()
-		# lines = graph_data.split('\n')
+	def animate_qtm(self,i):
 		# self.read_in_data()
 		self.x.pop(0)
 		self.y1.pop(0)
@@ -275,7 +273,7 @@ class Plotting:
 
 		current_time=round(monotonic()-self.start_time,2)
 		self.x.append(current_time)
-		self.y1.append(self.bno['heading'])
+		# self.y1.append(self.bno['heading'])
 		self.y2.append(self.qtm['heading'])
 
 		# line1.set_ydata(y1)
@@ -288,6 +286,8 @@ class Plotting:
 		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		self.ax1.legend()
 		return [line1,line2]
+
+	def 
 
 
 def set_core_affinity(x=0):
