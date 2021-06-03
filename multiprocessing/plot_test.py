@@ -245,6 +245,7 @@ def set_core_affinity(x=0):
 
 def plot_process_setup():
 	global plot_pipe_in,plot_pipe_out,plot_process
+	set_core_affinity(1)
 	plot_pipe_in,plot_pipe_out = Pipe()
 	plotting = Plotting(plot_pipe_in)
 	plot_process = Process(target=plotting.last_test,daemon=True)
