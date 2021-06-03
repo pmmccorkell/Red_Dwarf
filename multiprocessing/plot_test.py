@@ -1,7 +1,8 @@
 from threading import Thread
 from time import sleep, monotonic
 # import pandas as pd
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
+from matplotlib import animation, style
 import numpy as np
 from random import randint
 from multiprocessing import Process, Pipe
