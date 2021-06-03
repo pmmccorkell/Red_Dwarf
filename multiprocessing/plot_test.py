@@ -261,7 +261,7 @@ class Plotting:
 		self.start_time=monotonic()
 		self.ax1.legend()
 		ani2 = animation.FuncAnimation(fig,self.animate_qtm,interval=20,blit=True)
-		ani1 = animation.FuncAnimation(fig,self.animate_bno,interval=20,blit=True)
+		# ani1 = animation.FuncAnimation(fig,self.animate_bno,interval=20,blit=True)
 		# Do not change #s on axis to scientific notation.
 		plt.ticklabel_format(style='plain')
 		plt.title('qtm vs bno heading')
@@ -271,19 +271,20 @@ class Plotting:
 	def animate_qtm(self,i):
 		# self.read_in_data()
 		self.x.pop(0)
-		# self.y1.pop(0)
+		self.y1.pop(0)
 		self.y2.pop(0)
 
 		current_time=round(monotonic()-self.start_time,2)
 		self.x.append(current_time)
-		# self.y1.append(self.bno['heading'])
+		self.y1.append(self.bno['heading'])
 		self.y2.append(self.qtm['heading'])
 
 		self.ax1.clear()
-		# line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
+		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		self.ax1.legend()
-		return line2
+		artists = [line1,line2]
+		return artists
 
 	def animate_bno(self,i):
 		# self.read_in_data()
