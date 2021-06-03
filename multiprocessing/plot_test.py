@@ -270,10 +270,10 @@ class Plotting:
 		self.y1.append(self.bno['heading'])
 		self.y2.append(self.qtm['heading'])
 
-		line1.set_ydata(y1)
-		line1.set_xdata(x)
-		line2.set_ydata(y2)
-		line2.set_xdata(x)
+		# line1.set_ydata(y1)
+		# line1.set_xdata(x)
+		# line2.set_ydata(y2)
+		# line2.set_xdata(x)
 
 		self.ax1.clear()
 		self.ax1.plot(self.x, self.y1)
