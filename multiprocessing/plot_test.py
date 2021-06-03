@@ -187,6 +187,9 @@ class Plotting:
 			self.bno = buffer['bno']
 			self.qtm = buffer['qtm']
 
+	def run_animation(self):
+		ani = animation.FuncAnimation(fig,animate,interval=1000)
+
 	def animate(self):
 		
 
