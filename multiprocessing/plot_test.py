@@ -253,7 +253,7 @@ class Plotting:
 		style.use('fivethirtyeight')
 		fig = plt.figure('qtm vs bno')
 
-		self.ax1 = fig.add_subplot(1,1,1)
+		self.ax1 = fig.add_subplot(111,ylim=(-2000,2000))
 		self.ax1.set_ylim(-800,1300)
 
 		self.x = [0.0]*100
