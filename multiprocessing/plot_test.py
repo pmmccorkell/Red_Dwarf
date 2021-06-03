@@ -82,7 +82,7 @@ def update_data():
 				'qtm':qtm
 			}
 			plot_pipe_out.send(output)
-			sleep(0.01)
+			sleep(0.02)
 		for _ in range(1000):
 			bno['heading']-=1
 			qtm['heading']+=1
@@ -285,7 +285,7 @@ class Plotting:
 		self.ax1.clear()
 		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
-		self.ax1.set_ylim(-2000,2000)
+		self.ax1.set_ylim(-1000,1500)
 		self.ax1.legend()
 		# return self.line1,self.line2
 
