@@ -8,6 +8,7 @@ from random import randint
 from multiprocessing import Process, Pipe
 from gc import collect as trash
 import os
+from collections import namedtuple
 
 measured_active = {
 	'heading' : 45
