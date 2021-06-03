@@ -252,14 +252,8 @@ class Plotting:
 		set_core_affinity(0)
 		style.use('fivethirtyeight')
 		fig = plt.figure('qtm vs bno')
-
-		# plt.autoscale(False)
 		self.ax1 = fig.add_subplot(111)
-		self.ax1.set_ylim(-2000,2000)
-		self.ax1.set_autoscaley_on(False)
-		# self.ax1.set_autoscalex_on(True)
-		self.ax1.set_ylim(-2000,2000)
-		# self.ax1.autoscale(True,'y2')
+
 		self.x = [0.0]*100
 		self.y1 = [0.0]*100
 		self.y2 = [0.0]*100
