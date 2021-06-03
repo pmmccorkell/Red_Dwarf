@@ -241,10 +241,9 @@ class Plotting:
 	def run_animation(self):
 		plt.ioff()
 		# Heading for the plot.
-		plt.title('qtm vs bno heading')
 
 		# Do not change #s on axis to scientific notation.
-		plt.ticklabel_format(style='plain')
+		# plt.ticklabel_format(style='plain')
 
 		set_core_affinity(0)
 		style.use('fivethirtyeight')
@@ -266,6 +265,8 @@ class Plotting:
 		plt.show()
 
 	def animate(self,i):
+		plt.title('qtm vs bno heading')
+
 		# graph_data = open('example.txt','r').read()
 		# lines = graph_data.split('\n')
 		self.read_in_data()
