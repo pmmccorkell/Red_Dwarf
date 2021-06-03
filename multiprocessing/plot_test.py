@@ -283,7 +283,7 @@ class Plotting:
 		l1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		l2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		self.ax1.legend()
-		return {l1,l2}
+		return l2
 
 
 def set_core_affinity(x=0):
