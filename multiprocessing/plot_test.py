@@ -251,7 +251,6 @@ class Plotting:
 		fig.set_label('bno')
 
 		self.ax1 = fig.add_subplot(1,1,1)
-		self.ax1.legend()
 
 		self.x = [0.0]*100
 		self.y1 = [0.0]*100
@@ -286,8 +285,9 @@ class Plotting:
 		# line2.set_xdata(x)
 
 		self.ax1.clear()
-		self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno'))
-		self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm'))
+		self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
+		self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
+		self.ax1.legend()
 
 
 def set_core_affinity(x=0):
