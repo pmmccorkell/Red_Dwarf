@@ -268,6 +268,9 @@ class Plotting:
 		self.y1 = [0.0]*100
 		self.y2 = [0.0]*100
 
+		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
+		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
+		self.ax1.legend()
 
 		self.start_time=monotonic()
 		ani2 = animation.FuncAnimation(fig,self.animate_qtm,init_func=self.init,fargs=(line1,line2),interval=20,blit=True)
@@ -279,11 +282,8 @@ class Plotting:
 		plt.show()
 
 	def init(self):
-		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
-		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
-		self.ax1.legend()
-		# line1.set_data(self.x,self.y1)
-		# line2.set_data(self.x,self.y2)
+		self.line1.set_data(self.x,self.y1)
+		self.line2.set_data(self.x,self.y2)
 		return line1,line2
 
 	def animate_qtm(self,i,line1,line2):
