@@ -286,8 +286,8 @@ class Plotting:
 		# line2.set_xdata(x)
 
 		self.ax1.clear()
-		self.ax1.plot(self.x, self.y1)
-		self.ax1.plot(self.x, self.y2)
+		self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno'))
+		self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm'))
 
 
 def set_core_affinity(x=0):
