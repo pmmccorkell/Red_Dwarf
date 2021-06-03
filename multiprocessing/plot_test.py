@@ -10,7 +10,7 @@ from gc import collect as trash
 measured_active = {
 	'heading' : 45
 }
-    
+
 xbox = {
 	'facing':181,
 	'offset':182,
