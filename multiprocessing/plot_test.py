@@ -279,11 +279,11 @@ class Plotting:
 		# line2.set_ydata(y2)
 		# line2.set_xdata(x)
 
-		self.ax1.clear()
-		l1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
-		l2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
+		# self.ax1.clear()
+		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
+		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		self.ax1.legend()
-		return l2
+		return [line1,line2]
 
 
 def set_core_affinity(x=0):
