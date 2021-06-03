@@ -226,7 +226,7 @@ class Plotting:
 		line2.set_xdata(x)
 
 		self.ax1.clear()
-		self.ax1.plot(xs, ys)
+		self.ax1.plot(self.x, self.y)
 		
 
 	def last_test(self):
