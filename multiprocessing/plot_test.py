@@ -280,7 +280,8 @@ class Plotting:
 		# self.ax1.clear()
 		# line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
-		return [line1,line2]
+		# self.ax1.legend()
+		return line2
 
 	def animate_bno(self,i):
 		# self.read_in_data()
@@ -296,8 +297,8 @@ class Plotting:
 		# self.ax1.clear()
 		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		# line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
-		self.ax1.legend()
-		return [line1,line2]
+		# self.ax1.legend()
+		return line1
 
 
 
