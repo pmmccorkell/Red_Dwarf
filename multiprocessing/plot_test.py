@@ -269,7 +269,7 @@ class Plotting:
 
 		plt.show()
 
-	def animate_qtm(self,i):
+	def animate_qtm(self,i,line1,line2):
 		# self.read_in_data()
 		self.x.pop(0)
 		self.y1.pop(0)
@@ -285,9 +285,9 @@ class Plotting:
 		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		self.ax1.legend()
 		# artists = [line1,line2]
-		Artists = namedtuple("Artists",("bno","qtm"))
-		artists = Artists(line1,line2)
-		return artists
+		# Artists = namedtuple("Artists",("bno","qtm"))
+		# artists = Artists(line1,line2)
+		return line1,line2
 
 	def animate_bno(self,i):
 		# self.read_in_data()
