@@ -90,7 +90,7 @@ def update_data():
 				'qtm':qtm
 			}
 			plot_pipe_out.send(output)
-			sleep(0.01)
+			sleep(0.02)
 		print("update thread cycle: " +str(monotonic()-start_time))
 
 start_time = monotonic()
@@ -188,6 +188,7 @@ class Plotting:
 			if (buffer):
 				self.bno = buffer['bno']
 				self.qtm = buffer['qtm']
+			sleep(0.005)
 
 	def last_test(self):
 		# global bno,qtm,start_time
