@@ -194,10 +194,11 @@ class Plotting:
 		self.ax1 = fig.add_subplot(1,1,1)
 
 		ani = animation.FuncAnimation(fig,self.animate,interval=1000)
+		plt.show()
 
 	def animate(self,i):
-		graph_data = open('example.txt','r').read()
-		lines = graph_data.split('\n')
+		# graph_data = open('example.txt','r').read()
+		# lines = graph_data.split('\n')
 		xs = []
 		ys = []
 		for line in lines:
