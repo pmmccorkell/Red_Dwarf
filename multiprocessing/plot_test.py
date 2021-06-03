@@ -239,6 +239,7 @@ class Plotting:
 		plt.show(block=True)
 
 	def run_animation(self):
+		set_core_affinity(0)
 		style.use('fivethirtyeight')
 		fig = plt.figure()
 		self.ax1 = fig.add_subplot(1,1,1)
