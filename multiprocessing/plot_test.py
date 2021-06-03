@@ -203,17 +203,28 @@ class Plotting:
 		# Do not change #s on axis to scientific notation.
 		plt.ticklabel_format(style='plain')
 
+		self.start_time=monotonic()
 		ani = animation.FuncAnimation(fig,self.animate,interval=1000)
 		plt.show()
 
 	def animate(self,i):
 		# graph_data = open('example.txt','r').read()
 		# lines = graph_data.split('\n')
-		for line in lines:
-			if len(line) > 1:
-				x, y = line.split(',')
-				xs.append(float(x))
-				ys.append(float(y))
+		self.read_in_data()
+		self.x.pop(0)
+		self.y1.pop(0)
+		self.y2.pop(0)
+
+		current_time=round(monotonic()-self.start_time,2)
+		self.x.append(current_time)
+		self.y1.append(self.bno['heading'])
+		self.y2.append(self.qtm['heading'])
+
+		line1.set_ydata(y1)
+		line1.set_xdata(x)
+		line2.set_ydata(y2)
+		line2.set_xdata(x)
+
 		self.ax1.clear()
 		self.ax1.plot(xs, ys)
 		
