@@ -268,12 +268,12 @@ class Plotting:
 		self.y1 = [0.0]*100
 		self.y2 = [0.0]*100
 
-		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
-		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
+		self.line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
+		self.line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		self.ax1.legend()
 
 		self.start_time=monotonic()
-		ani2 = animation.FuncAnimation(fig,self.animate_qtm,init_func=self.init,fargs=(line1,line2),interval=20,blit=True)
+		ani2 = animation.FuncAnimation(fig,self.animate_qtm,init_func=self.init,fargs=(self.line1,self.line2),interval=20,blit=True)
 		# ani1 = animation.FuncAnimation(fig,self.animate_bno,interval=20,blit=True)
 		# Do not change #s on axis to scientific notation.
 		plt.ticklabel_format(style='plain')
@@ -284,7 +284,7 @@ class Plotting:
 	def init(self):
 		self.line1.set_data(self.x,self.y1)
 		self.line2.set_data(self.x,self.y2)
-		return line1,line2
+		return self.line1,self.line2
 
 	def animate_qtm(self,i,line1,line2):
 		# self.read_in_data()
@@ -295,11 +295,11 @@ class Plotting:
 		# self.ax1.clear()
 		# line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		# line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
-		self.ax1.legend()
+		# self.ax1.legend()
 		# artists = [line1,line2]
 		# Artists = namedtuple("Artists",("bno","qtm"))
 		# artists = Artists(line1,line2)
-		return line1,line2
+		return self.line1,self.line2
 
 	def animate_bno(self,i):
 		# self.read_in_data()
