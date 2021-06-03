@@ -273,7 +273,7 @@ class Plotting:
 		self.ax1.legend()
 
 		self.start_time=monotonic()
-		ani2 = animation.FuncAnimation(fig,self.animate_qtm,init_func=self.init,fargs=(self.line1,self.line2),interval=20,blit=True)
+		ani2 = animation.FuncAnimation(fig,self.animate_qtm,fargs=(self.line1,self.line2),interval=20,blit=True)
 		# ani1 = animation.FuncAnimation(fig,self.animate_bno,interval=20,blit=True)
 		# Do not change #s on axis to scientific notation.
 		plt.ticklabel_format(style='plain')
@@ -290,8 +290,8 @@ class Plotting:
 	def animate_qtm(self,i,line1,line2):
 		# self.read_in_data()
 
-		line1.set_data(self.x,self.y1)
-		line2.set_data(self.x,self.y2)
+		self.line1.set_data(self.x,self.y1)
+		self.line2.set_data(self.x,self.y2)
 
 		# self.ax1.clear()
 		# line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
