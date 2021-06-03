@@ -266,7 +266,7 @@ class Plotting:
 		self.ax1.set_ylim(-1000,1500)
 
 		self.start_time=monotonic()
-		ani1 = animation.FuncAnimation(fig,self.animate,interval=20)  #,blit=True)
+		ani1 = animation.FuncAnimation(fig,self.animate,interval=20, blit=True)
 		# Do not change #s on axis to scientific notation.
 		# plt.ticklabel_format(style='plain')
 
@@ -289,9 +289,11 @@ class Plotting:
 		# self.ax1.clear()
 		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
-		self.ax1.set_ylim(-1000,1500)
+
+		# self.ax1.set_ylim(-1000,1500)
 		# self.ax1.legend()
-		# return self.line1,self.line2
+
+		return self.line1,self.line2
 
 
 def set_core_affinity(x=0):
