@@ -261,12 +261,12 @@ class Plotting:
 		# plt.ticklabel_format(style='plain')
 
 		self.start_time=monotonic()
-		ani = animation.FuncAnimation(fig,self.animate,interval=10)
+		ani = animation.FuncAnimation(fig,self.animate,interval=20)
 		plt.show()
 
 	def animate(self,i):
 		# Heading for the plot.
-		plt.title('qtm vs bno heading')
+		# plt.title('qtm vs bno heading')
 		# graph_data = open('example.txt','r').read()
 		# lines = graph_data.split('\n')
 		self.read_in_data()
