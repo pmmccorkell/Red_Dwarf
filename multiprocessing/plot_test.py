@@ -281,6 +281,7 @@ class Plotting:
 	def init(self):
 		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
+		self.ax1.legend()
 		# line1.set_data(self.x,self.y1)
 		# line2.set_data(self.x,self.y2)
 		return line1,line2
