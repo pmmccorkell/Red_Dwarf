@@ -261,12 +261,13 @@ class Plotting:
 		self.line1,=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		self.line2,=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 
-		# BLIT onetime
-		self.ax1.legend()
-		self.ax1.set_ylim(-1000,1500)
+		self.BLIT = 0
+		if self.BLIT:
+			self.ax1.legend()
+			self.ax1.set_ylim(-1000,1500)
 
 		self.start_time=monotonic()
-		ani1 = animation.FuncAnimation(fig,self.animate,interval=20)#, blit=True)
+		ani1 = animation.FuncAnimation(fig,self.animate,interval=20, blit=self.BLIT)
 		# Do not change #s on axis to scientific notation.
 		# plt.ticklabel_format(style='plain')
 
@@ -290,9 +291,9 @@ class Plotting:
 		line1,=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		line2,=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 
-		# Uncomment when blit is False
-		self.ax1.set_ylim(-1000,1500)
-		self.ax1.legend()
+		if not self.BLIT:
+			self.ax1.set_ylim(-1000,1500)
+			self.ax1.legend()
 
 		# return line1,line2
 
