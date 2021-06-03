@@ -92,7 +92,7 @@ def update_data():
 			}
 			plot_pipe_out.send(output)
 			sleep(0.05)
-		print("update thread cycle: " +str(monotonic()-start_time))
+		# print("update thread cycle: " +str(monotonic()-start_time))
 
 start_time = monotonic()
 
