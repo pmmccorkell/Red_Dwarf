@@ -260,7 +260,6 @@ class Plotting:
 
 		self.line1,=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		self.line2,=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
-		self.ax1.legend()
 
 		self.start_time=monotonic()
 		ani1 = animation.FuncAnimation(fig,self.animate,interval=20)  #,blit=True)
@@ -287,6 +286,7 @@ class Plotting:
 		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		self.ax1.set_ylim(-2000,2000)
+		self.ax1.legend()
 		# return self.line1,self.line2
 
 
