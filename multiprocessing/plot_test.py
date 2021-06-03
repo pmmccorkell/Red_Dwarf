@@ -181,12 +181,13 @@ class Plotting:
 		self.run = 0
 
 	def read_in_data(self):
-		buffer = None
-		while(self.comms.poll()):
-			buffer = self.comms.recv()
-		if (buffer):
-			self.bno = buffer['bno']
-			self.qtm = buffer['qtm']
+		while(1):
+			buffer = None
+			while(self.comms.poll()):
+				buffer = self.comms.recv()
+			if (buffer):
+				self.bno = buffer['bno']
+				self.qtm = buffer['qtm']
 
 	def last_test(self):
 		# global bno,qtm,start_time
@@ -240,6 +241,8 @@ class Plotting:
 
 	def run_animation(self):
 		plt.ioff()
+
+		read_in_thread = Thread(target=self.read_in_data,daemon=True)
 
 		set_core_affinity(0)
 		style.use('fivethirtyeight')
