@@ -261,7 +261,7 @@ class Plotting:
 
 		plt.show()
 
-	def animate(self,i):
+	def animate_qtm(self,i):
 		# graph_data = open('example.txt','r').read()
 		# lines = graph_data.split('\n')
 		self.read_in_data()
