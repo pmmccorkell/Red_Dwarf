@@ -287,13 +287,13 @@ class Plotting:
 		# self.line2.set_data(self.x,self.y2)
 
 		# self.ax1.clear()
-		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
-		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
+		line1,=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
+		line2,=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 
 		# self.ax1.set_ylim(-1000,1500)
 		# self.ax1.legend()
 
-		return self.line1,self.line2
+		return line1,line2
 
 
 def set_core_affinity(x=0):
