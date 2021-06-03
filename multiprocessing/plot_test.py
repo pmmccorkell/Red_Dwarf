@@ -237,10 +237,13 @@ class Plotting:
 		print('test stop: '+str(monotonic()-self.start_time))
 		plt.show(block=True)
 
-def plot_process_setup():
-	cores = os.cpu_count()
+def set_core_affinity(x=0):
+	cores = os.cpu_count() - 1
 	my_pid = os.getpid()
-	os.sched_setaffinity(my_pid,{cores-1})
+	chosen_core = {max(cores-x,0)}
+	os.sched_setaffinity(my_pid,chosen_core)
+
+def plot_process_setup():
 	global plot_pipe_in,plot_pipe_out,plot_process
 	plot_pipe_in,plot_pipe_out = Pipe()
 	plotting = Plotting(plot_pipe_in)
