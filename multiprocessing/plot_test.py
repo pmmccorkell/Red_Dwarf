@@ -258,6 +258,7 @@ class Plotting:
 
 
 		self.start_time=monotonic()
+		self.ax1.legend()
 		ani = animation.FuncAnimation(fig,self.animate,interval=20,blit=True)
 		# Do not change #s on axis to scientific notation.
 		plt.ticklabel_format(style='plain')
@@ -268,7 +269,7 @@ class Plotting:
 	def animate_qtm(self,i):
 		# self.read_in_data()
 		self.x.pop(0)
-		self.y1.pop(0)
+		# self.y1.pop(0)
 		self.y2.pop(0)
 
 		current_time=round(monotonic()-self.start_time,2)
@@ -276,18 +277,28 @@ class Plotting:
 		# self.y1.append(self.bno['heading'])
 		self.y2.append(self.qtm['heading'])
 
-		# line1.set_ydata(y1)
-		# line1.set_xdata(x)
-		# line2.set_ydata(y2)
-		# line2.set_xdata(x)
+		# self.ax1.clear()
+		# line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
+		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
+		return [line1,line2]
+
+	def animate_bno(self,i):
+		# self.read_in_data()
+		self.x.pop(0)
+		self.y1.pop(0)
+		# self.y2.pop(0)
+
+		current_time=round(monotonic()-self.start_time,2)
+		self.x.append(current_time)
+		self.y1.append(self.bno['heading'])
+		# self.y2.append(self.qtm['heading'])
 
 		# self.ax1.clear()
 		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
-		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
+		# line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		self.ax1.legend()
 		return [line1,line2]
 
-	def 
 
 
 def set_core_affinity(x=0):
