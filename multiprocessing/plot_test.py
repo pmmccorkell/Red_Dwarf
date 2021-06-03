@@ -240,10 +240,6 @@ class Plotting:
 
 	def run_animation(self):
 		plt.ioff()
-		# Heading for the plot.
-
-		# Do not change #s on axis to scientific notation.
-		# plt.ticklabel_format(style='plain')
 
 		set_core_affinity(0)
 		style.use('fivethirtyeight')
@@ -257,16 +253,17 @@ class Plotting:
 		self.y2 = [0.0]*100
 
 
-		# Do not change #s on axis to scientific notation.
-		# plt.ticklabel_format(style='plain')
 
 		self.start_time=monotonic()
 		ani = animation.FuncAnimation(fig,self.animate,interval=20)
+		# Do not change #s on axis to scientific notation.
+		plt.ticklabel_format(style='plain')
+		plt.title('qtm vs bno heading')
+
+
 		plt.show()
 
 	def animate(self,i):
-		# Heading for the plot.
-		# plt.title('qtm vs bno heading')
 		# graph_data = open('example.txt','r').read()
 		# lines = graph_data.split('\n')
 		self.read_in_data()
