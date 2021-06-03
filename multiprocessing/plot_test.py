@@ -238,6 +238,8 @@ class Plotting:
 		plt.show(block=True)
 
 def plot_process_setup():
+	cores = os.cpu_count()
+	os.sched_setaffinity()
 	global plot_pipe_in,plot_pipe_out,plot_process
 	plot_pipe_in,plot_pipe_out = Pipe()
 	plotting = Plotting(plot_pipe_in)
