@@ -253,7 +253,6 @@ class Plotting:
 		self.y2 = [0.0]*100
 
 
-
 		self.start_time=monotonic()
 		ani = animation.FuncAnimation(fig,self.animate,interval=20)
 		# Do not change #s on axis to scientific notation.
@@ -270,6 +269,7 @@ class Plotting:
 		self.x.pop(0)
 		self.y1.pop(0)
 		self.y2.pop(0)
+		self.ax1.set_ylim(-800,1300)
 
 		current_time=round(monotonic()-self.start_time,2)
 		self.x.append(current_time)
