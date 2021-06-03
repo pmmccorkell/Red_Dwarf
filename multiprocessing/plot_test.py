@@ -244,6 +244,7 @@ class Plotting:
 		plt.ioff()
 
 		read_in_thread = Thread(target=self.read_in_data,daemon=True)
+		read_in_thread.start()
 
 		set_core_affinity(0)
 		style.use('fivethirtyeight')
@@ -278,7 +279,7 @@ class Plotting:
 		# self.y1.append(self.bno['heading'])
 		self.y2.append(self.qtm['heading'])
 
-		# self.ax1.clear()
+		self.ax1.clear()
 		# line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		# self.ax1.legend()
@@ -295,7 +296,7 @@ class Plotting:
 		self.y1.append(self.bno['heading'])
 		# self.y2.append(self.qtm['heading'])
 
-		# self.ax1.clear()
+		self.ax1.clear()
 		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		# line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 		# self.ax1.legend()
