@@ -255,9 +255,10 @@ class Plotting:
 
 		# plt.autoscale(False)
 		self.ax1 = fig.add_subplot(111)
+		self.ax1.set_ylim(-2000,2000)
 		self.ax1.set_autoscaley_on(False)
-		self.ax1.set_autoscalex_on(True)
-		ax1.set_ylim(-2000,2000)
+		# self.ax1.set_autoscalex_on(True)
+		self.ax1.set_ylim(-2000,2000)
 		# self.ax1.autoscale(True,'y2')
 		self.x = [0.0]*100
 		self.y1 = [0.0]*100
@@ -291,6 +292,7 @@ class Plotting:
 		self.ax1.clear()
 		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
+		self.ax1.set_ylim(-2000,2000)
 		# return self.line1,self.line2
 
 
