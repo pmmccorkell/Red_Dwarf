@@ -248,7 +248,10 @@ class Plotting:
 		set_core_affinity(0)
 		style.use('fivethirtyeight')
 		fig = plt.figure()
+		fig.set_label('bno')
+
 		self.ax1 = fig.add_subplot(1,1,1)
+		self.ax1.legend()
 
 		self.x = [0.0]*100
 		self.y1 = [0.0]*100
@@ -265,7 +268,6 @@ class Plotting:
 	def animate(self,i):
 		# Heading for the plot.
 		plt.title('qtm vs bno heading')
-
 		# graph_data = open('example.txt','r').read()
 		# lines = graph_data.split('\n')
 		self.read_in_data()
