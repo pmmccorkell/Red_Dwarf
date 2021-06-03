@@ -197,6 +197,12 @@ class Plotting:
 		self.y1 = [0.0]*100
 		self.y2 = [0.0]*100
 
+		# Heading for the plot.
+		plt.title('qtm vs bno heading')
+
+		# Do not change #s on axis to scientific notation.
+		plt.ticklabel_format(style='plain')
+
 		ani = animation.FuncAnimation(fig,self.animate,interval=1000)
 		plt.show()
 
