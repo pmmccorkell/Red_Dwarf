@@ -254,8 +254,8 @@ class Plotting:
 		fig = plt.figure('qtm vs bno')
 
 		plt.autoscale(False)
-		self.ax1 = fig.add_subplot(111,autoscale_on=False,ylim=(-2000,2000))
-
+		self.ax1 = fig.add_subplot(111)
+		self.ax1.autoscale(False,'y')
 		self.x = [0.0]*100
 		self.y1 = [0.0]*100
 		self.y2 = [0.0]*100
