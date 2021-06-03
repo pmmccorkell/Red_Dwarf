@@ -243,8 +243,7 @@ class Plotting:
 
 		set_core_affinity(0)
 		style.use('fivethirtyeight')
-		fig = plt.figure()
-		fig.set_label('bno')
+		fig = plt.figure('qtm vs bno')
 
 		self.ax1 = fig.add_subplot(1,1,1)
 		self.ax1.set_ylim(-800,1300)
