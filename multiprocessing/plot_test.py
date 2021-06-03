@@ -190,6 +190,7 @@ class Plotting:
 
 	def last_test(self):
 		# global bno,qtm,start_time
+		set_core_affinity(0)
 		plt.ion()
 		fig = plt.figure(figsize=(16,16))
 		axes = fig.add_subplot(111)	#add 1 subplot of 1 figure in 1 plot
