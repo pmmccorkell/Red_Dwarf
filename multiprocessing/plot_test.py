@@ -82,7 +82,7 @@ def update_data():
 				'qtm':qtm
 			}
 			plot_pipe_out.send(output)
-			sleep(0.02)
+			sleep(0.05)
 		for _ in range(1000):
 			bno['heading']-=1
 			qtm['heading']+=1
@@ -91,7 +91,7 @@ def update_data():
 				'qtm':qtm
 			}
 			plot_pipe_out.send(output)
-			sleep(0.02)
+			sleep(0.05)
 		print("update thread cycle: " +str(monotonic()-start_time))
 
 start_time = monotonic()
