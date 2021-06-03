@@ -261,10 +261,10 @@ class Plotting:
 
 		plt.show()
 
-	def animate_qtm(self,i):
+	def animate(self,i):
 		# graph_data = open('example.txt','r').read()
 		# lines = graph_data.split('\n')
-		self.read_in_data()
+		# self.read_in_data()
 		self.x.pop(0)
 		self.y1.pop(0)
 		self.y2.pop(0)
