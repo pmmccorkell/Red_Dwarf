@@ -11,7 +11,7 @@ import xb
 import mbed_wrapper
 from time import sleep, time
 import atexit
-from gc import trash
+from gc import collect as trash
 import mocap
 import surface
 
