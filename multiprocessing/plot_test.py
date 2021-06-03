@@ -189,6 +189,10 @@ class Plotting:
 			self.qtm = buffer['qtm']
 
 	def run_animation(self):
+		style.use('fivethirtyeight')
+		fig = plt.figure()
+		self.ax1 = fig.add_subplot(1,1,1)
+
 		ani = animation.FuncAnimation(fig,self.animate,interval=1000)
 
 	def animate(self,i):
@@ -201,9 +205,8 @@ class Plotting:
 				x, y = line.split(',')
 				xs.append(float(x))
 				ys.append(float(y))
-		ax1.clear()
-		ax1.plot(xs, ys)
-		
+		self.ax1.clear()
+		self.ax1.plot(xs, ys)
 		
 
 	def last_test(self):
