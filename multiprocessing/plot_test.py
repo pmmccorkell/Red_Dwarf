@@ -6,6 +6,7 @@ import numpy as np
 from random import randint
 from multiprocessing import Process, Pipe
 from gc import collect as trash
+import os
 
 measured_active = {
 	'heading' : 45
