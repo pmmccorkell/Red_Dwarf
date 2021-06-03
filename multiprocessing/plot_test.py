@@ -189,7 +189,7 @@ class Plotting:
 			if (buffer):
 				self.bno = buffer['bno']
 				self.qtm = buffer['qtm']
-				
+
 				self.x.pop(0)
 				self.y1.pop(0)
 				self.y2.pop(0)
@@ -270,7 +270,6 @@ class Plotting:
 
 
 		self.start_time=monotonic()
-		self.ax1.legend()
 		ani2 = animation.FuncAnimation(fig,self.animate_qtm,interval=20,blit=True)
 		# ani1 = animation.FuncAnimation(fig,self.animate_bno,interval=20,blit=True)
 		# Do not change #s on axis to scientific notation.
