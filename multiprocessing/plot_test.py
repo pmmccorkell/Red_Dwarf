@@ -255,7 +255,7 @@ class Plotting:
 
 
 		self.start_time=monotonic()
-		ani = animation.FuncAnimation(fig,self.animate,interval=20,blit=True)
+		ani = animation.FuncAnimation(fig,self.animate,interval=20)
 		# Do not change #s on axis to scientific notation.
 		plt.ticklabel_format(style='plain')
 		plt.title('qtm vs bno heading')
