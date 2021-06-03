@@ -189,6 +189,16 @@ class Plotting:
 			if (buffer):
 				self.bno = buffer['bno']
 				self.qtm = buffer['qtm']
+				
+				self.x.pop(0)
+				self.y1.pop(0)
+				self.y2.pop(0)
+
+				current_time=round(monotonic()-self.start_time,2)
+				self.x.append(current_time)
+				self.y1.append(self.bno['heading'])
+				self.y2.append(self.qtm['heading'])
+
 			sleep(0.01)
 
 	def last_test(self):
@@ -272,20 +282,15 @@ class Plotting:
 	def init(self):
 		line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		line2=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
-		# line1.set_data([],[])
-		# line2.set_data([],[])
+		# line1.set_data(self.x,self.y1)
+		# line2.set_data(self.x,self.y2)
 		return line1,line2
 
 	def animate_qtm(self,i,line1,line2):
 		# self.read_in_data()
-		self.x.pop(0)
-		self.y1.pop(0)
-		self.y2.pop(0)
 
-		current_time=round(monotonic()-self.start_time,2)
-		self.x.append(current_time)
-		self.y1.append(self.bno['heading'])
-		self.y2.append(self.qtm['heading'])
+		line1.set_data(self.x,self.y1)
+		line2.set_data(self.x,self.y2)
 
 		# self.ax1.clear()
 		# line1=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
