@@ -63,6 +63,7 @@ def pwm_setup():
 	vessel.thrusters.servoboard.set_max(max_speed/1.2)
 
 def pwm_controller_thread():
+	global vessel
 	interval = pwm_interval
 	while(pwm_flag.set_flag()):
 		start=time()
