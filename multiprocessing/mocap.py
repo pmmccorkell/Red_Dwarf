@@ -107,7 +107,7 @@ def stream_data(qtm_ip):
 	print('start qtm process')
 	data_in = {}
 	mocap_process = Process(target=qualisys.start)
-	
+
 	mocap_process.start()
 
 	while(1):
