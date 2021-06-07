@@ -247,7 +247,7 @@ qtm = {
 	'heading':999
 }
 def qtm_read(name):
-	global qtm_pipe_in, qtm
+	global qtm_pipe_out, qtm
 	read_pipe = qtm_pipe_in
 	# name = rigid_body_name
 	buffer = {}
