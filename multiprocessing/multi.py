@@ -289,7 +289,7 @@ def plotting():
 def exit_program():
 	global pwm_flag,qtm_flag,xbox_flag,mbed_flag,plot_flag
 	global xbox_process,mbed_process,qtm_process
-	global qualisys,imu,xb_controller
+	global qualisys,imu,xb_controller,vessel
 	print("Shutting down threads.")
 	pwm_flag.set_flag(0)
 	qtm_flag.set_flag(0)
