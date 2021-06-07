@@ -362,7 +362,7 @@ def loop():
 		print('MAIN: '+dumps(xbox))
 		# print(qtm)
 		# print(bno)
-		sleep(1)
+		sleep(0.5)
 		trash()
 
 setup()
