@@ -132,7 +132,7 @@ xbox = {
 	'mode':1,		# mode 1 qtm, mode 0 bno
 	'quit':0
 }
-last_maintain = xbox['maintain']
+last_maintain = 1
 def xbox_read():
 	global xb_pipe_in, xb_pipe_out, xbox
 	global vessel, qtm, bno, measured_active
