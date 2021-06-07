@@ -129,7 +129,6 @@ def get_ip():
     finally:
         s.close()
     return IP
-	
 
 if __name__ == '__main__':
 	print('running as main')
