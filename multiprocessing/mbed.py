@@ -182,7 +182,7 @@ def get_angles():
 
 	if DEBUG:
 		print(in_buffer)
-		len(in_buffer)
+		print(len(in_buffer))
 	
 	#Only assign prefix and data if serial line is correct length
 	#Prevents Value Errors
