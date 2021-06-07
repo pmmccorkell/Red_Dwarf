@@ -55,7 +55,7 @@ plot_flag = event_flags()
 measured_active = {
 	'heading' : 0xffff
 }
-
+	
 def pwm_setup():
 	global vessel
 	vessel = surface.Controller()
