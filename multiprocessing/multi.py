@@ -124,12 +124,11 @@ def xbox_process_setup():
 	xbox_process = Process(target=xbox_controller.stream,daemon=daemon_mode)
 	xbox_process.start()
 
-last_maintain = 1
 xbox = {
 	'facing':999,
 	'offset':999,
 	'speed':999,
-	'maintain':0 ^ last_maintain,
+	'maintain':1,
 	'mode':1,		# mode 1 qtm, mode 0 bno
 	'quit':0
 }
