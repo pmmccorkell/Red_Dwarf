@@ -332,7 +332,7 @@ atexit.register(exit_program)
 
 
 def setup():
-	daemon_mode = False
+	global daemon_mode
 
 	pwm_setup()
 	pwm_thread = Thread(target=pwm_controller_thread,daemon=daemon_mode)
