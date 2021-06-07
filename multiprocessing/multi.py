@@ -128,7 +128,7 @@ xbox = {
 	'facing':999,
 	'offset':999,
 	'speed':999,
-	'maintain':1,
+	'maintain':0,
 	'mode':1,		# mode 1 qtm, mode 0 bno
 	'quit':0
 }
