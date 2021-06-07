@@ -141,7 +141,7 @@ def xbox_read():
 	print(xb_pipe_out.recv())
 	print(xb_pipe_in.recv())
 	while (xb_pipe_in.poll()):
-		print(xb_pipe_out.recv())
+		print(xb_pipe_in.recv())
 		buffer = xb_pipe_in.recv()
 	if buffer:
 		print('xbox_read: '+str(buffer))
