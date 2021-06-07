@@ -1,6 +1,6 @@
 import mbed
 from time import sleep
-from multiprocessing import Process, Pipe
+# from multiprocessing import Process, Pipe
 
 
 class BNO:
