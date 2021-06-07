@@ -23,7 +23,7 @@ from json import loads,dumps
 
 class XBoxController:
 	def __init__(self,communicator):
-		self.DEBUG = 1
+		self.DEBUG = 0
 		self.joystick = Joystick()
 		self.comms = communicator
 		self.max_speed = 500
