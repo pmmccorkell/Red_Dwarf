@@ -202,8 +202,8 @@ bno = {
 	'status':999
 }
 def mbed_read():
-	global mbed_pipe_in, bno
-	read_pipe = mbed_pipe_in
+	global mbed_pipe_out, bno
+	read_pipe = mbed_pipe_out
 	buffer = {}
 	while (read_pipe.poll()):
 		buffer = read_pipe.recv()
