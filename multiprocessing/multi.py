@@ -119,7 +119,7 @@ def xbox_process_setup():
 	global daemon_mode
 	global xb_pipe_in,xb_pipe_out,xbox_process,xbox_controller
 	xb_pipe_in, xb_pipe_out = Pipe()
-	xbox_controller = xb.XBoxController(xb_pipe_out)
+	xbox_controller = xb.XBoxController(xb_pipe_in)
 	xbox_controller.max_speed = max_speed
 	xbox_process = Process(target=xbox_controller.stream,daemon=daemon_mode)
 	xbox_process.start()
