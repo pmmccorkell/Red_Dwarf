@@ -133,5 +133,4 @@ def get_ip():
 if __name__ == '__main__':
 	print('running as main')
 	import socket
-
-	stream_data()
+	stream_data(get_ip())
