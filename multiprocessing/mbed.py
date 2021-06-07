@@ -172,6 +172,7 @@ def get_angles():
 	#Or one word around every 2ms
 	#This while loop only processes 1 word at a time
 
+
 	#Only proceed if there are bytes in Serial waiting to be read
 	while (ser.inWaiting==0):
 		time.sleep(0.005)
