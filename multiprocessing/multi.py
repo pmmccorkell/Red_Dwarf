@@ -113,7 +113,7 @@ def pwm_controller_thread():
 ##################################################################################
 
 def xbox_process_setup():
-	global xb_pipe_in,xbox_process,xbox_controller
+	global xb_pipe_in,xb_pipe_out,xbox_process,xbox_controller
 	xb_pipe_in, xb_pipe_out = Pipe()
 	xbox_controller = xb.XBoxController(xb_pipe_in)
 	xbox_controller.max_speed = max_speed
