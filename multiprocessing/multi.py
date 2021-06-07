@@ -232,7 +232,7 @@ def mbed_stream():
 def qtm_process_setup():
 	global qualisys, qtm_server,qtm_pipe_out,qtm_process
 	qtm_pipe_in, qtm_pipe_out = Pipe()
-	qualisys = mocap.Motion_Capture(qtm_pipe_out,qtm_server)
+	qualisys = mocap.Motion_Capture(qtm_pipe_in,qtm_server)
 
 	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	qtm_process = Process(target=qualisys.start,daemon=daemon_mode)
