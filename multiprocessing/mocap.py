@@ -96,7 +96,7 @@ class Motion_Capture:
 
 server = '192.168.5.4'
 server = '192.168.42.24'
-parent_pipe, child_pipe = Pipe()
+pipe1, pipe2 = Pipe()
 
 def stream_data(qtm_ip):
 	global data_in
