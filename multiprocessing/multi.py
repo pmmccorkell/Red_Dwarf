@@ -332,24 +332,25 @@ atexit.register(exit_program)
 
 
 def setup():
-	
+	daemon_mode = False
+
 	pwm_setup()
-	pwm_thread = Thread(target=pwm_controller_thread,daemon=True)
+	pwm_thread = Thread(target=pwm_controller_thread,daemon=daemon_mode)
 	pwm_thread.start()
 
 	qtm_process_setup()
-	qtm_thread = Thread(target=qtm_stream,daemon=True)
+	qtm_thread = Thread(target=qtm_stream,daemon=daemon_mode)
 	qtm_thread.start()
 
 	xbox_process_setup()
-	xbox_thread = Thread(target=xbox_stream,daemon=True)
+	xbox_thread = Thread(target=xbox_stream,daemon=daemon_mode)
 	xbox_thread.start()
 
 	mbed_process_setup()
-	mbed_thread = Thread(target=mbed_stream,daemon=True)
+	mbed_thread = Thread(target=mbed_stream,daemon=daemon_mode)
 	mbed_thread.start()
 
-	plot_thread = Thread(target=plotting,daemon=True)
+	plot_thread = Thread(target=plotting,daemon=daemon_mode)
 	# plot_thread.start()
 
 
