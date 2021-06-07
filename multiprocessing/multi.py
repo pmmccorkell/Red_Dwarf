@@ -15,7 +15,7 @@ from gc import collect as trash
 import mocap
 import surface
 
-daemon_mode = False
+daemon_mode = True
 
 
 max_speed = 400   # us		speed limit
