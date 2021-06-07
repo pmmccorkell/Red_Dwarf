@@ -74,7 +74,7 @@ class XBoxController:
 			'scalar2':self.scalar(x2,y2),
 			'vector2':self.angle(y2,x2),
 			'vector2_x2':self.relative(x2),
-			'maintain' : self.values['maintain'] ^ self.joystick.rightBumper(),
+			'maintain' : self.joystick.rightBumper(),
 			'mode' : self.values['mode'] ^ self.joystick.leftBumper(),
 			'quit' : self.check_quit()
 		}
