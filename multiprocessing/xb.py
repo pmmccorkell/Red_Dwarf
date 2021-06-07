@@ -17,6 +17,7 @@ from xbox import Joystick
 from math import sqrt, pi, atan
 from math import tau as twopi
 from time import sleep
+from json import loads,dumps
 # from surface import *
 # import atexit
 
@@ -95,8 +96,9 @@ class XBoxController:
 		}
 		if (self.DEBUG):
 			print()
-			for k,v in self.return_dict:
-				print(str(k)+": "+str(v))
+			# for k,v in self.return_dict:
+			# 	print(str(k)+": "+str(v))
+			print('xb.py : '+dumps(self.return_dict))
 			print()
 		self.comms.send(self.return_dict)
 		# return return_dict
