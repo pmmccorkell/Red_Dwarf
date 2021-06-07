@@ -365,9 +365,9 @@ def loop():
 		# mbed_read()
 		# qtm_read(rigid_body_name)
 
-		print('MAIN: '+dumps(xbox))
-		print('MAIN: '+dumps(qtm))
-		print('MAIN: '+dumps(bno))
+		print('MAIN xbx: '+dumps(xbox))
+		print('MAIN qtm: '+dumps(qtm))
+		print('MAIN bno: '+dumps(bno))
 		sleep(0.5)
 		trash()
 
