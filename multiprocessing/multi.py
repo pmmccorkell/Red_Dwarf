@@ -146,7 +146,7 @@ def xbox_read():
 		buffer = xb_pipe_in.recv()
 		print(buffer)
 	if buffer:
-		print('xbox_read: '+str(buffer))
+		# print('xbox_read: '+str(buffer))
 
 	# if (xbox['maintain']==1):
 	# 	vessel.issueCommand('hea',xbox['facing'])
