@@ -361,7 +361,6 @@ def setup():
 
 def loop():
 	while(1):
-
 		xbox_read()
 		print('MAIN: '+dumps(xbox))
 		# print(qtm)
