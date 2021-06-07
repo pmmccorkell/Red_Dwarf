@@ -179,7 +179,6 @@ def xbox_stream():
 		diff = interval+start-time()
 		sleeptime=max(diff,0)
 		sleep(sleeptime)
-		# print('xbox: '+str(xbox))
 
 
 
