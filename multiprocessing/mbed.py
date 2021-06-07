@@ -46,9 +46,9 @@ log.info(logline)
 #					   #
 #-----PHP Interfacing-----#
 #					   #
-overlay = "/dev/shm/mjpeg/user_annotate.txt"
-os.system("sudo chmod 777 /dev/shm/mjpeg/user_annotate.txt")
-serial_data_directory = "/var/www/html/"
+# overlay = "/dev/shm/mjpeg/user_annotate.txt"
+# os.system("sudo chmod 777 /dev/shm/mjpeg/user_annotate.txt")
+# serial_data_directory = "/var/www/html/"
 
 
 def clear_serial():
@@ -102,30 +102,30 @@ def isHex(string):
 	except ValueError:
 		return False
 
-def video_overlay():
-	nl="\n"
-	cal_data=str(hex(calibration))
-	status_data=str(hex(status))
-	bno_pos=str(status & 0x0007)
+# def video_overlay():
+# 	nl="\n"
+# 	cal_data=str(hex(calibration))
+# 	status_data=str(hex(status))
+# 	bno_pos=str(status & 0x0007)
 
-	h = round(heading,1)
-	r = round(roll,1)
-	p = round(pitch,1)
-	ann1=("h: "+str(h)+", r: "+str(r)+", p: "+str(p))
-	ann2=("cal: "+cal_data+", pos: "+bno_pos)
-	annotate = open(overlay, 'w')
-	annotate.write("\n" + ann1 + nl + ann2)
-	annotate.close()
+# 	h = round(heading,1)
+# 	r = round(roll,1)
+# 	p = round(pitch,1)
+# 	ann1=("h: "+str(h)+", r: "+str(r)+", p: "+str(p))
+# 	ann2=("cal: "+cal_data+", pos: "+bno_pos)
+# 	annotate = open(overlay, 'w')
+# 	annotate.write("\n" + ann1 + nl + ann2)
+# 	annotate.close()
 
-	#data_stream=("ser_h "+str(h)+nl+"ser_r "+str(r)+nl+"ser_p "+str(p)+nl+"ser_d "+str(d)+nl+"ser_port "+p_pw+nl+"ser_stbd "+s_pw+nl+"ser_fwd "+f_pw+nl+"ser_aft "+a_pw+nl+"ser_cal "+cal_data+nl+"ser_bno "+bno_pos)
-	#serial_data = open(serial_data_file, 'w')
-	#serial_data.write(data_stream)
-	#serial_data.close()
-	json_data={'ser_h':str(h), 'ser_r':str(r), 'ser_p':str(p), 'ser_d':str(d), 'ser_cal':cal_data, 'ser_status':status_data}
-	serial_data_file = open(serial_data_directory+"serial_JSON", 'w')
-	#serial_data.write(ser_h)
-	json.dump(json_data,serial_data_file)
-	serial_data_file.close()
+# 	#data_stream=("ser_h "+str(h)+nl+"ser_r "+str(r)+nl+"ser_p "+str(p)+nl+"ser_d "+str(d)+nl+"ser_port "+p_pw+nl+"ser_stbd "+s_pw+nl+"ser_fwd "+f_pw+nl+"ser_aft "+a_pw+nl+"ser_cal "+cal_data+nl+"ser_bno "+bno_pos)
+# 	#serial_data = open(serial_data_file, 'w')
+# 	#serial_data.write(data_stream)
+# 	#serial_data.close()
+# 	json_data={'ser_h':str(h), 'ser_r':str(r), 'ser_p':str(p), 'ser_d':str(d), 'ser_cal':cal_data, 'ser_status':status_data}
+# 	serial_data_file = open(serial_data_directory+"serial_JSON", 'w')
+# 	#serial_data.write(ser_h)
+# 	json.dump(json_data,serial_data_file)
+# 	serial_data_file.close()
 
 def shutdownPi():
 	log.info("Water leak detected. All systems shutdown.")
@@ -230,7 +230,7 @@ def get_angles():
 		status=st
 		delimiter=':|:'
 		logline=delimiter+str(h)+delimiter+str(r)+delimiter+str(p)+delimiter+str(hex(cal))+delimiter+str(hex(st))
-		video_overlay()
+		# video_overlay()
 		#reset verifications for next loop
 		##print ("cal:" + str(cal) + " heading:"+str(h)+" roll:"+str(r)+" pitch:"+str(p))
 		log.info(logline)
