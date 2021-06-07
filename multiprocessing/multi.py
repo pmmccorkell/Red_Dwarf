@@ -353,7 +353,7 @@ def setup():
 
 	mbed_process_setup()
 	mbed_thread = Thread(target=mbed_stream,daemon=daemon_mode)
-	# mbed_thread.start()
+	mbed_thread.start()
 
 	plot_thread = Thread(target=plotting,daemon=daemon_mode)
 	# plot_thread.start()
@@ -365,7 +365,7 @@ def loop():
 
 		# print('MAIN: '+dumps(xbox))
 		# print('MAIN: '+dumps(qtm))
-		# print('MAIN: '+dumps(bno))
+		print('MAIN: '+dumps(bno))
 		sleep(0.5)
 		trash()
 
