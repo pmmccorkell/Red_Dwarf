@@ -360,6 +360,8 @@ def setup():
 
 def loop():
 	while(not xbox['quit']):
+		mbed_read()
+
 		# print('MAIN: '+dumps(xbox))
 		print('MAIN: '+dumps(qtm))
 		print('MAIN: '+dumps(bno))
