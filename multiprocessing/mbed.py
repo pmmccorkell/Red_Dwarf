@@ -215,19 +215,19 @@ def get_angles():
 		##print("key detected")
 	if (int_buffer_prefix == status_key):
 		##print("status detected")
-		st=int_buffer_data
+		status=int_buffer_data
 		horizon_state=0
 	if (int_buffer_prefix == cal_key):
-		cal=int_buffer_data
+		calibration=int_buffer_data
 		##print("cal detected")
 	if (int_buffer_prefix == h_key):
-		h= int_buffer_data/16
+		heading= int_buffer_data/16
 		##print("heading detected")
 	if (int_buffer_prefix == r_key):
-		r=(int_buffer_data-offset)/(0x10)
+		roll=(int_buffer_data-offset)/(0x10)
 		##print("roll detected")
 	if (int_buffer_prefix == p_key):
-		p=(int_buffer_data-offset)/(0x10)
+		pitch=(int_buffer_data-offset)/(0x10)
 		##print("pitch detected")
 		
 #Only update globals after key is verified
