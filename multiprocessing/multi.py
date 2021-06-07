@@ -359,8 +359,8 @@ def setup():
 def loop():
 	while(1):
 		print(xbox)
-		print(qtm)
-		print(bno)
+		# print(qtm)
+		# print(bno)
 		sleep(1)
 		trash()
 
