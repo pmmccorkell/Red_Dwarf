@@ -232,30 +232,30 @@ def get_angles():
 			##print("pitch detected")
 			
 	#Only update globals after key is verified
-		if (key==0xabcd):
-			##print("VERIFIED")
-			heading = h
-			roll = r
-			pitch = p
-			calibration=cal
-			status=st
-			delimiter=':|:'
-			logline=delimiter+str(h)+delimiter+str(r)+delimiter+str(p)+delimiter+str(hex(cal))+delimiter+str(hex(st))
-			# video_overlay()
-			#reset verifications for next loop
-			##print ("cal:" + str(cal) + " heading:"+str(h)+" roll:"+str(r)+" pitch:"+str(p))
-			log.info(logline)
-			key=0x0
-		if  (status & 0x0800) == 0x0800:
-			shutdownPi()
-		# time.sleep(0.0002)
-		return_dict = {
-			'heading':heading,
-			'roll':roll,
-			'pitch':pitch,
-			'calibration':calibration,
-			'status':status
-		}
+	if (key==0xabcd):
+		##print("VERIFIED")
+		heading = h
+		roll = r
+		pitch = p
+		calibration=cal
+		status=st
+		delimiter=':|:'
+		logline=delimiter+str(h)+delimiter+str(r)+delimiter+str(p)+delimiter+str(hex(cal))+delimiter+str(hex(st))
+		# video_overlay()
+		#reset verifications for next loop
+		##print ("cal:" + str(cal) + " heading:"+str(h)+" roll:"+str(r)+" pitch:"+str(p))
+		log.info(logline)
+		key=0x0
+	if  (status & 0x0800) == 0x0800:
+		shutdownPi()
+	# time.sleep(0.0002)
+	return_dict = {
+		'heading':heading,
+		'roll':roll,
+		'pitch':pitch,
+		'calibration':calibration,
+		'status':status
+	}
 	return return_dict
 
 	
