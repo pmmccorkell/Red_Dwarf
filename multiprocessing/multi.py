@@ -361,10 +361,11 @@ def setup():
 
 def loop():
 	while(1):
-		# print('MAIN: '+dumps(xbox))
+
+		xbox_read()
+		print('MAIN: '+dumps(xbox))
 		# print(qtm)
 		# print(bno)
-		xbox_read()
 		sleep(0.5)
 		trash()
 
