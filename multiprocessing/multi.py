@@ -298,7 +298,7 @@ def exit_program():
 	plot_flag.set_flag(0)
 	print()
 
-	for i in range(3):
+	for i in range(1,4):
 		vessel.thrusters.exitProgram()
 		print(f'STOPPING THRUSTERS: {i}')
 		sleep(0.3)
