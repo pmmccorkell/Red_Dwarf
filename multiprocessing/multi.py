@@ -128,7 +128,7 @@ xbox = {
 	'quit':0
 }
 def xbox_read():
-	global vessel, xbox_pipe_in, xbox
+	global xbox_pipe_in, xbox
 	global vessel, qtm, bno, measured_active
 	read_pipe = xbox_pipe_in
 	buffer = {}
