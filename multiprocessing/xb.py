@@ -22,7 +22,7 @@ from time import sleep
 
 class XBoxController:
 	def __init__(self,communicator):
-		self.DEBUG = 0
+		self.DEBUG = 1
 		self.joystick = Joystick()
 		self.comms = communicator
 		self.max_speed = 500
