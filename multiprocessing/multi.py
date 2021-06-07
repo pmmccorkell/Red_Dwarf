@@ -362,9 +362,10 @@ def loop():
 	while(not xbox['quit']):
 		# xbox_read()
 		# mbed_read()
+		qtm_read()
 
 		# print('MAIN: '+dumps(xbox))
-		# print('MAIN: '+dumps(qtm))
+		print('MAIN: '+dumps(qtm))
 		print('MAIN: '+dumps(bno))
 		sleep(0.5)
 		trash()
