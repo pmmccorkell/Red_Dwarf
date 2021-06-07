@@ -364,8 +364,8 @@ def setup():
 
 def loop():
 	while(not xbox['quit']):
-		# xbox_read()
-		print('MAIN: '+dumps(xbox))
+		# print('MAIN: '+dumps(xbox))
+		print('MAIN: '+dumps(qtm))
 		# print(qtm)
 		# print(bno)
 		sleep(0.5)
