@@ -363,7 +363,7 @@ def loop():
 		mbed_read()
 
 		# print('MAIN: '+dumps(xbox))
-		print('MAIN: '+dumps(qtm))
+		# print('MAIN: '+dumps(qtm))
 		print('MAIN: '+dumps(bno))
 		sleep(0.5)
 		trash()
