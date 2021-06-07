@@ -79,8 +79,8 @@ class XBoxController:
 			'quit' : self.check_quit()
 		}
 		self.values = new_values
-		if (self.DEBUG):
-			print(self.values)
+		# if (self.DEBUG):
+		# 	print(self.values)
 		return new_values
 
 	def process(self):
