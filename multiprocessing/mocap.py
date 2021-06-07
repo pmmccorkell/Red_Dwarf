@@ -138,4 +138,6 @@ if __name__ == '__main__':
 		target_ip = '192.168.5.4'
 	elif my_ip == '192.168.42.101':
 		target_ip = '192.168.42.24'
+	else:
+		target_ip = None
 	stream_data(target_ip)
