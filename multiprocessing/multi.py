@@ -360,11 +360,11 @@ def setup():
 
 def loop():
 	while(not xbox['quit']):
-		mbed_read()
+		# mbed_read()
 
 		# print('MAIN: '+dumps(xbox))
 		# print('MAIN: '+dumps(qtm))
-		print('MAIN: '+dumps(bno))
+		# print('MAIN: '+dumps(bno))
 		sleep(0.5)
 		trash()
 
