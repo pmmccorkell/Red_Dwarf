@@ -188,7 +188,7 @@ def xbox_stream():
 #########################################################################
 
 def mbed_process_setup():
-	global mbed_pipe_in,mbed_process,imu,mbed_process
+	global mbed_pipe_in,mbed_pipe_out,mbed_process,imu,mbed_process
 	mbed_pipe_in,mbed_pipe_out = Pipe()
 	imu = mbed_wrapper.BNO(mbed_pipe_in)
 	mbed_process = Process(target=imu.stream,daemon=daemon_mode)
