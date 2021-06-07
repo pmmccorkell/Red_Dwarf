@@ -261,7 +261,7 @@ class Plotting:
 		self.line1,=self.ax1.plot(self.x, self.y1,lw=2,color='b',label='bno')
 		self.line2,=self.ax1.plot(self.x, self.y2,lw=2,color='r',label='qtm')
 
-		self.BLIT = 1
+		self.BLIT = 0
 		if (self.BLIT):
 			self.ax1.legend()
 			self.ax1.set_ylim(-1000,1500)
