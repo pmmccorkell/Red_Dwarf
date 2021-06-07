@@ -103,7 +103,7 @@ def stream_data(qtm_ip):
 	# communicator = Queue()
 	# qualisys = Motion_Capture(communicator)
 	
-	qualisys = Motion_Capture(child_pipe,qtm_ip)
+	qualisys = Motion_Capture(pipe1,qtm_ip)
 	print('start qtm process')
 	data_in = {}
 	mocap_process = Process(target=qualisys.start)
