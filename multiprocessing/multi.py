@@ -248,7 +248,7 @@ qtm = {
 }
 def qtm_read(name):
 	global qtm_pipe_out, qtm
-	read_pipe = qtm_pipe_in
+	read_pipe = qtm_pipe_out
 	# name = rigid_body_name
 	buffer = {}
 	while (read_pipe.poll()):
