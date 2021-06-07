@@ -133,4 +133,9 @@ def get_ip():
 if __name__ == '__main__':
 	print('running as main')
 	import socket
-	stream_data(get_ip())
+	my_ip = get_ip()
+	if my_ip == '192.168.5.101':
+		target_ip = '192.168.5.4'
+	elif my_ip == '192.168.42.101':
+		target_ip = '192.168.42.24'
+	stream_data()
