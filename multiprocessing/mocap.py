@@ -96,12 +96,13 @@ class Motion_Capture:
 
 server = '192.168.5.4'
 server = '192.168.42.24'
+parent_pipe, child_pipe = Pipe()
 
 def stream_data(qtm_ip):
 	global data_in
 	# communicator = Queue()
 	# qualisys = Motion_Capture(communicator)
-	parent_pipe, child_pipe = Pipe()
+	
 	qualisys = Motion_Capture(child_pipe,qtm_ip)
 	print('start qtm process')
 	data_in = {}
