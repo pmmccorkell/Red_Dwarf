@@ -94,7 +94,7 @@ class Motion_Capture:
 		await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
 
 
-server = '192.168.5.4'
+# server = '192.168.5.4'
 server = '192.168.42.24'
 pipe1, pipe2 = Pipe()
 
@@ -119,6 +119,7 @@ def stream_data(qtm_ip):
 			data_in = buffer
 
 def get_ip():
+	global server
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
         # doesn't even have to be reachable
@@ -128,7 +129,7 @@ def get_ip():
         IP = '127.0.0.1'
     finally:
         s.close()
-    return IP
+    server = IP
 
 if __name__ == '__main__':
 	print('running as main')
