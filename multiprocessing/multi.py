@@ -346,7 +346,7 @@ def setup():
 
 	qtm_process_setup()
 	qtm_thread = Thread(target=qtm_stream,daemon=daemon_mode)
-	# qtm_thread.start()
+	qtm_thread.start()
 
 	xbox_process_setup()
 	xbox_thread = Thread(target=xbox_stream,daemon=daemon_mode)
@@ -363,7 +363,7 @@ def loop():
 	while(not xbox['quit']):
 		# xbox_read()
 		# mbed_read()
-		qtm_read(rigid_body_name)
+		# qtm_read(rigid_body_name)
 
 		# print('MAIN: '+dumps(xbox))
 		print('MAIN: '+dumps(qtm))
