@@ -368,6 +368,7 @@ def loop():
 		print('MAIN xbx: '+dumps(xbox))
 		print('MAIN qtm: '+dumps(qtm))
 		print('MAIN bno: '+dumps(bno))
+		print('MAIN use: '+dumps(measured_active))
 		sleep(0.5)
 		trash()
 
