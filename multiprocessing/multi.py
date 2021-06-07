@@ -366,8 +366,7 @@ def loop():
 	while(not xbox['quit']):
 		# print('MAIN: '+dumps(xbox))
 		print('MAIN: '+dumps(qtm))
-		# print(qtm)
-		# print(bno)
+		print('MAIN: '+dumps(bno))
 		sleep(0.5)
 		trash()
 
