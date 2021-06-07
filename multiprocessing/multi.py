@@ -166,8 +166,8 @@ def xbox_read():
 
 	buffer['maintain'] = buffer['maintain'] ^ xbox['maintain']
 
-		for k in measured_active:
-			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
+	for k in measured_active:
+		measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
 
 		xbox = buffer
 
