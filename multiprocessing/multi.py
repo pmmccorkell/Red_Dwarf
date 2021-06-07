@@ -57,6 +57,7 @@ measured_active = {
 }
 
 def pwm_setup():
+	global vessel
 	vessel = surface.Controller()
 	vessel.stopAll()
 	vessel.thrusters.servoboard.set_max(max_speed/1.2)
