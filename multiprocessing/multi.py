@@ -141,6 +141,7 @@ def xbox_read():
 		print(xb_pipe_out.recv())
 		# buffer = xb_pipe_in.recv()
 	if buffer:
+		print('MAIN: '+dumps(xbox))
 
 	# if (xbox['maintain']==1):
 	# 	vessel.issueCommand('hea',xbox['facing'])
@@ -359,7 +360,7 @@ def setup():
 
 def loop():
 	while(1):
-		print('MAIN: '+dumps(xbox))
+		# print('MAIN: '+dumps(xbox))
 		# print(qtm)
 		# print(bno)
 		sleep(0.5)
