@@ -15,6 +15,8 @@ from gc import collect as trash
 import mocap
 import surface
 
+daemon_mode = False
+
 
 max_speed = 400   # us		speed limit
 rigid_body_name = 'RedDwarf'
@@ -117,7 +119,7 @@ def xbox_process_setup():
 	xb_pipe_in, xb_pipe_out = Pipe()
 	xbox_controller = xb.XBoxController(xb_pipe_in)
 	xbox_controller.max_speed = max_speed
-	xbox_process = Process(target=xbox_controller.process,daemon=True)
+	xbox_process = Process(target=xbox_controller.process,daemon=daemon_mode)
 	xbox_process.start()
 
 xbox = {
@@ -185,7 +187,7 @@ def mbed_process_setup():
 	global mbed_pipe_in,mbed_process,imu,mbed_process
 	mbed_pipe_in,mbed_pipe_out = Pipe()
 	imu = mbed_wrapper.BNO(mbed_pipe_in)
-	mbed_process = Process(target=imu.stream,daemon=True)
+	mbed_process = Process(target=imu.stream,daemon=daemon_mode)
 	mbed_process.start()
 
 bno = {
@@ -228,7 +230,7 @@ def qtm_process_setup():
 	qualisys = mocap.Motion_Capture(qtm_pipe_out,qtm_server)
 
 	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
-	qtm_process = Process(target=qualisys.start,daemon=True)
+	qtm_process = Process(target=qualisys.start,daemon=daemon_mode)
 	qtm_process.start()
 
 qtm = {
