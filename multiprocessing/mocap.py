@@ -120,6 +120,7 @@ def stream_data(qtm_ip=server):
 
 def get_ip():
 	global server
+	import socket
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	try:
 		# doesn't even have to be reachable
@@ -133,6 +134,5 @@ def get_ip():
 
 if __name__ == '__main__':
 	print('running as main')
-	import socket
 	get_ip()
 	stream_data()
