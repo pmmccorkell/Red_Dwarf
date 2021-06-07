@@ -138,8 +138,8 @@ def xbox_read():
 	# read_pipe = xb_pipe_in
 	buffer = {}
 	print('start xbox_read')
-	print(xb_pipe_out.recv())
-	print(xb_pipe_in.recv())
+	# print(xb_pipe_out.recv())
+	# print(xb_pipe_in.recv())
 	while (xb_pipe_in.poll()):
 		print(xb_pipe_in.recv())
 		buffer = xb_pipe_in.recv()
