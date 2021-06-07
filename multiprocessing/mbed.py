@@ -14,7 +14,7 @@ import RPi.GPIO as GPIO
 import json
 import os
 
-DEBUG = 1
+DEBUG = 0
 
 #					   #
 #------Serial Setup-----#
