@@ -350,7 +350,7 @@ def setup():
 
 	xbox_process_setup()
 	xbox_thread = Thread(target=xbox_stream,daemon=daemon_mode)
-	# xbox_thread.start()
+	xbox_thread.start()
 
 	mbed_process_setup()
 	mbed_thread = Thread(target=mbed_stream,daemon=daemon_mode)
@@ -361,7 +361,7 @@ def setup():
 
 def loop():
 	while(1):
-		xbox_read()
+		# xbox_read()
 		print('MAIN: '+dumps(xbox))
 		# print(qtm)
 		# print(bno)
