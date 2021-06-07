@@ -307,7 +307,7 @@ def exit_program():
 	for i in range(1,4):
 		vessel.thrusters.exitProgram()
 		print(f'STOPPING THRUSTERS: {i}')
-		sleep(0.3)
+		sleep(0.2)
 	print()
 
 	print("Killing child processes.")
