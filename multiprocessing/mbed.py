@@ -173,89 +173,89 @@ def get_angles():
 	#This while loop only processes 1 word at a time
 
 	while (not key == 0xabcd)
-	#Only proceed if there are bytes in Serial waiting to be read
-	while (ser.inWaiting==0):
-		time.sleep(0.005)
-		#print("no serial input... waiting")
+		#Only proceed if there are bytes in Serial waiting to be read
+		while (ser.inWaiting==0):
+			time.sleep(0.005)
+			#print("no serial input... waiting")
 
-	#Read bytes from Serial
-	in_buffer=ser.readline()
+		#Read bytes from Serial
+		in_buffer=ser.readline()
 
-	if DEBUG:
-		print(in_buffer)
-		print(len(in_buffer))
-	
-	#Only assign prefix and data if serial line is correct length
-	#Prevents Value Errors
-	int_buffer_prefix=0x10000
-	int_buffer_data=0x10000
-	length=len(in_buffer)
-	if (length==word_size):
-		str_buffer_prefix=in_buffer[0:2].decode()+in_buffer[2:4].decode()
-		##print("prefix: "+str(str_buffer_prefix))
-		if isHex(str_buffer_prefix):
-			int_buffer_prefix=int(str_buffer_prefix,base=16)
-		str_buffer_data=in_buffer[4:6].decode()+in_buffer[6:8].decode()
-		##print("str prefix: " + str(str_buffer_prefix)+ ", data: "+str(str_buffer_data))
-		if isHex(str_buffer_data):
-			int_buffer_data=int(str_buffer_data,base=16)
-		##print("int prefix: " + str(hex(int_buffer_prefix)) + ", data: " + str(hex(int_buffer_data)))
-	
 		if DEBUG:
-			print(int_buffer_prefix)
-			print(int_buffer_data)
-
-	elif (in_buffer[0:3].decode()=='log'):
-		log.info(in_buffer[0:(length-2)].decode())
-	else:
-		log.debug(in_buffer[0:(length-2)].decode())
-
-	#Sort data to correct variable using the keys
-	if (int_buffer_prefix == ver_key):
-		key=int_buffer_data
-		##print("key detected")
-	if (int_buffer_prefix == status_key):
-		##print("status detected")
-		st=int_buffer_data
-		horizon_state=0
-	if (int_buffer_prefix == cal_key):
-		cal=int_buffer_data
-		##print("cal detected")
-	if (int_buffer_prefix == h_key):
-		h= int_buffer_data/16
-		##print("heading detected")
-	if (int_buffer_prefix == r_key):
-		r=(int_buffer_data-offset)/(0x10)
-		##print("roll detected")
-	if (int_buffer_prefix == p_key):
-		p=(int_buffer_data-offset)/(0x10)
-		##print("pitch detected")
+			print(in_buffer)
+			print(len(in_buffer))
 		
-#Only update globals after key is verified
-	if (key==0xabcd):
-		##print("VERIFIED")
-		heading = h
-		roll = r
-		pitch = p
-		calibration=cal
-		status=st
-		delimiter=':|:'
-		logline=delimiter+str(h)+delimiter+str(r)+delimiter+str(p)+delimiter+str(hex(cal))+delimiter+str(hex(st))
-		# video_overlay()
-		#reset verifications for next loop
-		##print ("cal:" + str(cal) + " heading:"+str(h)+" roll:"+str(r)+" pitch:"+str(p))
-		log.info(logline)
-		key=0x0
-	if  (status & 0x0800) == 0x0800:
-		shutdownPi()
-	# time.sleep(0.0002)
-	return_dict = {
-		'heading':heading,
-		'roll':roll,
-		'pitch':pitch,
-		'calibration':calibration,
-		'status':status
-	}
+		#Only assign prefix and data if serial line is correct length
+		#Prevents Value Errors
+		int_buffer_prefix=0x10000
+		int_buffer_data=0x10000
+		length=len(in_buffer)
+		if (length==word_size):
+			str_buffer_prefix=in_buffer[0:2].decode()+in_buffer[2:4].decode()
+			##print("prefix: "+str(str_buffer_prefix))
+			if isHex(str_buffer_prefix):
+				int_buffer_prefix=int(str_buffer_prefix,base=16)
+			str_buffer_data=in_buffer[4:6].decode()+in_buffer[6:8].decode()
+			##print("str prefix: " + str(str_buffer_prefix)+ ", data: "+str(str_buffer_data))
+			if isHex(str_buffer_data):
+				int_buffer_data=int(str_buffer_data,base=16)
+			##print("int prefix: " + str(hex(int_buffer_prefix)) + ", data: " + str(hex(int_buffer_data)))
+		
+			if DEBUG:
+				print(int_buffer_prefix)
+				print(int_buffer_data)
+
+		elif (in_buffer[0:3].decode()=='log'):
+			log.info(in_buffer[0:(length-2)].decode())
+		else:
+			log.debug(in_buffer[0:(length-2)].decode())
+
+		#Sort data to correct variable using the keys
+		if (int_buffer_prefix == ver_key):
+			key=int_buffer_data
+			##print("key detected")
+		if (int_buffer_prefix == status_key):
+			##print("status detected")
+			st=int_buffer_data
+			horizon_state=0
+		if (int_buffer_prefix == cal_key):
+			cal=int_buffer_data
+			##print("cal detected")
+		if (int_buffer_prefix == h_key):
+			h= int_buffer_data/16
+			##print("heading detected")
+		if (int_buffer_prefix == r_key):
+			r=(int_buffer_data-offset)/(0x10)
+			##print("roll detected")
+		if (int_buffer_prefix == p_key):
+			p=(int_buffer_data-offset)/(0x10)
+			##print("pitch detected")
+			
+	#Only update globals after key is verified
+		if (key==0xabcd):
+			##print("VERIFIED")
+			heading = h
+			roll = r
+			pitch = p
+			calibration=cal
+			status=st
+			delimiter=':|:'
+			logline=delimiter+str(h)+delimiter+str(r)+delimiter+str(p)+delimiter+str(hex(cal))+delimiter+str(hex(st))
+			# video_overlay()
+			#reset verifications for next loop
+			##print ("cal:" + str(cal) + " heading:"+str(h)+" roll:"+str(r)+" pitch:"+str(p))
+			log.info(logline)
+			key=0x0
+		if  (status & 0x0800) == 0x0800:
+			shutdownPi()
+		# time.sleep(0.0002)
+		return_dict = {
+			'heading':heading,
+			'roll':roll,
+			'pitch':pitch,
+			'calibration':calibration,
+			'status':status
+		}
 	return return_dict
 
 	
