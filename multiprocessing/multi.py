@@ -366,8 +366,8 @@ def loop():
 		# qtm_read(rigid_body_name)
 
 		print('MAIN xbx: '+dumps(xbox))
-		print('MAIN qtm: '+dumps(qtm))
-		print('MAIN bno: '+dumps(bno))
+		# print('MAIN qtm: '+dumps(qtm))
+		# print('MAIN bno: '+dumps(bno))
 		print('MAIN use: '+dumps(measured_active))
 		sleep(0.5)
 		trash()
