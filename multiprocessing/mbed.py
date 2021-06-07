@@ -14,21 +14,21 @@ import RPi.GPIO as GPIO
 import json
 import os
 
-#                       #
+#					   #
 #------Serial Setup-----#
-#                       #
+#					   #
 ser=serial.Serial(
-    port='/dev/ttyACM0',
-    baudrate=115200,
-    parity=serial.PARITY_NONE,
-    stopbits=serial.STOPBITS_ONE,
-    bytesize=serial.EIGHTBITS,
-    timeout=1
-    )
+	port='/dev/ttyACM0',
+	baudrate=115200,
+	parity=serial.PARITY_NONE,
+	stopbits=serial.STOPBITS_ONE,
+	bytesize=serial.EIGHTBITS,
+	timeout=1
+	)
 
-#                       #
+#					   #
 #-----Logging Setup-----#
-#                       #
+#					   #
 #filename = datetime.now().strftime('./log/AUV_%Y%m%d_%H:%M:%s.log')
 filename=datetime.now().strftime('/var/www/auv_logs/AUV_%Y%m%d_%H:%M:%s.log')
 log = logging.getLogger()
@@ -43,132 +43,132 @@ log.addHandler(file_handler)
 logline='KEY: heading:|:roll:|:pitch:|:BNO cal:|:status'
 log.info(logline)
 
-#                       #
+#					   #
 #-----PHP Interfacing-----#
-#                       #
+#					   #
 overlay = "/dev/shm/mjpeg/user_annotate.txt"
 os.system("sudo chmod 777 /dev/shm/mjpeg/user_annotate.txt")
 serial_data_directory = "/var/www/html/"
 
 
 def clear_serial():
-    ser.reset_input_buffer()
-    time.sleep(0.01)
-    try:
-        ser.readline()
-        return 1
-    except UnicodeDecodeError:
-        return 0
+	ser.reset_input_buffer()
+	time.sleep(0.01)
+	try:
+		ser.readline()
+		return 1
+	except UnicodeDecodeError:
+		return 0
 
 
 def reset_mbed():
-    #print("Restarting mbed")
-    #print("Program may exit due to serial reset")
-    #Set Event flag to end serial read thread.
-    stop_threads.set()
-    #print("Shutting down thrusters and closing serial link.")
-    time.sleep(2)
-    ser.send_break()     #break command over serial resets mbed
-    writeline=('res:000').encode()
-    time.sleep(0.1)
-    ser.write(writeline)
-    log.info("Raspi command sent: "+writeline.decode())
-    #print("sent: "+writeline.decode())
-    #print("Restarting serial link.")
-    #clear Event flags.
-    stop_threads.clear()
-    for i in range(100):
-        serialreset=0
-        while (serialreset==0):
-            serialreset=clear_serial()
+	#print("Restarting mbed")
+	#print("Program may exit due to serial reset")
+	#Set Event flag to end serial read thread.
+	stop_threads.set()
+	#print("Shutting down thrusters and closing serial link.")
+	time.sleep(2)
+	ser.send_break()	 #break command over serial resets mbed
+	writeline=('res:000').encode()
+	time.sleep(0.1)
+	ser.write(writeline)
+	log.info("Raspi command sent: "+writeline.decode())
+	#print("sent: "+writeline.decode())
+	#print("Restarting serial link.")
+	#clear Event flags.
+	stop_threads.clear()
+	for i in range(100):
+		serialreset=0
+		while (serialreset==0):
+			serialreset=clear_serial()
 
-    #Start reading from serial again.
-    start_serial_thread()
-    return 1
+	#Start reading from serial again.
+	start_serial_thread()
+	return 1
 
 #For error handling
 #ensure user input is int or str before using logic
 def isInt(string):
-    try: 
-        int(string)
-        return True
-    except ValueError:
-        return False
-        
+	try: 
+		int(string)
+		return True
+	except ValueError:
+		return False
+		
 def isHex(string):
-    try:
-        int(string,base=16)
-        return True
-    except ValueError:
-        return False
+	try:
+		int(string,base=16)
+		return True
+	except ValueError:
+		return False
 
 def video_overlay():
-    nl="\n"
-    cal_data=str(hex(calibration))
-    status_data=str(hex(status))
-    bno_pos=str(status & 0x0007)
+	nl="\n"
+	cal_data=str(hex(calibration))
+	status_data=str(hex(status))
+	bno_pos=str(status & 0x0007)
 
-    h = round(heading,1)
-    r = round(roll,1)
-    p = round(pitch,1)
-    ann1=("h: "+str(h)+", r: "+str(r)+", p: "+str(p))
-    ann2=("cal: "+cal_data+", pos: "+bno_pos)
-    annotate = open(overlay, 'w')
-    annotate.write("\n" + ann1 + nl + ann2)
-    annotate.close()
+	h = round(heading,1)
+	r = round(roll,1)
+	p = round(pitch,1)
+	ann1=("h: "+str(h)+", r: "+str(r)+", p: "+str(p))
+	ann2=("cal: "+cal_data+", pos: "+bno_pos)
+	annotate = open(overlay, 'w')
+	annotate.write("\n" + ann1 + nl + ann2)
+	annotate.close()
 
-    #data_stream=("ser_h "+str(h)+nl+"ser_r "+str(r)+nl+"ser_p "+str(p)+nl+"ser_d "+str(d)+nl+"ser_port "+p_pw+nl+"ser_stbd "+s_pw+nl+"ser_fwd "+f_pw+nl+"ser_aft "+a_pw+nl+"ser_cal "+cal_data+nl+"ser_bno "+bno_pos)
-    #serial_data = open(serial_data_file, 'w')
-    #serial_data.write(data_stream)
-    #serial_data.close()
-    json_data={'ser_h':str(h), 'ser_r':str(r), 'ser_p':str(p), 'ser_d':str(d), 'ser_cal':cal_data, 'ser_status':status_data}
-    serial_data_file = open(serial_data_directory+"serial_JSON", 'w')
-    #serial_data.write(ser_h)
-    json.dump(json_data,serial_data_file)
-    serial_data_file.close()
+	#data_stream=("ser_h "+str(h)+nl+"ser_r "+str(r)+nl+"ser_p "+str(p)+nl+"ser_d "+str(d)+nl+"ser_port "+p_pw+nl+"ser_stbd "+s_pw+nl+"ser_fwd "+f_pw+nl+"ser_aft "+a_pw+nl+"ser_cal "+cal_data+nl+"ser_bno "+bno_pos)
+	#serial_data = open(serial_data_file, 'w')
+	#serial_data.write(data_stream)
+	#serial_data.close()
+	json_data={'ser_h':str(h), 'ser_r':str(r), 'ser_p':str(p), 'ser_d':str(d), 'ser_cal':cal_data, 'ser_status':status_data}
+	serial_data_file = open(serial_data_directory+"serial_JSON", 'w')
+	#serial_data.write(ser_h)
+	json.dump(json_data,serial_data_file)
+	serial_data_file.close()
 
 def shutdownPi():
-    log.info("Water leak detected. All systems shutdown.")
-    os.system("sudo shutdown -h now")
-    log.info("Shutdown for water leak failed. The show goes on.")
+	log.info("Water leak detected. All systems shutdown.")
+	os.system("sudo shutdown -h now")
+	log.info("Shutdown for water leak failed. The show goes on.")
 
 def get_angles():
-    #Set key values.
-    #Keys are first 4 Hexadecimal values in line
-    #and used to "tag" what kind of data follows
-    ver_key=0x1234
-    status_key=0xffff  #also 'ready'
-    cal_key=0xc000
-    h_key=0xc100
-    r_key=0xc300
-    p_key=0xc500
+	#Set key values.
+	#Keys are first 4 Hexadecimal values in line
+	#and used to "tag" what kind of data follows
+	ver_key=0x1234
+	status_key=0xffff  #also 'ready'
+	cal_key=0xc000
+	h_key=0xc100
+	r_key=0xc300
+	p_key=0xc500
 
-    #Set globals accessible outside this thread
-    global status
-    global calibration
-    global heading
-    global roll
-    global pitch
-    global depth
+	#Set globals accessible outside this thread
+	global status
+	global calibration
+	global heading
+	global roll
+	global pitch
+	global depth
 
-    #Initialize values to 0
-    status,calibration,heading,roll,pitch,depth=0,0,0,0,0,0
-    port_pw,starboard_pw,fore_pw,aft_pw=0,0,0,0
-    horizon_count,horizon_state=0,0
-    key,st,cal,h,r,p,d=0x0,0x0,0x0,0x0,0x0,0x0,0x0
-    
-    #See mbed code. Roll and Pitch are +/- 180 from BNO
-    #Offset allows mbed and raspi to deal strictly with
-    #positive numbers.
-    #360 deg added on mbed side, must be subtracted
-    offset=0x1680
+	#Initialize values to 0
+	status,calibration,heading,roll,pitch,depth=0,0,0,0,0,0
+	port_pw,starboard_pw,fore_pw,aft_pw=0,0,0,0
+	horizon_count,horizon_state=0,0
+	key,st,cal,h,r,p,d=0x0,0x0,0x0,0x0,0x0,0x0,0x0
+	
+	#See mbed code. Roll and Pitch are +/- 180 from BNO
+	#Offset allows mbed and raspi to deal strictly with
+	#positive numbers.
+	#360 deg added on mbed side, must be subtracted
+	offset=0x1680
 
-    #mbed sends 8bit words, +1 for overhead
-    word_size=9
+	#mbed sends 8bit words, +1 for overhead
+	word_size=9
 
-    #mbed sends 11 8bit words every 20ms
-    #Or one word around every 2ms
-    #This while loop only processes 1 word at a time
+	#mbed sends 11 8bit words every 20ms
+	#Or one word around every 2ms
+	#This while loop only processes 1 word at a time
 
 	#Only proceed if there are bytes in Serial waiting to be read
 	while (ser.inWaiting==0):
@@ -238,13 +238,15 @@ def get_angles():
 		if  (status & 0x0800) == 0x0800:
 			shutdownPi()
 	# time.sleep(0.0002)
-	return return_dict = {
+	return_dict = {
 		'heading':heading,
 		'roll':roll,
 		'pitch':pitch,
 		'calibration':calibration,
 		'status':status
 	}
+	return return_dict
+
 	
 	
 
