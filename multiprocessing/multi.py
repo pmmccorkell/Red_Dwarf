@@ -360,7 +360,7 @@ def setup():
 	# plot_thread.start()
 
 def loop():
-	while(1):
+	while(not xbox['quit']):
 		# xbox_read()
 		print('MAIN: '+dumps(xbox))
 		# print(qtm)
