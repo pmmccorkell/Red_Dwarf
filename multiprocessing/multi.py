@@ -164,10 +164,10 @@ def xbox_read():
 	# 	vessel.issueCommand('vel',999)
 		vessel.persistent_speed = bool(max(buffer['speed']-10,0)) * buffer['speed']
 
-	buffer['maintain'] = buffer['maintain'] ^ xbox['maintain']
+		buffer['maintain'] = buffer['maintain'] ^ xbox['maintain']
 
-	for k in measured_active:
-		measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
+		for k in measured_active:
+			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
 
 		xbox = buffer
 
