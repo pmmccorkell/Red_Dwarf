@@ -1,5 +1,6 @@
 import mbed
 from time import sleep
+from json import dumps,loads
 # from multiprocessing import Process, Pipe
 
 
@@ -11,6 +12,7 @@ class BNO:
 	def stream(self):
 		while(self.run):
 			self.data=mbed.get_angles()
+			print
 			self.comms.send(self.data)
 			sleep(0.01)
 
