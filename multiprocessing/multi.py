@@ -174,8 +174,6 @@ def xbox_stream():
 	while(xbox_flag.set_flag()):
 		start = time()
 		xbox_read()
-		# for k in measured_active:
-		# 	measured_active[k] = (xbox['mode'] * qtm[k]) + ((not xbox['mode']) * bno[k])
 		diff = interval+start-time()
 		sleeptime=max(diff,0)
 		sleep(sleeptime)
