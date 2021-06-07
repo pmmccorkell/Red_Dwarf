@@ -200,6 +200,10 @@ def get_angles():
 			int_buffer_data=int(str_buffer_data,base=16)
 		##print("int prefix: " + str(hex(int_buffer_prefix)) + ", data: " + str(hex(int_buffer_data)))
 	
+		if DEBUG:
+			print(int_buffer_prefix)
+			print(int_buffer_data)
+
 	elif (in_buffer[0:3].decode()=='log'):
 		log.info(in_buffer[0:(length-2)].decode())
 	else:
