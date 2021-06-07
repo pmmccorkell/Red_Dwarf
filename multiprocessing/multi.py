@@ -5,7 +5,7 @@
 #
 
 from threading import Thread
-from multiporcessing import Process, Pipe
+from multiprocessing import Process, Pipe
 import surface
 import xb
 import mbed_wrapper
