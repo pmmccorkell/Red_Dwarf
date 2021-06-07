@@ -215,36 +215,36 @@ def get_angles():
 		##print("key detected")
 	if (int_buffer_prefix == status_key):
 		##print("status detected")
-		status=int_buffer_data
+		st=int_buffer_data
 		horizon_state=0
 	if (int_buffer_prefix == cal_key):
-		calibration=int_buffer_data
+		cal=int_buffer_data
 		##print("cal detected")
 	if (int_buffer_prefix == h_key):
-		heading= int_buffer_data/16
+		h= int_buffer_data/16
 		##print("heading detected")
 	if (int_buffer_prefix == r_key):
-		roll=(int_buffer_data-offset)/(0x10)
+		r=(int_buffer_data-offset)/(0x10)
 		##print("roll detected")
 	if (int_buffer_prefix == p_key):
-		pitch=(int_buffer_data-offset)/(0x10)
+		p=(int_buffer_data-offset)/(0x10)
 		##print("pitch detected")
 		
 #Only update globals after key is verified
-	# if (key==0xabcd):
-	# 	##print("VERIFIED")
-	# 	heading = h
-	# 	roll = r
-	# 	pitch = p
-	# 	calibration=cal
-	# 	status=st
-	# 	delimiter=':|:'
-	# 	logline=delimiter+str(h)+delimiter+str(r)+delimiter+str(p)+delimiter+str(hex(cal))+delimiter+str(hex(st))
-	# 	# video_overlay()
-	# 	#reset verifications for next loop
-	# 	##print ("cal:" + str(cal) + " heading:"+str(h)+" roll:"+str(r)+" pitch:"+str(p))
-	# 	log.info(logline)
-	# 	key=0x0
+	if (key==0xabcd):
+		##print("VERIFIED")
+		heading = h
+		roll = r
+		pitch = p
+		calibration=cal
+		status=st
+		delimiter=':|:'
+		logline=delimiter+str(h)+delimiter+str(r)+delimiter+str(p)+delimiter+str(hex(cal))+delimiter+str(hex(st))
+		# video_overlay()
+		#reset verifications for next loop
+		##print ("cal:" + str(cal) + " heading:"+str(h)+" roll:"+str(r)+" pitch:"+str(p))
+		log.info(logline)
+		key=0x0
 	if  (status & 0x0800) == 0x0800:
 		shutdownPi()
 	# time.sleep(0.0002)
