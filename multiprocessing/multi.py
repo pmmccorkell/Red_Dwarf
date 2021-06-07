@@ -129,7 +129,7 @@ xbox = {
 	'quit':0
 }
 def xbox_read():
-	global xb_pipe_in, xbox
+	global xb_pipe_in, xb_pipe_out, xbox
 	global vessel, qtm, bno, measured_active
 	# read_pipe = xb_pipe_in
 	buffer = {}
