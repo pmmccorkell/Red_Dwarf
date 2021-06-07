@@ -137,7 +137,7 @@ class Controller():
 		aft_port_speed=(trig_speed['cos'] + heading_speed)
 		fwd_port_speed=(trig_speed['sin'] + heading_speed)
 		aft_star_speed=(trig_speed['sin'] - heading_speed)
-		if (DEBUG):
+		if (self.DEBUG):
 			print("azL trig:"+str(trig_speed))
 			print("azL h:"+str(heading_speed))
 			print("azL fw port:"+str(fwd_port_speed))
