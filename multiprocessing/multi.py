@@ -26,7 +26,7 @@ qtm_server = '192.168.42.24'
 
 pwm_interval = 0.02		# 20 ms
 qtm_interval = 0.005	# 5 ms
-xbox_interval = 0.01	# 10 ms
+xbox_interval = 0.005	# 10 ms
 mbed_interval = 0.02	# 20 ms
 plot_interval = .1		# 100 ms
 
