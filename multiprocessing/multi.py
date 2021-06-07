@@ -373,6 +373,7 @@ def loop():
 		print()
 		sleep(0.5)
 		trash()
+	exit_program()
 
 setup()
 loop()
