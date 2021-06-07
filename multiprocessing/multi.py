@@ -137,6 +137,8 @@ def xbox_read():
 	global vessel, qtm, bno, measured_active
 	# read_pipe = xb_pipe_in
 	buffer = {}
+	print(xb_pipe_out.recv())
+	print(xb_pipe_in.recv())
 	while (xb_pipe_in.poll()):
 		print(xb_pipe_out.recv())
 		buffer = xb_pipe_in.recv()
