@@ -130,7 +130,10 @@ def get_ip():
 		IP = '127.0.0.1'
 	finally:
 		s.close()
-	server = IP
+	if str.find(IP) != -1:
+		server = '192.168.5.4'
+	elif server == '192.168.42.101':
+
 
 if __name__ == '__main__':
 	print('running as main')
