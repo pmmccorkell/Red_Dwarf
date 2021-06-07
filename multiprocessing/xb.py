@@ -61,21 +61,21 @@ class XBoxController:
 		return (self.joystick.leftBumper() and self.joystick.rightBumper())
 
 	def sample(self):
-		self.values
+		# self.values
 		#tuple scaled and normalized [-1.0,1.0]
 		(x1,y1) = self.joystick.leftStick()
 		#print(x1,y1)
 		(x2,y2) = self.joystick.rightStick()
 
 		new_values = {
-			'scalar1':scalar(x1,y1),
-			'vector1':angle(y1,x1),
-			'scalar2':scalar(x2,y2),
-			'vector2':angle(y2,x2),
-			'vector2_x2':relative(x2),
-			'maintain' : values['maintain'] ^ joystick.rightBumper(),
-			'mode' : values['mode'] ^ joystick.leftBumper(),
-			'quit' : check_quit()
+			'scalar1':self.scalar(x1,y1),
+			'vector1':self.angle(y1,x1),
+			'scalar2':self.scalar(x2,y2),
+			'vector2':self.angle(y2,x2),
+			'vector2_x2':self.relative(x2),
+			'maintain' : self.values['maintain'] ^ self.joystick.rightBumper(),
+			'mode' : self.values['mode'] ^ self.joystick.leftBumper(),
+			'quit' : self.check_quit()
 		}
 		self.values = new_values
 		if (self.DEBUG):
