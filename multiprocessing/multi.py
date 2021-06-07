@@ -356,5 +356,10 @@ def setup():
 	plot_thread = Thread(target=plotting,daemon=daemon_mode)
 	# plot_thread.start()
 
+def loop():
+	while(1):
+		sleep(1)
+		trash()
 
 setup()
+loop()
