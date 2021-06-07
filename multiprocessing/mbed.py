@@ -179,6 +179,9 @@ def get_angles():
 
 	#Read bytes from Serial
 	in_buffer=ser.readline()
+
+	if DEBUG:
+		print(in_buffer)
 	
 	#Only assign prefix and data if serial line is correct length
 	#Prevents Value Errors
