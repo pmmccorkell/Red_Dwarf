@@ -366,6 +366,7 @@ def loop():
 		# print('MAIN: '+dumps(xbox))
 		# print(qtm)
 		# print(bno)
+		xbox_read()
 		sleep(0.5)
 		trash()
 
