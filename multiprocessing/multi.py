@@ -282,6 +282,9 @@ def plot_process_setup():
 	qtm_process = Process(target=qualisys.start,daemon=daemon_mode)
 	qtm_process.start()
 
+def plot_send():
+	
+
 # def plotting():
 # 	global bno,qtm,xbox,pwm,plotting_interval
 # 	interval = plotting_interval
