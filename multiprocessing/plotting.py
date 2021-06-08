@@ -153,7 +153,7 @@ def update_data():
 def plot_process_setup():
 	global plot_pipe_in,plot_pipe_out
 	plot_pipe_in,plot_pipe_out = Pipe()
-	plot = Plotting(plot_pipe_in)
+	plot = Plotting(plot_pipe_in,20)
 	plot_process = Process(target=plot.start_display,daemon=True)
 	plot_process.start()
 
