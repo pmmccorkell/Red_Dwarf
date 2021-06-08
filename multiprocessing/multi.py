@@ -275,7 +275,7 @@ def qtm_stream():
 
 def plot_process_setup():
 	global qualisys, qtm_server,qtm_pipe_out,qtm_process
-	qtm_pipe_in, qtm_pipe_out = Pipe()
+	plot_pipe_in,plot_pipe_out = Pipe()
 	qualisys = mocap.Motion_Capture(qtm_pipe_in,qtm_server)
 
 	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
@@ -285,7 +285,7 @@ def plot_process_setup():
 def plot_data_send():
 	global plot_pipe_out
 	while(1):
-		
+
 
 # def plotting():
 # 	global bno,qtm,xbox,pwm,plotting_interval
