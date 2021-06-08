@@ -69,10 +69,10 @@ class Plotting:
 
 
 	def update(self):
-		while(not self.quit):
-		form_data()
-		self.curve1.setData(self.x_val,self.y1_val)
-		self.curve2.setData(self.x_val,self.y2_val)
+		while(not self.exit_state):
+			form_data()
+			self.curve1.setData(self.x_val,self.y1_val)
+			self.curve2.setData(self.x_val,self.y2_val)
 
 
 
