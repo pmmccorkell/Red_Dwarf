@@ -224,7 +224,7 @@ def qtm_read(name):
 		qtm = buffer
 def qtm_stream():
 	global qtm, qtm_flag, rigid_body_name
-	interval = 0.005
+	interval = qtm_interval
 	r_name = rigid_body_name
 	while(qtm_flag.set_flag()):
 		start=time()
@@ -262,7 +262,7 @@ def plot_stream():
 	while(plot_flag.set_flag()):
 		start=monotonic()
 		plot_send_data()
-		
+		diff = 
 
 
 
