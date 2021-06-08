@@ -282,7 +282,8 @@ def plot_process_setup():
 
 def plot_data_send():
 	global plot_pipe_out
-	while(1):
+	while(plot_flag.set_flag()):
+		
 
 
 # def plotting():
