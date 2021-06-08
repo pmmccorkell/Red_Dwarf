@@ -251,6 +251,8 @@ def plot_process_setup():
 
 def plot_send_data():
 	global qtm,bno,plot_pipe_out
+	
+	plot_pipe_out.send(buffer)
 
 def plot_stream():
 	global plot_flag
