@@ -145,6 +145,7 @@ def update_data():
 
 
 if __name__ == '__main__':
+	print("running as main")
 	data_thread = Thread(target=update_data,daemon=True)
 	data_thread.start()
 
