@@ -262,7 +262,8 @@ def plot_stream():
 	while(plot_flag.set_flag()):
 		start=monotonic()
 		plot_send_data()
-		diff = 
+		diff = monotonic()-start
+		
 
 
 
