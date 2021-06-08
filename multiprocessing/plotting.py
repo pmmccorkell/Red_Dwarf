@@ -59,6 +59,7 @@ class Plotting:
 			while(self.comms.poll()):
 				buffer = self.comms.recv()
 			if (buffer):
+				print(buffer)
 				self.qtm = buffer['qtm']
 				self.bno = buffer['bno']
 				self.form_data()
