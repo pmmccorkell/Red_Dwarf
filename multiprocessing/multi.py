@@ -255,7 +255,7 @@ def plot_send_data():
 		'bno':bno,
 		'qtm':qtm
 	}
-	plot_pipe_out.send(buffer)
+	plot_pipe_out.send(output)
 
 def plot_stream():
 	global plot_flag
