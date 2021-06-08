@@ -54,6 +54,9 @@ class Plotting:
 				self.qtm = buffer['qtm']
 		
 		sleep(0.01)
+	
+	def form_data(self):
+		
 
 
 	def update(self):
