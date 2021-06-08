@@ -52,6 +52,8 @@ class Plotting:
 			if (buffer):
 				self.bno = buffer['bno']
 				self.qtm = buffer['qtm']
+		
+		sleep(0.001)
 
 
 	def update(self):
