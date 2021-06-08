@@ -53,7 +53,7 @@ class Plotting:
 				self.bno = buffer['bno']
 				self.qtm = buffer['qtm']
 		
-		sleep(0.001)
+		sleep(0.01)
 
 
 	def update(self):
