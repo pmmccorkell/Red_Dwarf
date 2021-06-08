@@ -73,6 +73,7 @@ class Plotting:
 		self.x_val.append(monotonic()-self.start_time)
 		self.y1_val.append(self.qtm['heading'])
 		self.y2_val.append(self.bno['heading'])
+		print(self.x_val)
 
 
 	def update(self):
