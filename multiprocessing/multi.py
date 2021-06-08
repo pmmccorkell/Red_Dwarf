@@ -282,7 +282,7 @@ def plot_process_setup():
 	qtm_process = Process(target=qualisys.start,daemon=daemon_mode)
 	qtm_process.start()
 
-def plot_send():
+def plot_data_send():
 	
 
 # def plotting():
