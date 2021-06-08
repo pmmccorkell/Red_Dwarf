@@ -7,7 +7,7 @@ from threading import Thread
 
 
 class Plotting:
-	def __init__(self,timing_val=20):
+	def __init__(self,communictor,timing_val=20):
 		self.display_graph_timer=timing_val
 
 
