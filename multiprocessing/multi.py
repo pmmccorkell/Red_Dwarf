@@ -281,7 +281,7 @@ def plot_process_setup():
 	plot_process.start()
 
 def plot_send_data():
-	
+	global qtm,bno
 
 def plot_stream():
 	global plot_flag
