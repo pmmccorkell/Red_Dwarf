@@ -280,11 +280,11 @@ def plot_process_setup():
 	plot_process = Process(target=plot_live.start_display,daemon=daemon_mode)
 	plot_process.start()
 
-def plot_data_send():
+def plot_stream():
 	global plot_pipe_out
 	while(plot_flag.set_flag()):
 		start=time()
-		
+
 
 
 # def plotting():
