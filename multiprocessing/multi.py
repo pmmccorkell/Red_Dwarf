@@ -349,7 +349,7 @@ def setup():
 	mbed_thread.start()
 
 	plot_thread = Thread(target=plotting,daemon=daemon_mode)
-	# plot_thread.start()
+	plot_thread.start()
 
 def loop():
 	while(not xbox['quit']):
