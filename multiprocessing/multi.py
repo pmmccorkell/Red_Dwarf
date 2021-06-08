@@ -273,7 +273,7 @@ def qtm_stream():
 ##############################################################
 ##############################################################
 
-def qtm_process_setup():
+def plot_process_setup():
 	global qualisys, qtm_server,qtm_pipe_out,qtm_process
 	qtm_pipe_in, qtm_pipe_out = Pipe()
 	qualisys = mocap.Motion_Capture(qtm_pipe_in,qtm_server)
