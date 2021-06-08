@@ -157,15 +157,6 @@ if __name__ == '__main__':
 	data_thread = Thread(target=update_data,daemon=True)
 	data_thread.start()
 
-	# array_thread = Thread(target=form_data,daemon=True)
-	# array_thread.start()
-
-	# timer = QtCore.QTimer()
-	# timer.timeout.connect(update)
-	# timer.start(20)	# ms
-
-	# pg.mkQApp().exec_()
-
 	while(1):
 		sleep(1)
 		trash()
