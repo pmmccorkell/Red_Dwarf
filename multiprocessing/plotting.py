@@ -61,7 +61,7 @@ class Plotting:
 			if (buffer):
 				self.qtm = buffer['qtm']
 				self.bno = buffer['bno']
-		
+				form_data()
 		# sleep(0.01)
 	
 	def form_data(self):
@@ -76,7 +76,7 @@ class Plotting:
 
 	def update(self):
 		while(not self.exit_state):
-			form_data()
+			# form_data()
 			self.curve1.setData(self.x_val,self.y1_val)
 			self.curve2.setData(self.x_val,self.y2_val)
 			sleep(0.01)
