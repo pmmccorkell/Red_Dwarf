@@ -78,37 +78,6 @@ def pwm_controller_thread():
 		sleeptime=max(diff,0)
 		sleep(sleeptime)
 
-# def pwm_commands():
-# 	global xbox
-
-# 	# if (xbox['maintain']==1):
-# 	# 	vessel.issueCommand('hea',xbox['facing'])
-# 	# else:
-# 	# 	vessel.issueCommand('hea',999)
-# 	vessel.persistent_heading = bool(xbox['maintain']) and xbox['facing']
-
-# 	# if (xbox['offset']==0):
-# 	# 	vessel.issueCommand('off',999)
-# 	# else:
-# 	# 	vessel.issueCommand('off',xbox['offset'])
-# 	vessel.persistent_offset = xbox['offset']
-
-# 	# if (xbox['speed']>10):
-# 	# 	vessel.issueCommand('vel',xbox['speed'])
-# 	# else:
-# 	# 	vessel.issueCommand('vel',999)
-# 	vessel.persistent_speed = xbox['speed']
-
-# def pwm_commands_thread():
-# 	interval = xbox_interval
-# 	while(pwm_flag.set_flag()):
-# 		start=time()
-# 		pwm_commands()
-# 		diff = (interval + start - time())
-# 		sleeptime=max(diff,0)
-# 		sleep(sleeptime)
-
-
 
 
 ##################################################################################
@@ -281,7 +250,7 @@ def plot_process_setup():
 	plot_process.start()
 
 def plot_send_data():
-	global qtm,bno
+	global qtm,
 
 def plot_stream():
 	global plot_flag
