@@ -152,6 +152,7 @@ def plot_process_setup()
 	plot_pipe_in,plot_pipe_out = Pipe()
 	plot = Plotting(plot_pipe_in)
 	plot_process = Process(target=plot.start_display,daemon=True)
+	plot_process.start()
 
 if __name__ == '__main__':
 	print("running as main")
