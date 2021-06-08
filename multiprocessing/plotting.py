@@ -62,7 +62,7 @@ class Plotting:
 				self.qtm = buffer['qtm']
 				self.bno = buffer['bno']
 				form_data()
-		# sleep(0.01)
+		sleep(0.001)
 	
 	def form_data(self):
 		self.x_val.pop(0)
