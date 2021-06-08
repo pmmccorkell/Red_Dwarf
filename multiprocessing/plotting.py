@@ -24,7 +24,7 @@ class Plotting:
 		pg.setConfigOptions(antialias=True)
 
 
-		self.p1 = win.addPlot(title="Updating plot")
+		self.p1 = self.win.addPlot(title="Updating plot")
 
 
 		self.start_time = monotonic()
