@@ -283,7 +283,9 @@ def plot_process_setup():
 	qtm_process.start()
 
 def plot_data_send():
-	
+	global plot_pipe_out
+	while(1):
+		
 
 # def plotting():
 # 	global bno,qtm,xbox,pwm,plotting_interval
