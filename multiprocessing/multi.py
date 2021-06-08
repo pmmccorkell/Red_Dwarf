@@ -268,7 +268,6 @@ def plot_stream():
 
 
 
-
 # def plotting():
 # 	global bno,qtm,xbox,pwm,plotting_interval
 # 	interval = plotting_interval
