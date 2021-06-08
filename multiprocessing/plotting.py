@@ -159,6 +159,8 @@ if __name__ == '__main__':
 	data_thread = Thread(target=update_data,daemon=True)
 	data_thread.start()
 
+	plot_process_setup()
+
 	# array_thread = Thread(target=form_data,daemon=True)
 	# array_thread.start()
 
