@@ -49,7 +49,7 @@ class Plotting:
 		self.timer = QtCore.QTimer()
 		self.timer.timeout.connect(self.update)
 		self.timer.start(self.display_graph_timer)
-		mkQApp().exec_()
+		pg.mkQApp().exec_()
 
 		self.update()
 
