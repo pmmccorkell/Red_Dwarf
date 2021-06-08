@@ -144,6 +144,7 @@ def update_data():
 # 			sleep(0.001)
 def plot_process_setup()
 	plot_pipe_in,plot_pipe_out = Pipe()
+	plot = Plotting(plot_pipe_in,)
 
 if __name__ == '__main__':
 	print("running as main")
