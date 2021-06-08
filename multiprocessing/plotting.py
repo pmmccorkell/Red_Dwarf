@@ -151,7 +151,7 @@ def update_data():
 def plot_process_setup()
 	plot_pipe_in,plot_pipe_out = Pipe()
 	plot = Plotting(plot_pipe_in)
-	plot_process = Process(target=plot.)
+	plot_process = Process(target=plot.start_display,daemon=True)
 
 if __name__ == '__main__':
 	print("running as main")
