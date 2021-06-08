@@ -279,7 +279,7 @@ def plot_process_setup():
 	plot_live = plotting.Plotting(plot_pipe_in)
 
 	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
-	plot_process = Process(target=qualisys.start,daemon=daemon_mode)
+	plot_process = Process(target=plot_live.start_display,daemon=daemon_mode)
 	plot_process.start()
 
 def plot_data_send():
