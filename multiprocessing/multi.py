@@ -276,7 +276,7 @@ def qtm_stream():
 def plot_process_setup():
 	global qualisys, qtm_server,qtm_pipe_out,qtm_process
 	plot_pipe_in,plot_pipe_out = Pipe()
-	qualisys = mocap.Motion_Capture(qtm_pipe_in,qtm_server)
+	plot_live = mocap.Motion_Capture(qtm_pipe_in,qtm_server)
 
 	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	qtm_process = Process(target=qualisys.start,daemon=daemon_mode)
