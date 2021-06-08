@@ -260,7 +260,9 @@ def plot_send_data():
 def plot_stream():
 	global plot_flag
 	while(plot_flag.set_flag()):
-		start=time()
+		start=monotonic()
+		
+
 
 
 
