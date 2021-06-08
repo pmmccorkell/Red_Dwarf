@@ -132,16 +132,16 @@ def update_data():
 		# print("update thread cycle: " +str(monotonic()-start_time))
 
 
-def form_data():
-	while(1):
-		for i in range(1000):
-			x_val.pop(0)
-			y1_val.pop(0)
-			y2_val.pop(0)
-			x_val.append(monotonic()-start_time)
-			y1_val.append(bno['heading'])
-			y2_val.append(qtm['heading'])
-			sleep(0.001)
+# def form_data():
+# 	while(1):
+# 		for i in range(1000):
+# 			x_val.pop(0)
+# 			y1_val.pop(0)
+# 			y2_val.pop(0)
+# 			x_val.append(monotonic()-start_time)
+# 			y1_val.append(bno['heading'])
+# 			y2_val.append(qtm['heading'])
+# 			sleep(0.001)
 
 
 if __name__ == '__main__':
