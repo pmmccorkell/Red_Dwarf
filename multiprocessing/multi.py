@@ -274,7 +274,7 @@ def qtm_stream():
 ##############################################################
 
 def plot_process_setup():
-	global qualisys, qtm_server,qtm_pipe_out,qtm_process
+	global qualisys, qtm_server,plot_pipe_out,qtm_process
 	plot_pipe_in,plot_pipe_out = Pipe()
 	plot_live = plotting.Plotting(plot_pipe_in)
 
