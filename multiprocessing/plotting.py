@@ -10,7 +10,7 @@ class Plotting:
 	def __init__(self,timing_val=20):
 		self.display_graph_timer=timing_val
 
-	
+
 	def start_display(self):
 		self.app = pg.mkQApp("Plotting Example")
 
