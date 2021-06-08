@@ -282,16 +282,16 @@ def plot_process_setup():
 	qtm_process = Process(target=qualisys.start,daemon=daemon_mode)
 	qtm_process.start()
 
-def plotting():
-	global bno,qtm,xbox,pwm,plotting_interval
-	interval = plotting_interval
-	while(plot_flag.set_flag()):
-		start = time()
+# def plotting():
+# 	global bno,qtm,xbox,pwm,plotting_interval
+# 	interval = plotting_interval
+# 	while(plot_flag.set_flag()):
+# 		start = time()
 
-		############ GRAPH AND COMPARE THINGS ############
+# 		############ GRAPH AND COMPARE THINGS ############
 
 
-		sleeptime = max(interval + start - time(), 0.0)
+# 		sleeptime = max(interval + start - time(), 0.0)
 
 
 
