@@ -34,8 +34,6 @@ class Plotting:
 		self.p1.enableAutoRange(axis='y',enable=False)
 		self.p1.setYRange(-10,370)
 		self.p1.addLegend()
-		curve1 = p6.plot(pen='r',name='qtm')
-		curve2 = p6.plot(pen='b',name='bno')
 		self.p1.setLabel('left',"Heading (degrees)")
 		self.p1.setLabel('bottom',"Time (seconds)")
 
