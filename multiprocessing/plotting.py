@@ -51,7 +51,7 @@ class Plotting:
 		self.timer.start(self.display_graph_timer)
 		pg.mkQApp().exec_()
 
-		self.update()
+		# self.update()
 
 	def read_in_data(self):
 		while(1):
