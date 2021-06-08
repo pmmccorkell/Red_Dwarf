@@ -39,7 +39,6 @@ class Plotting:
 
 		self.curve1 = self.p1.plot(pen='r',name='qtm')
 		self.curve2 = self.p1.plot(pen='b',name='bno')
-		# data = np.random.normal(size=(10,1000))
 		self.x_val,self.y1_val,self.y2_val = [0.0]*1000,[0.0]*1000,[0.0]*1000
 
 		self.timer = QtCore.QTimer()
