@@ -49,6 +49,7 @@ class Plotting:
 		self.mkQApp().exec_()
 		self.read_thread = Thread(target=self.read_in_data,daemon=True)
 		self.read_thread.start()
+		self.update()
 
 	def read_in_data(self):
 		while(1):
