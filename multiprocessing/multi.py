@@ -348,7 +348,8 @@ def setup():
 	mbed_thread = Thread(target=mbed_stream,daemon=daemon_mode)
 	mbed_thread.start()
 
-	plot_thread = Thread(target=plotting,daemon=daemon_mode)
+	plot_process_setup
+	plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
 	plot_thread.start()
 
 def loop():
