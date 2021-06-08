@@ -45,7 +45,12 @@ class Plotting:
 		self.mkQApp().exec_()
 
 	def read_in_data(self):
-		
+		while(1):
+			buffer = None
+			while(self.comms.poll()):
+				buffer = self.comms.recv()
+			if (buffer):
+				self.bno = 
 
 
 	def update(self):
