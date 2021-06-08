@@ -274,13 +274,13 @@ def qtm_stream():
 ##############################################################
 
 def plot_process_setup():
-	global qualisys, qtm_server,plot_pipe_out,qtm_process
+	global plot_pipe_out,plot_process
 	plot_pipe_in,plot_pipe_out = Pipe()
 	plot_live = plotting.Plotting(plot_pipe_in)
 
 	# executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
 	plot_process = Process(target=qualisys.start,daemon=daemon_mode)
-	qtm_process.start()
+	plot_process.start()
 
 def plot_data_send():
 	global plot_pipe_out
