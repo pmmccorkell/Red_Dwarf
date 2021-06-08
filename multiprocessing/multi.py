@@ -283,6 +283,7 @@ def plot_process_setup():
 def plot_data_send():
 	global plot_pipe_out
 	while(plot_flag.set_flag()):
+		start=time()
 		
 
 
