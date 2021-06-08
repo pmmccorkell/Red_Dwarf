@@ -44,7 +44,8 @@ class Plotting:
 		self.timer.start(self.display_graph_timer)
 		self.mkQApp().exec_()
 
-	def loop_display(self):
+	def read_in_data(self):
+		
 
 
 	def update(self):
