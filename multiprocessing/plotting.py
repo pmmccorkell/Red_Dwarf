@@ -50,7 +50,8 @@ class Plotting:
 			while(self.comms.poll()):
 				buffer = self.comms.recv()
 			if (buffer):
-				self.bno = 
+				self.bno = buffer['bno']
+				self.qtm = buffer['qtm']
 
 
 	def update(self):
