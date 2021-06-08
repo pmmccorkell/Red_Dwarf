@@ -56,7 +56,13 @@ class Plotting:
 		sleep(0.01)
 	
 	def form_data(self):
-		
+		self.x_val.pop(0)
+		self.y1_val.pop(0)
+		self.y2_val.pop(0)
+
+		self.x_val.append(monotonic()-self.start_time)
+		self.y1_val.append(self.qtm['heading'])
+		self.y2_val.append(self.bno['heading'])
 
 
 	def update(self):
