@@ -4,6 +4,7 @@ import pyqtgraph as pg
 from time import monotonic,sleep
 from gc import collect as trash
 from threading import Thread
+from multiprocessing import Process, Pipe
 
 
 class Plotting:
@@ -144,7 +145,8 @@ def update_data():
 # 			sleep(0.001)
 def plot_process_setup()
 	plot_pipe_in,plot_pipe_out = Pipe()
-	plot = Plotting(plot_pipe_in,)
+	plot = Plotting(plot_pipe_in)
+	plot_process = Process(target=plot.)
 
 if __name__ == '__main__':
 	print("running as main")
