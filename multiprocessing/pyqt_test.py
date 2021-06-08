@@ -70,9 +70,9 @@ p6.enableAutoRange(axis='y',enable=False)
 p6.setYRange(-800,1200)
 # key_legend = pg.LegendItem(pen='w')
 # key_legend.setParentItem(p6)
+p6.addLegend()
 curve1 = p6.plot(pen='r',name='qtm')
 curve2 = p6.plot(pen='b',name='bno')
-p6.addLegend()
 # data = np.random.normal(size=(10,1000))
 ptr = 0
 x_val,y1_val,y2_val = [0.0]*1000,[0.0]*1000,[0.0]*1000
