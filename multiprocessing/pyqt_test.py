@@ -73,6 +73,8 @@ p6.setYRange(-800,1200)
 p6.addLegend()
 curve1 = p6.plot(pen='r',name='qtm')
 curve2 = p6.plot(pen='b',name='bno')
+p6.setLabel('left',"Heading (degrees)")
+p6.setLabel('bottom',"Time (seconds)")
 # data = np.random.normal(size=(10,1000))
 ptr = 0
 x_val,y1_val,y2_val = [0.0]*1000,[0.0]*1000,[0.0]*1000
