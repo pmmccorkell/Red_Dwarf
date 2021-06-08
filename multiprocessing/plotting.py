@@ -9,6 +9,9 @@ from threading import Thread
 class Plotting:
 	def __init__(self,communictor,timing_val=20):
 		self.display_graph_timer=timing_val
+		self.comms = communictor
+		self.exit_state = 0
+		
 
 
 	def start_display(self):
