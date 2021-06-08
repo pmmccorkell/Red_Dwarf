@@ -61,7 +61,7 @@ class Plotting:
 			if (buffer):
 				self.qtm = buffer['qtm']
 				self.bno = buffer['bno']
-				form_data()
+				self.form_data()
 		sleep(0.001)
 	
 	def form_data(self):
