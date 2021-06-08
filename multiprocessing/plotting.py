@@ -92,9 +92,6 @@ class Plotting:
 
 
 
-
-
-
 bno = {
 	'heading':271,
 	'roll':272,
