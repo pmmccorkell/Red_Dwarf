@@ -11,7 +11,6 @@ class Plotting:
 		self.display_graph_timer=timing_val
 		self.comms = communictor
 		self.exit_state = 0
-		
 
 
 	def start_display(self):
