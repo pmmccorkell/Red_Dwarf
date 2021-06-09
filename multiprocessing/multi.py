@@ -162,7 +162,7 @@ def xbox_stream():
 		start = monotonic()+interval
 		xbox_read()
 		sleep(max(start-monotonic(),0))
-		print(xbox)
+		# print(xbox)
 
 
 
