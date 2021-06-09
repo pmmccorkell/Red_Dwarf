@@ -277,7 +277,7 @@ def plot_send_data():
 	plot_pipe_out.send(output)
 
 def plot_stream():
-	global plot_flag
+	global plot_flag, plot_interval
 	while(plot_flag.set_flag()):
 		interval = plot_interval
 		start=monotonic()
