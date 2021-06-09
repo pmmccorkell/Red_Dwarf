@@ -373,7 +373,7 @@ def setup():
 
 	pwm_setup()
 	pwm_thread = Thread(target=pwm_controller_thread,daemon=daemon_mode)
-	# pwm_thread.start()
+	pwm_thread.start()
 
 	qtm_process_setup()
 	qtm_thread = Thread(target=qtm_stream,daemon=daemon_mode)
