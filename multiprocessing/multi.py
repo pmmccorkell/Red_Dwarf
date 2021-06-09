@@ -109,6 +109,7 @@ def xbox_debounce(val1,val2):
 		debounce_timer = monotonic()
 		return val1
 	else:
+		# flipflop
 		return val1 ^ val2
 
 xbox = {
