@@ -106,7 +106,7 @@ class XBoxController:
 	def stream(self):
 		while(1):
 			self.process()
-			sleep(0.01)
+			sleep(0.005)
 
 	def close(self):
 		sleep(0.1)
