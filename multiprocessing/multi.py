@@ -122,6 +122,7 @@ def xbox_debounce(val1,val2):
 	debounce_timer = (monotonic()*val2) + (debounce_timer * (not val2))
 		# flipflop
 		# return val1 ^ val2
+	print('current: '+str(current)+', db timer: '+str(debounce_timer)+', '
 	return returnval
 
 xbox = {
