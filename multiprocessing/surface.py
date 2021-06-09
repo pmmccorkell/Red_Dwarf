@@ -135,7 +135,6 @@ class Controller():
 		# Form a superposition of the two controllers.
 		fwd_star_speed=(trig_speed['cos'] - heading_speed)
 		aft_port_speed=(trig_speed['cos'] + heading_speed)
-		print(aft_port_speed)
 		fwd_port_speed=(trig_speed['sin'] + heading_speed)
 		aft_star_speed=(trig_speed['sin'] - heading_speed)
 		if (self.DEBUG):
