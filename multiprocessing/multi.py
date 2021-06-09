@@ -112,15 +112,18 @@ def xbox_debounce(val1,val2):
 
 	# if (bool_val):
 	# 	returnval = val1 ^ val2
+
+	not_timer_bool = (returnval ^ val1)
 		# if returnval != val1:
 			# debounce_timer = monotonic()
 	# else:
 	# 	returnval = val1
-	returnval = (bool_val * (val1 ^ val2)) + ((not bool_val) * val1)
 
-	not_timer_bool = (returnval ^ val1)
-	# print('timer bool* : '+str(not_timer_bool))
+	returnval = (bool_val * (val1 ^ val2)) + ((not bool_val) * val1)
 	debounce_timer = (monotonic() * (not_timer_bool)) + (debounce_timer * (not not_timer_bool))
+
+
+	# print('timer bool* : '+str(not_timer_bool))
 	print('current: '+str(current)+', db timer: '+str(debounce_timer)+', bool: '+str(bool_val))
 	print('returnval: '+str(returnval))
 	# print('debounce:'+str(debounce_timer))
