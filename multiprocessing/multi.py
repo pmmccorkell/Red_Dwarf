@@ -246,9 +246,9 @@ def qtm_stream():
 	interval = qtm_interval
 	r_name = rigid_body_name
 	while(qtm_flag.set_flag()):
-		start=time()
+		start=monotonic()
 		qtm_read(r_name)
-		diff = interval+start-time()
+		# diff = interval+start-time()
 		sleeptime = max(diff, 0)
 		sleep(sleeptime)
 		# print(qtm)
