@@ -107,21 +107,21 @@ debounce_time_check = 0.3
 def xbox_debounce(val1,val2):
 	global debounce_timer, debounce_time_check
 	current = monotonic()
-	# bool_val = bool(max(current-debounce_timer-debounce_time_check,0))
-	# return (bool_val * (val1 ^ val2)) + (not bool_val * val1)
-	if (current - debounce_timer) < debounce_time_check:
-		print('debounced')
-		print(current)
-		print(debounce_timer)
-		print(current-debounce_timer)
+	bool_val = bool(max(current-debounce_timer-debounce_time_check,0))
+	print(current)
+	print(debounce_timer)
+	print(current-debounce_timer)
+	return (bool_val * (val1 ^ val2)) + (not bool_val * val1)
+	# if (current - debounce_timer) < debounce_time_check:
+		# print('debounced')
 		# return the current value
-		return val1
-	else:
-		print('update: '+str(val1^val2))
+	# 	return val1
+	# else:
+		# print('update: '+str(val1^val2))
 		# update the last time
 		debounce_timer = (monotonic()*val2) + (debounce_timer * (not val2))
 		# flipflop
-		return val1 ^ val2
+		# return val1 ^ val2
 
 xbox = {
 	'facing':999,
