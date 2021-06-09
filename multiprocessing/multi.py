@@ -89,7 +89,7 @@ def xbox_process_setup():
 	xb_pipe_in, xb_pipe_out = Pipe()
 	try:
 		xbox_controller = xb.XBoxController(xb_pipe_in)
-	except IOerror, e:
+	except IOerror as e:
 		exit_program()
 		print e
 	xbox_controller.max_speed = max_speed
