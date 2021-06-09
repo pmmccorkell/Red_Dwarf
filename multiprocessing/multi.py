@@ -71,7 +71,7 @@ def pwm_controller_thread():
 	global vessel
 	interval = pwm_interval
 	while(pwm_flag.set_flag()):
-		start=monotonic()
+		start=monotonic()+interval
 		vessel.surfaceLoop()
 		vessel.azThrusterLogic()
 		# diff = (interval + start - monotonic())
