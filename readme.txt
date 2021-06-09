@@ -9,6 +9,7 @@ sudo apt-get install i2c-tools python3-smbus
 sudo pip3 install adafruit-circuitpython-register
 sudo pip3 install adafruit-circuitpython-busdevice
 
+Multiprocessing Only:
 Requires pyqtgraph for plotting, which additionally requires qt5, pyqt5, etc.
   - raspi4 solution:
     - Have to cross-compile Qt5 (use wsl) to satisfy qtpygraph version requirements:
