@@ -11,10 +11,10 @@ class Plotting:
 	def __init__(self,communictor,timing_val=20):
 		self.display_graph_timer=timing_val
 		self.comms = communictor
-		self.exit_state = 0
+		self.run = 1
 
 	def close(self):
-		self.exit_state = 1
+		self.run = 0
 
 	def start_display(self):
 		self.app = pg.mkQApp("Plotting Example")
