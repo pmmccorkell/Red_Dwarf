@@ -102,7 +102,7 @@ def xbox_process_setup():
 # debounce_timer stores last time updated.
 # debounce_time_check is the time, in seconds, to debounce.
 # val1 shall be the current value.
-# val2 shall be the updating value from joystick.
+# val2 shall be the updating value from xbox controller.
 debounce_timer = monotonic()
 debounce_time_check = 1.0
 def xbox_debounce(val1,val2):
