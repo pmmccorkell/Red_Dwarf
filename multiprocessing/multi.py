@@ -282,7 +282,7 @@ def plot_stream():
 		interval = plot_interval
 		start=monotonic()
 		plot_send_data()
-		diff = monotonic()-start
+		diff = monotonic()-start-plot_interval
 		sleeptime = max(diff,0)
 		sleep(sleeptime)
 
