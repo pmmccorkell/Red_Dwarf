@@ -361,7 +361,7 @@ def loop():
 		print()
 		print('MAIN use: '+dumps(measured_active))
 		print()
-		sleep(0.5)
+		sleep(0.1)
 		trash()
 	exit_program()
 
