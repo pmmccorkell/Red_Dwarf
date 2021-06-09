@@ -92,6 +92,7 @@ def xbox_process_setup():
 	except IOError as e:
 		exit_program()
 		print(e)
+		quit()
 	xbox_controller.max_speed = max_speed
 	xbox_process = Process(target=xbox_controller.stream,daemon=daemon_mode)
 	xbox_process.start()
