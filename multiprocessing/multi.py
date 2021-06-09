@@ -101,7 +101,7 @@ def xbox_process_setup():
 # val1 shall be the default / current value.
 # val2 shall be the updating value.
 debounce_timer = monotonic()
-debounce_time_check = 0.2
+debounce_time_check = 0.3
 def xbox_debounce(val1,val2):
 	global debounce_timer, debounce_time_check
 	current = monotonic()
