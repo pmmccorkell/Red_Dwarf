@@ -106,7 +106,7 @@ def xbox_debounce(val1,val2):
 	global debounce_timer, debounce_time_check
 	current = monotonic()
 	# bool_val = bool(max(current-debounce_timer-debounce_time_check,0))
-	# (bool_val * (val1 ^ val2)) + (not bool_val * val1)
+	# return (bool_val * (val1 ^ val2)) + (not bool_val * val1)
 	if (current - debounce_timer) < debounce_time_check:
 		debounce_timer = monotonic()
 		# return the current value
