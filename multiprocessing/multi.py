@@ -282,8 +282,8 @@ def plot_stream():
 		start=monotonic()+interval
 		plot_send_data()
 		# diff = monotonic()-start-interval
-		sleeptime = max(monotonic()-start-interval,0)
-		sleep(sleeptime)
+		# sleeptime = max(monotonic()-start-interval,0)
+		sleep(max(start-monotonic(),0))
 
 
 
