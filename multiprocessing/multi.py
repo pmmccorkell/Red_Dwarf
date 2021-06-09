@@ -110,10 +110,10 @@ def xbox_debounce(val1,val2):
 	# bool_val = bool(max(current-debounce_timer-debounce_time_check,0))
 	# return (bool_val * (val1 ^ val2)) + (not bool_val * val1)
 	if (current - debounce_timer) < debounce_time_check:
-		debounce_timer = monotonic()
 		# return the current value
 		return val1
 	else:
+		debounce_timer = monotonic()
 		# flipflop
 		return val1 ^ val2
 
