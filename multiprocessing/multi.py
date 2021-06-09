@@ -101,7 +101,7 @@ def xbox_process_setup():
 # Debouncing for xbox toggle switches.
 # debounce_timer stores last time updated.
 # debounce_time_check is the time, in seconds, to debounce.
-# val1 shall be the default / current value.
+# val1 shall be the current value.
 # val2 shall be the updating value.
 debounce_timer = monotonic()
 debounce_time_check = 1.0
