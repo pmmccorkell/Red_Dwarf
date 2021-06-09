@@ -287,20 +287,6 @@ def plot_stream():
 
 
 
-# def plotting():
-# 	global bno,qtm,xbox,pwm,plotting_interval
-# 	interval = plotting_interval
-# 	while(plot_flag.set_flag()):
-# 		start = time()
-
-# 		############ GRAPH AND COMPARE THINGS ############
-
-
-# 		sleeptime = max(interval + start - time(), 0.0)
-
-
-
-
 ##################################################################
 ###################### Main Program Section ######################
 ##################################################################
