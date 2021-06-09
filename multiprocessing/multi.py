@@ -111,6 +111,8 @@ def xbox_debounce(val1,val2):
 	# return (bool_val * (val1 ^ val2)) + (not bool_val * val1)
 	if (current - debounce_timer) < debounce_time_check:
 		print('debounced')
+		print(current)
+		print(debounce_timer)
 		# return the current value
 		return val1
 	else:
