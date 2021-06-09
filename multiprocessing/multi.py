@@ -164,7 +164,7 @@ def xbox_stream():
 		start = monotonic()+interval
 		xbox_read()
 		sleeptime=max(start-monotonic(),0)
-		sleep(sleeptime)
+		sleep(max(start-monotonic(),0))
 
 
 
