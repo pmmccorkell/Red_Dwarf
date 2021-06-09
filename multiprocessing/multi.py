@@ -9,7 +9,7 @@ from multiprocessing import Process, Pipe
 import surface
 import xb
 import mbed_wrapper
-# import plotting
+import plotting
 from time import sleep, time, monotonic
 import atexit
 from gc import collect as trash
