@@ -161,10 +161,10 @@ def xbox_stream():
 	global xbox, measured_active, xbox_interval, xbox_flag
 	interval = xbox_interval
 	while(xbox_flag.set_flag()):
-		start = monotonic()
+		start = monotonic()+interval
 		xbox_read()
 		# diff = interval+start-monotonic()
-		sleeptime=max(interval+start-monotonic(),0)
+		sleeptime=max(start-monotonic(),0)
 		sleep(sleeptime)
 
 
