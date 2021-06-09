@@ -119,9 +119,10 @@ def xbox_debounce(val1,val2):
 	# else:
 		# print('update: '+str(val1^val2))
 		# update the last time
-		debounce_timer = (monotonic()*val2) + (debounce_timer * (not val2))
+	debounce_timer = (monotonic()*val2) + (debounce_timer * (not val2))
 		# flipflop
 		# return val1 ^ val2
+	return returnval
 
 xbox = {
 	'facing':999,
