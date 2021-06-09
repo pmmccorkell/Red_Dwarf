@@ -30,6 +30,7 @@ class pwmControl:
 		self.fwd_port = Thruster(self.servoboard,0,1)	# servo ch 0
 		self.fwd_star = Thruster(self.servoboard,1,-1)	# servo ch 1, blades reversed
 		self.aft_port = Thruster(self.servoboard,3,-1)	# servo ch 3, blades reversed
+		print(self.aft_port)
 		self.aft_star = Thruster(self.servoboard,4,1)	# servo ch 4
 		self.test_thruster = Thruster(self.servoboard,15,1) # for test purposes
 		self.thruster_objects = {
