@@ -107,6 +107,7 @@ def xbox_debounce(val1,val2):
 	current = monotonic()
 	if (current - debounce_timer) < debounce_time_check:
 		debounce_timer = monotonic()
+		# return the current value
 		return val1
 	else:
 		# flipflop
