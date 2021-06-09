@@ -17,7 +17,7 @@ import mocap
 import surface
 from json import dumps,loads
 
-daemon_mode = False
+daemon_mode = True
 
 
 max_speed = 400   # us		speed limit
