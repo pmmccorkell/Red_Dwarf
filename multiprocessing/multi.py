@@ -278,8 +278,8 @@ def plot_send_data():
 
 def plot_stream():
 	global plot_flag, plot_interval
+	interval = plot_interval
 	while(plot_flag.set_flag()):
-		interval = plot_interval
 		start=monotonic()
 		plot_send_data()
 		diff = monotonic()-start-plot_interval
