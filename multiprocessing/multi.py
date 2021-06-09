@@ -96,8 +96,10 @@ def xbox_process_setup():
 
 debounce_timer = monotonic()
 def check_debounce(val1,val2):
-
-	return val1 ^ val2
+	if (monotonic() - debounce_timer) < 0.1:
+		return val1
+	else:
+		return val1 ^ val2
 
 xbox = {
 	'facing':999,
