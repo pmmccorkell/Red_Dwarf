@@ -13,6 +13,8 @@ class Plotting:
 		self.comms = communictor
 		self.exit_state = 0
 
+	def close(self):
+		self.exit_state = 1
 
 	def start_display(self):
 		self.app = pg.mkQApp("Plotting Example")
