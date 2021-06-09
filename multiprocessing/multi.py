@@ -94,11 +94,16 @@ def xbox_process_setup():
 	xbox_process = Process(target=xbox_controller.stream,daemon=daemon_mode)
 	xbox_process.start()
 
+
+# Debouncing for xbox toggle switches.
+# debounce_timer stores last time updated. If less that 
+# val1 should be the default / current value.
 debounce_timer = monotonic()
+debounce_time_check = 0.1
 def xbox_debounce(val1,val2):
-	global debounce_timer
+	global debounce_timer, debounce_time_check
 	current = monotonic()
-	if (current - debounce_timer) < 0.1:
+	if (current - debounce_timer) < debounce_time_check:
 		debounce_timer = monotonic()
 		return val1
 	else:
