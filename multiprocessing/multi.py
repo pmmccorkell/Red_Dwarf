@@ -315,11 +315,11 @@ def exit_program():
 	print("Killing child processes.")
 	try:
 		xbox_process.kill()
-	except as e:
+	except Exception as e:
 		print(e)
 	try:
 		mbed_process.kill()
-	except as e:
+	except Exception as e:
 		print(e)
 	try:
 		qtm_process.kill()
