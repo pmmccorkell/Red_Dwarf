@@ -313,9 +313,13 @@ def exit_program():
 	print()
 
 	print("Killing child processes.")
-	xbox_process.kill()
-	mbed_process.kill()
-	qtm_process.kill()
+	try:
+		xbox_process.kill()
+		mbed_process.kill()
+		qtm_process.kill()
+	except as e:
+		print(e)
+		pass
 	print()
 
 	print('Disconnecting QTM connection.')
