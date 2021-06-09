@@ -203,7 +203,7 @@ def mbed_stream():
 		mbed_read()
 		# diff = interval+start-monotonic()
 		# sleeptime=max(interval+start-monotonic(),0)
-		sleep(max(start-monotonic())
+		sleep(max(start-monotonic(),0))
 		# print('bno: '+str(bno))
 
 
