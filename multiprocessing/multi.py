@@ -120,6 +120,7 @@ def xbox_debounce(val1,val2):
 		# print('update: '+str(val1^val2))
 		# update the last time
 	print('current: '+str(current)+', db timer: '+str(debounce_timer)+', bool: '+str(bool_val))
+	print('returnval: '+str(returnval))
 	debounce_timer = (monotonic()*val2) + (debounce_timer * (not val2))
 		# flipflop
 		# return val1 ^ val2
