@@ -245,8 +245,6 @@ def qtm_stream():
 	while(qtm_flag.set_flag()):
 		start=monotonic()+interval
 		qtm_read(r_name)
-		# diff = interval+start-monotonic()
-		# sleeptime = max(interval+start-monotonic(), 0)
 		sleep(max(start-monotonic(),0))
 		# print(qtm)
 
