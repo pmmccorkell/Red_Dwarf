@@ -402,7 +402,7 @@ def loop():
 		# print('MAIN bno: '+dumps(bno))
 		print()
 		print('MAIN use: '+dumps(measured_active))
-		print('vessel: '+ str(vessel.thrusters))
+		# print('vessel: '+ str(vessel.thrusters))
 		print()
 		sleep(0.1)
 		trash()
