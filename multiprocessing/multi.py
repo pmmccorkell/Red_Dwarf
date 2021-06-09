@@ -119,7 +119,6 @@ def xbox_debounce(val1,val2):
 	returnval = (bool_val * (val1 ^ val2)) + ((not bool_val) * val1)
 	not_timer_bool = (returnval ^ val1)
 	debounce_timer = (monotonic() * (not_timer_bool)) + (debounce_timer * (not not_timer_bool))
-
 	return returnval
 
 xbox = {
