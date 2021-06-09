@@ -332,13 +332,20 @@ def exit_program():
 	print()
 
 	print('Disconnecting QTM connection.')
-	qualisys.connected.disconnect()
+	try:
+		qualisys.connected.disconnect()
+	except Exception as e:
+		print(e)
 
 	print('Closing xbox controller.')
 	xb_controller.close()
+	except Exception as e:
+		print(e)
 
 	print('Shutting down mbed Serial.')
 	imu.close()
+	except Exception as e:
+		print(e)
 
 	# print('Shutting down graphs.')
 
