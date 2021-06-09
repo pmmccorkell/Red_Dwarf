@@ -74,8 +74,8 @@ def pwm_controller_thread():
 		start=monotonic()
 		vessel.surfaceLoop()
 		vessel.azThrusterLogic()
-		diff = (interval + start - time())
-		sleeptime=max(diff,0)
+		diff = (interval + start - monotonic())
+		sleeptime=max(interval + start - monotonic(),0)
 		sleep(sleeptime)
 
 
