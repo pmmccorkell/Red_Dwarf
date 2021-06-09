@@ -96,7 +96,8 @@ def xbox_process_setup():
 
 debounce_timer = monotonic()
 def debounce_xbox(val1,val2):
-	if (monotonic() - debounce_timer) < 0.1:
+	current = monotonic()
+	if (current - debounce_timer) < 0.1:
 		debounce_timer = monotonic()
 		return val1
 	else:
