@@ -56,7 +56,7 @@ class Plotting:
 		# self.update()
 
 	def read_in_data(self):
-		while(not self.exit_state):
+		while(self.run):
 			buffer = None
 			while(self.comms.poll()):
 				buffer = self.comms.recv()
