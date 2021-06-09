@@ -203,6 +203,7 @@ def mbed_read():
 		buffer = read_pipe.recv()
 	if buffer:
 		bno = buffer
+
 def mbed_stream():
 	global mbed_interval, mbed_flag
 	interval = mbed_interval
