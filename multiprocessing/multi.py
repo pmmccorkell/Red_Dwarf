@@ -200,9 +200,9 @@ def mbed_stream():
 	global mbed_interval, mbed_flag
 	interval = mbed_interval
 	while(mbed_flag.set_flag()):
-		start = time()
+		start = monotonic()
 		mbed_read()
-		diff = interval+start-time()
+		diff = interval+start-monotonic()
 		sleeptime=max(diff,0)
 		sleep(sleeptime)
 		# print('bno: '+str(bno))
