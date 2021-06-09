@@ -279,7 +279,7 @@ def plot_stream():
 	global plot_flag, plot_interval
 	interval = plot_interval
 	while(plot_flag.set_flag()):
-		start=monotonic()
+		start=monotonic()+interval
 		plot_send_data()
 		# diff = monotonic()-start-interval
 		sleeptime = max(monotonic()-start-interval,0)
