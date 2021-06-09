@@ -112,22 +112,18 @@ def xbox_read():
 	if buffer:
 		# print('xbox_read: '+str(buffer))
 
-	# if (xbox['maintain']==1):
-	# 	vessel.issueCommand('hea',xbox['facing'])
-	# else:
-	# 	vessel.issueCommand('hea',999)
-		vessel.persistent_heading = bool(buffer['maintain']) and buffer['facing']
-
-	# if (xbox['offset']==0):
-	# 	vessel.issueCommand('off',999)
-	# else:
-	# 	vessel.issueCommand('off',xbox['offset'])
 		vessel.persistent_offset = buffer['offset']
 
-	# if (xbox['speed']>10):
-	# 	vessel.issueCommand('vel',xbox['speed'])
-	# else:
-	# 	vessel.issueCommand('vel',999)
+		# if (xbox['maintain']==1):
+		# 	vessel.issueCommand('hea',xbox['facing'])
+		# else:
+		# 	vessel.issueCommand('hea',999)
+		vessel.persistent_heading = bool(buffer['maintain']) and buffer['facing']
+
+		# if (xbox['speed']>10):
+		# 	vessel.issueCommand('vel',xbox['speed'])
+		# else:
+		# 	vessel.issueCommand('vel',999)
 		vessel.persistent_speed = bool(max(buffer['speed']-10,0)) * buffer['speed']
 
 		buffer['maintain'] = buffer['maintain'] ^ xbox['maintain']
