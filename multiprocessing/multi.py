@@ -108,8 +108,6 @@ debounce_time_check = 1.0
 def xbox_debounce(val1,val2):
 	global debounce_timer, debounce_time_check
 	current = monotonic()
-	bool_val = bool(max(current-debounce_timer-debounce_time_check,0))
-
 
 	# if (bool_val):
 	# 	returnval = val1 ^ val2
@@ -117,6 +115,8 @@ def xbox_debounce(val1,val2):
 			# debounce_timer = monotonic()
 	# else:
 	# 	returnval = val1
+	bool_val = bool(max(current-debounce_timer-debounce_time_check,0))
+
 	returnval = (bool_val * (val1 ^ val2)) + ((not bool_val) * val1)
 	not_timer_bool = (returnval ^ val1)
 	debounce_timer = (monotonic() * (not_timer_bool)) + (debounce_timer * (not not_timer_bool))
