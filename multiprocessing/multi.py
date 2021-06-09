@@ -94,8 +94,9 @@ def xbox_process_setup():
 	xbox_process = Process(target=xbox_controller.stream,daemon=daemon_mode)
 	xbox_process.start()
 
-debounce_timer = 0
+debounce_timer = monotonic()
 def check_debounce(val1,val2):
+
 	return val1 ^ val2
 
 xbox = {
