@@ -161,7 +161,6 @@ def xbox_stream():
 	while(xbox_flag.set_flag()):
 		start = monotonic()+interval
 		xbox_read()
-		# sleeptime=max(start-monotonic(),0)
 		sleep(max(start-monotonic(),0))
 
 
@@ -199,8 +198,6 @@ def mbed_stream():
 	while(mbed_flag.set_flag()):
 		start = monotonic()+interval
 		mbed_read()
-		# diff = interval+start-monotonic()
-		# sleeptime=max(interval+start-monotonic(),0)
 		sleep(max(start-monotonic(),0))
 		# print('bno: '+str(bno))
 
