@@ -325,6 +325,10 @@ def exit_program():
 		qtm_process.kill()
 	except Exception as e:
 		print(e)
+	try:
+		plot_process.kill()
+	except Exception as e:
+		print(e)
 	print()
 
 	print('Disconnecting QTM connection.')
