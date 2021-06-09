@@ -317,17 +317,14 @@ def exit_program():
 		xbox_process.kill()
 	except as e:
 		print(e)
-		pass
 	try:
 		mbed_process.kill()
 	except as e:
 		print(e)
-		pass
 	try:
 		qtm_process.kill()
 	except as e:
 		print(e)
-		pass
 	print()
 
 	print('Disconnecting QTM connection.')
