@@ -323,7 +323,7 @@ def exit_program():
 		print(e)
 	try:
 		qtm_process.kill()
-	except as e:
+	except Exception as e:
 		print(e)
 	print()
 
