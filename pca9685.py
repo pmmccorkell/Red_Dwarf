@@ -1,3 +1,10 @@
+# Patrick McCorkell
+# March 2021
+# US Naval Academy
+# Robotics and Control TSD
+#
+
+
 from time import sleep
 from adafruit_register.i2c_struct import UnaryStruct
 from adafruit_register.i2c_struct_array import StructArray
