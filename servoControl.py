@@ -1,3 +1,9 @@
+# Patrick McCorkell
+# March 2021
+# US Naval Academy
+# Robotics and Control TSD
+#
+
 from pca9685 import PCA9685
 import busio
 from board import SCL,SDA
