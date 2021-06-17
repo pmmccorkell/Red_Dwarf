@@ -10,7 +10,7 @@ import time
 from board import SCL, SDA
 import busio
 from PIL import Image, ImageDraw, ImageFont
-import adafruit_ssd1306
+from adafruit_ssd1306 import SSD1306_I2C
 
 
 # Create the I2C interface.
