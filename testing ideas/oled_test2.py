@@ -111,7 +111,7 @@ class Joystick:
 		dpad.direction_down = detect_down
 
 	def detected(self,event):
-			self.values[event.direction] = 1 * (event.action.find('released'))
+			self.values[event.direction] = 1 * not bool(event.action.find('released'))
 		if not (event.action.find('released')):
 			self.values[event.direction] = 0
 		elif not (event.action.find('pressed')):
