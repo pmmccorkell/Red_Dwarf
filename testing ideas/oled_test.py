@@ -96,7 +96,7 @@ def update():
 
 # returned_ord_val = get_ord('released')
 
-def setup_8dir():
+def setup_diags():
 	dpad.direction_up = detect_up
 	dpad.direction_down = detect_down
 
