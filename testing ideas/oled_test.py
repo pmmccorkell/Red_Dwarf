@@ -92,6 +92,7 @@ def detect_8dir():
 	events = dpad.get_events()
 	filter_events = {}
 	for event in events:
+		filter_events[event.direction]
 
 
 if __name__ == '__main__':
