@@ -94,11 +94,11 @@ def detect_8dir():
 	for event in events:
 		get_ord(event.action)
 
+returned_ord_val = get_ord('released')
 
 if __name__ == '__main__':
 	print("running as main")
 	keep_running = 1
-	returned_ord_val = get_ord('released')
 	while(keep_running):
 		keep_running = update()
 	dpad.close()
