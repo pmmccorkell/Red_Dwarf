@@ -108,18 +108,18 @@ class Joystick:
 	# 		get_ord(event.action)
 
 	def detected_left(self,event):
-		check_val = self.get_ord(event.action) - self.released_val
+		check_val = bool(self.get_ord(event.action) - self.released_val)
 
 	def detected_right(self,event):
-		check_val = self.get_ord(event.action) - self.released_val
+		check_val = bool(self.get_ord(event.action) - self.released_val)
 
 
 	def detected_up(self,event):
-		check_val = self.get_ord(event.action) - self.released_val
+		check_val = bool(self.get_ord(event.action) - self.released_val)
 
 	
 	def detected_down(self,event):
-		check_val = self.get_ord(event.action) - self.released_val
+		check_val = bool(self.get_ord(event.action) - self.released_val)
 
 
 oled = OLED()
