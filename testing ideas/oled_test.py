@@ -85,6 +85,7 @@ def update(self):
 			self.update_stats(event.direction)
 
 
+
 # First define some constants to allow easy resizing of shapes.
 # top = -2
 # top = padding
