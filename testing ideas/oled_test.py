@@ -193,7 +193,7 @@ class Joystick:
 		elif event.action == 'pressed':
 			self.values[event.direction] = 1
 			self.last_event = event.direction
-			
+			self.event_queue.append(event.direction)
 
 
 
