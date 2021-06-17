@@ -30,7 +30,7 @@ image = Image.new("1", (oled.width, oled.height))
 draw = ImageDraw.Draw(image)
 
 # Draw a rectangle from edge to edge.
-draw.rectangle((0, 0, width, height), outline=0, fill=0)
+draw.rectangle((0, 0, oled.width, oled.height), outline=0, fill=0)
 
 # Draw some shapes.
 # First define some constants to allow easy resizing of shapes.
