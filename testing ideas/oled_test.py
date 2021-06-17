@@ -29,10 +29,10 @@ class OLED()
 		self.clear_oled()
 	
 		# Instantiate an image the size of the screen
-		self.image = Image.new("1", (oled.width, oled.height))
+		self.image = Image.new("1", (self.oled.width, self.oled.height))
 
 		# Instantiate a drawing to draw on the image.
-		draw = ImageDraw.Draw(image)
+		self.draw = ImageDraw.Draw(self.image)
 
 
 	def clear_oled(self):
