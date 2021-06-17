@@ -34,6 +34,8 @@ class OLED()
 		# Instantiate a drawing to draw on the image.
 		self.draw = ImageDraw.Draw(self.image)
 
+		# Load default font.
+		self.font = ImageFont.load_default()
 
 	def clear_oled(self):
 		# Clear and show display.
@@ -45,6 +47,9 @@ class OLED()
 		self.draw.rectangle((0, 0, self.oled.width, self.oled.height), outline=0, fill=0)
 
 	def update_stats(self):
+
+
+
 # First define some constants to allow easy resizing of shapes.
 top = -2
 # top = padding
@@ -53,8 +58,7 @@ bottom = height - top
 x = 0
 
 
-# Load default font.
-font = ImageFont.load_default()
+
 
 
 
