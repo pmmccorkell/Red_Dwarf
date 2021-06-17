@@ -140,7 +140,7 @@ class Joystick:
 			self.last_event = event.direction
 
 oled = OLED()
-dpad = Joystick()
+dpad = Joystick(oled)
 
 def update():
 	events = dpad.dpad.get_events()
