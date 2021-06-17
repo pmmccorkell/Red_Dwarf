@@ -19,13 +19,13 @@ sense = SenseHat()
 joystick = sense.stick
 
 class OLED(SSD1306_I2C)
-	def init_oled():
+	def init_oled(self):
 		# Instantiate ssd1306 class over i2c.
 		# (Width, Height, i2c bus)
 		self.oled = SSD1306_I2C(128, 32, i2c)
 
 
-	def clear_oled():
+	def clear_oled(self):
 		# Clear and show display.
 		oled.fill(0)
 		oled.show()
