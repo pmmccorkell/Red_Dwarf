@@ -88,11 +88,14 @@ def update():
 				return 0
 	return 1
 
-def get_ord(some_string):
-	returnval = 0
-	for character in some_string:
-		returnval += ord(character)
-	return returnval
+# def get_ord(some_string):
+# 	returnval = 0
+# 	for character in some_string:
+# 		returnval += ord(character)
+# 	return returnval
+
+# returned_ord_val = get_ord('released')
+
 
 def detect_8dir():
 	events = dpad.get_events()
@@ -100,7 +103,6 @@ def detect_8dir():
 	for event in events:
 		get_ord(event.action)
 
-returned_ord_val = get_ord('released')
 
 if __name__ == '__main__':
 	print("running as main")
