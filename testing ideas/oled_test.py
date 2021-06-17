@@ -58,10 +58,6 @@ class OLED()
 	def get_CPU(self):
 		return subprocess.check_output('cut -f 1 -d " " /proc/loadavg',shell=True).decode("utf-8")
 
-	def update(self):
-		self.dpad.get_events()
-
-
 	def update_stats(self,last_joystick)):
 		top = -2
 		# bottom = self.oled.height - top
@@ -77,6 +73,10 @@ class OLED()
 			for k,v in enumerate
 			textline = key + ": " + dataframe[key]
 			self.draw.text((0,top+(index*padding)), textline,font=self.font,fill=255)
+
+	def update(self):
+		self.dpad.get_events()
+
 
 # First define some constants to allow easy resizing of shapes.
 # top = -2
