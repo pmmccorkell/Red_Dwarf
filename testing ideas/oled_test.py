@@ -88,6 +88,9 @@ def update():
 				return 0
 	return 1
 
+def detect_8dir():
+	
+
 if __name__ == '__main__':
 	print("running as main")
 	keep_running = 1
