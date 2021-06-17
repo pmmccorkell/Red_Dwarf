@@ -196,7 +196,8 @@ class Joystick:
 			self.event_queue.append(event.direction)
 			self.update_display()
 	
-	
+	def update_display(self):
+		
 
 
 
