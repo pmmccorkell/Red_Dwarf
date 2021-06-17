@@ -13,12 +13,8 @@ from PIL import Image, ImageDraw, ImageFont
 from adafruit_ssd1306 import SSD1306_I2C
 
 
-# Create the I2C interface.
 i2c = busio.I2C(SCL, SDA)
 
-# Create the SSD1306 OLED class.
-# The first two parameters are the pixel width and pixel height.  Change these
-# to the right size for your display!
 oled = SSD1306_I2C(128, 32, i2c)
 
 # Clear display.
