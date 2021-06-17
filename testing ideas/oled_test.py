@@ -59,7 +59,7 @@ class OLED()
 		return subprocess.check_output('cut -f 1 -d " " /proc/loadavg',shell=True).decode("utf-8")
 
 	def get_dpad(self):
-		buffer = self.dpad.get_events()
+		return self.dpad.get_events()
 
 	def update_stats(self):
 		top = -2
