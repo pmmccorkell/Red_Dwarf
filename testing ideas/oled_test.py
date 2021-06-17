@@ -93,6 +93,7 @@ if __name__ == '__main__':
 	keep_running = 1
 	while(keep_running):
 		keep_running = update()
+	dpad.close()
 
 
 
