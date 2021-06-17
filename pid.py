@@ -1,3 +1,9 @@
+# Patrick McCorkell
+# March 2021
+# US Naval Academy
+# Robotics and Control TSD
+#
+
 class PID:
 	# dt should be set to same as Ticker that uses this class.
 	# deadzone represents the acceptable error, defaults to 0.

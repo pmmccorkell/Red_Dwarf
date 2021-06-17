@@ -1,3 +1,10 @@
+# Patrick McCorkell
+# March 2021
+# US Naval Academy
+# Robotics and Control TSD
+#
+
+
 # run with sudo privileges
 # add user to the root group:
 #	sudo usermod -a -G root pi
