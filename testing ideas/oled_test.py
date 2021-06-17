@@ -61,7 +61,7 @@ class OLED()
 	def get_dpad(self):
 		return self.dpad.get_events()
 
-	def update_stats(self):
+	def update_stats(last_joystick)):
 		top = -2
 		# bottom = self.oled.height - top
 		padding = 8
