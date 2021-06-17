@@ -128,7 +128,7 @@ class Joystick:
 		self.DOWNRIGHT = self.DOWN * self.RIGHT
 		self.last_event = event.direction
 
-	def detected_middle(self,event)
+	def detected_middle(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.MIDDLE = 1 * check_val
 		self.last_event = event.direction
