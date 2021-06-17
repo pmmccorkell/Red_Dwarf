@@ -134,7 +134,7 @@ class Joystick:
 		check_hold = bool(check_val - self.held_val)
 		self.RIGHT = 1 * check_released
 		self.last_event = event.direction
-		self.event_queue.append(check_released * check_hold * event.direction)
+		# self.event_queue.append(check_released * check_hold * event.direction)
 		# if check_val:
 		# 	self.last_event = event.direction
 		# 	self.disp.update_stats(event.direction)
@@ -149,7 +149,7 @@ class Joystick:
 			self.UP = 0
 		# self.UP = 1 * check_released
 		self.last_event = event.direction
-		self.event_queue.append(check_released * check_hold * event.direction)
+		# self.event_queue.append(check_released * check_hold * event.direction)
 		self.UPLEFT = self.UP * self.LEFT
 		self.UPRIGHT = self.UP * self.RIGHT
 		# if check_val:
@@ -164,7 +164,7 @@ class Joystick:
 		self.last_event = event.direction
 		self.DOWNLEFT = self.DOWN * self.LEFT
 		self.DOWNRIGHT = self.DOWN * self.RIGHT
-		self.event_queue.append(check_released * check_hold * event.direction)
+		# self.event_queue.append(check_released * check_hold * event.direction)
 		# if check_val:
 		# 	self.last_event = event.direction
 		# 	self.disp.update_stats(event.direction)
