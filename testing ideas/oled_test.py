@@ -34,7 +34,7 @@ class OLED()
 		# Instantiate a drawing to draw on the image.
 		self.draw = ImageDraw.Draw(self.image)
 
-		# Load default font.
+		# Instantiate default font.
 		self.font = ImageFont.load_default()
 
 	def clear_oled(self):
