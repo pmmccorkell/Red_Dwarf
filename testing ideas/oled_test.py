@@ -92,7 +92,7 @@ class Joystick:
 		return returnval
 
 
-	def update():
+	def update(self):
 		events = dpad.get_events()
 		for event in events:
 			if event.action=="pressed":
