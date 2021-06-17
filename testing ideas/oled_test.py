@@ -26,7 +26,7 @@ oled.show()
 # Instantiate an image the size of the screen
 image = Image.new("1", (oled.width, oled.height))
 
-# Get drawing object to draw on image.
+# Instantiate a drawing to draw on the image.
 draw = ImageDraw.Draw(image)
 
 # Draw a black filled box to clear the image.
