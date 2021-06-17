@@ -34,8 +34,8 @@ draw.rectangle((0, 0, oled.width, oled.height), outline=0, fill=0)
 
 # First define some constants to allow easy resizing of shapes.
 top = -2
-top = padding
-bottom = height - padding
+# top = padding
+bottom = height - top
 # Move left to right keeping track of the current x position for drawing shapes.
 x = 0
 
