@@ -33,7 +33,7 @@ draw = ImageDraw.Draw(image)
 draw.rectangle((0, 0, oled.width, oled.height), outline=0, fill=0)
 
 # First define some constants to allow easy resizing of shapes.
-padding = -2
+top = -2
 top = padding
 bottom = height - padding
 # Move left to right keeping track of the current x position for drawing shapes.
