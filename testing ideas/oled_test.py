@@ -180,7 +180,8 @@ class Joystick:
 
 	def detected(self,event):
 		check_val = self.get_ord(event.action)
-		values[event.direction]
+		
+		self.values[event.direction]
 
 oled = OLED()
 dpad = Joystick(oled)
