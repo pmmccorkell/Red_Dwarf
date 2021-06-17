@@ -80,7 +80,6 @@ dpad = sense.stick
 oled = OLED()
 
 def update():
-	returnval = 1
 	events = dpad.get_events()
 	for event in events:
 		if event.action=="pressed":
