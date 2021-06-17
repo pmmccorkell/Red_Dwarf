@@ -65,10 +65,11 @@ class OLED()
 		top = -2
 		bottom = self.oled.height - top
 		padding = 8
+		x = 0
 		row = 0
 		self.draw_border()
-		self.draw.text((row, top+padding), "IP: "+self.get_IP,font=self.font,fill=255)
-		self.draw
+		self.draw.text((x,row, top+padding), "IP: "+self.get_IP,font=self.font,fill=255)
+		self.draw.text((row+))
 
 # First define some constants to allow easy resizing of shapes.
 # top = -2
