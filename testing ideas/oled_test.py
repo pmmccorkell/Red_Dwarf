@@ -88,6 +88,12 @@ def update():
 				return 0
 	return 1
 
+def get_ord(some_string):
+	returnval = 0
+	for character in some_string:
+		returnval += ord(character)
+	return returnval
+
 def detect_8dir():
 	events = dpad.get_events()
 	filter_events = {}
