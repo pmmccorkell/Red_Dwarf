@@ -121,7 +121,7 @@ class Joystick:
 oled = OLED()
 dpad = Joystick()
 
-def update(self):
+def update():
 	events = dpad.dpad.get_events()
 	for event in events:
 		if event.action=="pressed":
@@ -139,6 +139,7 @@ def update(self):
 # 		keep_running = update()
 # 	dpad.close()
 
+def update()
 
 if __name__ == '__main__':
 	print("running as main")
