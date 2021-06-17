@@ -201,7 +201,6 @@ class Joystick:
 			oled.update_stats(self.event_queue.pop())
 
 
-
 oled = OLED()
 dpad = Joystick(oled)
 
