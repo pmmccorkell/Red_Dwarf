@@ -4,7 +4,7 @@
 # Robotics and Control TSD
 #
 
-import time
+import time import sleep
 import subprocess
 from board import SCL, SDA
 import busio
