@@ -179,7 +179,8 @@ class Joystick:
 			# self.disp.update_stats(event.direction)
 
 	def detected(self,event):
-		
+		check_val = self.get_ord(event.action)
+
 
 oled = OLED()
 dpad = Joystick(oled)
