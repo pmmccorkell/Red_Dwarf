@@ -142,12 +142,12 @@ def update(self):
 	return 1
 
 
-if __name__ == '__main__':
-	print("running as main")
-	keep_running = 1
-	while(keep_running):
-		keep_running = update()
-	dpad.close()
+# if __name__ == '__main__':
+# 	print("running as main")
+# 	keep_running = 1
+# 	while(keep_running):
+# 		keep_running = update()
+# 	dpad.close()
 
 
 if __name__ == '__main__':
