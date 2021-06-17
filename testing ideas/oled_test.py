@@ -107,36 +107,52 @@ class Joystick:
 		dpad.direction_down = detect_down
 
 	def detected_left(self,event):
-		check_val = bool(self.get_ord(event.action) - self.released_val)
-		self.LEFT = 1 * check_val
-		if check_val:
-			self.last_event = event.direction
-			self.disp.update_stats(event.direction)
+		check_val = self.get_ord(event.action)
+		check_released = bool(check_val - self.released_val)
+		check_hold = bool(check_val - self.held_val)
+		self.MIDDLE = 1 * check_released
+		self.last_event = event.direction
+		self.event_queue.append(check_released * check_hold * event.direction)
+		# if check_val:
+		# 	self.last_event = event.direction
+		# 	self.disp.update_stats(event.direction)
 		
 	def detected_right(self,event):
-		check_val = bool(self.get_ord(event.action) - self.released_val)
-		self.RIGHT = 1 * check_val
-		if check_val:
-			self.last_event = event.direction
-			self.disp.update_stats(event.direction)
+		check_val = self.get_ord(event.action)
+		check_released = bool(check_val - self.released_val)
+		check_hold = bool(check_val - self.held_val)
+		self.MIDDLE = 1 * check_released
+		self.last_event = event.direction
+		self.event_queue.append(check_released * check_hold * event.direction)
+		# if check_val:
+		# 	self.last_event = event.direction
+		# 	self.disp.update_stats(event.direction)
 
 	def detected_up(self,event):
-		check_val = bool(self.get_ord(event.action) - self.released_val)
-		self.UP = 1 * check_val
+		check_val = self.get_ord(event.action)
+		check_released = bool(check_val - self.released_val)
+		check_hold = bool(check_val - self.held_val)
+		self.MIDDLE = 1 * check_released
+		self.last_event = event.direction
+		self.event_queue.append(check_released * check_hold * event.direction)
 		self.UPLEFT = self.UP * self.LEFT
 		self.UPRIGHT = self.UP * self.RIGHT
-		if check_val:
-			self.last_event = event.direction
-			self.disp.update_stats(event.direction)
+		# if check_val:
+		# 	self.last_event = event.direction
+		# 	self.disp.update_stats(event.direction)
 
 	def detected_down(self,event):
-		check_val = bool(self.get_ord(event.action) - self.released_val)
-		self.DOWN = 1 * check_val
+		check_val = self.get_ord(event.action)
+		check_released = bool(check_val - self.released_val)
+		check_hold = bool(check_val - self.held_val)
+		self.MIDDLE = 1 * check_released
+		self.last_event = event.direction
+		self.event_queue.append(check_released * check_hold * event.direction)
 		self.DOWNLEFT = self.DOWN * self.LEFT
 		self.DOWNRIGHT = self.DOWN * self.RIGHT
-		if check_val:
-			self.last_event = event.direction
-			self.disp.update_stats(event.direction)
+		# if check_val:
+		# 	self.last_event = event.direction
+		# 	self.disp.update_stats(event.direction)
 
 	def detected_middle(self,event):
 		check_val = self.get_ord(event.action)
