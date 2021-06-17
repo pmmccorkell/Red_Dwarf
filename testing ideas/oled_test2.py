@@ -130,67 +130,6 @@ class Joystick:
 		dpad.direction_up = detect_up
 		dpad.direction_down = detect_down
 
-	def detected_left(self,event):
-		check_val = self.get_ord(event.action)
-		check_released = bool(check_val - self.released_val)
-		check_hold = bool(check_val - self.held_val)
-		self.LEFT = 1 * check_released
-		self.last_event = event.direction
-		self.event_queue.append(check_released * check_hold * event.direction)
-		# if check_val:
-		# 	self.last_event = event.direction
-		# 	self.disp.update_stats(event.direction)
-
-	def detected_right(self,event):
-		check_val = self.get_ord(event.action)
-		check_released = bool(check_val - self.released_val)
-		check_hold = bool(check_val - self.held_val)
-		self.RIGHT = 1 * check_released
-		self.last_event = event.direction
-		# self.event_queue.append(check_released * check_hold * event.direction)
-		# if check_val:
-		# 	self.last_event = event.direction
-		# 	self.disp.update_stats(event.direction)
-
-	def detected_up(self,event):
-		check_val = self.get_ord(event.action)
-		check_released = bool(check_val - self.released_val)
-		check_hold = bool(check_val - self.held_val)
-		if check_released:
-			self.UP = 1
-		else:
-			self.UP = 0
-		# self.UP = 1 * check_released
-		self.last_event = event.direction
-		# self.event_queue.append(check_released * check_hold * event.direction)
-		self.UPLEFT = self.UP * self.LEFT
-		self.UPRIGHT = self.UP * self.RIGHT
-		# if check_val:
-		# 	self.last_event = event.direction
-		# 	self.disp.update_stats(event.direction)
-
-	def detected_down(self,event):
-		check_val = self.get_ord(event.action)
-		check_released = bool(check_val - self.released_val)
-		check_hold = bool(check_val - self.held_val)
-		self.DOWN = 1 * check_released
-		self.last_event = event.direction
-		self.DOWNLEFT = self.DOWN * self.LEFT
-		self.DOWNRIGHT = self.DOWN * self.RIGHT
-		# self.event_queue.append(check_released * check_hold * event.direction)
-		# if check_val:
-		# 	self.last_event = event.direction
-		# 	self.disp.update_stats(event.direction)
-
-	def detected_middle(self,event):
-		check_val = self.get_ord(event.action)
-		check_released = bool(check_val - self.released_val)
-		check_hold = bool(check_val - self.held_val)
-		self.MIDDLE = 1 * check_released
-		self.last_event = event.direction
-		# self.event_queue.append(check_released * check_hold * event.direction)
-			# self.disp.update_stats(event.direction)
-
 	def detected(self,event):
 		if not (event.action.find('released')):
 			self.values[event.direction] = 0
