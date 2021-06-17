@@ -37,6 +37,7 @@ class OLED()
 		# Instantiate default font.
 		self.font = ImageFont.load_default()
 
+		# Instantiate Pi SenseHat
 		self.sense = SenseHat()
 		self.joystick = sense.stick
 
