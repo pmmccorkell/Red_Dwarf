@@ -73,48 +73,53 @@ class OLED:
 
 
 
-sense = SenseHat()
-dpad = sense.stick
 
 oled = OLED()
 
-def update():
-	events = dpad.get_events()
-	for event in events:
-		if event.action=="pressed":
-			oled.update_stats(event.direction)
-			print(event.direction+": "+event.action)
-			if event.direction == "middle":
-				return 0
-	return 1
 
-def get_ord(some_string):
-	returnval = 0
-	for character in some_string:
-		returnval += ord(character)
-	return returnval
+class Joystick:
+	def __init__(self):
+		self.sense = SenseHat()
+		self.dpad = self.sense.stick
 
-released_val = get_ord('released')
-held_val = get_ord('held')
-pressed_val = get_ord('pressed')
+	def update():
+		events = dpad.get_events()
+		for event in events:
+			if event.action=="pressed":
+				oled.update_stats(event.direction)
+				print(event.direction+": "+event.action)
+				if event.direction == "middle":
+					return 0
+		return 1
 
-def setup_diags():
-	dpad.direction_up = detect_up
-	dpad.direction_down = detect_down
+	def get_ord(some_string):
+		returnval = 0
+		for character in some_string:
+			returnval += ord(character)
+		return returnval
 
-# def detect_8dir():
-# 	events = dpad.get_events()
-# 	filter_events = {}
-# 	for event in events:
-# 		get_ord(event.action)
+	released_val = get_ord('released')
+	held_val = get_ord('held')
+	pressed_val = get_ord('pressed')
 
-def detected_left():
+	def setup_diags():
+		dpad.direction_up = detect_up
+		dpad.direction_down = detect_down
 
-def detected_right():
+	# def detect_8dir():
+	# 	events = dpad.get_events()
+	# 	filter_events = {}
+	# 	for event in events:
+	# 		get_ord(event.action)
+
+	def detected_left():
 
 
-def detected_up(event):
-	print(event)	
+	def detected_right():
+		
+
+	def detected_up(event):
+		print(event)	
 
 if __name__ == '__main__':
 	print("running as main")
