@@ -89,6 +89,7 @@ if __name__ == '__main__':
 	print("running as main")
 	keep_running = 1
 	while(keep_running):
+		update()
 
 
 
