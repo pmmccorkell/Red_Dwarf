@@ -121,7 +121,7 @@ class Joystick:
 		# if check_val:
 		# 	self.last_event = event.direction
 		# 	self.disp.update_stats(event.direction)
-		
+
 	def detected_right(self,event):
 		check_val = self.get_ord(event.action)
 		check_released = bool(check_val - self.released_val)
