@@ -107,13 +107,13 @@ class Joystick:
 	# 	for event in events:
 	# 		get_ord(event.action)
 
-	def detected_left():
+	def detected_left(self,event):
 
 
-	def detected_right():
+	def detected_right(self,event):
 		
 
-	def detected_up(event):
+	def detected_up(self,event):
 		print(event)	
 
 
