@@ -88,6 +88,7 @@ def update():
 			oled.update_stats(event.direction)
 			if event == "middle":
 				return 0
+	return 1
 
 if __name__ == '__main__':
 	print("running as main")
