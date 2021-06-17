@@ -176,5 +176,7 @@ if __name__ == '__main__':
 	print("running as main")
 	keep_running = 1
 	while(keep_running):
+		oled.update_stats(dpad.last_event)
 		keep_running = update_state()
+		sleep(0.1)
 	dpad.close()
