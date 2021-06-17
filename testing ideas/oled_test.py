@@ -197,7 +197,8 @@ class Joystick:
 			self.update_display()
 	
 	def update_display(self):
-		for event in self.event_queue:
+		while(self.event_queue):
+			oled.update_stats(event)
 
 
 
