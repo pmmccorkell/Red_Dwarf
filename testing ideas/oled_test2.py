@@ -153,7 +153,7 @@ def update_state():
 	# 	print("up left")
 	# if dpad.UPRIGHT:
 	# 	print("up right")
-	if (dpad.vaqlues['middle']):
+	if (dpad.values['middle']):
 		return 0
 	return 1
 
