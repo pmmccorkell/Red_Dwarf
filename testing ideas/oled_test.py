@@ -19,11 +19,11 @@ i2c = busio.I2C(SCL, SDA)
 # Create the SSD1306 OLED class.
 # The first two parameters are the pixel width and pixel height.  Change these
 # to the right size for your display!
-disp = SSD1306_I2C(128, 32, i2c)
+oled = SSD1306_I2C(128, 32, i2c)
 
 # Clear display.
-disp.fill(0)
-disp.show()
+oled.fill(0)
+oled.show()
 
 # Create blank image for drawing.
 # Make sure to create image with mode '1' for 1-bit color.
