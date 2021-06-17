@@ -13,8 +13,6 @@ from adafruit_ssd1306 import SSD1306_I2C
 from sense_hat import sense_hat
 
 
-sense = SenseHat()
-joystick = sense.stick
 
 
 
@@ -38,10 +36,10 @@ class OLED()
 		self.font = ImageFont.load_default()
 
 		# Instantiate Pi SenseHat.
-		self.sense = SenseHat()
+		# self.sense = SenseHat()
 
 		# Instantiate the joystick on Pi SenseHat
-		self.dpad = sense.stick
+		# self.dpad = sense.stick
 
 	def clear_oled(self):
 		# Clear and show display.
@@ -75,6 +73,9 @@ class OLED()
 			self.draw.text((0,top+(index*padding)), textline,font=self.font,fill=255)
 
 
+
+sense = SenseHat()
+joystick = sense.stick
 
 
 def update():
