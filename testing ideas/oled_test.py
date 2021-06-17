@@ -156,7 +156,8 @@ def update():
 
 def update_state():
 	oled.update_stats(dpad.last_event)
-	if dpad.LEFT and dpad.RIGHT and 
+	if (dpad.MIDDLE):
+		
 
 if __name__ == '__main__':
 	print("running as main")
