@@ -74,7 +74,6 @@ class OLED:
 
 
 
-oled = OLED()
 
 
 class Joystick:
@@ -120,6 +119,10 @@ class Joystick:
 
 	def detected_up(event):
 		print(event)	
+
+
+oled = OLED()
+dpad = Joystick()
 
 if __name__ == '__main__':
 	print("running as main")
