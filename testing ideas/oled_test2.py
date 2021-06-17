@@ -111,10 +111,11 @@ class Joystick:
 		dpad.direction_down = detect_down
 
 	def detected(self,event):
+			self.values[event.direction] = 1 * (event.action.find('released'))
 		if not (event.action.find('released')):
 			self.values[event.direction] = 0
 		elif not (event.action.find('pressed')):
-			self.values[event.direction] = 1
+			
 			self.last_event = event.direction
 			self.event_queue.append(event.direction)
 			self.update_display()
