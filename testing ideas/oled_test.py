@@ -167,7 +167,7 @@ def update():
 # 	dpad.close()
 
 def update_state():
-	oled.update_stats(dpad.last_event)
+	# oled.update_stats(dpad.last_event)
 	if (dpad.MIDDLE):
 		return 0
 	return 1
