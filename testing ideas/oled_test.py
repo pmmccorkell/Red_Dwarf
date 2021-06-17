@@ -188,7 +188,7 @@ class Joystick:
 			# self.disp.update_stats(event.direction)
 
 	def detected(self,event):
-		if event.action == 'released':
+		if event.action.find('released'):
 			self.values[event.direction] = 0
 		elif event.action == 'pressed':
 			self.values[event.direction] = 1
