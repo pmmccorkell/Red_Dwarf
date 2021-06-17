@@ -40,8 +40,8 @@ class OLED()
 		# Instantiate Pi SenseHat.
 		self.sense = SenseHat()
 
-		# Instantiate the joystick on Pi SenseHat
-		self.joystick = sense.stick
+		# Instantiate the dpad on Pi SenseHat
+		self.dpad = sense.stick
 
 	def clear_oled(self):
 		# Clear and show display.
