@@ -22,9 +22,10 @@ joystick = sense.stick
 # (Width, Height, i2c bus)
 oled = SSD1306_I2C(128, 32, i2c)
 
-# Clear and show display.
-oled.fill(0)
-oled.show()
+def init_oled():
+	# Clear and show display.
+	oled.fill(0)
+	oled.show()
 
 # Instantiate an image the size of the screen
 image = Image.new("1", (oled.width, oled.height))
