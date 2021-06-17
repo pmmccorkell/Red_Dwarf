@@ -140,8 +140,8 @@ class Joystick:
 
 	def detected_middle(self,event):
 		check_val = self.get_ord(event.action)
-		check_released = bool(self.get_ord(event.action) - self.released_val)
-		check_hold = bool(self.get_ord(event.action) - self.held_val)
+		check_released = bool(check_val - self.released_val)
+		check_hold = bool(check_val - self.held_val)
 		self.MIDDLE = 1 * check_released
 		self.last_event = event.direction
 		self.event_queue.append(
