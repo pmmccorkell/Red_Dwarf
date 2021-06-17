@@ -115,6 +115,8 @@ class Joystick:
 
 		self.last_event = 'N/A'
 
+		self.event_queue=[]
+
 	def get_ord(self,some_string):
 		returnval = 0
 		for character in some_string:
