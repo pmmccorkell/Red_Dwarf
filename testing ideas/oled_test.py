@@ -139,8 +139,8 @@ def update():
 # 		keep_running = update()
 # 	dpad.close()
 
-def update():
-	
+def update_state():
+
 
 if __name__ == '__main__':
 	print("running as main")
