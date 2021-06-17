@@ -13,13 +13,14 @@ from PIL import Image, ImageDraw, ImageFont
 from adafruit_ssd1306 import SSD1306_I2C
 from sense_hat import sense_hat
 
+		sense = SenseHat()
+		joystick = sense.stick
+
 
 
 class OLED(SSD1306_I2C)
 	def __init__(self):
 		i2c = busio.I2C(SCL, SDA)
-		self.sense = SenseHat()
-		self.joystick = sense.stick
 
 		# Instantiate ssd1306 class over i2c.
 		# (Width, Height, i2c bus)
