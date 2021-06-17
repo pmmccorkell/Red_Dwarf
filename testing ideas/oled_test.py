@@ -21,7 +21,7 @@ joystick = sense.stick
 
 class OLED()
 	def __init__(self):
-		# Instantiate i2c bus
+		# Instantiate i2c bus.
 		i2c = busio.I2C(SCL, SDA)
 
 		# Instantiate ssd1306 class over i2c.
