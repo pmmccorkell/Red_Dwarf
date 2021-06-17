@@ -85,6 +85,12 @@ class Joystick:
 		self.held_val = self.get_ord('held')
 		self.pressed_val = self.get_ord('pressed')
 
+	def get_ord(self,some_string):
+		returnval = 0
+		for character in some_string:
+			returnval += ord(character)
+		return returnval
+
 
 	def update():
 		events = dpad.get_events()
@@ -99,11 +105,6 @@ class Joystick:
 	def close(self):
 		self.dpad.close()
 
-	def get_ord(some_string):
-		returnval = 0
-		for character in some_string:
-			returnval += ord(character)
-		return returnval
 
 
 	def setup_diags():
