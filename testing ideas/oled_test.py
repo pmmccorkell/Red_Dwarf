@@ -47,8 +47,11 @@ class OLED()
 		# Draw a rectangle from edge to edge.
 		self.draw.rectangle((0, 0, self.oled.width, self.oled.height), outline=0, fill=0)
 
+	def get_IP(self)
+
 	def update_stats(self):
 		self.draw_border()
+	
 
 
 # First define some constants to allow easy resizing of shapes.
