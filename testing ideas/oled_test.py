@@ -85,6 +85,8 @@ class Joystick:
 		self.held_val = self.get_ord('held')
 		self.pressed_val = self.get_ord('pressed')
 
+		self.UP, self.DOWN, self.LEFT, self.RIGHT, self.UPLEFT, self.UPRIGHT, self.DOWNLEFT, self.DOWNRIGHT = 0,0,0,0,0,0,0,0
+
 	def get_ord(self,some_string):
 		returnval = 0
 		for character in some_string:
