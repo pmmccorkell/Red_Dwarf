@@ -87,7 +87,9 @@ def update():
 
 if __name__ == '__main__':
 	print("running as main")
-	
+	keep_running = 1
+	while(keep_running):
+
 
 
 # First define some constants to allow easy resizing of shapes.
