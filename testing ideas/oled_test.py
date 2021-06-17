@@ -142,7 +142,8 @@ class Joystick:
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.MIDDLE = 1 * check_val
 		self.last_event = event.direction
-		self.event_queue.append(self.disp.update_stats(event.direction)
+		self.event_queue.append(event.direction)
+			# self.disp.update_stats(event.direction)
 
 oled = OLED()
 dpad = Joystick(oled)
