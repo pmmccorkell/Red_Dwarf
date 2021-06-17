@@ -52,7 +52,6 @@ class OLED()
 	def get_CPU(self):
 		return subprocess.check_output('cut -f 1 -d " " /proc/loadavg',shell=True).decode("utf-8")
 
-
 	def update_stats(self):
 		self.draw_border()
 	
