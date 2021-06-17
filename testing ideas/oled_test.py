@@ -73,7 +73,7 @@ class OLED()
 			'dpad':self.get_dpad()
 		}
 		for index,key in enumerate(dataframe):
-			textline = key + ": " + lines[key]
+			textline = key + ": " + dataframe[key]
 			self.draw.text((0,top+(index*padding)), key + ": "+lines[key],font=self.font,fill=255)
 
 # First define some constants to allow easy resizing of shapes.
