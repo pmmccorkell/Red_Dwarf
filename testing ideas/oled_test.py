@@ -23,8 +23,8 @@ oled = SSD1306_I2C(128, 32, i2c)
 oled.fill(0)
 oled.show()
 
-width = disp.width
-height = disp.height
+width = oled.width
+height = oled.height
 image = Image.new("1", (width, height))
 
 # Get drawing object to draw on image.
