@@ -83,7 +83,6 @@ def update():
 	events = dpad.get_events()
 	for event in events:
 		if event.action=="pressed":
-			# joystick_line = event.direction+" "+event.action
 			oled.update_stats(event.direction)
 			if event == "middle":
 				return 0
