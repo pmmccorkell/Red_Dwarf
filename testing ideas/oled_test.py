@@ -116,7 +116,8 @@ class Joystick:
 		self.DOWN = 1 * check_val
 		self.DOWNLEFT = self.DOWN * self.LEFT
 		self.DOWNRIGHT = self.DOWN * self.RIGHT
-
+		if (self.DOWNRIGHT and self.UPLEFT):
+			self.close()
 
 oled = OLED()
 dpad = Joystick()
