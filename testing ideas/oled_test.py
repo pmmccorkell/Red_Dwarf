@@ -72,7 +72,7 @@ class OLED()
 			'CPU':self.get_CPU(),
 			'dpad':self.get_dpad()
 		}
-		for index,key in enumerate(lines):
+		for index,key in enumerate(dataframe):
 			textline = 
 			self.draw.text((0,top+(index*padding)), key + ": "+lines[key],font=self.font,fill=255)
 
