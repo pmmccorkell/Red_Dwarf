@@ -74,7 +74,8 @@ class OLED:
 
 
 class Joystick:
-	def __init__(self):
+	def __init__(self,display):
+		self.disp = display
 		self.sense = SenseHat()
 		self.dpad = self.sense.stick
 
