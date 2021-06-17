@@ -47,6 +47,7 @@ x = 0
 font = ImageFont.load_default()
 
 
+
 while True:
 
     # Draw a black filled box to clear the image.
