@@ -189,9 +189,9 @@ class Joystick:
 
 	def detected(self,event):
 		if event.action == 'released':
-			self.values[event.direction]
+			self.values[event.direction] = 0
 		else:
-			
+
 
 oled = OLED()
 dpad = Joystick(oled)
