@@ -41,10 +41,8 @@ class OLED()
 		self.oled.show()
 
 	def draw_border(self):
-		
-
-# Draw a rectangle from edge to edge.
-draw.rectangle((0, 0, oled.width, oled.height), outline=0, fill=0)
+		# Draw a rectangle from edge to edge.
+		self.draw.rectangle((0, 0, self.oled.width, self.oled.height), outline=0, fill=0)
 
 # First define some constants to allow easy resizing of shapes.
 top = -2
