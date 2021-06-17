@@ -98,13 +98,6 @@ class Joystick:
 			'middle':0
 		}
 
-		self.diags = {
-			'upleft':0,
-			'upright':0,
-			'downleft':0,
-			'downright':0
-		}
-
 		self.dpad.direction_any = self.detected
 
 		self.last_event = 'N/A'
