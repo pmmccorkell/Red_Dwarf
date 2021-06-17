@@ -88,7 +88,8 @@ class Joystick:
 		self.dpad.direction_left = self.detected_left
 		self.dpad.direction_up = self.detected_up
 		self.dpad.direction_down = self.detected_down
-		
+		self.dpad.direction_middle = self.detected_middle
+
 		self.last_event = 'N/A'
 
 	def get_ord(self,some_string):
