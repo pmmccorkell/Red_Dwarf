@@ -92,16 +92,6 @@ class Joystick:
 		return returnval
 
 
-	def update(self):
-		events = dpad.get_events()
-		for event in events:
-			if event.action=="pressed":
-				oled.update_stats(event.direction)
-				print(event.direction+": "+event.action)
-				if event.direction == "middle":
-					return 0
-		return 1
-
 	def close(self):
 		self.dpad.close()
 
@@ -129,6 +119,17 @@ class Joystick:
 
 oled = OLED()
 dpad = Joystick()
+
+def update(self):
+	events = dpad.get_events()
+	for event in events:
+		if event.action=="pressed":
+			oled.update_stats(event.direction)
+			print(event.direction+": "+event.action)
+			if event.direction == "middle":
+				return 0
+	return 1
+
 
 if __name__ == '__main__':
 	print("running as main")
