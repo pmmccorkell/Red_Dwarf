@@ -15,6 +15,8 @@ from adafruit_ssd1306 import SSD1306_I2C
 
 i2c = busio.I2C(SCL, SDA)
 
+# Instantiate ssd1306 class over i2c.
+# Width, Height, i2c bus
 oled = SSD1306_I2C(128, 32, i2c)
 
 # Clear display.
