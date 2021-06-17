@@ -64,10 +64,11 @@ class OLED()
 	def update_stats(self):
 		top = -2
 		bottom = self.oled.height - top
+		padding = 8
 		row = 0
 		self.draw_border()
 		self.draw.text((row, top+padding), "IP: "+self.get_IP,font=self.font,fill=255)
-		
+		self.draw
 
 # First define some constants to allow easy resizing of shapes.
 # top = -2
