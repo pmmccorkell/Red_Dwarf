@@ -105,12 +105,6 @@ class Joystick:
 			'downright':0
 		}
 
-		# self.dpad.direction_right = self.detected_right
-		# self.dpad.direction_left = self.detected_left
-		# self.dpad.direction_up = self.detected_up
-		# self.dpad.direction_down = self.detected_down
-		# self.dpad.direction_middle = self.detected_middle
-
 		self.dpad.direction_any = self.detected
 
 		self.last_event = 'N/A'
