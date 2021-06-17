@@ -68,7 +68,6 @@ class OLED:
 			'dpad':last_joystick
 		}
 		for index,key in enumerate(dataframe):
-			for k,v in enumerate
 			textline = key + ": " + dataframe[key]
 			self.draw.text((0,top+(index*padding)), textline,font=self.font,fill=255)
 
