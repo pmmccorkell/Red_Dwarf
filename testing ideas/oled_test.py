@@ -101,12 +101,6 @@ class Joystick:
 		dpad.direction_up = detect_up
 		dpad.direction_down = detect_down
 
-	# def detect_8dir():
-	# 	events = dpad.get_events()
-	# 	filter_events = {}
-	# 	for event in events:
-	# 		get_ord(event.action)
-
 	def detected_left(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.LEFT = 1 * check_val
