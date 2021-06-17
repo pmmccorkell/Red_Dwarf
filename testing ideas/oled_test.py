@@ -111,12 +111,14 @@ class Joystick:
 		self.LEFT = 1 * check_val
 		if check_val:
 			self.last_event = event.direction
+			self.disp.update_stats(event.direction)
 		
 	def detected_right(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.RIGHT = 1 * check_val
 		if check_val:
 			self.last_event = event.direction
+			self.disp.update_stats(event.direction)
 
 	def detected_up(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
@@ -125,7 +127,8 @@ class Joystick:
 		self.UPRIGHT = self.UP * self.RIGHT
 		if check_val:
 			self.last_event = event.direction
-	
+			self.disp.update_stats(event.direction)
+
 	def detected_down(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.DOWN = 1 * check_val
@@ -133,12 +136,14 @@ class Joystick:
 		self.DOWNRIGHT = self.DOWN * self.RIGHT
 		if check_val:
 			self.last_event = event.direction
+			self.disp.update_stats(event.direction)
 
 	def detected_middle(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.MIDDLE = 1 * check_val
 		if check_val:
 			self.last_event = event.direction
+			self.disp.update_stats(event.direction)
 
 oled = OLED()
 dpad = Joystick(oled)
