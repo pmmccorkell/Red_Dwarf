@@ -47,7 +47,7 @@ class OLED()
 		self.draw.rectangle((0, 0, self.oled.width, self.oled.height), outline=0, fill=0)
 
 	def get_IP(self):
-		return s
+		return subprocess("hostname -I | cut -d' ' -f1")
 
 	def update_stats(self):
 		self.draw_border()
