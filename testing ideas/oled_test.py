@@ -74,11 +74,14 @@ class OLED()
 			textline = key + ": " + dataframe[key]
 			self.draw.text((0,top+(index*padding)), textline,font=self.font,fill=255)
 
-	def update(self):
-		events = self.dpad.get_events()
-		for event in events:
-			joystick_line = event.direction+": "+event.action
-			self.update_stats(joystick_line)
+
+
+
+def update(self):
+	events = self.dpad.get_events()
+	for event in events:
+		joystick_line = event.direction+": "+event.action
+		self.update_stats(joystick_line)
 
 
 # First define some constants to allow easy resizing of shapes.
