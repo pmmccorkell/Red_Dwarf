@@ -66,7 +66,7 @@ class OLED()
 		# bottom = self.oled.height - top
 		padding = 8
 		x = 0
-		self.draw_border()
+		self.clear_draw()
 		dataframe = {
 			'IP':self.get_IP(),
 			'CPU':self.get_CPU(),
