@@ -84,7 +84,7 @@ class Joystick:
 		self.pressed_val = self.get_ord('pressed')
 
 		self.MIDDLE, self.DOWN, self.LEFT, self.RIGHT, self.UPLEFT, self.UPRIGHT, self.DOWNLEFT, self.DOWNRIGHT = 0,0,0,0,0,0,0,0
-		# self.UP = 0
+		self.UP = 0
 
 		self.dpad.direction_right = self.detected_right
 		self.dpad.direction_left = self.detected_left
@@ -94,15 +94,15 @@ class Joystick:
 
 		self.last_event = 'N/A'
 
-	@property
-	def UP(self):
-		return self._UP
+	# @property
+	# def UP(self):
+	# 	return self._UP
 
-	@UP.setter
-	def UP(self,value):
-		print('setter')
-		self.UP = value
-		self.UPRIGHT = self.UP * self.RIGHT
+	# @UP.setter
+	# def UP(self,value):
+	# 	print('setter')
+	# 	self.UP = value
+	# 	self.UPRIGHT = self.UP * self.RIGHT
 
 	def get_ord(self,some_string):
 		returnval = 0
