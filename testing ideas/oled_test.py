@@ -49,7 +49,7 @@ class OLED()
 		self.oled.show()
 
 	def clear_draw(self):
-		# Draw a rectangle from edge to edge.
+		# Draw a black rectangle from edge to edge.
 		self.draw.rectangle((0, 0, self.oled.width, self.oled.height), outline=0, fill=0)
 
 	def get_IP(self):
