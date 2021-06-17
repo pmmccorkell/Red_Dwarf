@@ -187,7 +187,7 @@ def update():
 def update_state():
 	# oled.update_stats(dpad.last_event)
 	if dpad.UPLEFT:
-		print(" up left")
+		print("up left")
 	if dpad.UPRIGHT:
 		print("up right")
 	if (dpad.MIDDLE):
