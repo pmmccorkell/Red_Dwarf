@@ -75,7 +75,7 @@ class OLED()
 
 
 sense = SenseHat()
-joystick = sense.stick
+dpad = sense.stick
 
 
 def update():
