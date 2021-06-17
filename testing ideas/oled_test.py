@@ -101,26 +101,31 @@ class Joystick:
 	def setup_diags():
 		dpad.direction_up = detect_up
 		dpad.direction_down = detect_down
-
+		self.last_event = event.direction
+		
 	def detected_left(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.LEFT = 1 * check_val
+		self.last_event = event.direction
 
 	def detected_right(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.RIGHT = 1 * check_val
+		self.last_event = event.direction
 
 	def detected_up(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.UP = 1 * check_val
 		self.UPLEFT = self.UP * self.LEFT
 		self.UPRIGHT = self.UP * self.RIGHT
+		self.last_event = event.direction
 	
 	def detected_down(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.DOWN = 1 * check_val
 		self.DOWNLEFT = self.DOWN * self.LEFT
 		self.DOWNRIGHT = self.DOWN * self.RIGHT
+		self.last_event = event.direction
 
 
 oled = OLED()
@@ -145,7 +150,7 @@ def update():
 # 	dpad.close()
 
 def update_state():
-	
+
 
 if __name__ == '__main__':
 	print("running as main")
