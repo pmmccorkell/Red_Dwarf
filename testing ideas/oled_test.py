@@ -178,6 +178,9 @@ class Joystick:
 		# self.event_queue.append(check_released * check_hold * event.direction)
 			# self.disp.update_stats(event.direction)
 
+	def detected(self,event):
+		
+
 oled = OLED()
 dpad = Joystick(oled)
 
