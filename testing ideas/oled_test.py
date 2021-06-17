@@ -81,6 +81,11 @@ class Joystick:
 		self.sense = SenseHat()
 		self.dpad = self.sense.stick
 
+		self.released_val = self.get_ord('released')
+		self.held_val = self.get_ord('held')
+		self.pressed_val = self.get_ord('pressed')
+
+
 	def update():
 		events = dpad.get_events()
 		for event in events:
@@ -100,9 +105,6 @@ class Joystick:
 			returnval += ord(character)
 		return returnval
 
-	released_val = get_ord('released')
-	held_val = get_ord('held')
-	pressed_val = get_ord('pressed')
 
 	def setup_diags():
 		dpad.direction_up = detect_up
