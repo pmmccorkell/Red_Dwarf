@@ -145,7 +145,7 @@ class Joystick:
 		check_val = self.get_ord(event.action)
 		check_released = bool(check_val - self.released_val)
 		check_hold = bool(check_val - self.held_val)
-		self.MIDDLE = 1 * check_released
+		self.DOWN = 1 * check_released
 		self.last_event = event.direction
 		self.event_queue.append(check_released * check_hold * event.direction)
 		self.DOWNLEFT = self.DOWN * self.LEFT
