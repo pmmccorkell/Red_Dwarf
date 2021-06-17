@@ -95,6 +95,8 @@ class Joystick:
 
 	@UP.setter
 	def UP(self,value)
+		print('setter')
+		self.
 
 	def get_ord(self,some_string):
 		returnval = 0
@@ -135,7 +137,7 @@ class Joystick:
 		check_val = self.get_ord(event.action)
 		check_released = bool(check_val - self.released_val)
 		check_hold = bool(check_val - self.held_val)
-		self.MIDDLE = 1 * check_released
+		self.UP = 1 * check_released
 		self.last_event = event.direction
 		self.event_queue.append(check_released * check_hold * event.direction)
 		self.UPLEFT = self.UP * self.LEFT
