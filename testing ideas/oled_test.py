@@ -88,13 +88,15 @@ def update():
 				return 0
 	return 1
 
-# def get_ord(some_string):
-# 	returnval = 0
-# 	for character in some_string:
-# 		returnval += ord(character)
-# 	return returnval
+def get_ord(some_string):
+	returnval = 0
+	for character in some_string:
+		returnval += ord(character)
+	return returnval
 
-# returned_ord_val = get_ord('released')
+released_val = get_ord('released')
+held_val = get_ord('held')
+pressed_val = get_ord('pressed')
 
 def setup_diags():
 	dpad.direction_up = detect_up
