@@ -16,7 +16,7 @@ from sense_hat import sense_hat
 
 
 
-class OLED()
+class OLED:
 	def __init__(self):
 		# Instantiate i2c bus.
 		i2c = busio.I2C(SCL, SDA)
