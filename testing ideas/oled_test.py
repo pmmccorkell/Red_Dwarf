@@ -52,9 +52,12 @@ class OLED()
 	def get_CPU(self):
 		return subprocess.check_output('cut -f 1 -d " " /proc/loadavg',shell=True).decode("utf-8")
 
+	def get_Joystick(self):
+		buffer = self.joystick.get_events()
+
 	def update_stats(self):
 		self.draw_border()
-	
+		self.draw
 
 
 # First define some constants to allow easy resizing of shapes.
