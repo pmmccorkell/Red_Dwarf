@@ -96,6 +96,8 @@ def update():
 
 # returned_ord_val = get_ord('released')
 
+def setup_8dir():
+	
 
 def detect_8dir():
 	events = dpad.get_events()
