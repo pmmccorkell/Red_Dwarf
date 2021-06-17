@@ -11,9 +11,12 @@ from board import SCL, SDA
 import busio
 from PIL import Image, ImageDraw, ImageFont
 from adafruit_ssd1306 import SSD1306_I2C
+from sense_hat import sense_hat
 
 
 i2c = busio.I2C(SCL, SDA)
+sense = SenseHat()
+joystick = sense.stick
 
 # Instantiate ssd1306 class over i2c.
 # (Width, Height, i2c bus)
