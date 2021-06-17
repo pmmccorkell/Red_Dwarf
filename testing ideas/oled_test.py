@@ -128,6 +128,8 @@ class Joystick:
 		self.DOWNRIGHT = self.DOWN * self.RIGHT
 		self.last_event = event.direction
 
+	def detected_middle(self,event)
+		
 
 oled = OLED()
 dpad = Joystick()
@@ -152,7 +154,7 @@ def update():
 
 def update_state():
 	oled.update_stats(dpad.last_event)
-	
+	if dpad.LEFT and dpad.RIGHT and 
 
 if __name__ == '__main__':
 	print("running as main")
