@@ -69,7 +69,7 @@ class OLED:
 			textline = key + ": " + dataframe[key]
 			self.draw.text((0,top+(index*padding)), textline,font=self.font,fill=255)
 		self.image(image)
-		disp.show()
+		self.oled.show()
 
 
 
