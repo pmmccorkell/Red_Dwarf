@@ -106,7 +106,10 @@ def setup_diags():
 # 	for event in events:
 # 		get_ord(event.action)
 
-
+def detected_up():
+	events = dpad.get_events()
+	for event in events:
+		if (event.action == 'pressed' and event.action)
 
 if __name__ == '__main__':
 	print("running as main")
