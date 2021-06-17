@@ -109,6 +109,7 @@ class Joystick:
 
 	def detected_left(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
+		self.LEFT = 1 * check_val
 
 	def detected_right(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
