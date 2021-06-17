@@ -68,9 +68,9 @@ class OLED()
 		self.draw.text(()
 
 # First define some constants to allow easy resizing of shapes.
-top = -2
+# top = -2
 # top = padding
-bottom = height - top
+# bottom = height - top
 # Move left to right keeping track of the current x position for drawing shapes.
 x = 0
 
