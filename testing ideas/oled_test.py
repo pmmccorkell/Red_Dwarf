@@ -59,7 +59,7 @@ class OLED()
 		return subprocess.check_output('cut -f 1 -d " " /proc/loadavg',shell=True).decode("utf-8")
 
 	def get_dpad(self):
-		buffer = self.joystick.get_events()
+		buffer = self.dpad.get_events()
 
 	def update_stats(self):
 		self.draw_border()
