@@ -94,7 +94,7 @@ class Joystick:
 		self.last_event = 'N/A'
 
 	@UP.setter
-	def UP(self,value)
+	def UP(self,value):
 		print('setter')
 		self.UP = value
 		self.UPRIGHT = self.UP * self.RIGHT
