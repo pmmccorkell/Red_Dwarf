@@ -93,10 +93,10 @@ class Joystick:
 
 		self.last_event = 'N/A'
 
-	@RIGHT.setter
-	def RIGHT(self,value)
+	@UP.setter
+	def UP(self,value)
 		print('setter')
-		self.RIGHT = value
+		self.UP = value
 
 	def get_ord(self,some_string):
 		returnval = 0
