@@ -80,6 +80,7 @@ class OLED()
 			joystick_line = event.direction+": "+event.action
 			self.update_stats(joystick_line)
 
+
 # First define some constants to allow easy resizing of shapes.
 # top = -2
 # top = padding
