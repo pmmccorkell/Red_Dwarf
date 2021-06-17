@@ -130,6 +130,7 @@ class Joystick:
 
 	def detected_middle(self,event)
 		check_val = bool(self.get_ord(event.action) - self.released_val)
+		self.MIDDLE = 1 * check_val
 		self.last_event = event.direction
 
 oled = OLED()
