@@ -100,11 +100,12 @@ def setup_diags():
 	dpad.direction_up = detect_up
 	dpad.direction_down = detect_down
 
-def detect_8dir():
-	events = dpad.get_events()
-	filter_events = {}
-	for event in events:
-		get_ord(event.action)
+# def detect_8dir():
+# 	events = dpad.get_events()
+# 	filter_events = {}
+# 	for event in events:
+# 		get_ord(event.action)
+
 
 
 if __name__ == '__main__':
