@@ -73,8 +73,8 @@ class OLED()
 			'dpad':self.get_dpad()
 		}
 		for index,line in enumerate(lines):
-		self.draw.text((x,top+(0*padding)), "IP: "+self.get_IP,font=self.font,fill=255)
-		self.draw.text((x,row))
+			self.draw.text((x,top+(0*padding)), "IP: "+self.get_IP,font=self.font,fill=255)
+			self.draw.text((x,row))
 
 # First define some constants to allow easy resizing of shapes.
 # top = -2
