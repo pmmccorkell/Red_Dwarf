@@ -192,9 +192,9 @@ class Joystick:
 			# self.disp.update_stats(event.direction)
 
 	def detected(self,event):
-		if event.action.find('released'):
+		if not (event.action.find('released')):
 			self.values[event.direction] = 0
-		elif event.action.find('pressed'):
+		elif not (event.action.find('pressed')):
 			self.values[event.direction] = 1
 			self.last_event = event.direction
 			self.event_queue.append(event.direction)
