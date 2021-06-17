@@ -76,7 +76,8 @@ class OLED()
 
 	def update(self):
 		events = self.dpad.get_events()
-		for 
+		for event in events:
+			
 
 # First define some constants to allow easy resizing of shapes.
 # top = -2
