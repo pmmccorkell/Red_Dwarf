@@ -80,9 +80,9 @@ class OLED()
 def update(self):
 	events = self.dpad.get_events()
 	for event in events:
-		if event.action=="pressed"
-		joystick_line = event.direction+" "+event.action
-		self.update_stats(joystick_line)
+		if event.action=="pressed":
+			joystick_line = event.direction+" "+event.action
+			self.update_stats(joystick_line)
 
 
 # First define some constants to allow easy resizing of shapes.
