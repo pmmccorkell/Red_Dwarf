@@ -191,6 +191,7 @@ class Joystick:
 		if event.action == 'released':
 			self.values[event.direction] = 0
 		else:
+			self.values[event.direction] = 1
 
 
 oled = OLED()
