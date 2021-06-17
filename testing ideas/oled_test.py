@@ -23,8 +23,6 @@ oled = SSD1306_I2C(128, 32, i2c)
 oled.fill(0)
 oled.show()
 
-# Create blank image for drawing.
-# Make sure to create image with mode '1' for 1-bit color.
 width = disp.width
 height = disp.height
 image = Image.new("1", (width, height))
