@@ -58,7 +58,6 @@ class OLED()
 
 	def update_stats(self,last_joystick)):
 		top = -2
-		# bottom = self.oled.height - top
 		padding = 8
 		x = 0
 		self.clear_draw()
