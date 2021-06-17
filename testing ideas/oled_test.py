@@ -19,7 +19,7 @@ i2c = busio.I2C(SCL, SDA)
 # (Width, Height, i2c bus)
 oled = SSD1306_I2C(128, 32, i2c)
 
-# Clear display.
+# Clear and show display.
 oled.fill(0)
 oled.show()
 
