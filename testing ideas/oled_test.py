@@ -27,17 +27,19 @@ class OLED()
 		# (Width, Height, i2c bus)
 		self.oled = SSD1306_I2C(128, 32, i2c)
 		self.clear_oled()
+	
+		# Instantiate an image the size of the screen
+		self.image = Image.new("1", (oled.width, oled.height))
+
+		# Instantiate a drawing to draw on the image.
+		draw = ImageDraw.Draw(image)
+
 
 	def clear_oled(self):
 		# Clear and show display.
 		self.oled.fill(0)
 		self.oled.show()
 
-# Instantiate an image the size of the screen
-image = Image.new("1", (oled.width, oled.height))
-
-# Instantiate a drawing to draw on the image.
-draw = ImageDraw.Draw(image)
 
 # Draw a rectangle from edge to edge.
 draw.rectangle((0, 0, oled.width, oled.height), outline=0, fill=0)
