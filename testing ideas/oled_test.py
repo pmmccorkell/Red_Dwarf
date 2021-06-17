@@ -37,8 +37,10 @@ class OLED()
 		# Instantiate default font.
 		self.font = ImageFont.load_default()
 
-		# Instantiate Pi SenseHat
+		# Instantiate Pi SenseHat.
 		self.sense = SenseHat()
+
+		# Instantiate the joystick on Pi SenseHat
 		self.joystick = sense.stick
 
 	def clear_oled(self):
