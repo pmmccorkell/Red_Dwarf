@@ -124,6 +124,8 @@ class Joystick:
 	def detected_down(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.DOWN = 1 * check_val
+		self.DOWNLEFT = self.DOWN * self.LEFT
+		self.DOWNRIGHT = self.DOWN * self.RIGHT
 
 
 oled = OLED()
