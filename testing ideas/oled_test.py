@@ -190,8 +190,10 @@ class Joystick:
 	def detected(self,event):
 		if event.action == 'released':
 			self.values[event.direction] = 0
+
 		elif event.action == 'pressed':
 			self.values[event.direction] = 1
+			
 
 
 oled = OLED()
