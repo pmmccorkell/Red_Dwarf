@@ -121,7 +121,7 @@ oled = OLED()
 dpad = Joystick()
 
 def update(self):
-	events = dpad.get_events()
+	events = dpad.dpad.get_events()
 	for event in events:
 		if event.action=="pressed":
 			oled.update_stats(event.direction)
