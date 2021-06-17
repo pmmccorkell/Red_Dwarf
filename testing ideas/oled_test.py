@@ -197,7 +197,7 @@ class Joystick:
 			self.update_display()
 	
 	def update_display(self):
-		
+		for event in self.event_queue:
 
 
 
