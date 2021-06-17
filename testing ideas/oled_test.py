@@ -60,6 +60,7 @@ class OLED()
 		top = -2
 		padding = 8
 		x = 0
+
 		self.clear_draw()
 		dataframe = {
 			'IP':self.get_IP(),
