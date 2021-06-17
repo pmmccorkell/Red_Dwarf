@@ -32,7 +32,7 @@ class OLED()
 		# Instantiate an image the size of the screen
 		self.image = Image.new("1", (self.oled.width, self.oled.height))
 
-		# Instantiate a drawing to draw on the image.
+		# Instantiate an object to draw on the image.
 		self.draw = ImageDraw.Draw(self.image)
 
 		# Instantiate default font.
