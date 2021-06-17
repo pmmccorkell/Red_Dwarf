@@ -83,7 +83,8 @@ class Joystick:
 		self.held_val = self.get_ord('held')
 		self.pressed_val = self.get_ord('pressed')
 
-		self.MIDDLE,self.UP, self.DOWN, self.LEFT, self.RIGHT, self.UPLEFT, self.UPRIGHT, self.DOWNLEFT, self.DOWNRIGHT = 0,0,0,0,0,0,0,0,0
+		self.MIDDLE, self.DOWN, self.LEFT, self.RIGHT, self.UPLEFT, self.UPRIGHT, self.DOWNLEFT, self.DOWNRIGHT = 0,0,0,0,0,0,0,0,0
+		# self.UP = 0
 
 		self.dpad.direction_right = self.detected_right
 		self.dpad.direction_left = self.detected_left
