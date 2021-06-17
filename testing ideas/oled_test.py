@@ -118,6 +118,7 @@ class Joystick:
 	def detected_up(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.UP = 1 * check_val
+		self.UPLEFT = self.UP * self.LEFT
 	
 	def detected_down(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
