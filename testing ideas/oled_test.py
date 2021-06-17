@@ -22,7 +22,7 @@ class OLED(SSD1306_I2C)
 	def init_oled():
 		# Instantiate ssd1306 class over i2c.
 		# (Width, Height, i2c bus)
-		oled = SSD1306_I2C(128, 32, i2c)
+		self.oled = SSD1306_I2C(128, 32, i2c)
 
 
 	def clear_oled():
