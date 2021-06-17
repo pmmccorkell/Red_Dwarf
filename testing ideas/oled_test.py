@@ -166,6 +166,10 @@ class Joystick:
 oled = OLED()
 dpad = Joystick(oled)
 
+def check_diag():
+
+dpad.direction_up = check_diag()
+
 def update():
 	events = dpad.dpad.get_events()
 	for event in events:
