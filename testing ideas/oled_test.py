@@ -121,7 +121,7 @@ class Joystick:
 oled = OLED()
 dpad = Joystick()
 
-def update(self):
+def update_stats(self):
 	events = dpad.dpad.get_events()
 	for event in events:
 		if event.action=="pressed":
