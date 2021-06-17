@@ -97,6 +97,7 @@ class Joystick:
 	def UP(self,value)
 		print('setter')
 		self.UP = value
+		self.UPRIGHT = self.UP * self.RIGHT
 
 	def get_ord(self,some_string):
 		returnval = 0
