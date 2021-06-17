@@ -101,13 +101,12 @@ class Joystick:
 	def setup_diags():
 		dpad.direction_up = detect_up
 		dpad.direction_down = detect_down
-		self.last_event = event.direction
-		
+
 	def detected_left(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.LEFT = 1 * check_val
 		self.last_event = event.direction
-
+		
 	def detected_right(self,event):
 		check_val = bool(self.get_ord(event.action) - self.released_val)
 		self.RIGHT = 1 * check_val
