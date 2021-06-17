@@ -66,7 +66,6 @@ class OLED()
 		bottom = self.oled.height - top
 		padding = 8
 		x = 0
-		y = 0
 		self.draw_border()
 		self.draw.text((x,row, top+padding), "IP: "+self.get_IP,font=self.font,fill=255)
 		self.draw.text((row+))
