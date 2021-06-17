@@ -37,6 +37,9 @@ class OLED()
 		# Instantiate default font.
 		self.font = ImageFont.load_default()
 
+		self.sense = SenseHat()
+		self.joystick = sense.stick
+
 	def clear_oled(self):
 		# Clear and show display.
 		self.oled.fill(0)
