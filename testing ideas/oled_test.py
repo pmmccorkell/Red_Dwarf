@@ -67,12 +67,13 @@ class OLED()
 		padding = 8
 		x = 0
 		self.draw_border()
-		lines = {
+		dataframe = {
 			'IP':self.get_IP(),
 			'CPU':self.get_CPU(),
 			'dpad':self.get_dpad()
 		}
 		for index,key in enumerate(lines):
+			textline = 
 			self.draw.text((0,top+(index*padding)), key + ": "+lines[key],font=self.font,fill=255)
 
 # First define some constants to allow easy resizing of shapes.
