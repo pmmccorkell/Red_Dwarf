@@ -50,7 +50,7 @@ class OLED()
 		return subprocess.check_output("hostname -I | cut -d' ' -f1",shell=True).decode("utf-8")
 
 	def get_CPU(self):
-		return subprocess.check_output("hostname -I | cut -d' ' -f1",shell=True).decode("utf-8")
+		return subprocess.check_output("free -m | awk 'NR==2{printf \"Mem: %s/%s MB  %.2f%%\", $3,$2,$3*100/$2 }'",shell=True).decode("utf-8")
 
 
 	def update_stats(self):
