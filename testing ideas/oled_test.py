@@ -25,7 +25,7 @@ class OLED()
 		i2c = busio.I2C(SCL, SDA)
 
 		# Instantiate ssd1306 class over i2c.
-		# Class(Width, Height, i2c bus)
+		# Class(Width, Height, bus)
 		self.oled = SSD1306_I2C(128, 32, i2c)
 		self.clear_oled()
 	
