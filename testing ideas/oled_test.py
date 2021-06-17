@@ -93,6 +93,9 @@ class Joystick:
 
 		self.last_event = 'N/A'
 
+	@UP.setter
+	def UP(self,value)
+
 	def get_ord(self,some_string):
 		returnval = 0
 		for character in some_string:
