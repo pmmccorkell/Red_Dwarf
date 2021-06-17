@@ -75,7 +75,7 @@ class OLED()
 			self.draw.text((0,top+(index*padding)), textline,font=self.font,fill=255)
 
 	def update(self):
-		self.dpad.get_events()
+		buffer = self.dpad.get_events()
 
 
 # First define some constants to allow easy resizing of shapes.
