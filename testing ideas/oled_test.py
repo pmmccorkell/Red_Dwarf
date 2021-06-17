@@ -68,7 +68,9 @@ class OLED()
 		x = 0
 		self.draw_border()
 		lines = {
-			'IP':
+			'IP':self.get_IP(),
+			'CPU':self.get_CPU(),
+			'dpad':self.get_dpad()
 		}
 		self.draw.text((x,top+(0*padding)), "IP: "+self.get_IP,font=self.font,fill=255)
 		self.draw.text((x,row))
