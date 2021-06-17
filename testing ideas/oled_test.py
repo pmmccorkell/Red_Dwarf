@@ -29,7 +29,7 @@ image = Image.new("1", (oled.width, oled.height))
 # Instantiate a drawing to draw on the image.
 draw = ImageDraw.Draw(image)
 
-# Draw a black filled box to clear the image.
+# Draw a rectangle from edge to edge.
 draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
 # Draw some shapes.
