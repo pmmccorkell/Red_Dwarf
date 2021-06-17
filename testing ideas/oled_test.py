@@ -7,7 +7,7 @@
 # not support PIL/pillow (python imaging library)!
 
 import time
-import subprocess
+# import subprocess
 
 from board import SCL, SDA
 import busio
