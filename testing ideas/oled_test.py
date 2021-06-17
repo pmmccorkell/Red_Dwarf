@@ -90,9 +90,9 @@ def update():
 
 def detect_8dir():
 	events = dpad.get_events()
+	filter_events = {}
 	for event in events:
-		if event.action == "pressed":
-			
+
 
 if __name__ == '__main__':
 	print("running as main")
