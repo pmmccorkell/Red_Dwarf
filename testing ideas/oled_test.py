@@ -85,6 +85,8 @@ def update():
 		if event.action=="pressed":
 			# joystick_line = event.direction+" "+event.action
 			oled.update_stats(event.direction)
+			if event == "middle":
+				returnval = 0
 
 if __name__ == '__main__':
 	print("running as main")
