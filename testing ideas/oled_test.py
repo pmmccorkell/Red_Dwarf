@@ -91,6 +91,9 @@ class Joystick:
 					return 0
 		return 1
 
+	def close(self):
+		self.dpad.close()
+
 	def get_ord(some_string):
 		returnval = 0
 		for character in some_string:
