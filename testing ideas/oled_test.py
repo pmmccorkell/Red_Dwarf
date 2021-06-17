@@ -18,11 +18,13 @@ i2c = busio.I2C(SCL, SDA)
 sense = SenseHat()
 joystick = sense.stick
 
-# Instantiate ssd1306 class over i2c.
-# (Width, Height, i2c bus)
-oled = SSD1306_I2C(128, 32, i2c)
-
 def init_oled():
+	# Instantiate ssd1306 class over i2c.
+	# (Width, Height, i2c bus)
+	oled = SSD1306_I2C(128, 32, i2c)
+
+
+def clear_oled():
 	# Clear and show display.
 	oled.fill(0)
 	oled.show()
