@@ -91,11 +91,8 @@ class Joystick:
 			returnval += ord(character)
 		return returnval
 
-
 	def close(self):
 		self.dpad.close()
-
-
 
 	def setup_diags():
 		dpad.direction_up = detect_up
