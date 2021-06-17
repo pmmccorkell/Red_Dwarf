@@ -89,6 +89,7 @@ def update():
 	return 1
 
 def detect_8dir():
+	events = dpad.get_events()
 	
 
 if __name__ == '__main__':
