@@ -5,8 +5,7 @@
 #
 
 import time
-# import subprocess
-
+import subprocess
 from board import SCL, SDA
 import busio
 from PIL import Image, ImageDraw, ImageFont
@@ -48,7 +47,7 @@ class OLED()
 		self.draw.rectangle((0, 0, self.oled.width, self.oled.height), outline=0, fill=0)
 
 	def get_IP(self):
-		
+		return s
 
 	def update_stats(self):
 		self.draw_border()
