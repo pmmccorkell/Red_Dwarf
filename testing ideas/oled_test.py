@@ -86,6 +86,18 @@ class Joystick:
 		self.MIDDLE, self.DOWN, self.LEFT, self.RIGHT, self.UPLEFT, self.UPRIGHT, self.DOWNLEFT, self.DOWNRIGHT = 0,0,0,0,0,0,0,0
 		self.UP = 0
 
+		self.values = {
+			'up':0,
+			'down':0,
+			'left':0,
+			'right':0,
+			'upleft':0,
+			'upright':0,
+			'downleft':0,
+			'downright':0,
+			'middle':0
+		}
+
 		self.dpad.direction_right = self.detected_right
 		self.dpad.direction_left = self.detected_left
 		self.dpad.direction_up = self.detected_up
