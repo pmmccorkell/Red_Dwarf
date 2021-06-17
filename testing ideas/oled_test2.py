@@ -79,10 +79,6 @@ class Joystick:
 		self.sense = SenseHat()
 		self.dpad = self.sense.stick
 
-		self.released_val = self.get_ord('released')
-		self.held_val = self.get_ord('held')
-		self.pressed_val = self.get_ord('pressed')
-
 		self.values = {
 			'up':0,
 			'down':0,
