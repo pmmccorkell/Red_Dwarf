@@ -70,7 +70,7 @@ class OLED()
 		dataframe = {
 			'IP':self.get_IP(),
 			'CPU':self.get_CPU(),
-			'dpad':self.get_dpad()
+			'dpad':last_joystick
 		}
 		for index,key in enumerate(dataframe):
 			for k,v in enumerate
