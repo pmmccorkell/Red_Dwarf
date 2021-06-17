@@ -123,11 +123,11 @@ class Joystick:
 	# 	self.UP = value
 	# 	self.UPRIGHT = self.UP * self.RIGHT
 
-	def get_ord(self,some_string):
-		returnval = 0
-		for character in some_string:
-			returnval += ord(character)
-		return returnval
+	# def get_ord(self,some_string):
+	# 	returnval = 0
+	# 	for character in some_string:
+	# 		returnval += ord(character)
+	# 	return returnval
 
 	def close(self):
 		self.dpad.close()
