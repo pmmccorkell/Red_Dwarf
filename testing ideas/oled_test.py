@@ -85,7 +85,9 @@ def update():
 			# joystick_line = event.direction+" "+event.action
 			self.update_stats(event.direction)
 
-
+if __name__ == '__main__':
+	print("running as main")
+	
 
 
 # First define some constants to allow easy resizing of shapes.
