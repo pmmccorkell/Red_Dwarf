@@ -16,7 +16,7 @@ from sense_hat import sense_hat
 
 i2c = busio.I2C(SCL, SDA)
 sense = SenseHat()
-joystick = sense.stick()
+joystick = sense.stick
 
 # Instantiate ssd1306 class over i2c.
 # (Width, Height, i2c bus)
