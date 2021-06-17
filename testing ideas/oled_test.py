@@ -64,6 +64,7 @@ class OLED()
 	def update_stats(self):
 		top = -2
 		bottom = self.oled.height - top
+		row = 0
 		self.draw_border()
 		self.draw.text(()
 
