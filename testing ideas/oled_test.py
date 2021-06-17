@@ -14,8 +14,6 @@ from sense_hat import SenseHat
 
 
 
-
-
 class OLED:
 	def __init__(self):
 		# Instantiate i2c bus.
