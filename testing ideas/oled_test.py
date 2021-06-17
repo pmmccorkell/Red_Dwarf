@@ -68,7 +68,7 @@ class OLED:
 		for index,key in enumerate(dataframe):
 			textline = key + ": " + dataframe[key]
 			self.draw.text((0,top+(index*padding)), textline,font=self.font,fill=255)
-		disp.image(image)
+		self.image(image)
 		disp.show()
 
 
