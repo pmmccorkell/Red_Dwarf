@@ -23,7 +23,7 @@ oled = SSD1306_I2C(128, 32, i2c)
 oled.fill(0)
 oled.show()
 
-# Create an image the size of the screen
+# Instantiate an image the size of the screen
 image = Image.new("1", (oled.width, oled.height))
 
 # Get drawing object to draw on image.
