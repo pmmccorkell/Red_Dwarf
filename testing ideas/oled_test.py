@@ -48,7 +48,7 @@ class OLED()
 		self.oled.fill(0)
 		self.oled.show()
 
-	def draw_border(self):
+	def clear_draw(self):
 		# Draw a rectangle from edge to edge.
 		self.draw.rectangle((0, 0, self.oled.width, self.oled.height), outline=0, fill=0)
 
@@ -73,6 +73,7 @@ class OLED()
 			'dpad':self.get_dpad()
 		}
 		for index,key in enumerate(dataframe):
+			for k,v in enumerate
 			textline = key + ": " + dataframe[key]
 			self.draw.text((0,top+(index*padding)), textline,font=self.font,fill=255)
 
