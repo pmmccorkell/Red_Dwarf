@@ -62,9 +62,10 @@ class OLED()
 		buffer = self.dpad.get_events()
 
 	def update_stats(self):
+		top = -2
+		bottom = self.oled.height - top
 		self.draw_border()
-		self.draw
-
+		self.draw.text(()
 
 # First define some constants to allow easy resizing of shapes.
 top = -2
