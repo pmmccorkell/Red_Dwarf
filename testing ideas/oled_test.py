@@ -77,6 +77,7 @@ class OLED()
 sense = SenseHat()
 dpad = sense.stick
 
+oled = OLED()
 
 def update():
 	events = dpad.get_events()
