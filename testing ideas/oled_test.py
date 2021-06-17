@@ -114,7 +114,9 @@ class Joystick:
 		
 
 	def detected_up(self,event):
-		print(event)	
+		print(event)
+	
+	def detected_down(self,event):
 
 
 oled = OLED()
