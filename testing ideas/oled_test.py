@@ -13,8 +13,9 @@ from PIL import Image, ImageDraw, ImageFont
 from adafruit_ssd1306 import SSD1306_I2C
 from sense_hat import sense_hat
 
-		sense = SenseHat()
-		joystick = sense.stick
+
+sense = SenseHat()
+joystick = sense.stick
 
 
 
