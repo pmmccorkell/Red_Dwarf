@@ -72,6 +72,7 @@ class OLED()
 			'CPU':self.get_CPU(),
 			'dpad':self.get_dpad()
 		}
+		for index,line in enumerate(lines):
 		self.draw.text((x,top+(0*padding)), "IP: "+self.get_IP,font=self.font,fill=255)
 		self.draw.text((x,row))
 
