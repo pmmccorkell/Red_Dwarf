@@ -96,7 +96,7 @@ class Joystick:
 	@RIGHT.setter
 	def RIGHT(self,value)
 		print('setter')
-		self.RIGHT
+		self.RIGHT = value
 
 	def get_ord(self,some_string):
 		returnval = 0
