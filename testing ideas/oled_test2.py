@@ -113,7 +113,7 @@ class Joystick:
 	def detected(self,event):
 		print('detected')
 		self.values[event.direction] = 1 * (not bool(event.action.find('released')))
-		print(event.direction+': '+str(values[event.direction]))
+		print(event.direction+': '+str(self.values[event.direction]))
 		if not (event.action.find('pressed')):
 			self.last_event = event.direction
 			self.event_queue.append(event.direction)
