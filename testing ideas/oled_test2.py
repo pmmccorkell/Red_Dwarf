@@ -97,7 +97,7 @@ class Joystick:
 
 		self.event_queue=[]
 
-		self.change_inputs()
+		# self.change_inputs()
 
 	def change_inputs(self):
 		self.dpad.KEY_ENTER=99	# print screen
