@@ -97,6 +97,9 @@ class Joystick:
 
 		self.event_queue=[]
 
+	def change_inputs(self):
+		
+
 	def get_ord(self,some_string):
 		returnval = 0
 		for character in some_string:
