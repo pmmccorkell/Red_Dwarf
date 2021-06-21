@@ -98,7 +98,12 @@ class Joystick:
 		self.event_queue=[]
 
 	def change_inputs(self):
-		
+		self.dpad.KEY_ENTER=99
+		self.dpad.KEY_DOWN=99
+		self.dpad.KEY_UP=99
+		self.dpad.KEY_LEFT=99
+		self.dpad.KEY_RIGHT=99
+
 
 	def get_ord(self,some_string):
 		returnval = 0
