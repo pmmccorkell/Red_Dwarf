@@ -122,12 +122,12 @@ class Joystick:
 			print('WARNING: Disabling IO input of Joystick failed.')
 
 
-	def change_inputs(self):
-		self.dpad.KEY_ENTER=99	# print screen
-		self.dpad.KEY_DOWN=99	# 
-		self.dpad.KEY_UP=99
-		self.dpad.KEY_LEFT=99
-		self.dpad.KEY_RIGHT=99
+	# def change_inputs(self):
+	# 	self.dpad.KEY_ENTER=99	# print screen
+	# 	self.dpad.KEY_DOWN=99	# 
+	# 	self.dpad.KEY_UP=99
+	# 	self.dpad.KEY_LEFT=99
+	# 	self.dpad.KEY_RIGHT=99
 
 
 	def get_ord(self,some_string):
