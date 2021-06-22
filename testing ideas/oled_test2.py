@@ -120,6 +120,7 @@ class Joystick:
 		except:
 			print('WARNING: Disabling IO input of Joystick failed.')
 
+
 	def get_ord(self,some_string):
 		returnval = 0
 		for character in some_string:
