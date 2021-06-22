@@ -115,6 +115,9 @@ class Joystick:
 		while ((not buffer4.endswith('\t')) and i<8):
 			buffer4 += buffer3[io_id + i]
 			i+=1
+		
+		# If the ID is not properly found, may fail on the str(int(...)).
+		# If the ID is invalid, may fail on the subprocess.run(...)
 		try:
 			self.input_id = str(int(buffer4))
 			subprocess.run(['xinput','float',self.input_id])
