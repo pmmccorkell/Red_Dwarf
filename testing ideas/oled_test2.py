@@ -85,10 +85,6 @@ class Joystick:
 			'down':0,
 			'left':0,
 			'right':0,
-			# 'upleft':0,
-			# 'upright':0,
-			# 'downleft':0,
-			# 'downright':0,
 			'middle':0
 		}
 
