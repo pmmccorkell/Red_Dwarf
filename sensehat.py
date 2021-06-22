@@ -174,9 +174,10 @@ class Joystick:
 		}
 		if not (event.action.find('pressed')):
 			self.last_event = event.direction
-	
+
 			# self.event_queue.append(event.direction)
-			self.event_queue.append(translate.get(event.direction,translate['default']))
+			js_position = translate.get(event.direction,translate['default'])
+			self.event_queue.append()
 			self.update_display()
 			self.run_thruster()
 		elif not (event.action.find('released')):
