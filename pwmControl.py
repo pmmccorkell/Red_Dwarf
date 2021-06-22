@@ -54,7 +54,7 @@ class pwmControl:
 		self.servoboard.freq(400)	# set frequency to 400 Hz
 		self.update(0)				# set everything to 1.5ms
 
-	def stopAllThrusters(self):
+	def stopAllThrusters(self,v=None):
 		self.update(0)
 		# print("stopped all thrusters")
 
