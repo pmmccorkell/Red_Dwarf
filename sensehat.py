@@ -166,10 +166,10 @@ class Joystick:
 		self.values[event.direction] = 1 * (not bool(event.action.find('released')))
 		print(event.direction+': '+str(self.values[event.direction]))
 		translate = {
-			'right':'forePort',
-			'down':'foreStar',
-			'left':'aftStar',
-			'up':'aftPort',
+			'right':'fore Port',
+			'down':'fore Star',
+			'left':'aft Star',
+			'up':'aft Port',
 			'default':'N/A'
 		}
 		if not (event.action.find('pressed')):
