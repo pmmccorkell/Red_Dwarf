@@ -114,7 +114,7 @@ class Joystick:
 			i+=1
 		try:
 			self.input_id = str(int(buffer4))
-			subprocess.run(['xinput','float',input_id])
+			subprocess.run(['xinput','float',self.input_id])
 			print("Successfully disabled IO input of Joystick.")
 		except:
 			print('WARNING: Disabling IO input of Joystick failed.')
