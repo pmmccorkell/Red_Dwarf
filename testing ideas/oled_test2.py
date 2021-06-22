@@ -118,6 +118,7 @@ class Joystick:
 		# 	print("Successfully disabled IO input of Joystick.")
 		# except:
 		# 	print('WARNING: Disabling IO input of Joystick failed.')
+	
 		buffer = subprocess.Popen(["xinput"],stdout=subprocess.PIPE)
 		buffer2 = subprocess.run(["grep","Raspberry"],stdin=buffer.stdout,stdout=subprocess.PIPE)
 		buffer3 = buffer2.stdout.decode()
