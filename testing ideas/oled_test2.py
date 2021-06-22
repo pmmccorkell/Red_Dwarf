@@ -97,6 +97,8 @@ class Joystick:
 
 		self.event_queue=[]
 
+		self.silence_xinput()
+
 		# self.change_inputs()
 
 	def silence_xinput(self):
