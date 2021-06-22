@@ -182,6 +182,7 @@ if __name__ == '__main__':
 	keep_running = 1
 	while(keep_running):
 		oled.update_stats(dpad.last_event)
+		
 		keep_running = update_state()
 		# sleep(0.5)
 	dpad.close()
