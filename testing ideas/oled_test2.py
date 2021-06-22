@@ -113,7 +113,7 @@ class Joystick:
 		# char array -> str
 		buffer2 = buffer2.stdout.decode()
 
-		# Find the id value in the buffer.
+		# Find the id value in the buffer2.
 		io_id = buffer2.find('id=')
 
 		# In case the ID is 2 digits or more, iterate over a few digits until the 'tab' is found.
