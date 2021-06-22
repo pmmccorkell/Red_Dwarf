@@ -157,6 +157,9 @@ class Joystick:
 	def run_thrusters(self):
 		thrusters_function = self.map_functions.get(self.last_event, self.map_functions['default'])
 		thrusters_function(self.thruster_test_val)
+	
+	def stop_thrusters(self):
+		
 
 	def detected(self,event):
 		print('detected')
