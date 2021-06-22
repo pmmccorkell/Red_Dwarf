@@ -118,6 +118,7 @@ class Joystick:
 		
 		# If the ID is not properly found, may fail on the str(int(...)).
 		# If the ID is invalid, may fail on the subprocess.run(...)
+		# Check self.input_id to determine cause of failure.
 		try:
 			self.input_id = str(int(buffer4))
 			subprocess.run(['xinput','float',self.input_id])
