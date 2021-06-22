@@ -110,7 +110,7 @@ class Joystick:
 		buffer4=''
 		i=3
 		while ((not buffer4.endswith('\t')) and i<8):
-			buffer4 += buffer3[id+i]
+			buffer4 += buffer3[io_id + i]
 			i+=1
 		try:
 			self.input_id = str(int(buffer4))
