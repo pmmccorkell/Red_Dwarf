@@ -11,6 +11,7 @@ import busio
 from PIL import Image, ImageDraw, ImageFont
 from adafruit_ssd1306 import SSD1306_I2C
 from sense_hat import SenseHat
+from pwmControl import pwmControl
 
 
 
@@ -88,8 +89,8 @@ class Joystick:
 			'middle':0
 		}
 
-		self.thrusters = 
-		
+		self.thrusters = pwmControl()
+
 		self.map_functions = {
 			'right':thrusters.foreStar,
 			'down':thrusters.aftStar,
@@ -195,8 +196,6 @@ def update_state():
 	return 1
 
 if __name__ == '__main__':
-	from pwmControl import pwmControl
-	thrusters = pwmControl()
 
 
 	print("running as main")
