@@ -223,7 +223,7 @@ if __name__ == '__main__':
 	print("running as main")
 	keep_running = 1
 	while(keep_running):
-		oled.update_stats(dpad.last_event)
+		# oled.update_stats(dpad.last_event)
 		keep_running = update_state()
 		# thrusters_function = map_functions.get(dpad.last_event, map_functions['default'])
 		# thrusters_function(40)
