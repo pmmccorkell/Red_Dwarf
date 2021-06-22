@@ -112,7 +112,7 @@ class Joystick:
 		while (not buffer4.endswith('\t')):
 			buffer4 += buffer3[id+i]
 			i+=1
-		input_id = str(int(buffer4))
+		self.input_id = str(int(buffer4))
 		try:
 			subprocess.run(['xinput','float',input_id])
 			print("Successfully disabled IO input of Joystick.")
