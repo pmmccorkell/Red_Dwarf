@@ -177,7 +177,7 @@ class Joystick:
 
 			# self.event_queue.append(event.direction)
 			js_position = translate.get(event.direction,translate['default'])
-			self.event_queue.append()
+			self.event_queue.append(js_position)
 			self.update_display()
 			self.run_thruster()
 		elif not (event.action.find('released')):
