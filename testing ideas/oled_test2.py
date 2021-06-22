@@ -105,7 +105,7 @@ class Joystick:
 		buffer = subprocess.Popen(["xinput"],stdout=subprocess.PIPE)
 		buffer2 = subprocess.run(["grep","Raspberry"],stdin=buffer.stdout,stdout=subprocess.PIPE)
 		buffer3 = buffer2.stdout.decode()
-		id = buffer3.find('id=')
+		io_id = buffer3.find('id=')
 
 		buffer4=''
 		i=3
