@@ -111,7 +111,7 @@ class Joystick:
 		# Find the ID value in buffer.
 		io_id = buffer.find('id=')
 
-		# In case the ID is 2 digits or more, iterate over a few digits until the 'tab' is found.
+		# In case the ID is 2 digits or more, iterate over a few digits until a 'tab' is found.
 		buffer2=''
 		i=3
 		while ((not buffer2.endswith('\t')) and i<8):
