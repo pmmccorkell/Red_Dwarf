@@ -159,7 +159,7 @@ class Joystick:
 		thrusters_function(self.thruster_test_val)
 	
 	def stop_thrusters(self):
-		
+		self.thrusters.stopAllThrusters()
 
 	def detected(self,event):
 		print('detected')
