@@ -188,8 +188,8 @@ class Joystick:
 		while(self.event_queue):
 			oled.update_stats(self.event_queue.pop(0))
 
-oled = OLED()
-dpad = Joystick(oled)
+# oled = OLED()
+# dpad = Joystick(oled)
 
 def update():
 	events = dpad.dpad.get_events()
