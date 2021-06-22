@@ -205,6 +205,7 @@ def update_state():
 		return 0
 	return 1
 
+
 def exit_program():
 	import pwmControl
 	thrust = pwmControl.pwmControl()
@@ -212,7 +213,6 @@ def exit_program():
 		print("exiting program")
 		thrust.stopAllThrusters()
 		sleep(i)
-
 
 if __name__ == '__main__':
 	import atexit
