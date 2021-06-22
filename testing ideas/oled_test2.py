@@ -101,7 +101,7 @@ class Joystick:
 
 
 	# All this just to run "xinput float x" in bash,
-	# 	where x is the integer for the IO device id of the Joystick, ie /dev/event0
+	# 	where x is the integer for the IO device id of the Joystick
 	def silence_xinput(self):
 		buffer = subprocess.Popen(["xinput"],stdout=subprocess.PIPE)
 		buffer2 = subprocess.run(["grep","Raspberry"],stdin=buffer.stdout,stdout=subprocess.PIPE)
