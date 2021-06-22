@@ -206,7 +206,8 @@ def update_state():
 	return 1
 
 if __name__ == '__main__':
-
+	import atexit
+	atexit.register(exit_program)
 
 	print("running as main")
 	keep_running = 1
