@@ -92,13 +92,13 @@ class Joystick:
 		self.thrusters = pwmControl()
 		self.thruster_test_val = 40
 		self.map_functions = {
-			'right':self.thrusters.foreStar,
-			'down':self.thrusters.aftStar,
-			'left':self.thrusters.aftPort,
-			'up':self.thrusters.forePort,
+			'right':self.thrusters.forePort,
+			'down':self.thrusters.foreStar,
+			'left':self.thrusters.aftStar,
+			'up':self.thrusters.aftPort,
 			'default':self.thrusters.stopAllThrusters
 		}
-	
+
 
 		self.dpad.direction_any = self.detected
 
