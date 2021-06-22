@@ -178,7 +178,8 @@ def update_state():
 	return 1
 
 if __name__ == '__main__':
-	import xb
+	from pwmControl import pwmControl
+	
 	print("running as main")
 	keep_running = 1
 	while(keep_running):
