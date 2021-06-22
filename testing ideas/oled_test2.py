@@ -110,7 +110,7 @@ class Joystick:
 		# Feed the result of buffer as an argument to bash, run grep searching for "Raspberry" (joystick), and save result to buffer2
 		buffer2 = subprocess.run(["grep","Raspberry"],stdin=buffer.stdout,stdout=subprocess.PIPE)
 
-		# 
+		# decode the stdout of buffer2
 		buffer2 = buffer2.stdout.decode()
 		io_id = buffer3.find('id=')
 
