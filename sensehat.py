@@ -222,6 +222,7 @@ if __name__ == '__main__':
 
 	print("running as main")
 	keep_running = 1
+	oled.update_stats(dpad.last_event)
 	while(keep_running):
 		# oled.update_stats(dpad.last_event)
 		keep_running = update_state()
