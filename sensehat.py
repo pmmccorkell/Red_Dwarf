@@ -195,7 +195,7 @@ def update():
 	events = dpad.dpad.get_events()
 	for event in events:
 		if event.action=="pressed":
-			# oled.update_stats(event.direction)
+			oled.update_stats(event.direction)
 			print(event.direction+": "+event.action)
 			if event.direction == "middle":
 				return 0
