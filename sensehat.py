@@ -179,7 +179,7 @@ def update_state():
 
 if __name__ == '__main__':
 	from pwmControl import pwmControl
-	thrusters = pwmControl
+	thrusters = pwmControl()
 	print("running as main")
 	keep_running = 1
 	while(keep_running):
