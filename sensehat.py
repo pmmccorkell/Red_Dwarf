@@ -211,4 +211,4 @@ if __name__ == '__main__':
 		# thrusters_function(40)
 		# sleep(0.5)
 	dpad.close()
-	thrusters.exitProgram()
+	# thrusters.exitProgram()
