@@ -210,6 +210,6 @@ if __name__ == '__main__':
 		# thrusters_function = map_functions.get(dpad.last_event, map_functions['default'])
 		# thrusters_function(40)
 		# sleep(0.5)
-	dpad.close()
 	dpad.thrusters.exitProgram()
+	dpad.close()
 	# thrusters.exitProgram()
