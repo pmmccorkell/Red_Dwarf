@@ -200,8 +200,6 @@ def update():
 	return 1
 
 
-
-
 def update_state():
 	if (dpad.values['middle']):
 		return 0
