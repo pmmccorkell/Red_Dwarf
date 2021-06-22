@@ -197,7 +197,7 @@ if __name__ == '__main__':
 		oled.update_stats(dpad.last_event)
 		keep_running = update_state()
 		# thrusters_function = map_functions.get(dpad.last_event, map_functions['default'])
-		thrusters_function(40)
+		# thrusters_function(40)
 		# sleep(0.5)
 	dpad.close()
 	thrusters.exitProgram()
