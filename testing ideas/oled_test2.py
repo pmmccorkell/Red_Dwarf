@@ -119,7 +119,7 @@ class Joystick:
 			subprocess.run(['xinput','float',self.input_id])
 			print("Successfully disabled IO input of Joystick.")
 		except:
-			print('WARNING: Disabling IO input of Joystick failed.')
+			print("WARNING: Disabling IO input of Joystick failed.")
 
 
 	def get_ord(self,some_string):
