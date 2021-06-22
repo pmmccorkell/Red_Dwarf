@@ -209,6 +209,7 @@ def exit_program():
 	import pwmControl
 	thrust = pwmControl.pwmControl()
 	for i in range(4):
+		print("exiting program")
 		thrust.stopAllThrusters()
 		sleep(i)
 
