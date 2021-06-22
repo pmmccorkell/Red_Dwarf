@@ -189,5 +189,5 @@ if __name__ == '__main__':
 		oled.update_stats(dpad.last_event)
 		keep_running = update_state()
 		# sleep(0.5)
-	thrusters.
+	thrusters.stopAll()
 	dpad.close()
