@@ -95,7 +95,6 @@ class Joystick:
 		self.event_queue=[]
 
 
-
 	# All this just to run "xinput float x" in bash,
 	# 	where x is the integer for the Device ID of the Joystick in xinput.
 	#	xinput is the plug-and-play I/O handler for Raspbian OS, and other Ubuntu-like distros.
