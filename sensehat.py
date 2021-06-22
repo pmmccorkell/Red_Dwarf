@@ -196,7 +196,7 @@ def update():
 	for event in events:
 		if event.action=="pressed":
 			# oled.update_stats(event.direction)
-			# print(event.direction+": "+event.action)
+			print(event.direction+": "+event.action)
 			if event.direction == "middle":
 				return 0
 	return 1
