@@ -122,7 +122,7 @@ class Joystick:
 		while ((not buffer2.endswith('\t')) and i<8):
 			buffer2 += buffer[io_id + i]
 			i+=1
-		
+
 		# If the ID is not properly found, may fail on the str(int(...)).
 		# If the ID is invalid, may fail on the subprocess.run(...)
 		# input_id is saved as a Class Property (self.___) to facilitate debugging.
