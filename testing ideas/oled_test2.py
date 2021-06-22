@@ -111,7 +111,7 @@ class Joystick:
 		buffer2 = subprocess.run(["grep","Raspberry"],stdin=buffer.stdout,stdout=subprocess.PIPE)
 
 		# 
-		buffer3 = buffer2.stdout.decode()
+		buffer2 = buffer2.stdout.decode()
 		io_id = buffer3.find('id=')
 
 		# In case the ID is 2 digits or more, iterate over a few digits until the 'tab' is found.
