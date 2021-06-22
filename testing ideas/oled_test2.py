@@ -127,7 +127,7 @@ class Joystick:
 		# If the ID is invalid, may fail on the subprocess.run(...)
 		# input_id is saved as a Class Property (self.___) to facilitate debugging.
 		try:
-			self.input_id = str(int(buffer4))
+			self.input_id = str(int(buffer2))
 			subprocess.run(['xinput','float',self.input_id])
 			print("Successfully disabled IO input of Joystick.")
 		except:
