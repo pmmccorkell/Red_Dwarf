@@ -88,6 +88,15 @@ class Joystick:
 			'middle':0
 		}
 
+		self.map_functions = {
+			'right':thrusters.foreStar,
+			'down':thrusters.aftStar,
+			'left':thrusters.aftPort,
+			'up':thrusters.forePort,
+			'default':thrusters.stopAllThrusters
+		}
+
+
 		self.dpad.direction_any = self.detected
 
 		self.last_event = 'N/A'
@@ -187,13 +196,6 @@ if __name__ == '__main__':
 	from pwmControl import pwmControl
 	thrusters = pwmControl()
 
-	map_functions = {
-		'right':thrusters.foreStar,
-		'down':thrusters.aftStar,
-		'left':thrusters.aftPort,
-		'up':thrusters.forePort,
-		'default':thrusters.stopAllThrusters
-	}
 
 	print("running as main")
 	keep_running = 1
