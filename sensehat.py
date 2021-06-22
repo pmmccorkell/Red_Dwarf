@@ -201,8 +201,8 @@ def update():
 
 
 def update_state():
-	# if (dpad.values['middle']):
-		# return 0
+	if (dpad.values['middle']):
+		return 0
 	return 1
 
 def exit_program():
