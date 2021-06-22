@@ -182,7 +182,6 @@ class Joystick:
 		elif not (event.action.find('released')):
 			self.stop_thrusters()
 
-
 	def update_display(self):
 		while(self.event_queue):
 			oled.update_stats(self.event_queue.pop(0))
