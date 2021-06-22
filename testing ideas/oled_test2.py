@@ -102,6 +102,7 @@ class Joystick:
 
 	# All this just to run "xinput float x" in bash,
 	# 	where x is the integer for the Device ID of the Joystick in xinput.
+	#	xinput is the plug-and-play I/O handler for Raspbian OS.
 	def silence_xinput(self):
 		buffer = subprocess.Popen(["xinput"],stdout=subprocess.PIPE)
 		buffer2 = subprocess.run(["grep","Raspberry"],stdin=buffer.stdout,stdout=subprocess.PIPE)
