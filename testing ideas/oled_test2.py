@@ -109,7 +109,7 @@ class Joystick:
 
 		buffer4=''
 		i=3
-		while (not buffer4.endswith('\t')):
+		while ((not buffer4.endswith('\t')) and i<50):
 			buffer4 += buffer3[id+i]
 			i+=1
 		try:
