@@ -99,7 +99,6 @@ class Joystick:
 
 		self.silence_xinput()
 
-		# self.change_inputs()
 
 	# All this just to run "xinput float x" in bash,
 	# 	where x is the integer for the IO device id for the Joystick, ie /dev/event0
@@ -120,14 +119,6 @@ class Joystick:
 			print("Successfully disabled IO input of Joystick.")
 		except:
 			print('WARNING: Disabling IO input of Joystick failed.')
-
-
-	# def change_inputs(self):
-	# 	self.dpad.KEY_ENTER=99	# print screen
-	# 	self.dpad.KEY_DOWN=99	# 
-	# 	self.dpad.KEY_UP=99
-	# 	self.dpad.KEY_LEFT=99
-	# 	self.dpad.KEY_RIGHT=99
 
 
 	def get_ord(self,some_string):
