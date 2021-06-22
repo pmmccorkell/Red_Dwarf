@@ -167,7 +167,7 @@ class Joystick:
 			self.event_queue.append(event.direction)
 			self.update_display()
 		elif not (event.action.find('released')):
-			self.run_thrusters()
+			self.stop_thrusters()
 		# 	self.values[event.direction] = 0
 
 
