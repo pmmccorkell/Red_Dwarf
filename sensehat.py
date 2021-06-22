@@ -98,7 +98,7 @@ class Joystick:
 			'up':self.thrusters.forePort,
 			'default':self.thrusters.stopAllThrusters
 		}
-
+	
 
 		self.dpad.direction_any = self.detected
 
