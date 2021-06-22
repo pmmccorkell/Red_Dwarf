@@ -183,9 +183,18 @@ if __name__ == '__main__':
 	from pwmControl import pwmControl
 	thrusters = pwmControl()
 
+	map_functions = {
+		'right':thrusters.foreStar,
+		'down':thrusters.aftStar,
+		'left':thrusters.aftPort,
+		'up':thrusters.forePort,
+		'default':thrusters.stopAllThrusters
+	}
+
 	print("running as main")
 	keep_running = 1
 	while(keep_running):
+		dpad.last_event
 		oled.update_stats(dpad.last_event)
 		keep_running = update_state()
 		# sleep(0.5)
