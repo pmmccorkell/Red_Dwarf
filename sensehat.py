@@ -166,7 +166,7 @@ class Joystick:
 			self.last_event = event.direction
 			self.event_queue.append(event.direction)
 			self.update_display()
-		# elif not (event.action.find('released')):
+		elif not (event.action.find('released')):
 		# 	self.values[event.direction] = 0
 
 
