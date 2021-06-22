@@ -154,7 +154,7 @@ class Joystick:
 		dpad.direction_up = detect_up
 		dpad.direction_down = detect_down
 
-	def run_thrusters():
+	def run_thrusters(self):
 		thrusters_function = self.map_functions.get(self.last_event, self.map_functions['default'])
 		thrusters_function(self.thruster_test_val)
 
