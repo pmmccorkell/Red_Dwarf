@@ -75,6 +75,7 @@ class OLED:
 
 class Joystick:
 	def __init__(self,display):
+		self.silence_xinput()
 		self.disp = display
 		self.sense = SenseHat()
 		self.dpad = self.sense.stick
@@ -97,7 +98,6 @@ class Joystick:
 
 		self.event_queue=[]
 
-		self.silence_xinput()
 
 
 	# All this just to run "xinput float x" in bash,
