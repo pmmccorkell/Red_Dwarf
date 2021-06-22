@@ -88,6 +88,7 @@ class Joystick:
 			'middle':0
 		}
 
+		self.thrusters = 
 		self.map_functions = {
 			'right':thrusters.foreStar,
 			'down':thrusters.aftStar,
