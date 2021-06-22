@@ -210,7 +210,7 @@ def exit_program():
 	thrust = pwmControl.pwmControl()
 	for i in range(4):
 		thrust.stopAllThrusters()
-		sleep(0)
+		sleep(i)
 
 
 if __name__ == '__main__':
