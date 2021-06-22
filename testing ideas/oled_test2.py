@@ -177,19 +177,7 @@ def update():
 	return 1
 
 
-# if __name__ == '__main__':
-# 	print("running as main")
-# 	keep_running = 1
-# 	while(keep_running):
-# 		keep_running = update()
-# 	dpad.close()
-
 def update_state():
-	# oled.update_stats(dpad.last_event)
-	# if dpad.UPLEFT:
-	# 	print("up left")
-	# if dpad.UPRIGHT:
-	# 	print("up right")
 	if (dpad.values['middle']):
 		return 0
 	return 1
