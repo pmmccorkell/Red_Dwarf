@@ -214,6 +214,7 @@ def exit_program():
 	for i in range(4):
 		print("exiting program")
 		thrust.stopAllThrusters()
+		oled.clear_oled()
 		sleep(i)
 
 if __name__ == '__main__':
