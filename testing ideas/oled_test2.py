@@ -106,9 +106,11 @@ class Joystick:
 	def silence_xinput(self):
 		# Run xinput in bash, and save the result in the buffer.
 		buffer = subprocess.Popen(["xinput"],stdout=subprocess.PIPE)
-		
-		# Feed the result of buffer as an argument to bash, and run grep searching for "Raspberry"
+
+		# Feed the result of buffer as an argument to bash, run grep searching for "Raspberry" (joystick), and save result to buffer2
 		buffer2 = subprocess.run(["grep","Raspberry"],stdin=buffer.stdout,stdout=subprocess.PIPE)
+
+		# 
 		buffer3 = buffer2.stdout.decode()
 		io_id = buffer3.find('id=')
 
