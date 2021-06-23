@@ -211,7 +211,6 @@ if __name__ == '__main__':
 	oled = OLED()
 	dpad = Joystick(oled)
 
-
 	print("running as main")
 	keep_running = 1
 	oled.update_stats(dpad.last_event)
