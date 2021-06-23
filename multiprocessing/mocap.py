@@ -98,7 +98,7 @@ class Motion_Capture:
 server = '192.168.42.55'
 pipe1, pipe2 = Pipe()
 
-def stream_data(qtm_ip=server):
+def stream_data(qtm_ip):
 	global data_in,server,pipe1,pipe2
 	# communicator = Queue()
 	# qualisys = Motion_Capture(communicator)
