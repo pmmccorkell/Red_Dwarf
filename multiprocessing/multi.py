@@ -385,7 +385,7 @@ def setup():
 
 	qtm_process_setup()
 	qtm_thread = Thread(target=qtm_stream,daemon=daemon_mode)
-	qtm_thread.start()
+	# qtm_thread.start()
 
 	mbed_process_setup()
 	mbed_thread = Thread(target=mbed_stream,daemon=daemon_mode)
