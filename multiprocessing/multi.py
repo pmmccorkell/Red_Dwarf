@@ -403,10 +403,10 @@ def loop():
 	while(not xbox['quit']):
 		# xbox_read()
 		# mbed_read()
-		qtm_read(rigid_body_name)
+		# qtm_read(rigid_body_name)
 
 		# print('MAIN xbx: '+dumps(xbox))
-		print('MAIN qtm: '+dumps(qtm))
+		# print('MAIN qtm: '+dumps(qtm))
 		# print('MAIN bno: '+dumps(bno))
 		print()
 		print('MAIN use: '+dumps(measured_active))
