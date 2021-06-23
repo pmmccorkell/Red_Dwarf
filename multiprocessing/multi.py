@@ -377,7 +377,7 @@ atexit.register(exit_program)
 ##################################################################
 
 def setup():
-	global daemon_mode,oled,dpad
+	global daemon_mode
 
 	pwm_setup()
 	pwm_thread = Thread(target=pwm_controller_thread,daemon=daemon_mode)
