@@ -24,7 +24,7 @@ daemon_mode = False
 max_speed = 400   # us		speed limit
 rigid_body_name = 'RedDwarf'
 # qtm_server='192.168.5.4'   # IP of PC running QTM Motive
-qtm_server = '192.168.42.24'
+qtm_server = '192.168.42.55'
 
 pwm_interval = 0.02		# seconds
 qtm_interval = 0.005	# seconds
