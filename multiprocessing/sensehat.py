@@ -75,7 +75,7 @@ class OLED:
 
 
 class Joystick:
-	def __init__(self,display,thruster_class):
+	def __init__(self,display_class,thruster_class):
 		self.silence_xinput()
 		self.disp = display
 		self.sense = SenseHat()
