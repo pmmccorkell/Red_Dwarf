@@ -77,7 +77,7 @@ class OLED:
 class Joystick:
 	def __init__(self,display_class,thruster_class):
 		self.silence_xinput()
-		self.disp = display
+		self.disp = display_class
 		self.sense = SenseHat()
 		self.dpad = self.sense.stick
 
@@ -89,7 +89,7 @@ class Joystick:
 			'middle':0
 		}
 
-		self.thrusters = pwmControl()
+		self.thrusters = thruster_class
 		self.thruster_test_val = 40
 		self.map_functions = {
 			'right':self.thrusters.forePort,
