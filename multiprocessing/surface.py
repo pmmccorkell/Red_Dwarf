@@ -110,7 +110,7 @@ class Controller():
 				else:
 					current_heading=current_heading-180
 					desired_heading=desired_heading+180
-			speed = pidHeading.process(desired_heading,current_heading)
+			speed = self.pidHeading.process(desired_heading,current_heading)
 		return speed
 
 	def trigSpeedController(self):
