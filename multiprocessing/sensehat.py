@@ -200,13 +200,13 @@ if __name__ == '__main__':
 	import atexit
 	import pwmControl
 	atexit.register(exit_program)
+	print("running as main")
 
 	thrusters = pwmControl.pwmControl()
 
 	oled = OLED()
 	dpad = Joystick(oled,thrusters)
 
-	print("running as main")
 	keep_running = 1
 	oled.update_stats(dpad.last_event)
 	while(keep_running):
