@@ -389,7 +389,7 @@ def setup():
 
 	mbed_process_setup()
 	mbed_thread = Thread(target=mbed_stream,daemon=daemon_mode)
-	mbed_thread.start()
+	# mbed_thread.start()
 
 	xbox_process_setup()
 	xbox_thread = Thread(target=xbox_stream,daemon=daemon_mode)
