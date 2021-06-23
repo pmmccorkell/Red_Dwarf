@@ -72,6 +72,7 @@ def pwm_setup():
 	vessel = surface.Controller()
 	vessel.stopAll()
 	vessel.thrusters.servoboard.set_max(max_speed/1.2)
+
 	pwm_sensehat_setup()
 
 def pwm_controller_thread():
