@@ -387,8 +387,8 @@ def setup():
 	qtm_thread = Thread(target=qtm_stream,daemon=daemon_mode)
 	# qtm_thread.start()
 
-	mbed_process_setup()
-	mbed_thread = Thread(target=mbed_stream,daemon=daemon_mode)
+	# mbed_process_setup()
+	# mbed_thread = Thread(target=mbed_stream,daemon=daemon_mode)
 	# mbed_thread.start()
 
 	xbox_process_setup()
