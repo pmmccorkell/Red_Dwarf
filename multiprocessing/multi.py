@@ -67,7 +67,6 @@ def pwm_sensehat_setup():
 	oled = sensehat.OLED()
 	dpad = sensehat.Joystick(oled)
 
-
 def pwm_setup():
 	global vessel
 	vessel = surface.Controller()
