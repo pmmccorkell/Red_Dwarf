@@ -133,7 +133,7 @@ def get_ip():
 	if IP.find('192.168.5') != -1:
 		server = '192.168.5.4'
 	elif IP.find('192.168.42') != -1:
-		server = '192.168.42.24'
+		server = '192.168.42.55'
 
 if __name__ == '__main__':
 	print('running as main')
