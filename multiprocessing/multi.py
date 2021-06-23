@@ -375,7 +375,6 @@ def setup():
 	oled = sensehat.OLED()
 	dpad = sensehat.Joystick(oled)
 
-
 	pwm_setup()
 	pwm_thread = Thread(target=pwm_controller_thread,daemon=daemon_mode)
 	pwm_thread.start()
