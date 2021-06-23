@@ -11,7 +11,7 @@ import busio
 from PIL import Image, ImageDraw, ImageFont
 from adafruit_ssd1306 import SSD1306_I2C
 from sense_hat import SenseHat
-from pwmControl import pwmControl
+# from pwmControl import pwmControl
 
 
 
@@ -206,6 +206,7 @@ def exit_program():
 
 if __name__ == '__main__':
 	import atexit
+	import pwmControl
 	atexit.register(exit_program)
 
 	oled = OLED()
