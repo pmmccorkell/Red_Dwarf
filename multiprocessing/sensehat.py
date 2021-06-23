@@ -103,7 +103,7 @@ class Joystick:
 		self.dpad.direction_any = self.detected
 
 		self.last_event = 'N/A'
-
+		self.disp.update_stats(self.last_event)
 		self.event_queue=[]
 
 
