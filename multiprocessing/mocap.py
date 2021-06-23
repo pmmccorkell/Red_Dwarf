@@ -134,8 +134,10 @@ def get_ip():
 		server = '192.168.5.4'
 	elif IP.find('192.168.42') != -1:
 		server = '192.168.42.55'
+	return server
 
 if __name__ == '__main__':
+
 	print('running as main')
 	get_ip()
 	stream_data()
