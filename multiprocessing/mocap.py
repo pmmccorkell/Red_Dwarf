@@ -15,7 +15,7 @@ from multiprocessing import Process, Pipe
 
 
 class Motion_Capture:
-	def __init__(self,communictor,host_IP='192.168.5.4'):
+	def __init__(self,communictor,host_IP='192.168.5.55'):
 		self.comms = communictor
 		self.exit_state = 0
 		self.connected = 0
