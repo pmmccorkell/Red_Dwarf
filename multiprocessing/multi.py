@@ -64,6 +64,9 @@ measured_active = {
 
 def pwm_setup():
 	global vessel
+	oled = sensehat.OLED()
+	dpad = sensehat.Joystick(oled)
+
 	vessel = surface.Controller()
 	vessel.stopAll()
 	vessel.thrusters.servoboard.set_max(max_speed/1.2)
@@ -371,9 +374,6 @@ atexit.register(exit_program)
 
 def setup():
 	global daemon_mode,oled,dpad
-
-	oled = sensehat.OLED()
-	dpad = sensehat.Joystick(oled)
 
 	pwm_setup()
 	pwm_thread = Thread(target=pwm_controller_thread,daemon=daemon_mode)
