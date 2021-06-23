@@ -403,7 +403,7 @@ def loop():
 	global vessel
 	while(not xbox['quit']):
 		# xbox_read()
-		mbed_read()
+		# mbed_read()
 		# qtm_read(rigid_body_name)
 
 		# print('MAIN xbx: '+dumps(xbox))
