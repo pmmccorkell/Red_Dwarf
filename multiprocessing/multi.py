@@ -411,6 +411,8 @@ def loop():
 		print()
 		sleep(0.1)
 		trash()
+	dpad.thrusters.exitProgram()
+	dpad.close()
 	exit_program()
 
 setup()
