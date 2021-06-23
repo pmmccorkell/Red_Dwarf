@@ -11,8 +11,6 @@ import busio
 from PIL import Image, ImageDraw, ImageFont
 from adafruit_ssd1306 import SSD1306_I2C
 from sense_hat import SenseHat
-# from pwmControl import pwmControl
-
 
 
 class OLED:
