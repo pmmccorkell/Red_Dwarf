@@ -134,6 +134,7 @@ def get_ip():
 		server = '192.168.5.4'
 	elif IP.find('192.168.42') != -1:
 		server = '192.168.42.55'
+	print('found server: '+server)
 	return server
 
 if __name__ == '__main__':
