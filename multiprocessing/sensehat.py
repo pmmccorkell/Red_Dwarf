@@ -188,8 +188,8 @@ class Joystick:
 		while(self.event_queue):
 			self.disp.update_stats(self.event_queue.pop(0))
 
-oled = OLED()
-dpad = Joystick(oled)
+# oled = OLED()
+# dpad = Joystick(oled)
 
 def update_state():
 	if (dpad.values['middle']):
