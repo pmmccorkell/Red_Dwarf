@@ -191,17 +191,6 @@ class Joystick:
 oled = OLED()
 dpad = Joystick(oled)
 
-# def update():
-# 	events = dpad.dpad.get_events()
-# 	for event in events:
-# 		if event.action=="pressed":
-# 			oled.update_stats(event.direction)
-# 			print(event.direction+": "+event.action)
-# 			if event.direction == "middle":
-# 				return 0
-# 	return 1
-
-
 def update_state():
 	if (dpad.values['middle']):
 		return 0
