@@ -372,8 +372,8 @@ atexit.register(exit_program)
 def setup():
 	global daemon_mode
 
-	oled = OLED()
-	dpad = Joystick(oled)
+	oled = sensehat.OLED()
+	dpad = sensehat.Joystick(oled)
 
 
 	pwm_setup()
