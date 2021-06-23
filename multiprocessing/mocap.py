@@ -117,6 +117,7 @@ def stream_data(qtm_ip):
 			buffer = pipe1.recv()
 		if buffer:
 			data_in = buffer
+		print(data_in)
 
 def get_ip():
 	global server
