@@ -383,8 +383,8 @@ def setup():
 	pwm_thread = Thread(target=pwm_controller_thread,daemon=daemon_mode)
 	pwm_thread.start()
 
-	qtm_process_setup()
-	qtm_thread = Thread(target=qtm_stream,daemon=daemon_mode)
+	# qtm_process_setup()
+	# qtm_thread = Thread(target=qtm_stream,daemon=daemon_mode)
 	# qtm_thread.start()
 
 	# mbed_process_setup()
