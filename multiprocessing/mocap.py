@@ -113,8 +113,8 @@ def stream_data(qtm_ip):
 		sleep(0.001)
 		# data_in = communicator.get()
 		buffer={}
-		while (pipe2.poll()):
-			buffer = pipe2.recv()
+		while (pipe1.poll()):
+			buffer = pipe1.recv()
 		if buffer:
 			data_in = buffer
 
