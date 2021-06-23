@@ -413,7 +413,7 @@ def loop():
 		print('vessel: '+ str(vessel.thrusters.update()))
 		print()
 		# sleep(0.1)
-		trash()
+		# trash()
 	exit_program()
 
 setup()
