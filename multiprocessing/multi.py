@@ -16,7 +16,7 @@ from gc import collect as trash
 import mocap
 import surface
 from json import dumps,loads
-# import sensehat
+import sensehat
 
 daemon_mode = True
 
