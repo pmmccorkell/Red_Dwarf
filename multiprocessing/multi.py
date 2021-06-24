@@ -62,10 +62,10 @@ measured_active = {
 	'heading' : 0xffff
 }
 
-# def pwm_sensehat_setup():
-# 	global oled,dpad
-# 	oled = sensehat.OLED()
-# 	dpad = sensehat.Joystick(oled,vessel.thrusters)
+def pwm_sensehat_setup():
+	global oled,dpad
+	oled = sensehat.OLED()
+	dpad = sensehat.Joystick(oled,vessel.thrusters)
 
 def pwm_setup():
 	global vessel
@@ -73,7 +73,7 @@ def pwm_setup():
 	vessel.stopAll()
 	vessel.thrusters.servoboard.set_max(max_speed/1.2)
 
-	# pwm_sensehat_setup()
+	pwm_sensehat_setup()
 
 def pwm_controller_thread():
 	global vessel
