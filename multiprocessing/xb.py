@@ -4,6 +4,10 @@
 # Robotics and Control TSD
 #
 
+#
+# Install xbox drivers:
+# sudo apt-get install xboxdrv
+#
 # run with sudo privileges
 # add user to the root group:
 #	sudo usermod -a -G root pi
