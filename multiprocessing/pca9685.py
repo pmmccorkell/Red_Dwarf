@@ -5,6 +5,9 @@
 #
 
 
+# pip3 install adafruit-circuitpython-register
+# pip3 install adafruit-circuitpython-busdevice
+
 from time import sleep
 from adafruit_register.i2c_struct import UnaryStruct
 from adafruit_register.i2c_struct_array import StructArray
