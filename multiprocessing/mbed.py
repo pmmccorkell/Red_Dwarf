@@ -32,7 +32,7 @@ ser=serial.Serial(
 #-----Logging Setup-----#
 #					   #
 #filename = datetime.now().strftime('./log/AUV_%Y%m%d_%H:%M:%s.log')
-filename=datetime.now().strftime('/var/www/auv_logs/AUV_%Y%m%d_%H:%M:%s.log')
+filename=datetime.now().strftime('/logs/auv_logs//AUV_%Y%m%d_%H:%M:%s.log')
 log = logging.getLogger()
 log.setLevel(logging.INFO)
 format = logging.Formatter('%(asctime)s : %(message)s')
