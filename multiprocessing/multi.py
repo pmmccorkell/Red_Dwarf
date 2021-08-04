@@ -98,7 +98,7 @@ def xbox_process_setup():
 	try:
 		xbox_controller = xb.XBoxController(xb_pipe_in)
 	except IOError as e:
-		print("xbox controller failed")
+		print("xbox controller failed.")
 		exit_program()
 		print(e)
 		quit()
