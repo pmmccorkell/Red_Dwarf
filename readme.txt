@@ -9,6 +9,9 @@ sudo apt-get install i2c-tools python3-smbus
 sudo pip3 install adafruit-circuitpython-register
 sudo pip3 install adafruit-circuitpython-busdevice
 
+Uses Qualisys' python SDK to talk to motion capture system:
+sudo pip3 install qtm
+
 Multiprocessing Only:
 Requires pyqtgraph for plotting, which additionally requires qt5, pyqt5, etc.
   - raspi4 solution:
