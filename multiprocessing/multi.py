@@ -395,9 +395,9 @@ def setup():
 	xbox_thread = Thread(target=xbox_stream,daemon=daemon_mode)
 	xbox_thread.start()
 
-	# plot_process_setup
-	# plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
-	# plot_thread.start()
+	plot_process_setup
+	plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
+	plot_thread.start()
 
 def loop():
 	global vessel
