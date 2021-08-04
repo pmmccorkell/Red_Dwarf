@@ -9,14 +9,14 @@ from multiprocessing import Process, Pipe
 import surface
 import xb
 import mbed_wrapper
-# import plotting
+import plotting
 from time import sleep, time, monotonic
 import atexit
 from gc import collect as trash
 import mocap
 import surface
 from json import dumps,loads
-import sensehat
+# import sensehat
 
 daemon_mode = True
 
@@ -62,10 +62,10 @@ measured_active = {
 	'heading' : 0xffff
 }
 
-def pwm_sensehat_setup():
-	global oled,dpad
-	oled = sensehat.OLED()
-	dpad = sensehat.Joystick(oled,vessel.thrusters)
+# def pwm_sensehat_setup():
+# 	global oled,dpad
+# 	oled = sensehat.OLED()
+# 	dpad = sensehat.Joystick(oled,vessel.thrusters)
 
 def pwm_setup():
 	global vessel
@@ -92,7 +92,7 @@ def pwm_controller_thread():
 ##################################################################################
 
 def xbox_process_setup():
-	global daemon_mode
+	global daemon_mode, xbox_controller
 	global xb_pipe_in,xb_pipe_out,xbox_process,xbox_controller
 	xb_pipe_in, xb_pipe_out = Pipe()
 	try:
@@ -271,7 +271,7 @@ def qtm_stream():
 ##############################################################
 
 def plot_process_setup():
-	global plot_pipe_out,plot_process
+	global plot_pipe_out,plot_process, plot_live
 	plot_pipe_in,plot_pipe_out = Pipe()
 	plot_live = plotting.Plotting(plot_pipe_in)
 	plot_process = Process(target=plot_live.start_display,daemon=daemon_mode)
@@ -303,7 +303,7 @@ def plot_stream():
 def exit_program():
 	global pwm_flag,qtm_flag,xbox_flag,mbed_flag,plot_flag
 	global xbox_process,mbed_process,qtm_process
-	global qualisys,imu,xb_controller,vessel
+	global qualisys,imu,xbox_controller,vessel
 	print("Shutting down threads.")
 	pwm_flag.set_flag(0)
 	qtm_flag.set_flag(0)
@@ -344,7 +344,7 @@ def exit_program():
 
 	print('Closing xbox controller.')
 	try:
-		xb_controller.close()
+		xbox_controller.close()
 	except Exception as e:
 		print(e)
 
