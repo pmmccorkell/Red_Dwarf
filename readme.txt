@@ -9,6 +9,9 @@ sudo apt-get install i2c-tools python3-smbus
 sudo pip3 install adafruit-circuitpython-register
 sudo pip3 install adafruit-circuitpython-busdevice
 
+Uses Adafruit ssd1306 libraries for display:
+sudo pip3 install adafruit-circuitpython-ssd1306
+
 Uses Qualisys' python SDK to talk to motion capture system:
 sudo pip3 install qtm
 
