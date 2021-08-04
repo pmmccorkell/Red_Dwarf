@@ -17,7 +17,7 @@ import os
 DEBUG = 0
 
 #					   #
-#------Serial Setup-----#
+#-----Serial Setup-----#
 #					   #
 ser=serial.Serial(
 	port='/dev/ttyACM0',
