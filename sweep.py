@@ -13,6 +13,7 @@ import busio
 from board import SCL,SDA
 from time import sleep
 from json import dumps
+import atexit
 
 
 class Thruster:
@@ -335,24 +336,36 @@ class pwmControl:
 	def __repr__(self):
 		return self.__str__()
 
-def update_pwm(v):
-	return v
+def update_pwm(speed):
+	global thrusters
+	print(speed)
+	print(thrusters.update(speed))
 
 def run():
 	global thrusters
 	thrusters = pwmControl()
 	v = 0
+	direction=1
+	cycle=0
+	max_val=thrusters.servoboard._max
 	while(1):
-		if v<500:
-			v+=1
-		elif v==500:
-			thrusters.update(500)
-			sleep(1)
-			thrusters.update(0)
-			sleep(2)
-			v = -500
-			sleep(1)
-		thrusters.update(v)
+		if v>=max_val:
+			update_pwm(max_val)
+			sleep(1.5)
+			direction=-1
+		elif v<=(-1*max_val):
+		#	update_pwm(1)
+		#	sleep(3)
+			update_pwm(-1*max_val)
+			sleep(1.5)
+			direction=1
+			cycle+=1
+		if cycle==2:
+			update_pwm(1)
+			sleep(3)
+			cycle=0
+		v+=direction*3
+		update_pwm(v)
 		sleep(0.003)
 
 def exit_program():
