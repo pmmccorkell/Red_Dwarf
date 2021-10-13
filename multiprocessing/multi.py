@@ -421,7 +421,7 @@ def loop():
 			plot_process_setup()
 			plot_thread.start()
 			plot_started = 1
-		elif (xbox['graph'] and (plot_started)):
+		elif (xbox['graph'] and (plot_thread.is_alive())):
 			plot_thread.
 	exit_program()
 
