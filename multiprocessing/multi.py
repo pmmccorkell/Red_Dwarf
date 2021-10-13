@@ -426,7 +426,6 @@ def loop():
 			plot_flag.set_flag(1)
 			plot_process_setup()
 			plot_thread.start()
-			plot_started = 1
 			print(plot_thread.is_alive())
 			print("plot started")
 			sleep(0.2)
