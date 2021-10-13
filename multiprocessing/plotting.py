@@ -27,6 +27,7 @@ class Plotting:
 		log.addHandler(file_handler)
 
 		logline = 'KEY: qtm_heading, bno_heading'
+		log.info(logline)
 
 	def close(self):
 		self.run = 0
