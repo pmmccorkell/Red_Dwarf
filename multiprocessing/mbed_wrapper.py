@@ -12,7 +12,7 @@ class BNO:
 	def stream(self):
 		while(self.run):
 			self.data=mbed.get_angles()
-			print('mbed.py: '+dumps(self.data))
+			#print('mbed.py: '+dumps(self.data))
 			self.comms.send(self.data)
 			sleep(0.01)
 
