@@ -18,3 +18,12 @@ class BNO:
 
 	def close(self):
 		self.run = 0
+
+if __name__ == "__main__":
+	print("running as main")
+	from multiprocessing import Process, Pipe
+	daemon_mode = True
+
+	mbed_pipe_in,mbed_pipe_out = Pipe()
+	imu = mbed_wrapper.BNO(mbed_pipe_in)
+	mbed_process = Process(target=imu.stream,daemon=daemon_mode)
