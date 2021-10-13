@@ -427,17 +427,18 @@ def loop():
 			plot_process_setup()
 			plot_thread.start()
 			plot_started = 1
-			print(plot_thread.is_alive())
 			sleep(0.1)
 			print("plot started")
 
 		elif (xbox['graph'] and (plot_thread.is_alive())):
+			print()
 			print("stopping graph mode")
 			plot_flag.set_flag(0)
 			plot_thread.join()
 			plot_thread = Thread(target=plot_stream,daemon=False)
 			sleep(0.1)
 			print("stopped graph mode")
+			print()
 	exit_program()
 
 setup()
