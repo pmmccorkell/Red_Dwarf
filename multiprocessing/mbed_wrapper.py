@@ -29,3 +29,10 @@ if __name__ == "__main__":
 	mbed_process = Process(target=imu.stream,daemon=daemon_mode)
 	mbed_process.start()
 	
+	bno = {
+	'heading':999,
+	'roll':999,
+	'pitch':999,
+	'calibration':999,
+	'status':999
+}
