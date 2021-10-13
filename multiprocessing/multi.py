@@ -400,7 +400,7 @@ def setup():
 
 	plot_process_setup
 	plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
-	plot_thread.start()
+	# plot_thread.start()
 
 def loop():
 	global vessel
