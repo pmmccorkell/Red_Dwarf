@@ -429,6 +429,7 @@ def loop():
 			plot_started = 1
 			sleep(0.1)
 			print("plot started")
+			print()
 
 		elif (xbox['graph'] and (plot_thread.is_alive())):
 			print()
