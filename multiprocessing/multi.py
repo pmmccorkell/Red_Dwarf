@@ -416,11 +416,10 @@ def loop():
 		print()
 		sleep(0.1)
 		trash()
-		
+
 		plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
 		if (xbox['graph'] and (not plot_started)):
 			plot_process_setup()
-			
 			plot_thread.start()
 			plot_started = 1
 		elif (xbox['graph'] and (plot_started)):
