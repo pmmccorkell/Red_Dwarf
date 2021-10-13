@@ -276,7 +276,7 @@ def qtm_stream():
 def plot_process_setup():
 	global plot_pipe_out,plot_process, plot_live,plot_interval
 	plot_pipe_in,plot_pipe_out = Pipe()
-	plot_live = plotting.Plotting(plot_pipe_in,plot_interval/2)
+	plot_live = plotting.Plotting(plot_pipe_in,plot_interval)
 	plot_process = Process(target=plot_live.start_display,daemon=daemon_mode)
 	plot_process.start()
 
