@@ -437,9 +437,9 @@ def loop():
 			print(plot_thread.is_alive())
 			plot_flag.set_flag(0)
 			plot_thread.join()
-			sleep(0.2)
 			print(plot_thread.is_alive())
 			print("stopped graph mode")
+			sleep(0.2)
 	exit_program()
 
 setup()
