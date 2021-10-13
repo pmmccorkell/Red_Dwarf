@@ -136,7 +136,7 @@ xbox = {
 	'facing':999,
 	'offset':999,
 	'speed':999,
-	'graph':0,		# graph 1 triggers graphing functionality
+	'graph':0,		# graph 1 starts graphing functionality
 	'maintain':1,
 	'mode':1,		# mode 1 qtm, mode 0 bno
 	'quit':0
