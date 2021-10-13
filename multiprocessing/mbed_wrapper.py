@@ -25,7 +25,9 @@ if __name__ == "__main__":
 	daemon_mode = True
 
 	mbed_pipe_in,mbed_pipe_out = Pipe()
+	print("initiating BNO")
 	imu = BNO(mbed_pipe_in)
+	print("start process")
 	mbed_process = Process(target=imu.stream,daemon=daemon_mode)
 	mbed_process.start()
 	
