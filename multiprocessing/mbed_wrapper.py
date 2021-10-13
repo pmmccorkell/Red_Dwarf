@@ -37,4 +37,9 @@ if __name__ == "__main__":
 		'status':999
 	}
 
-	
+	buffer={}
+	while (mbed_pipe_out.recv()):
+		buffer = mbed_pipe_out.recv()
+	if buffer:
+		bno = buffer
+		buffer = {}
