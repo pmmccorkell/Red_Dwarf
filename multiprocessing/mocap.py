@@ -142,4 +142,5 @@ def get_ip():
 if __name__ == '__main__':
 
 	print('running as main')
-	stream_data(get_ip())
+	# stream_data(get_ip())
+	stream_data(server)
