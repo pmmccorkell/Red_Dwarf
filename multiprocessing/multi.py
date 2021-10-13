@@ -436,6 +436,7 @@ def loop():
 			plot_thread.join()
 			sleep(0.1)
 			print("stopped graph mode")
+			plot_thread = Thread(target=plot_stream,daemon=False)
 	exit_program()
 
 setup()
