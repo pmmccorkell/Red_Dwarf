@@ -46,12 +46,12 @@ if __name__ == "__main__":
 		if buffer:
 			bno = buffer
 			buffer = {}
-		else:
-			bno = {
-				'heading':999,
-				'roll':999,
-				'pitch':999,
-				'calibration':999,
-				'status':999
-			}
+		# else:
+		# 	bno = {
+		# 		'heading':999,
+		# 		'roll':999,
+		# 		'pitch':999,
+		# 		'calibration':999,
+		# 		'status':999
+		# 	}
 		print(bno)
