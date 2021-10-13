@@ -409,22 +409,26 @@ def loop():
 		# print('MAIN xbx: '+dumps(xbox))
 		# print('MAIN qtm: '+dumps(qtm))
 		# print('MAIN bno: '+dumps(bno))
-		print()
+		# print()
 		# print('MAIN use: '+dumps(measured_active))
 		# print('vessel: '+ str(vessel.thrusters.update()))
-		print()
+		# print()
 		sleep(0.1)
 		trash()
 
 		plot_thread = Thread(target=plot_stream,daemon=False)
-		print(plot_thread.is_alive())
+		# print(plot_thread.is_alive())
 
 		if (xbox['graph'] and (not plot_thread.is_alive())):
 			print("starting graph mode")
+			print(plot_thread.is_alive())
 			plot_flag.set_flag(1)
 			plot_process_setup()
 			plot_thread.start()
 			plot_started = 1
+			print(plot_thread.is_alive())
+			print("plot started")
+
 		elif (xbox['graph'] and (plot_thread.is_alive())):
 			print("stopping graph mode")
 			plot_flag.set_flag(0)
