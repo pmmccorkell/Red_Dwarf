@@ -380,7 +380,7 @@ atexit.register(exit_program)
 ##################################################################
 
 def setup():
-	global daemon_mode, plot_thread
+	global daemon_mode
 
 	pwm_setup()
 	pwm_thread = Thread(target=pwm_controller_thread,daemon=daemon_mode)
@@ -400,7 +400,7 @@ def setup():
 
 	plot_process_setup
 	plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
-	# plot_thread.start()
+	plot_thread.start()
 
 def loop():
 	global vessel
