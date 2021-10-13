@@ -425,7 +425,8 @@ def loop():
 			print("starting graph mode")
 			plot_flag.set_flag(1)
 			if not plot_setup:
-			plot_process_setup()
+				plot_process_setup()
+				plot_setup = 1
 			plot_thread.start()
 			plot_started = 1
 			sleep(0.1)
