@@ -420,6 +420,7 @@ def loop():
 		plot_thread = Thread(target=plot_stream,daemon=False)
 		if (xbox['graph'] and not plot_started):
 			print("starting graph mode")
+			plot_started = 1
 			plot_process_setup()
 			plot_thread.start()
 			sleep(0.1)
