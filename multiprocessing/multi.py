@@ -421,7 +421,7 @@ def loop():
 		# print(plot_thread.is_alive())
 
 		# if (xbox['graph'] and (not plot_thread.is_alive())):
-		if (xbox['graph'] and plot_flag.set_flag()):
+		if (xbox['graph'] and (not plot_flag.set_flag())):
 			print("starting graph mode")
 			print(plot_thread.is_alive())
 			plot_flag.set_flag(1)
