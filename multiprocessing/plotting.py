@@ -6,6 +6,8 @@ from gc import collect as trash
 from threading import Thread
 from multiprocessing import Process, Pipe
 
+import logging
+import logging.handlers
 
 class Plotting:
 	def __init__(self,communictor,timing_val=20):
