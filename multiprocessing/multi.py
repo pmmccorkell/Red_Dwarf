@@ -420,6 +420,8 @@ def loop():
 			plot_process_setup()
 			plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
 			plot_thread.start()
+			plot_started = 1
+		elif (xbox['graph'] and (plot_started))
 	exit_program()
 
 setup()
