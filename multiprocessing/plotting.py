@@ -16,7 +16,14 @@ class Plotting:
 		self.run = 1
 
 	def logging_setup(self):
-		
+		filename=datetime.now().strftime('/logs/auv_logs/AUV_%Y%m%d_%H:%M:%s.log')
+		log = logging.getLogger()
+		log.setLevel(logging.INFO)
+		format = logging.Formatter('%(asctime)s : %(message)s')
+		file_handler = logging.FileHandler(filename)
+		file_handler.setLevel(logging.INFO)
+		file_handler.setFormatter(format)
+		log.addHandler(file_handler)
 
 	def close(self):
 		self.run = 0
