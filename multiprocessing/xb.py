@@ -97,6 +97,7 @@ class XBoxController:
 			'facing' : round(samples['vector2_x2']),
 			'offset' : round(samples['vector1']),
 			'speed' : round(self.max_speed*samples['scalar1']),		# if speed is < 10, set to 0
+			'graph' : samples['graph'],
 			'maintain' : samples['maintain'],
 			'mode' : samples['mode'],
 			'quit' : samples['quit']
