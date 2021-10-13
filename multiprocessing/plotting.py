@@ -8,6 +8,7 @@ from multiprocessing import Process, Pipe
 
 import logging
 import logging.handlers
+from datetime import datetime
 
 class Plotting:
 	def __init__(self,communictor,timing_val=20):
