@@ -96,7 +96,7 @@ class Motion_Capture:
 
 # server = '192.168.5.4'
 # server = '192.168.42.55'
-server = '10.60.17.246'		# TSD office desktop
+server = '10.60.17.246'		# Pat's TSD office desktop
 pipe1, pipe2 = Pipe()
 
 def stream_data(qtm_ip):
