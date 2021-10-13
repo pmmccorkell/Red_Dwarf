@@ -419,7 +419,7 @@ def loop():
 		print()
 		sleep(0.1)
 		trash()
-		if (xbox['graph'] and not plot_started):
+		if (xbox['graph'] and (not plot_started)):
 			plot_thread.start()
 
 	exit_program()
