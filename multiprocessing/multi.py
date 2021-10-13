@@ -416,7 +416,7 @@ def loop():
 		sleep(0.1)
 		trash()
 
-		plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
+		plot_thread = Thread(target=plot_stream,daemon=false)
 		print(plot_thread.is_alive())
 
 		if (xbox['graph'] and (not plot_thread.is_alive())):
