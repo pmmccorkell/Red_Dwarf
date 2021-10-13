@@ -157,6 +157,14 @@ def xbox_read():
 		# 	vessel.issueCommand('hea',xbox['facing'])
 		# else:
 		# 	vessel.issueCommand('hea',999)
+
+		################################
+		###############################
+		################################
+		####### CHECK THIS ###############
+		################################
+		################################
+		################################
 		vessel.commands['hea'](bool(buffer['maintain']) and buffer['facing'])
 
 		# if (xbox['speed']>10):
