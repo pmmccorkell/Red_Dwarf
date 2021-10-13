@@ -401,9 +401,6 @@ def setup():
 
 def loop():
 	global vessel
-	plot_started = 0
-	plot_thread = Thread(target=plot_stream,daemon=False)
-
 	while(not xbox['quit']):
 		# xbox_read()
 		# mbed_read()
@@ -419,13 +416,27 @@ def loop():
 		sleep(0.1)
 		trash()
 
-		if (xbox['graph'] and (not plot_started)):
-			print(plot_started)
+		plot_thread = Thread(target=plot_stream,daemon=False)
+		# print(plot_thread.is_alive())
+
+		if (xbox['graph'] and (not plot_thread.is_alive())):
 			print("starting graph mode")
-			plot_started = 1
+			print(plot_thread.is_alive())
+			plot_flag.set_flag(1)
 			plot_process_setup()
 			plot_thread.start()
-			sleep(0.1)
+			plot_started = 1
+			print(plot_thread.is_alive())
+			print("plot started")
+
+		elif (xbox['graph'] and (plot_thread.is_alive())):
+			print("stopping graph mode")
+			print(plot_thread.is_alive())
+			plot_flag.set_flag(0)
+			plot_thread.join()
+			sleep(0.2)
+			print(plot_thread.is_alive())
+			print("stopped graph mode")
 	exit_program()
 
 setup()
