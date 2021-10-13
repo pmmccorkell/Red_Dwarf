@@ -38,6 +38,7 @@ class XBoxController:
 			'scalar2':999,
 			'vector2':999,
 			'vector2_x2':999,
+			'graph' : 0,
 			'maintain' : 1,
 			'mode' : 1
 		}
