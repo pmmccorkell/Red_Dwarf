@@ -433,7 +433,7 @@ def loop():
 			sleep(0.2)
 
 		# elif (xbox['graph'] and (plot_thread.is_alive())):
-		if (xbox['graph'] and plot_flag.set_flag()):
+		elif (xbox['graph'] and plot_flag.set_flag()):
 			print("stopping graph mode")
 			print(plot_thread.is_alive())
 			plot_flag.set_flag(0)
