@@ -421,7 +421,6 @@ def loop():
 		trash()
 		if (xbox['graph'] and (not plot_started)):
 			plot_thread.start()
-
 	exit_program()
 
 setup()
