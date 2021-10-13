@@ -44,3 +44,4 @@ if __name__ == "__main__":
 		if buffer:
 			bno = buffer
 			buffer = {}
+		print(bno)
