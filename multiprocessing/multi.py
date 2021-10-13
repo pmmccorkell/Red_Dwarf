@@ -427,6 +427,7 @@ def loop():
 			print("stopping graph mode")
 			plot_flag.set_flag(0)
 			plot_thread.join()
+			sleep(0.2)
 	exit_program()
 
 setup()
