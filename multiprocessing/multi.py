@@ -358,10 +358,10 @@ def exit_program():
 		print(e)
 
 	print("Shutting down plotting function.")
-	try:
-		plot_live.close()
-	except Exception as e:
-		print(e)
+	# try:
+	# 	plot_live.close()
+	# except Exception as e:
+	# 	print(e)
 
 	# print('Shutting down graphs.')
 
