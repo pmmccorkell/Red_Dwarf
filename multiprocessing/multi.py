@@ -414,7 +414,7 @@ def loop():
 		# print()
 		print('MAIN use: '+dumps(measured_active))
 		print('vessel: '+ str(vessel.thrusters.update()))
-		# print()
+		print()
 		sleep(0.1)
 		trash()
 
