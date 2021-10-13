@@ -227,6 +227,7 @@ class Controller():
 		isCom = len(self.commandQueue)
 		isVal = len(self.valueQueue)
 		while(isCom):
+			print(isCom)
 			if (isCom and isVal):
 				self.commands[self.commandQueue.pop(0)](self.valueQueue.pop(0))
 				#processCommand(commandQueue.pop(0),valueQueue.pop(0))
