@@ -417,9 +417,11 @@ def loop():
 		trash()
 
 		plot_thread = Thread(target=plot_stream,daemon=False)
+		plot_flag.set_flag(0)
 		# print(plot_thread.is_alive())
 
-		if (xbox['graph'] and (not plot_thread.is_alive())):
+		# if (xbox['graph'] and (not plot_thread.is_alive())):
+		if (xbox['graph'] and plot_flag.set_flag()):
 			print("starting graph mode")
 			print(plot_thread.is_alive())
 			plot_flag.set_flag(1)
@@ -429,7 +431,7 @@ def loop():
 			print(plot_thread.is_alive())
 			print("plot started")
 
-		elif (xbox['graph'] and (plot_thread.is_alive())):
+		# elif (xbox['graph'] and (plot_thread.is_alive())):
 			print("stopping graph mode")
 			print(plot_thread.is_alive())
 			plot_flag.set_flag(0)
