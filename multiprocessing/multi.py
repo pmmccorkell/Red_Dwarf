@@ -404,6 +404,7 @@ def setup():
 
 def loop():
 	global vessel
+	plot_started = 0
 	while(not xbox['quit']):
 		# xbox_read()
 		# mbed_read()
@@ -420,6 +421,7 @@ def loop():
 		trash()
 		if (xbox['graph']):
 			plot_thread.start()
+
 	exit_program()
 
 setup()
