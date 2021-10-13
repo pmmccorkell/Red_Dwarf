@@ -424,6 +424,7 @@ def loop():
 			plot_started = 1
 		elif (xbox['graph'] and (plot_thread.is_alive())):
 			plot_flag.set_flag(0)
+			plot_thread.join()
 	exit_program()
 
 setup()
