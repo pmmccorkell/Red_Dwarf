@@ -40,7 +40,8 @@ class XBoxController:
 			'vector2_x2':999,
 			'graph' : 0,
 			'maintain' : 1,
-			'mode' : 1
+			'mode' : 1,
+			'quit' : 0
 		}
 
 	def scalar(self,a,b):
