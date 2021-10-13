@@ -426,7 +426,7 @@ def loop():
 			plot_flag.set_flag(1)
 			plot_process_setup()
 			plot_thread.start()
-			sleep(0.2)
+			sleep(0.1)
 	exit_program()
 
 setup()
