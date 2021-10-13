@@ -19,12 +19,13 @@ from json import dumps,loads
 # import sensehat
 
 daemon_mode = True
-	
+
 
 max_speed = 400   # us		speed limit
 rigid_body_name = 'RedDwarf'
-# qtm_server='192.168.5.4'   # IP of PC running QTM Motive
-qtm_server = '192.168.42.55'
+# qtm_server = '192.168.5.4'	# SURF qtm server
+# qtm_server = '192.168.42.24'	# Pat's TSD office desktop on Robotics wireless
+qtm_server = '10.60.17.246'		# Pat's TSD office desktop on Mission wired
 
 pwm_interval = 0.02		# seconds
 qtm_interval = 0.005	# seconds
