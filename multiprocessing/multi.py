@@ -400,7 +400,7 @@ def setup():
 
 	plot_process_setup()
 	plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
-	plot_thread.start()
+	# plot_thread.start()
 
 def loop():
 	global vessel
@@ -418,6 +418,8 @@ def loop():
 		print()
 		sleep(0.1)
 		trash()
+		if (xbox['graph']):
+			plot_thread.start()
 	exit_program()
 
 setup()
