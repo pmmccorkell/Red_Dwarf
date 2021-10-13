@@ -236,3 +236,5 @@ class Controller():
 				#processCommand(commandQueue.pop(0),None)
 			isCom = len(self.commandQueue)
 
+if __name__ == '__main__':
+	
