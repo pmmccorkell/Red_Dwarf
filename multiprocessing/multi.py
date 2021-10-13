@@ -365,8 +365,6 @@ def exit_program():
 		pass
 		# print(e)
 
-	# print('Shutting down graphs.')
-
 	print()
 	print('Exiting Program.')
 	print()
