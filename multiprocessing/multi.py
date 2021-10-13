@@ -21,7 +21,7 @@ from json import dumps,loads
 daemon_mode = True
 
 
-max_speed = 500   # us		speed limit
+max_speed = 600   # us		speed limit
 rigid_body_name = 'RedDwarf'
 # qtm_server = '192.168.5.4'	# SURF qtm server
 # qtm_server = '192.168.42.24'	# Pat's TSD office desktop on Robotics wireless
