@@ -417,7 +417,7 @@ def loop():
 		trash()
 
 		plot_thread = Thread(target=plot_stream,daemon=False)
-		plot_flag.set_flag(0)
+		# plot_flag.set_flag(0)
 		# print(plot_thread.is_alive())
 
 		# if (xbox['graph'] and (not plot_thread.is_alive())):
