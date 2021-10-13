@@ -15,6 +15,9 @@ class Plotting:
 		self.comms = communictor
 		self.run = 1
 
+	def logging_setup(self):
+		
+
 	def close(self):
 		self.run = 0
 
