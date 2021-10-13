@@ -402,7 +402,7 @@ def setup():
 def loop():
 	global vessel
 	plot_thread = Thread(target=plot_stream,daemon=False)
-
+	plot_setup = 0
 	while(not xbox['quit']):
 		# xbox_read()
 		# mbed_read()
@@ -424,6 +424,7 @@ def loop():
 			print()
 			print("starting graph mode")
 			plot_flag.set_flag(1)
+			if not plot_setup:
 			plot_process_setup()
 			plot_thread.start()
 			plot_started = 1
