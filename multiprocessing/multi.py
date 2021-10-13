@@ -442,7 +442,6 @@ def loop():
 			sleep(0.1)
 			print("stopped graph mode")
 			print()
-	# exit_program()
 
 setup()
 loop()
