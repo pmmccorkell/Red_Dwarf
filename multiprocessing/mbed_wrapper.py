@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
 	buffer={}
 	while(1):
-		while (mbed_pipe_out.recv()):
+		while (mbed_pipe_out.poll()):
 			buffer = mbed_pipe_out.recv()
 		if buffer:
 			bno = buffer
