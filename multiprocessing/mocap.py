@@ -94,7 +94,7 @@ class Motion_Capture:
 		await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
 
 
-# server = '192.168.5.4'
+# server = '192.168.5.4'	# SURF qtm server
 # server = '192.168.42.55'
 server = '10.60.17.246'		# Pat's TSD office desktop
 pipe1, pipe2 = Pipe()
