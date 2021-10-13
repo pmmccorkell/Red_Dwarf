@@ -402,6 +402,7 @@ def setup():
 def loop():
 	global vessel
 	plot_started = 0
+	plot_thread = Thread(target=plot_stream,daemon=False)
 
 	while(not xbox['quit']):
 		# xbox_read()
@@ -418,7 +419,6 @@ def loop():
 		sleep(0.1)
 		trash()
 
-		plot_thread = Thread(target=plot_stream,daemon=False)
 		if (xbox['graph'] and (not plot_started)):
 			print(plot_started)
 			print("starting graph mode")
