@@ -31,8 +31,8 @@ class XBoxController:
 		self.joystick = Joystick()
 		self.comms = communicator
 		self.max_speed = 500
-		self.debounce = 1
-		
+		self.debounce = 0.2
+
 		self.values = {
 			'scalar1':999,
 			'vector1':999,
