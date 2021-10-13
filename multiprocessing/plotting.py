@@ -82,7 +82,7 @@ class Plotting:
 				self.qtm = buffer['qtm']
 				self.bno = buffer['bno']
 				self.form_data()
-				delimiter = ', '
+				delimiter = ','
 
 		sleep(0.001)
 	
