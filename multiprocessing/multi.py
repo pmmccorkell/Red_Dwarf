@@ -428,8 +428,8 @@ def loop():
 			plot_thread.start()
 			plot_started = 1
 			print(plot_thread.is_alive())
-			print("plot started")
 			sleep(0.1)
+			print("plot started")
 
 		elif (xbox['graph'] and (plot_thread.is_alive())):
 			print("stopping graph mode")
