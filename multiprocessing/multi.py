@@ -400,7 +400,7 @@ def setup():
 
 
 def loop():
-	global vessel, plot_flag
+	global vessel
 	while(not xbox['quit']):
 		# xbox_read()
 		# mbed_read()
