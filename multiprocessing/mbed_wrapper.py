@@ -52,5 +52,4 @@ if __name__ == "__main__":
 				'calibration':999,
 				'status':999
 			}
-
 		print(bno)
