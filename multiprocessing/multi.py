@@ -423,7 +423,6 @@ def loop():
 		# if (xbox['graph'] and (not plot_thread.is_alive())):
 		if (xbox['graph']):
 			print("starting graph mode")
-			print(plot_thread.is_alive())
 			plot_flag.set_flag(1)
 			plot_process_setup()
 			plot_thread.start()
@@ -431,16 +430,6 @@ def loop():
 			print(plot_thread.is_alive())
 			print("plot started")
 			sleep(0.2)
-
-		# elif (xbox['graph'] and (plot_thread.is_alive())):
-		# elif (xbox['graph'] and plot_flag.set_flag()):
-		# 	print("stopping graph mode")
-		# 	print(plot_thread.is_alive())
-		# 	plot_flag.set_flag(0)
-		# 	plot_thread.join()
-		# 	print(plot_thread.is_alive())
-		# 	print("stopped graph mode")
-		# 	sleep(0.2)
 	exit_program()
 
 setup()
