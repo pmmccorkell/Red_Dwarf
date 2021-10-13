@@ -31,7 +31,7 @@ pwm_interval = 0.02		# seconds
 qtm_interval = 0.005	# seconds
 xbox_interval = 0.10	# seconds
 mbed_interval = 0.02	# seconds
-plot_interval = .2		# seconds
+plot_interval = .1		# seconds
 
 
 ####################################
