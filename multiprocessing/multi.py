@@ -415,9 +415,10 @@ def loop():
 		print()
 		sleep(0.1)
 		trash()
-		print(plot_thread.is_alive())
 
 		plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
+		print(plot_thread.is_alive())
+
 		if (xbox['graph'] and (not plot_thread.is_alive())):
 			print("starting graph mode")
 			plot_flag.set_flag(1)
