@@ -38,8 +38,9 @@ if __name__ == "__main__":
 	}
 
 	buffer={}
-	while (mbed_pipe_out.recv()):
-		buffer = mbed_pipe_out.recv()
-	if buffer:
-		bno = buffer
-		buffer = {}
+	while(1):
+		while (mbed_pipe_out.recv()):
+			buffer = mbed_pipe_out.recv()
+		if buffer:
+			bno = buffer
+			buffer = {}
