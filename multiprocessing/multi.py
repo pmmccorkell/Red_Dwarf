@@ -434,7 +434,7 @@ def setup():
 
 	log_setup()
 	log_thread = Thread(target=log_stream,daemon=daemon_mode)
-
+	log_thread.start()
 
 def loop():
 	global vessel, daemon_mode
