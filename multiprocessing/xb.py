@@ -122,6 +122,9 @@ class XBoxController:
 		print("turning off xbox controller")
 		self.joystick.close()
 
+debounce_timer = monotonic()
+debounce_time_check = 1.0
+
 def xbox_debounce(val1,val2):
 	global debounce_timer, debounce_time_check
 	current = monotonic()
