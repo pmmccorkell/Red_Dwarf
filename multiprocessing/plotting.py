@@ -101,6 +101,7 @@ class Plotting:
 		self.curve2.setData(self.x_val,self.y2_val)
 		delimiter = ','
 		logline = str(self.x_val) + delimiter + str(self.y1_val) + delimiter + str(self.y2_val)
+		log.info(logline)
 
 
 
@@ -109,8 +110,6 @@ class Plotting:
 ###################### Debugging Section ######################
 ###############################################################
 ###############################################################
-
-
 
 bno = {
 	'heading':271,
