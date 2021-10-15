@@ -160,9 +160,6 @@ if __name__ == '__main__':
 			buffer['maintain'] = xbox_debounce(xbox['maintain'],buffer['maintain'])
 			buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
 
-			for k in measured_active:
-				measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
-
 			xbox = buffer
 
 		sleep(0.02)
