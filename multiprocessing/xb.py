@@ -133,7 +133,7 @@ if __name__ == '__main__':
 		# print("xbox controller failed.")
 		print(e)
 		quit()
-
+	xbox_controller.stream()
 
 	sleep(0.1)
 	data_thread = Thread(target=update_data,daemon=True)
