@@ -120,8 +120,8 @@ class Controller():
 			'cos' : 0,
 			'sin' : 0
 		}
-		self.persistent_offset = self.wraparound(self.rangeOff,self.persistent_offset)
-		self.persistent_speed = self.clampyclamp(self.rangeVel,self.persistent_speed)
+		offset = self.wraparound(self.rangeOff,self.persistent_offset)
+		speed = self.clampyclamp(self.rangeVel,self.persistent_speed)
 
 		# convert offset to radians, and add 45deg for angled thrusters
 		offset_factor = ((twopi / 360) * self.persistent_offset) + (twopi/8)
