@@ -27,7 +27,7 @@ class Plotting:
 		file_handler.setFormatter(format)
 		self.log.addHandler(file_handler)
 
-		logline = 'KEY: qtm_heading, bno_heading'
+		logline = 'KEY: time,qtm_heading, bno_heading'
 		self.log.info(logline)
 
 	def close(self):
