@@ -77,7 +77,8 @@ def pwm_controller_thread():
 	global bno,qtm,log_interval
 	interval = log_interval
 	while(log_flag.set_flag()):
-		start=monotonic()+interval
+		now = monotonic()
+		start= now + interval
 		delimiter = ','
 		logline = 
 		vessel.azThrusterLogic()
