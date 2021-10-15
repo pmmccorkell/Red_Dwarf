@@ -161,7 +161,7 @@ if __name__ == '__main__':
 	vessel = surface.Controller()
 	vessel.stopAll()
 	vessel.thrusters.servoboard.set_max(500/1.2)
-	vessel_thread = Thread(target=vessel.azThrusterLogic)
+	vessel_thread = Thread(target=vessel_thread)
 	vessel_thread.start()
 
 
