@@ -127,7 +127,13 @@ if __name__ == '__main__':
 	from multiprocessing import Process, Pipe
 	print("running as main")
 	xb_pipe_in, xb_pipe_out = Pipe()
-	
+	try:
+		xbox_controller = xb.XBoxController(xb_pipe_in)
+	except IOError as e:
+		# print("xbox controller failed.")
+		print(e)
+		exit_program()
+		quit()
 
 
 	sleep(0.1)
