@@ -102,7 +102,7 @@ class Plotting:
 		delimiter = ','
 		logline = str(self.x_val[-1]) + delimiter + str(self.y1_val[-1]) + delimiter + str(self.y2_val[-1])
 		print(logline)
-		# self.log.info(logline)
+		self.log.info(logline)
 
 
 
