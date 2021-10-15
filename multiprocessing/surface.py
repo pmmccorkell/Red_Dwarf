@@ -190,7 +190,7 @@ class Controller():
 		elif (val in self.rangeHea):
 			self.persistent_heading = val
 		elif (val in self.incrementHea):
-			self.incrementHeading(834-val)
+			self.incrementHeading(val-834)
 
 	def velCommand(self,val):
 		if (self.DEBUG):
