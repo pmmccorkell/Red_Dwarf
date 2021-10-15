@@ -161,7 +161,7 @@ def xbox_read():
 
 		vessel.persistent_offset = buffer['offset']
 
-		# if (xbox['speed']>10):
+		# if (buffer['speed']>10):
 		# 	vessel.persistent_speed = buffer['speed']
 		# else:
 		# 	vessel.persistent_speed = 0
