@@ -185,6 +185,7 @@ class Controller():
 			print('hea cmd:'+str(val))
 		if (val==999) or (val is None):
 			self.persistent_heading = False
+			self.pidHeading.clear()
 		elif (val in self.rangeHea):
 			self.persistent_heading = val
 		elif (val in self.incrementHea):
