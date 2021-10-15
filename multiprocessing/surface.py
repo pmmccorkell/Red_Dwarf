@@ -156,6 +156,9 @@ class Controller():
 		self.pidHeading.clear()
 		self.thrusters.stopAllThrusters()
 
+	def wraparound(self,rangen,n):
+		
+
 	def clampyclamp(self,rangen,n):
 		minn = min(rangen)
 		maxn = max(rangen)
