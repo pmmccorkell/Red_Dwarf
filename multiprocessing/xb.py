@@ -122,8 +122,6 @@ class XBoxController:
 		print("turning off xbox controller")
 		self.joystick.close()
 
-debounce_timer = monotonic()
-debounce_time_check = 1.0
 def xbox_debounce(val1,val2):
 	global debounce_timer, debounce_time_check
 	current = monotonic()
@@ -146,6 +144,11 @@ if __name__ == '__main__':
 	import surface
 	from multiprocessing import Pipe
 	from threading import Thread
+
+	global debounce_timer, debounce_time_check
+	debounce_timer = monotonic()
+	debounce_time_check = 1.0
+
 	print("running as main")
 	xb_pipe_in, xb_pipe_out = Pipe()
 	try:
