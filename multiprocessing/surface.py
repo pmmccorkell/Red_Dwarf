@@ -85,16 +85,6 @@ class Controller():
 		self.valueQueue = []
 
 
-		# self.increment = {
-		# 	'hea':incrementHeading,
-		# 	'vel':incrementSpeed,
-		# 	'off':incrementOffset
-		# }
-		################## Put this where increment commands are intaked ########
-		#	increment[select](magnitude)
-		##################################
-
-
 ######## Az Controller #########
 
 	def headingController(self):
