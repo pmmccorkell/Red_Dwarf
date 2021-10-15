@@ -78,7 +78,6 @@ def pwm_controller_thread():
 	interval = log_interval
 	while(log_flag.set_flag()):
 		start=monotonic()+interval
-		#vessel.surfaceLoop()
 		vessel.azThrusterLogic()
 		sleep(max(start-monotonic(),0))
 		
