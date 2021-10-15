@@ -72,7 +72,14 @@ plot_flag = event_flags()
 		logline = 'KEY: time, qtm_heading, bno_heading'
 		log.info(logline)
 
-	def logging_stream():
+def pwm_controller_thread():
+	global bno,qtm
+	interval = log_interval
+	while(pwm_flag.set_flag()):
+		start=monotonic()+interval
+		#vessel.surfaceLoop()
+		vessel.azThrusterLogic()
+		sleep(max(start-monotonic(),0))
 		
 
 #########################################################################
