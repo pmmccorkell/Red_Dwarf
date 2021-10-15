@@ -125,7 +125,7 @@ class XBoxController:
 if __name__ == '__main__':
 	import surface
 	from multiprocessing import Process, Pipe
-
+	xb_pipe_in, xb_pipe_out = Pipe()
 	print("running as main")
 	plot_process_setup()
 	sleep(0.1)
