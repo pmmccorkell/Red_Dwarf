@@ -188,6 +188,7 @@ class Controller():
 			self.pidHeading.clear()
 		elif (val in self.rangeHea):
 			self.persistent_heading = val
+			self.pidHeading.clear()
 		elif (val in self.incrementHea):
 			self.incrementHeading(val-834)
 
