@@ -91,8 +91,9 @@ class Controller():
 		speed=0
 		desired_heading=self.wraparound(self.rangeHea,self.persistent_heading)
 		current_heading=self.wraparound(self.rangeHea,self.heading)
-		print("desired: "+str(desired_heading))
-		print("current: "+str(current_heading))
+		if(self.DEBUG):
+			print("desired: "+str(desired_heading))
+			print("current: "+str(current_heading))
 		if (desired_heading != False):
 			diff = abs(desired_heading-current_heading)
 			if (diff>180):
