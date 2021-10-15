@@ -431,6 +431,7 @@ def loop():
 				plot_setup = 1
 			plot_thread.start()
 			plot_started = 1
+			xbox['graph'] = 0
 			sleep(0.1)
 			print("plot started")
 			print()
@@ -444,6 +445,7 @@ def loop():
 			sleep(0.1)
 			print("stopped graph mode")
 			print()
+			xbox['graph'] = 0
 
 setup()
 loop()
