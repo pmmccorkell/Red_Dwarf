@@ -69,7 +69,7 @@ plot_flag = event_flags()
 		file_handler.setFormatter(format)
 		log.addHandler(file_handler)
 
-		logline = 'KEY: time,qtm_heading, bno_heading'
+		logline = 'KEY: time, qtm_heading, bno_heading'
 		log.info(logline)
 
 
