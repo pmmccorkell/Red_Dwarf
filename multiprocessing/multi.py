@@ -166,7 +166,7 @@ def xbox_read():
 		# if (buffer['speed']>10):
 		# 	vessel.persistent_speed = buffer['speed']
 		# else:
-		# 	vessel.persistent_speed = False
+		# 	vessel.persistent_speed = 0
 		vessel.persistent_speed = bool(max(buffer['speed']-10,0)) * buffer['speed']
 
 		# if (xbox['maintain']==1):
