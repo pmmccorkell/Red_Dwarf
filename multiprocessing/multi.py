@@ -84,7 +84,6 @@ def pwm_controller_thread():
 		logline = str(now) + delimiter + str(bno['heading']) + delimiter + str(qtm['heading']))
 		log.info(logline)
 		sleep(max(start-monotonic(),0))
-		
 
 #########################################################################
 ###################### PCA9685 PWM and ESC Section ######################
