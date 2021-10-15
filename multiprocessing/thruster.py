@@ -15,7 +15,6 @@ class Thruster:
 #	def cal_period(self,f):
 #		self._period = 1000/f
 
-#	def clampESC(self,n, minn, maxn):
 	def clampESC(self,n):
 		minn = self._max * -1
 		maxn = self._max
