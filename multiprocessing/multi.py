@@ -158,7 +158,6 @@ def xbox_read():
 			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
 		vessel.heading = measured_active['heading']
 
-
 		vessel.persistent_offset = buffer['offset']
 
 		# if (xbox['speed']>10):
