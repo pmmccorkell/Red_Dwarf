@@ -140,13 +140,13 @@ def xbox_debounce(val1,val2):
 
 
 if __name__ == '__main__':
+	print("running as main")
 	import surface
 
 	global debounce_timer, debounce_time_check
 	debounce_timer = monotonic()
 	debounce_time_check = 1.0
 
-	print("running as main")
 
 	from multiprocessing import Pipe
 	from threading import Thread
