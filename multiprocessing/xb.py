@@ -204,7 +204,6 @@ if __name__ == '__main__':
 
 			buffer['maintain'] = xbox_debounce(xbox['maintain'],buffer['maintain'])
 			buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
-			buffer['graph'] = xbox_debounce(xbox['graph'], buffer['graph'])
 
 			xbox = buffer
 			vessel.commands['hea'](bool(buffer['maintain']) and buffer['facing'])
