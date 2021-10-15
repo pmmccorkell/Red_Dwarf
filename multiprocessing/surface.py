@@ -130,6 +130,9 @@ class Controller():
 
 
 	def azThrusterLogic(self):
+		# Error check values fed are in correct ranges. 0 to 360 vs -180 to 180
+		
+
 		# Get the values from each controller.
 		trig_speed=self.trigSpeedController()
 		heading_speed = self.headingController()
