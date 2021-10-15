@@ -127,7 +127,7 @@ class Controller():
 
 		# convert offset to radians, and add 45deg for angled thrusters
 		offset_factor = ((twopi / 360) * offset) + (twopi/8)
-		
+	
 		# transform the forward speed to trig
 		desired_speed['cos'] = (speed * cos(offset_factor))#/1000
 		desired_speed['sin'] = (speed * sin(offset_factor))#/1000
