@@ -153,6 +153,7 @@ def xbox_read():
 
 		buffer['maintain'] = xbox_debounce(xbox['maintain'],buffer['maintain'])
 		buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
+		buffer['graph'] = xbox_debounce(xbox['graph'], buffer['graph'])
 
 		for k in measured_active:
 			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
