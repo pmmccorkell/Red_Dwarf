@@ -164,7 +164,6 @@ class Controller():
 		if n > maxn:
 			n += minn
 		return n
-
 	def clampyclamp(self,rangen,n):
 		minn = min(rangen)
 		maxn = max(rangen)
