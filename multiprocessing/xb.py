@@ -122,6 +122,11 @@ class XBoxController:
 		print("turning off xbox controller")
 		self.joystick.close()
 
+
+
+###############################################
+######### FOR DEBUGGING PURPOSES ONLY #########
+###############################################
 def xbox_debounce(val1,val2):
 	global debounce_timer, debounce_time_check
 	current = monotonic()
@@ -139,9 +144,6 @@ def xbox_debounce(val1,val2):
 	return returnval
 
 
-###############################################
-######### FOR DEBUGGING PURPOSES ONLY #########
-###############################################
 if __name__ == '__main__':
 	print("running as main")
 	print("Importing libraries for independent mode.")
