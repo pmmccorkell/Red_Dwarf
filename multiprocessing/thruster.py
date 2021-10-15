@@ -5,7 +5,6 @@
 #
 
 class Thruster:
-
 	def setEvent(self):
 		self._lock=1
 		self.set_pw(self._base_pw)
