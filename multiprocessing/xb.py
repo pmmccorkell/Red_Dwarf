@@ -21,7 +21,7 @@ from xbox import Joystick
 from math import sqrt, pi, atan
 from math import tau as twopi
 from time import sleep, monotonic
-from json import loads,dumps
+from json import dumps
 # from surface import *
 # import atexit
 
