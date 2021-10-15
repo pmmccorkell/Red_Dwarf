@@ -170,7 +170,6 @@ class Controller():
 		return min(max(n, minn), maxn)
 
 	def incrementHeading(self,magnitude):
-		print(magnitude)
 		heading_resolution=3	# degrees
 		self.persistent_heading = self.wraparound(self.rangeHea,self.persistent_heading+(magnitude*heading_resolution))
 		self.pidHeading.clear()
