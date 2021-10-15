@@ -20,12 +20,12 @@ class Plotting:
 	def logging_setup(self):
 		filename=datetime.now().strftime('/logs/auv_logs/graphingdata_%Y%m%d_%H:%M:%s.log')
 		self.log = logging.getLogger()
-		log.setLevel(logging.INFO)
+		self.log.setLevel(logging.INFO)
 		format = logging.Formatter('%(asctime)s : %(message)s')
 		file_handler = logging.FileHandler(filename)
 		file_handler.setLevel(logging.INFO)
 		file_handler.setFormatter(format)
-		log.addHandler(file_handler)
+		self.log.addHandler(file_handler)
 
 		logline = 'KEY: qtm_heading, bno_heading'
 		log.info(logline)
