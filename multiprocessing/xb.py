@@ -161,8 +161,8 @@ if __name__ == '__main__':
 	vessel = surface.Controller()
 	vessel.stopAll()
 	vessel.thrusters.servoboard.set_max(500/1.2)
-	vessel_thread = Thread(target=vessel_thread)
-	vessel_thread.start()
+	vessel_thread_object = Thread(target=vessel_thread)
+	vessel_thread_object.start()
 
 
 	print("Initiating xbox controller class.")
