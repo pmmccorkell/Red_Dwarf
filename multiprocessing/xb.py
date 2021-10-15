@@ -122,6 +122,24 @@ class XBoxController:
 		print("turning off xbox controller")
 		self.joystick.close()
 
+def xbox_debounce(val1,val2):
+	global debounce_timer, debounce_time_check
+	current = monotonic()
+
+	# if (bool_val):
+	# 	returnval = val1 ^ val2
+		# if returnval != val1:
+			# debounce_timer = monotonic()
+	# else:
+	# 	returnval = val1
+	bool_val = bool(max(current-debounce_timer-debounce_time_check,0))
+	returnval = (bool_val * (val1 ^ val2)) + ((not bool_val) * val1)
+	not_timer_bool = (returnval ^ val1)
+	debounce_timer = (monotonic() * (not_timer_bool)) + (debounce_timer * (not not_timer_bool))
+
+	return returnval
+
+
 if __name__ == '__main__':
 	import surface
 	from multiprocessing import Pipe
