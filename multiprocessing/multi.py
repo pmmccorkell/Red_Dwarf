@@ -60,19 +60,19 @@ log_flag = event_flags()
 ############################ Logging Section ############################
 #########################################################################
 #########################################################################
-	def log_setup():
-		global log
-		filename=datetime.now().strftime('/logs/auv_logs/graphingdata_%Y%m%d_%H:%M:%s.log')
-		log = logging.getLogger()
-		log.setLevel(logging.INFO)
-		format = logging.Formatter('%(asctime)s : %(message)s')
-		file_handler = logging.FileHandler(filename)
-		file_handler.setLevel(logging.INFO)
-		file_handler.setFormatter(format)
-		log.addHandler(file_handler)
+def log_setup():
+	global log
+	filename=datetime.now().strftime('/logs/auv_logs/graphingdata_%Y%m%d_%H:%M:%s.log')
+	log = logging.getLogger()
+	log.setLevel(logging.INFO)
+	format = logging.Formatter('%(asctime)s : %(message)s')
+	file_handler = logging.FileHandler(filename)
+	file_handler.setLevel(logging.INFO)
+	file_handler.setFormatter(format)
+	log.addHandler(file_handler)
 
-		logline = 'KEY: time, qtm_heading, bno_heading'
-		log.info(logline)
+	logline = 'KEY: time, qtm_heading, bno_heading'
+	log.info(logline)
 
 def log_stream():
 	global bno,qtm,log_interval,log
