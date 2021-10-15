@@ -73,7 +73,7 @@ plot_flag = event_flags()
 		log.info(logline)
 
 def pwm_controller_thread():
-	global bno,qtm
+	global bno,qtm,log_interval
 	interval = log_interval
 	while(pwm_flag.set_flag()):
 		start=monotonic()+interval
