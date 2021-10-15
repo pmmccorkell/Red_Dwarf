@@ -192,12 +192,12 @@ if __name__ == '__main__':
 			buffer = xb_pipe_out.recv()
 		if buffer:
 			vessel.persistent_offset = buffer['offset']
-			vessel.commands['hea'](bool(buffer['maintain']) and buffer['facing'])
 			vessel.persistent_speed = bool(max(buffer['speed']-10,0)) * buffer['speed']
 
 			buffer['maintain'] = xbox_debounce(xbox['maintain'],buffer['maintain'])
 			buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
 
 			xbox = buffer
+			vessel.commands['hea'](bool(buffer['maintain']) and buffer['facing'])
 		print(xbox)
 		sleep(0.02)
