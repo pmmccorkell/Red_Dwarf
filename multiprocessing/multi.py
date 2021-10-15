@@ -74,7 +74,7 @@ log_flag = event_flags()
 		logline = 'KEY: time, qtm_heading, bno_heading'
 		log.info(logline)
 
-def log_thread():
+def log_stream():
 	global bno,qtm,log_interval,log
 	interval = log_interval
 	while(log_flag.set_flag()):
@@ -432,7 +432,8 @@ def setup():
 	xbox_thread = Thread(target=xbox_stream,daemon=daemon_mode)
 	xbox_thread.start()
 
-	log_
+	log_setup()
+	log_thread = Thread(target=log_)
 
 
 def loop():
