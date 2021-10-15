@@ -61,6 +61,7 @@ log_flag = event_flags()
 #########################################################################
 #########################################################################
 	def logging_setup():
+		global log
 		filename=datetime.now().strftime('/logs/auv_logs/graphingdata_%Y%m%d_%H:%M:%s.log')
 		log = logging.getLogger()
 		log.setLevel(logging.INFO)
