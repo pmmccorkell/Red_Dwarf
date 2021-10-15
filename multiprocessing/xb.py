@@ -163,6 +163,8 @@ if __name__ == '__main__':
 	sleep(0.1)
 	poll_xbox.start()
 
+
+	print("Starting loop.")
 	xbox = {
 		'facing':999,
 		'offset':999,
@@ -172,8 +174,6 @@ if __name__ == '__main__':
 		'mode':1,		# mode 1 qtm, mode 0 bno
 		'quit':0
 	}
-
-	print("Starting loop.")
 	while(1):
 		buffer = {}
 		while (xb_pipe_out.poll()):
