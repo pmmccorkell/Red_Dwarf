@@ -124,7 +124,7 @@ class Controller():
 		speed = self.clampyclamp(self.rangeVel,self.persistent_speed)
 
 		# convert offset to radians, and add 45deg for angled thrusters
-		offset_factor = ((twopi / 360) * self.persistent_offset) + (twopi/8)
+		offset_factor = ((twopi / 360) * offset) + (twopi/8)
 		
 		# transform the forward speed to trig
 		desired_speed['cos'] = (self.persistent_speed * cos(offset_factor))#/1000
