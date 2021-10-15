@@ -199,5 +199,5 @@ if __name__ == '__main__':
 			buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
 
 			xbox = buffer
-
+		print(xbox)
 		sleep(0.02)
