@@ -100,7 +100,7 @@ class Controller():
 	def headingController(self):
 		speed=0
 		desired_heading=self.persistent_heading
-		current_heading=self.heading
+		current_heading=self.wraparound(self.rangeHea,self.heading)
 		print("desired: "+str(desired_heading))
 		print("current: "+str(current_heading))
 		if (desired_heading != False):
