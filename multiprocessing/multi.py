@@ -81,7 +81,7 @@ def pwm_controller_thread():
 		start= now + interval
 		delimiter = ','
 		logline = str(now) + delimiter + str(bno['heading']) + delimiter + str(qtm['heading']))
-		vessel.azThrusterLogic()
+		log.info(logline)
 		sleep(max(start-monotonic(),0))
 		
 
