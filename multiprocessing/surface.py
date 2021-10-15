@@ -160,7 +160,7 @@ class Controller():
 		self.pidHeading.clear()
 	def incrementSpeed(self,magnitude):
 		speed_resolution=27		# us
-		self.persistent_speed += (magniutde*speed_resolution)
+		self.persistent_speed += (magnitude*speed_resolution)
 	def incrementOffset(self,magnitude):
 		resolution=3	# degrees
 		self.persistent_offset += (magnitude*resolution)
