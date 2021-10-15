@@ -100,7 +100,7 @@ class Plotting:
 		self.curve1.setData(self.x_val,self.y1_val)
 		self.curve2.setData(self.x_val,self.y2_val)
 		delimiter = ','
-		logline = str(self.x_val) + delimiter + str(self.y1_val) + delimiter + str(self.y2_val)
+		logline = str(self.x_val[-1]) + delimiter + str(self.y1_val[-1]) + delimiter + str(self.y2_val[-1])
 		print(logline)
 		# self.log.info(logline)
 
