@@ -139,5 +139,5 @@ if __name__ == '__main__':
 	poll_xbox.start()
 
 	while(1):
-		sleep(1)
+		sleep(0.02)
 		trash()
