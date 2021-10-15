@@ -15,7 +15,7 @@ class Plotting:
 		self.display_graph_timer=timing_val
 		self.comms = communictor
 		self.run = 1
-		self.logging_setup()
+		# self.logging_setup()
 
 	def logging_setup(self):
 		filename=datetime.now().strftime('/logs/auv_logs/graphingdata_%Y%m%d_%H:%M:%s.log')
