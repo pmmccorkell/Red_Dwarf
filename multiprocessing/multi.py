@@ -80,7 +80,7 @@ def log_stream():
 	interval = log_interval
 	while(log_flag.set_flag()):
 		now = monotonic()
-		start= now + interval
+		start= monotonic() + interval
 		delimiter = ','
 		logline = str(bno['heading']) + delimiter + str(qtm['heading'])
 		log.info(logline)
