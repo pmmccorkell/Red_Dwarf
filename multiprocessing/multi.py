@@ -66,7 +66,7 @@ def log_setup():
 	log = logging.getLogger('telemetry logger')
 	log.propagate = False
 	log.setLevel(logging.INFO)
-	format = logging.Formatter('%(asctime)s,%(message)s')
+	format = logging.Formatter('%(asctime)s.%(msecs)03d,%(message)s')
 	file_handler = logging.FileHandler(filename)
 	file_handler.setLevel(logging.INFO)
 	file_handler.setFormatter(format)
