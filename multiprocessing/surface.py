@@ -156,7 +156,15 @@ class Controller():
 		self.pidHeading.clear()
 		self.thrusters.stopAllThrusters()
 
+	def clampyclamp(self,minimax,n):
+		minn = minimax * -1
+		maxn = minimax
+		return min(max(n, minn), maxn)
+
 	def incrementHeading(self,magnitude):
+
+		self.rangeHea
+
 		heading_resolution=3	# degrees
 		self.persistent_heading = self.persistent_heading+(magnitude*heading_resolution)
 		self.pidHeading.clear()
