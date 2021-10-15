@@ -158,7 +158,7 @@ class Controller():
 		minn = min(rangen)
 		maxn = max(rangen)
 		if n < minn:
-			n += maxn
+			n += 2*maxn
 		if n > maxn:
 			n += minn
 		return n
