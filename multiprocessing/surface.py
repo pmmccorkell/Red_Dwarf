@@ -160,7 +160,7 @@ class Controller():
 		if n < minn:
 			n += 2*maxn
 		if n > maxn:
-			n += minn
+			n += 2*minn
 		return n
 	def clampyclamp(self,rangen,n):
 		minn = min(rangen)
