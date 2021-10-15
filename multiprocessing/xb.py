@@ -144,6 +144,7 @@ def xbox_debounce(val1,val2):
 	return returnval
 
 def vessel_thread():
+	global vessel
 	while(1):
 		vessel.azThrusterLogic()
 		sleep(0.02)
