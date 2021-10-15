@@ -430,7 +430,6 @@ def loop():
 				plot_process_setup()
 				plot_setup = 1
 			plot_thread.start()
-			plot_started = 1
 			xbox['graph'] = 0
 			sleep(0.1)
 			print("plot started")
