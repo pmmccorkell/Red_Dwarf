@@ -433,7 +433,7 @@ def setup():
 	xbox_thread.start()
 
 	log_setup()
-	log_thread = Thread(target=log_)
+	log_thread = Thread(target=log_stream,daemon=daemon_mode)
 
 
 def loop():
