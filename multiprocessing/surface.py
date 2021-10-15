@@ -47,8 +47,6 @@ class Controller():
 		# import:
 		######## LEAK DETECT ########
 
-		######### Intake Commands ######
-
 		### stop all persistent ###
 		self.persistent_heading = False 
 		self.persistent_speed = 0
