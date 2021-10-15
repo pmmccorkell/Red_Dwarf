@@ -130,10 +130,6 @@ class Controller():
 
 
 	def azThrusterLogic(self):
-		# Error check values fed to controllers are in expected format / range.
-		# 	ie 0 to 360 vs -180 to 180
-		self.wraparound(self.rangeHea,self.heading)
-		self.wraparound(self.rangeHea,self.persistent_heading)
 		self.wraparound(self.rangeOff,self.persistent_offset)
 		self.clampyclamp(self.rangeVel,self.persistent_speed)
 
