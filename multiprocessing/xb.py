@@ -149,6 +149,9 @@ if __name__ == '__main__':
 	}
 
 	while(1):
-		read_pipe = xb_pipe_out
-		
+		buffer = {}
+		while (xb_pipe_out.poll()):
+			buffer = xb_pipe_out.recv()
+		if buffer:
+			
 		sleep(0.02)
