@@ -32,18 +32,18 @@ ser=serial.Serial(
 #-----Logging Setup-----#
 #					   #
 #filename = datetime.now().strftime('./log/AUV_%Y%m%d_%H:%M:%s.log')
-filename=datetime.now().strftime('/logs/auv_logs/AUV_%Y%m%d_%H:%M:%s.log')
-log = logging.getLogger()
-log.setLevel(logging.INFO)
-format = logging.Formatter('%(asctime)s : %(message)s')
-file_handler = logging.FileHandler(filename)
-file_handler.setLevel(logging.INFO)
-file_handler.setFormatter(format)
-log.addHandler(file_handler)
+# filename=datetime.now().strftime('/logs/auv_logs/AUV_%Y%m%d_%H:%M:%s.log')
+# log = logging.getLogger()
+# log.setLevel(logging.INFO)
+# format = logging.Formatter('%(asctime)s : %(message)s')
+# file_handler = logging.FileHandler(filename)
+# file_handler.setLevel(logging.INFO)
+# file_handler.setFormatter(format)
+# log.addHandler(file_handler)
 
 
-logline='KEY: heading:|:roll:|:pitch:|:BNO cal:|:status'
-log.info(logline)
+# logline='KEY: heading:|:roll:|:pitch:|:BNO cal:|:status'
+# log.info(logline)
 
 #					   #
 #-----PHP Interfacing-----#
@@ -74,7 +74,7 @@ def reset_mbed():
 	writeline=('res:000').encode()
 	time.sleep(0.1)
 	ser.write(writeline)
-	log.info("Raspi command sent: "+writeline.decode())
+	# log.info("Raspi command sent: "+writeline.decode())
 	#print("sent: "+writeline.decode())
 	#print("Restarting serial link.")
 	#clear Event flags.
@@ -130,9 +130,9 @@ def isHex(string):
 # 	serial_data_file.close()
 
 def shutdownPi():
-	log.info("Water leak detected. All systems shutdown.")
+	# log.info("Water leak detected. All systems shutdown.")
 	os.system("sudo shutdown -h now")
-	log.info("Shutdown for water leak failed. The show goes on.")
+	# log.info("Shutdown for water leak failed. The show goes on.")
 
 def get_angles():
 	#Set key values.
@@ -205,10 +205,10 @@ def get_angles():
 				print(int_buffer_prefix)
 				print(int_buffer_data)
 
-		elif (in_buffer[0:3].decode()=='log'):
-			log.info(in_buffer[0:(length-2)].decode())
-		else:
-			log.debug(in_buffer[0:(length-2)].decode())
+		# elif (in_buffer[0:3].decode()=='log'):
+		# 	log.info(in_buffer[0:(length-2)].decode())
+		# else:
+		# 	log.debug(in_buffer[0:(length-2)].decode())
 
 		#Sort data to correct variable using the keys
 		if (int_buffer_prefix == ver_key):
@@ -244,7 +244,7 @@ def get_angles():
 		# video_overlay()
 		#reset verifications for next loop
 		##print ("cal:" + str(cal) + " heading:"+str(h)+" roll:"+str(r)+" pitch:"+str(p))
-		log.info(logline)
+		# log.info(logline)
 		key=0x0
 	if  (status & 0x0800) == 0x0800:
 		shutdownPi()
