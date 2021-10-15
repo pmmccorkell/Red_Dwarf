@@ -172,6 +172,7 @@ if __name__ == '__main__':
 		'quit':0
 	}
 
+	print("Starting loop.")
 	while(1):
 		buffer = {}
 		while (xb_pipe_out.poll()):
