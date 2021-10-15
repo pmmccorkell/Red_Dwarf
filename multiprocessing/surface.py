@@ -163,7 +163,7 @@ class Controller():
 
 	def incrementHeading(self,magnitude):
 		heading_resolution=3	# degrees
-		self.persistent_heading = self.persistent_heading+(magnitude*heading_resolution)
+		self.persistent_heading = self.clampyclamp(self.rangeHea,self.persistent_heading+(magnitude*heading_resolution))
 		self.pidHeading.clear()
 	def incrementSpeed(self,magnitude):
 		speed_resolution=27		# us
