@@ -145,11 +145,12 @@ if __name__ == '__main__':
 	print("Initiating surface vessel class.")
 	import surface
 
+
+	print("Initiating xbox controller class.")
 	global debounce_timer, debounce_time_check
 	debounce_timer = monotonic()
 	debounce_time_check = 1.0
 
-	print("Initiating xbox controller class.")
 	from multiprocessing import Pipe
 	from threading import Thread
 	xb_pipe_in, xb_pipe_out = Pipe()
