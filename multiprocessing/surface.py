@@ -166,6 +166,7 @@ class Controller():
 		self.persistent_offset += (magnitude*resolution)
 
 	def heaCommand(self,val):
+		print("heaCommand: "+str(val))
 		if (self.DEBUG):
 			print('hea cmd:'+str(val))
 		if (val==999) or (val is None):
