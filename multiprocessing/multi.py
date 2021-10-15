@@ -167,7 +167,7 @@ def xbox_read():
 		# 	vessel.persistent_speed = 0
 		vessel.persistent_speed = bool(max(buffer['speed']-10,0)) * buffer['speed']
 
-		# if (xbox['maintain']==1):
+		# if (buffer['maintain']==1):
 		# 	vessel.issueCommand('hea',xbox['facing'])
 		# else:
 		# 	vessel.issueCommand('hea',999)
