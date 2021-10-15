@@ -120,6 +120,8 @@ class Controller():
 			'cos' : 0,
 			'sin' : 0
 		}
+
+		# Error check and pull the persistent target values.
 		offset = self.wraparound(self.rangeOff,self.persistent_offset)
 		speed = self.clampyclamp(self.rangeVel,self.persistent_speed)
 
