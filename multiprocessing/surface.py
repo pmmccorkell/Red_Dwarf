@@ -39,7 +39,7 @@ class Controller():
 		self.ticker_rate = 0.02		# seconds
 
 		self.az_tolerance = 2		# degrees
-		self.heading_Kp = 1.8	
+		self.heading_Kp = 2
 		self.heading_Ki = 0.0		
 		self.heading_Kd = 0.0		
 		self.pidHeading = PID(self.heading_Kp,self.heading_Ki,self.heading_Kd,self.ticker_rate,self.az_tolerance)
