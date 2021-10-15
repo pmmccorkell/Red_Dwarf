@@ -15,7 +15,7 @@
 # create permissions file using nano
 #	sudo nano /etc/udev/rules.d/55-permissions-uinput.rules
 #	enter rules:
-#		
+#
 
 from xbox import Joystick
 from math import sqrt, pi, atan
