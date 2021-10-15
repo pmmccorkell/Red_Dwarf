@@ -171,7 +171,7 @@ def xbox_read():
 
 		for k in measured_active:
 			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
-
+		vessel.heading = measured_active['heading']
 		xbox = buffer
 
 def xbox_stream():
