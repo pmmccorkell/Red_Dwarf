@@ -137,9 +137,9 @@ xbox = {
 	'offset':999,
 	'speed':999,
 	'graph':0,		# graph 1 starts graphing functionality
-	'maintain':1,
+	'maintain':1,	# maintain 1 attempts to keep last heading after releasing joystick
 	'mode':1,		# mode 1 qtm, mode 0 bno
-	'quit':0
+	'quit':0		# quit 1 terminates the program
 }
 def xbox_read():
 	global xb_pipe_out, xbox
