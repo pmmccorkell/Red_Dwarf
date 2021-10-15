@@ -6,9 +6,9 @@ from gc import collect as trash
 from threading import Thread
 from multiprocessing import Process, Pipe
 
-import logging
-import logging.handlers
-from datetime import datetime
+# import logging
+# import logging.handlers
+# from datetime import datetime
 
 class Plotting:
 	def __init__(self,communictor,timing_val=20):
@@ -17,18 +17,18 @@ class Plotting:
 		self.run = 1
 		# self.logging_setup()
 
-	def logging_setup(self):
-		filename=datetime.now().strftime('/logs/auv_logs/graphingdata_%Y%m%d_%H:%M:%s.log')
-		self.log = logging.getLogger()
-		self.log.setLevel(logging.INFO)
-		format = logging.Formatter('%(asctime)s : %(message)s')
-		file_handler = logging.FileHandler(filename)
-		file_handler.setLevel(logging.INFO)
-		file_handler.setFormatter(format)
-		self.log.addHandler(file_handler)
+	# def logging_setup(self):
+	# 	filename=datetime.now().strftime('/logs/auv_logs/graphingdata_%Y%m%d_%H:%M:%s.log')
+	# 	self.log = logging.getLogger()
+	# 	self.log.setLevel(logging.INFO)
+	# 	format = logging.Formatter('%(asctime)s : %(message)s')
+	# 	file_handler = logging.FileHandler(filename)
+	# 	file_handler.setLevel(logging.INFO)
+	# 	file_handler.setFormatter(format)
+	# 	self.log.addHandler(file_handler)
 
-		logline = 'KEY: time,qtm_heading, bno_heading'
-		self.log.info(logline)
+	# 	logline = 'KEY: time,qtm_heading, bno_heading'
+	# 	self.log.info(logline)
 
 	def close(self):
 		self.run = 0
