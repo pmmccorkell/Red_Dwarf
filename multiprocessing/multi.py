@@ -10,12 +10,12 @@ import surface
 import xb
 import mbed_wrapper
 import plotting
-from time import sleep, time, monotonic
+from time import sleep, monotonic
 import atexit
 from gc import collect as trash
 import mocap
 import surface
-from json import dumps,loads
+from json import dumps
 # import sensehat
 
 daemon_mode = True
