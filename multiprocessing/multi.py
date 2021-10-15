@@ -75,7 +75,7 @@ plot_flag = event_flags()
 def pwm_controller_thread():
 	global bno,qtm,log_interval
 	interval = log_interval
-	while(pwm_flag.set_flag()):
+	while(log_flag.set_flag()):
 		start=monotonic()+interval
 		#vessel.surfaceLoop()
 		vessel.azThrusterLogic()
