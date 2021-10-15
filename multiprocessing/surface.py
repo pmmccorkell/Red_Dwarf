@@ -126,7 +126,6 @@ class Controller():
 
 
 	def azThrusterLogic(self):
-
 		# Get the values from each controller.
 		trig_speed=self.trigSpeedController()
 		heading_speed = self.headingController()
