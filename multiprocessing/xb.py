@@ -119,7 +119,7 @@ class XBoxController:
 
 	def close(self):
 		sleep(0.1)
-		# print("turning off xbox controller")
+		# print("Turning off xbox controller.")
 		self.joystick.close()
 
 
