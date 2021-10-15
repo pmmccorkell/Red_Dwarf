@@ -74,7 +74,7 @@ log_flag = event_flags()
 		log.info(logline)
 
 def pwm_controller_thread():
-	global bno,qtm,log_interval
+	global bno,qtm,log_interval,log
 	interval = log_interval
 	while(log_flag.set_flag()):
 		now = monotonic()
