@@ -131,7 +131,7 @@ class Controller():
 
 	def azThrusterLogic(self):
 		# Error check values fed are in correct ranges. 0 to 360 vs -180 to 180
-		
+		self.wraparound(self.rangeHea,self.heading)
 
 		# Get the values from each controller.
 		trig_speed=self.trigSpeedController()
