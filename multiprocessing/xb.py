@@ -144,6 +144,9 @@ if __name__ == '__main__':
 
 	print("Initiating surface vessel class.")
 	import surface
+	vessel = surface.Controller()
+	vessel.stopAll()
+	vessel.thrusters.servoboard.set_max(500)
 
 
 	print("Initiating xbox controller class.")
