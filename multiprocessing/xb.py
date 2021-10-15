@@ -141,12 +141,12 @@ def xbox_debounce(val1,val2):
 
 if __name__ == '__main__':
 	print("running as main")
+	print("Importing libraries for independent mode.")
 	from multiprocessing import Pipe
 	from threading import Thread
-
+	import surface
 
 	print("Initiating surface vessel class.")
-	import surface
 	vessel = surface.Controller()
 	vessel.stopAll()
 	vessel.thrusters.servoboard.set_max(500/1.2)
