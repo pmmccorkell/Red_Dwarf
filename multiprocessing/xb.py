@@ -141,6 +141,9 @@ def xbox_debounce(val1,val2):
 
 if __name__ == '__main__':
 	print("running as main")
+	from multiprocessing import Pipe
+	from threading import Thread
+
 
 	print("Initiating surface vessel class.")
 	import surface
@@ -154,8 +157,6 @@ if __name__ == '__main__':
 	debounce_timer = monotonic()
 	debounce_time_check = 1.0
 
-	from multiprocessing import Pipe
-	from threading import Thread
 	xb_pipe_in, xb_pipe_out = Pipe()
 	try:
 		xbox_controller = xb.XBoxController(xb_pipe_in)
