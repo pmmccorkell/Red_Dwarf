@@ -101,6 +101,8 @@ class Controller():
 		speed=0
 		desired_heading=self.persistent_heading
 		current_heading=self.heading
+		print("desired: "+str(desired_heading))
+		print("current: "+str(current_heading))
 		if (desired_heading != False):
 			diff = abs(desired_heading-current_heading)
 			if (diff>180):
