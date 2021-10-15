@@ -132,7 +132,6 @@ if __name__ == '__main__':
 	except IOError as e:
 		# print("xbox controller failed.")
 		print(e)
-		exit_program()
 		quit()
 
 
