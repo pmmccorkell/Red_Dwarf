@@ -170,7 +170,7 @@ def xbox_read():
 		# if (buffer['maintain']==1):
 		# 	vessel.commands['hea'](buffer['facing'])
 		# else:
-		# 	vessel.commands['hea'](999)
+		# 	vessel.commands['hea'](False)
 		vessel.commands['hea'](bool(buffer['maintain']) and buffer['facing'])
 
 		xbox = buffer
