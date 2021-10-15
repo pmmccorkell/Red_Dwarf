@@ -192,7 +192,7 @@ class Controller():
 			self.persistent_offset=0
 		elif val in self.rangeOff:
 			self.persistent_offset=val
-		elif val in incrementOff:
+		elif val in self.incrementOff:
 			self.incrementOffset(854-val)
 
 	def stopCommand(self,val):
