@@ -70,6 +70,7 @@ def log_setup():
 	file_handler.setLevel(logging.INFO)
 	file_handler.setFormatter(format)
 	log.addHandler(file_handler)
+	log.propagate = False
 
 	logline = 'KEY: time, qtm_heading, bno_heading'
 	log.info(logline)
