@@ -163,10 +163,10 @@ def xbox_read():
 		# Update vessel' offset setpoint.
 		vessel.persistent_offset = buffer['offset']
 
-		# if (xbox['speed']>10):
-		# 	vessel.issueCommand('vel',xbox['speed'])
+		# if (buffer['speed']>10):
+		# 	vessel.persistent_speed = buffer['speed']
 		# else:
-		# 	vessel.issueCommand('vel',999)
+		# 	vessel.persistent_speed = False
 		vessel.persistent_speed = bool(max(buffer['speed']-10,0)) * buffer['speed']
 
 		# if (xbox['maintain']==1):
