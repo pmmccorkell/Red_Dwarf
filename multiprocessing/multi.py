@@ -72,7 +72,7 @@ def pwm_setup():
 	global vessel
 	vessel = surface.Controller()
 	vessel.stopAll()
-	vessel.thrusters.servoboard.set_max(max_speed)
+	vessel.thrusters.servoboard.set_max(max_speed/1.2)
 
 	# pwm_sensehat_setup()
 
@@ -137,9 +137,9 @@ xbox = {
 	'offset':999,
 	'speed':999,
 	'graph':0,		# graph 1 starts graphing functionality
-	'maintain':1,	# maintain 1 attempts to keep last heading after releasing joystick
+	'maintain':1,
 	'mode':1,		# mode 1 qtm, mode 0 bno
-	'quit':0		# quit 1 terminates the program
+	'quit':0
 }
 def xbox_read():
 	global xb_pipe_out, xbox
@@ -156,29 +156,26 @@ def xbox_read():
 
 		for k in measured_active:
 			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
-
-		# Update vessel' current heading.
 		vessel.heading = measured_active['heading']
 
-		# Update vessel' offset setpoint.
 		vessel.persistent_offset = buffer['offset']
 
-		# if (buffer['speed']>10):
-		# 	vessel.persistent_speed = buffer['speed']
+		# if (xbox['speed']>10):
+		# 	vessel.issueCommand('vel',xbox['speed'])
 		# else:
-		# 	vessel.persistent_speed = 0
+		# 	vessel.issueCommand('vel',999)
 		vessel.persistent_speed = bool(max(buffer['speed']-10,0)) * buffer['speed']
 
-		# if (buffer['maintain']==1):
-		# 	vessel.commands['hea'](buffer['facing'])
+		# if (xbox['maintain']==1):
+		# 	vessel.issueCommand('hea',xbox['facing'])
 		# else:
-		# 	vessel.commands['hea'](False)
+		# 	vessel.issueCommand('hea',999)
 		vessel.commands['hea'](bool(buffer['maintain']) and buffer['facing'])
 
 		xbox = buffer
 
 def xbox_stream():
-	global xbox_interval, xbox_flag
+	global xbox, measured_active, xbox_interval, xbox_flag
 	interval = xbox_interval
 	while(xbox_flag.set_flag()):
 		start = monotonic()+interval
@@ -194,7 +191,7 @@ def xbox_stream():
 #########################################################################
 
 def mbed_process_setup():
-	global mbed_pipe_in,mbed_pipe_out,mbed_process,imu
+	global mbed_pipe_in,mbed_pipe_out,mbed_process,imu,mbed_process
 	mbed_pipe_in,mbed_pipe_out = Pipe()
 	imu = mbed_wrapper.BNO(mbed_pipe_in)
 	mbed_process = Process(target=imu.stream,daemon=daemon_mode)
