@@ -165,7 +165,6 @@ def xbox_read():
 		################################
 		################################
 		################################
-		vessel.commands['hea'](bool(buffer['maintain']) and buffer['facing'])
 
 		# if (xbox['speed']>10):
 		# 	vessel.issueCommand('vel',xbox['speed'])
@@ -175,6 +174,9 @@ def xbox_read():
 
 		buffer['maintain'] = xbox_debounce(xbox['maintain'],buffer['maintain'])
 		buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
+
+		vessel.commands['hea'](bool(buffer['maintain']) and buffer['facing'])
+
 
 		for k in measured_active:
 			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
