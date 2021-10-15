@@ -143,6 +143,13 @@ def xbox_debounce(val1,val2):
 	debounce_timer = (monotonic() * (not_timer_bool)) + (debounce_timer * (not not_timer_bool))
 	return returnval
 
+def vessel_thread():
+	vessel.azThrusterLogic()
+	sleep(0.02)
+
+	vessel_thread = Thread(target=vessel.azThrusterLogic)
+	vessel_thread.start()
+
 
 if __name__ == '__main__':
 	print("running as main")
@@ -155,8 +162,6 @@ if __name__ == '__main__':
 	vessel = surface.Controller()
 	vessel.stopAll()
 	vessel.thrusters.servoboard.set_max(500/1.2)
-	vessel_thread = Thread(target=vessel.azThrusterLogic)
-	vessel_thread.start()
 
 
 	print("Initiating xbox controller class.")
