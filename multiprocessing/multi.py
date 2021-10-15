@@ -59,6 +59,18 @@ plot_flag = event_flags()
 ############################ Logging Section ############################
 #########################################################################
 #########################################################################
+	# def logging_setup(self):
+	# 	filename=datetime.now().strftime('/logs/auv_logs/graphingdata_%Y%m%d_%H:%M:%s.log')
+	# 	self.log = logging.getLogger()
+	# 	self.log.setLevel(logging.INFO)
+	# 	format = logging.Formatter('%(asctime)s : %(message)s')
+	# 	file_handler = logging.FileHandler(filename)
+	# 	file_handler.setLevel(logging.INFO)
+	# 	file_handler.setFormatter(format)
+	# 	self.log.addHandler(file_handler)
+
+	# 	logline = 'KEY: time,qtm_heading, bno_heading'
+	# 	self.log.info(logline)
 
 
 #########################################################################
