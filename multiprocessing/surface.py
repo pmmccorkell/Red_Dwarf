@@ -9,23 +9,7 @@ from pid import PID
 from time import sleep, time
 from math import sin, cos
 from math import tau as twopi
-import logging
-import logging.handlers
 from datetime import datetime
-
-#						#
-#-----Logging Setup-----#
-#						#
-#filename = datetime.now().strftime('./log/AUV_%Y%m%d_%H:%M:%s.log')
-filename=datetime.now().strftime('/logs/auv_logs/surface_%Y%m%d_%H:%M:%s.log')
-log = logging.getLogger()
-log.setLevel(logging.INFO)
-format = logging.Formatter('%(asctime)s : %(message)s')
-file_handler = logging.FileHandler(filename)
-file_handler.setLevel(logging.INFO)
-file_handler.setFormatter(format)
-log.addHandler(file_handler)
-
 
 class Controller():
 	def __init__(self):
