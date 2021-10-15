@@ -237,24 +237,5 @@ class Controller():
 			isCom = len(self.commandQueue)
 
 
-################################
-################################
-################################
-################################
-########## DEVELOP THIS ######################
-################################
-################################
-################################
-# if __name__ == '__main__':
-# 	print("running as main")
-# 	plot_process_setup()
-# 	sleep(0.1)
-# 	data_thread = Thread(target=update_data,daemon=True)
-# 	data_thread.start()
-
-# 	while(1):
-# 		sleep(1)
-# 		trash()
-
 
 
