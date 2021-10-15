@@ -60,7 +60,7 @@ log_flag = event_flags()
 ############################ Logging Section ############################
 #########################################################################
 #########################################################################
-	def logging_setup():
+	def log_setup():
 		global log
 		filename=datetime.now().strftime('/logs/auv_logs/graphingdata_%Y%m%d_%H:%M:%s.log')
 		log = logging.getLogger()
@@ -431,6 +431,8 @@ def setup():
 	xbox_process_setup()
 	xbox_thread = Thread(target=xbox_stream,daemon=daemon_mode)
 	xbox_thread.start()
+
+	log_
 
 
 def loop():
