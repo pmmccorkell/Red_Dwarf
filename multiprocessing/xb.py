@@ -166,7 +166,7 @@ if __name__ == '__main__':
 
 	xb_pipe_in, xb_pipe_out = Pipe()
 	try:
-		xbox_controller = xb.XBoxController(xb_pipe_in)
+		xbox_controller = XBoxController(xb_pipe_in)
 	except IOError as e:
 		# print("xbox controller failed.")
 		print(e)
