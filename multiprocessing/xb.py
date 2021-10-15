@@ -149,4 +149,6 @@ if __name__ == '__main__':
 	}
 
 	while(1):
+		read_pipe = xb_pipe_out
+		
 		sleep(0.02)
