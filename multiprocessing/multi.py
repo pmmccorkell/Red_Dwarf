@@ -72,6 +72,8 @@ plot_flag = event_flags()
 		logline = 'KEY: time, qtm_heading, bno_heading'
 		log.info(logline)
 
+	def logging_stream():
+		
 
 #########################################################################
 ###################### PCA9685 PWM and ESC Section ######################
