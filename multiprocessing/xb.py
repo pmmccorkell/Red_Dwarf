@@ -148,7 +148,7 @@ if __name__ == '__main__':
 	debounce_timer = monotonic()
 	debounce_time_check = 1.0
 
-
+	print("Initiating xbox controller class")
 	from multiprocessing import Pipe
 	from threading import Thread
 	xb_pipe_in, xb_pipe_out = Pipe()
