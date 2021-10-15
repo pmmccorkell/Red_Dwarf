@@ -121,6 +121,7 @@ class Controller():
 			'sin' : 0
 		}
 		# convert offset to radians, and add 45deg for angled thrusters
+		self.persistent_offset = self.wraparound(self.rangeOff,self.persistent_offset)
 		offset_factor = ((twopi / 360) * self.persistent_offset) + (twopi/8)
 		
 		# transform the forward speed to trig
@@ -130,7 +131,7 @@ class Controller():
 
 
 	def azThrusterLogic(self):
-		self.wraparound(self.rangeOff,self.persistent_offset)
+		
 		self.clampyclamp(self.rangeVel,self.persistent_speed)
 
 		# Get the values from each controller.
