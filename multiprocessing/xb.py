@@ -137,7 +137,7 @@ if __name__ == '__main__':
 	poll_xbox = Thread(target=xbox_controller.stream)
 	sleep(0.1)
 	poll_xbox.start()
-	
+
 	xbox = {
 		'facing':999,
 		'offset':999,
@@ -150,4 +150,3 @@ if __name__ == '__main__':
 
 	while(1):
 		sleep(0.02)
-		trash()
