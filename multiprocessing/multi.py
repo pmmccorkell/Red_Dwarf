@@ -442,10 +442,10 @@ def loop():
 			plot_flag.set_flag(0)
 			plot_thread.join()
 			plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
+			xbox['graph'] = 0
 			sleep(0.1)
 			print("stopped graph mode")
 			print()
-			xbox['graph'] = 0
 
 setup()
 loop()
