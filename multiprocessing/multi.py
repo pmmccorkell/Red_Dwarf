@@ -178,7 +178,7 @@ def xbox_read():
 		xbox = buffer
 
 def xbox_stream():
-	global measured_active, xbox_interval, xbox_flag
+	global xbox_interval, xbox_flag
 	interval = xbox_interval
 	while(xbox_flag.set_flag()):
 		start = monotonic()+interval
