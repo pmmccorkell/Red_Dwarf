@@ -344,6 +344,7 @@ def exit_program():
 	xbox_flag.set_flag(0)
 	mbed_flag.set_flag(0)
 	plot_flag.set_flag(0)
+	log_flag.set_flag(0)
 	print()
 
 	for i in range(1,4):
