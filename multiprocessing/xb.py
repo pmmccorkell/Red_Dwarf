@@ -124,7 +124,8 @@ class XBoxController:
 
 if __name__ == '__main__':
 	import surface
-	from multiprocessing import Process, Pipe
+	from multiprocessing import Pipe
+	from threading import Thread
 	print("running as main")
 	xb_pipe_in, xb_pipe_out = Pipe()
 	try:
