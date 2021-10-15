@@ -123,6 +123,7 @@ class XBoxController:
 		self.joystick.close()
 
 if __name__ == '__main__':
+	import surface
 	print("running as main")
 	plot_process_setup()
 	sleep(0.1)
