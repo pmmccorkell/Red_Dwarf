@@ -154,6 +154,11 @@ def xbox_read():
 		buffer['maintain'] = xbox_debounce(xbox['maintain'],buffer['maintain'])
 		buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
 
+		for k in measured_active:
+			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
+		vessel.heading = measured_active['heading']
+
+
 		vessel.persistent_offset = buffer['offset']
 
 		# if (xbox['speed']>10):
@@ -168,10 +173,6 @@ def xbox_read():
 		# 	vessel.issueCommand('hea',999)
 		vessel.commands['hea'](bool(buffer['maintain']) and buffer['facing'])
 
-
-		for k in measured_active:
-			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
-		vessel.heading = measured_active['heading']
 		xbox = buffer
 
 def xbox_stream():
