@@ -151,20 +151,12 @@ def xbox_read():
 	if buffer:
 		# print('xbox_read: '+str(buffer))
 
+		buffer['maintain'] = xbox_debounce(xbox['maintain'],buffer['maintain'])
+		buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
+
 		vessel.persistent_offset = buffer['offset']
 
-		# if (xbox['maintain']==1):
-		# 	vessel.issueCommand('hea',xbox['facing'])
-		# else:
-		# 	vessel.issueCommand('hea',999)
 
-		################################
-		###############################
-		################################
-		####### CHECK THIS ###############
-		################################
-		################################
-		################################
 
 		# if (xbox['speed']>10):
 		# 	vessel.issueCommand('vel',xbox['speed'])
@@ -172,9 +164,10 @@ def xbox_read():
 		# 	vessel.issueCommand('vel',999)
 		vessel.persistent_speed = bool(max(buffer['speed']-10,0)) * buffer['speed']
 
-		buffer['maintain'] = xbox_debounce(xbox['maintain'],buffer['maintain'])
-		buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
-
+		# if (xbox['maintain']==1):
+		# 	vessel.issueCommand('hea',xbox['facing'])
+		# else:
+		# 	vessel.issueCommand('hea',999)
 		vessel.commands['hea'](bool(buffer['maintain']) and buffer['facing'])
 
 
