@@ -170,7 +170,7 @@ class Controller():
 	def incrementHeading(self,magnitude):
 		heading_resolution=3	# degrees
 		self.persistent_heading = self.wraparound(self.rangeHea,self.heading+(magnitude*heading_resolution))
-		if magniutde == 0:
+		if magnitude == 0:
 			self.pidHeading.clear()
 	def incrementSpeed(self,magnitude):
 		speed_resolution=27		# us
