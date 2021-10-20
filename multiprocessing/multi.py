@@ -72,7 +72,7 @@ def log_setup():
 	file_handler.setFormatter(format)
 	log.addHandler(file_handler)
 
-	logline = 'KEY: date, time (hour+minutes.sec.ms), bno_heading (degrees), qtm_heading (degrees)'
+	logline = 'KEY: date (yyyymmdd), time (hour+minutes.sec.ms), bno_heading (degrees), qtm_heading (degrees)'
 	log.info(logline)
 
 def log_stream():
