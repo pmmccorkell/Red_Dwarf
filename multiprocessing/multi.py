@@ -81,7 +81,8 @@ def log_stream():
 	while(log_flag.set_flag()):
 		start= monotonic() + interval
 		delimiter = ','
-		logline = str(bno['heading']) + delimiter + str(qtm['heading'])
+		# logline = str(bno['heading']) + delimiter + str(qtm['heading'])
+		logline = "{:.2f}".format(bno['heading']) + delimiter + "{:.2f}".format(qtm['heading'])
 		log.info(logline)
 		sleep(max(start-monotonic(),0))
 
