@@ -72,7 +72,7 @@ def log_setup():
 	file_handler.setFormatter(format)
 	log.addHandler(file_handler)
 
-	logline = 'KEY: date, time, qtm_heading, bno_heading'
+	logline = 'KEY: date, time, bno_heading, qtm_heading'
 	log.info(logline)
 
 def log_stream():
