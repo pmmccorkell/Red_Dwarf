@@ -74,8 +74,6 @@ def log_setup():
 
 	logline = 'KEY: date (yyyymmdd), time (hour+minutes.sec.ms), bno_heading (degrees), qtm_heading (degrees)'
 	log.info(logline)
-	log.info(logline)
-	log.info(logline)
 
 def log_stream():
 	global bno,qtm,log_interval,log
