@@ -5,9 +5,11 @@
 		"reportMissingModuleSource": "none"
 	},
 	"python.analysis.extraPaths": [
-		"",
+		"c:\\Users\\mccorkel\\.vscode\\extensions\\joedevivo.vscode-circuitpython-0.1.15\\boards\\0x239A\\0x80AC",
 		"c:\\Users\\mccorkel\\.vscode\\extensions\\joedevivo.vscode-circuitpython-0.1.15\\stubs",
 		"c:\\Users\\mccorkel\\AppData\\Roaming\\Code\\User\\globalStorage\\joedevivo.vscode-circuitpython\\bundle\\20211020\\adafruit-circuitpython-bundle-py-20211020\\lib"
 	],
-	"circuitpython.board.version": null
+	"circuitpython.board.version": null,
+	"circuitpython.board.vid": "0x239A",
+	"circuitpython.board.pid": "0x80AC"
 }
