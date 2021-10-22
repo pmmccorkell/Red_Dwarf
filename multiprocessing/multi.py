@@ -50,7 +50,7 @@ class event_flags:
 		return self.run_flag
 
 pwm_flag = event_flags()
-qtm_flag = event_flags()
+qtm_flag = event_flags()	
 xbox_flag = event_flags()
 mbed_flag = event_flags()
 plot_flag = event_flags()
