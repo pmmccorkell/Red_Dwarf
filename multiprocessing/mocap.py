@@ -93,6 +93,11 @@ class Motion_Capture:
 		
 		await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
 
+###############################################################
+###################### Debugging Section ######################
+###############################################################
+###############################################################
+
 
 # server = '192.168.5.4'	# SURF qtm server
 # server = '192.168.42.24'	# Pat's TSD office desktop on Robotics wireless
