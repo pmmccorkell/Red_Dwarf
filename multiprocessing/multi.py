@@ -62,7 +62,7 @@ log_flag = event_flags()
 #########################################################################
 def log_setup():
 	global log
-	filename=datetime.now().strftime('/logs/auv_logs/graphingdata_%Y%m%d_%H:%M:%s.log')
+	filename=datetime.now().strftime('/logs/auv_logs/telemetry_%Y%m%d_%H:%M:%s.log')
 	log = logging.getLogger('telemetry logger')
 	log.propagate = False
 	log.setLevel(logging.INFO)
