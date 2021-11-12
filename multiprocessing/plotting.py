@@ -1,3 +1,9 @@
+# Patrick McCorkell
+# April 2021
+# US Naval Academy
+# Robotics and Control TSD
+#
+
 from pyqtgraph.Qt import QtGui, QtCore
 # import numpy as np
 import pyqtgraph as pg
