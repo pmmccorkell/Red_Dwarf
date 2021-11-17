@@ -5,11 +5,10 @@
 #
 
 
-from pca9685 import PCA9685
+from pca9685 import PCA9685, Thruster
 import busio
 from board import SCL,SDA
 from time import sleep
-from thruster import Thruster
 from json import dumps
 from pca9685config import *
 
