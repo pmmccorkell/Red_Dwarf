@@ -10,7 +10,6 @@ import busio
 from board import SCL,SDA
 from time import sleep
 from json import dumps
-from pca9685config import *
 
 class pwmControl:
 	#					     #
