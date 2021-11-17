@@ -74,11 +74,11 @@ class PCA9685:
 	def get_max(self):
 		return self._max
 
-	#4095 (12bit) resolution. index is pin# (0-15), 
-	#on is the value [0,4096] that PWM goes high
-	#off is the value [0,4096] that PWM goes low
-	#special case of on=4096,off=0 --> pin is constant low
-	#on=0,off=4096 --> pin is constant high
+	# 4095 (12bit) resolution. index is pin# (0-15), 
+	# on is the value [0,4096] that PWM goes high
+	# off is the value [0,4096] that PWM goes low
+	# special case of on=4096,off=0 --> pin is constant low
+	# on=0,off=4096 --> pin is constant high
 	def pwm(self, index, on=None, off=None):
 		if on is None or off is None:
 			# data = self.i2c.readfrom_mem(self.address, 0x06 + 4 * index, 4)
