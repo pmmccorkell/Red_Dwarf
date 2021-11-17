@@ -125,8 +125,7 @@ class PCA9685:
 		self.reset()
 		print("pca9685 uninitialized")
 
-
-
+	
 
 class Thruster:
 	def setEvent(self):
