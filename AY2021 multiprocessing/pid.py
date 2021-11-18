@@ -44,15 +44,15 @@ class PID:
 			self.clearIntegral()
 		#	self.clearErrorPrevious()
 
-		pTerm = self._Kp * error
+		p_term = self._Kp * error
 
 		self._integral+=(error * self._dt)
-		iTerm = (self._Ki * self._integral)
+		i_term = (self._Ki * self._integral)
 
-		dTerm = (self._Kd * (error - self._errorPrevious)/self._dt)
+		d_term = (self._Kd * (error - self._errorPrevious)/self._dt)
 		self._errorPrevious = error
 
-		return (pTerm + iTerm + dTerm)
+		return (p_term + i_term + d_term)
 
 	# Calculate the PID value using a desired value against a measured value.
 	def process(self,setpoint,measured):
