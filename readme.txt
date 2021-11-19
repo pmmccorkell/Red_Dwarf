@@ -17,7 +17,8 @@ sudo pip3 install qtm
 
 Multiprocessing Only:
 Requires pyqtgraph for plotting, which additionally requires qt5, pyqt5, etc.
-  - raspi4 solution:
+  - Preferable to use an Ubuntu MATE image for RasPi (TSD has). Eliminates dependency issues for outdated Raspbian / RasPi OS repositories.
+  - RasPi OS solution:
     - Have to cross-compile Qt5 (use wsl) to satisfy pyqtgraph version requirements:
       https://www.interelectronix.com/qt-515-cross-compilation-raspberry-compute-module-4-ubuntu-20-lts.html
     - If dependency and held package issues are raised at early steps, install aptitude  for smarter dependency handling than base apt or synaptic:
