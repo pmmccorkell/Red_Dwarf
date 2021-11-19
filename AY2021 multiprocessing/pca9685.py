@@ -73,7 +73,7 @@ class PCA9685:
 			self._max = (new_max)
 	def get_max(self):
 		return self._max
-
+	
 	# 4095 (12bit) resolution. index is pin# (0-15), 
 	# on is the value [0,4096] that PWM goes high
 	# off is the value [0,4096] that PWM goes low
