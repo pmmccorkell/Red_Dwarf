@@ -10,8 +10,8 @@ from board import SCL, SDA
 import busio
 from PIL import Image, ImageDraw, ImageFont
 from adafruit_ssd1306 import SSD1306_I2C
-from sense_hat import SenseHat
-
+# from sense_hat import SenseHat	# RasPi OS implementation
+from sense_emu import SenseHat		# Ubuntu implementation
 
 class OLED:
 	def __init__(self):
