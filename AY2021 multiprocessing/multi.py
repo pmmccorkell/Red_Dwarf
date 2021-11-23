@@ -107,7 +107,7 @@ def pwm_setup():
 	vessel.stopAll()
 	vessel.thrusters.servoboard.set_max(max_speed)
 
-	# pwm_sensehat_setup()
+	pwm_sensehat_setup()
 
 def pwm_controller_thread():
 	global vessel
