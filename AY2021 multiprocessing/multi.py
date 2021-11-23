@@ -19,7 +19,7 @@ from json import dumps
 import logging
 import logging.handlers
 from datetime import datetime
-import sensehat
+from sense_emu import SenseHat as sensehat
 
 daemon_mode = True
 
