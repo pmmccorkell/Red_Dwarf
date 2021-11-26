@@ -145,7 +145,7 @@ class Controller():
 		# if n > maxn:
 		# 	n += 2*minn
 		# return n
-		if ((n is not None) and (n in rangen)):
+		if ((n is None) or (n in rangen)):
 			print('n: ' +str(n))
 			return n
 		else:
