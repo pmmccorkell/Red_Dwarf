@@ -147,7 +147,7 @@ class Controller():
 		# return n
 		if n in rangen:
 			return n
-		elif:
+		else:
 			minn = min(rangen)
 			maxn = max(rangen)
 			if (n < minn):
