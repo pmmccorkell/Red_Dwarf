@@ -46,7 +46,11 @@ class Controller():
 		self.rangeHea = range(-180,180+1)
 		self.incrementHea = range(831,837+1)
 		self.rangeVel = range(-500,500+1)
+		self.rangeVel_min = min(self.rangeVel)
+		self.rangeVel_max = max(self.rangeVel)
 		self.incrementVel = range(841,847+1)
+		self.incrementVel_min = min(self.incrementVel)
+		self.incrementVel_max = max(self.incrementVel)
 
 		#self.rangeOff = range(-180,180+1)
 		self.rangeOff = range(0,360+1)
