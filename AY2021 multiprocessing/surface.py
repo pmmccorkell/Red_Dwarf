@@ -146,7 +146,7 @@ class Controller():
 		# 	n += 2*minn
 		# return n
 		if (n in rangen):
-			print(n)
+			print('n: ' +str(n))
 			return n
 		else:
 			minn = min(rangen)
