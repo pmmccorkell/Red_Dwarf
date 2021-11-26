@@ -151,7 +151,7 @@ class Controller():
 		# print('return: '+str(n))
 		# return n
 		n *= 1
-		if ((n is False) or (n in rangen)):
+		if (n in rangen):
 			print('n: ' +str(n))
 			return n
 		else:
