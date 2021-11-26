@@ -138,13 +138,14 @@ class Controller():
 		self.thrusters.stopAllThrusters()
 
 	def wraparound(self,rangen,n):
+		print('enter: '+str(n))
 		minn = min(rangen)
 		maxn = max(rangen)
 		if n < minn:
 			n += 2*maxn
 		if n > maxn:
 			n += 2*minn
-		print(n)
+		print('return: '+str(n))
 		return n
 		# if ((n is None) or (n in rangen)):
 		# 	print('n: ' +str(n))
