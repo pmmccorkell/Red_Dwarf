@@ -141,14 +141,13 @@ class Controller():
 		self.thrusters.stopAllThrusters()
 
 	def wraparound(self,rangen,n):
-		# print('enter: '+str(n))
+		print('enter: '+str(n))
 		# minn = min(rangen)
 		# maxn = max(rangen)
 		# if n < minn:
 		# 	n += 2*maxn
 		# if n > maxn:
 		# 	n += 2*minn
-		# print('return: '+str(n))
 		# return n
 		if ((n is False) or (n is None)):
 			return n
@@ -162,7 +161,8 @@ class Controller():
 				self.wraparound(rangen,(n + (2 * maxn)))
 			elif (n > maxn):
 				self.wraparound(rangen, (n + (2 * minn)))
-		
+		print('return: '+str(n))
+
 	def clampyclamp(self,rangen,n):
 		minn = min(rangen)
 		maxn = max(rangen)
