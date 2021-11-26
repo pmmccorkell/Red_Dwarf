@@ -281,7 +281,7 @@ qtm = {
 	'z':999,
 	'roll':999,
 	'pitch':999,
-	'heading':999
+	'heading':0
 }
 def qtm_read(name):
 	global qtm_pipe_out, qtm
