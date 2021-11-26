@@ -118,6 +118,8 @@ class Controller():
 		trig_speed=self.trigSpeedController()
 		if ((self.persistent_heading) and (self.persistent_heading - 999)):
 			heading_speed = self.headingController()
+		else:
+			heading_speed = 0
 
 		# Form a superposition of the two controllers.
 		fwd_star_speed=(trig_speed['cos'] - heading_speed)
