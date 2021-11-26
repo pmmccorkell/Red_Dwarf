@@ -86,8 +86,8 @@ class Controller():
 
 	def headingController(self):
 		speed=0
-		desired_heading=self.wraparound(self.rangeHea,self.persistent_heading)
-		current_heading=self.wraparound(self.rangeHea,self.heading)
+		desired_heading=self.wraparound(self.rangeHea_min,self.rangeHea_max,self.persistent_heading)
+		current_heading=self.wraparound(self.rangeHea_min,self.rangeHea_max,self.heading)
 		if(self.DEBUG):
 			print("desired: "+str(desired_heading))
 			print("current: "+str(current_heading))
