@@ -74,7 +74,9 @@ class Controller():
 
 	def headingController(self):
 		speed=0
+		print('desired hea')
 		desired_heading=self.wraparound(self.rangeHea,self.persistent_heading)
+		print('current hea')
 		current_heading=self.wraparound(self.rangeHea,self.heading)
 		if(self.DEBUG):
 			print("desired: "+str(desired_heading))
@@ -98,6 +100,7 @@ class Controller():
 		}
 
 		# Error check and pull the persistent target values.
+		print('trigspeed')
 		offset = self.wraparound(self.rangeOff,self.persistent_offset)
 		speed = self.clampyclamp(self.rangeVel,self.persistent_speed)
 
