@@ -167,9 +167,9 @@ def xbox_debounce(val1,val2):
 	return returnval
 
 xbox = {
-	'facing':999,
-	'offset':999,
-	'speed':999,
+	'facing':0,
+	'offset':0,
+	'speed':0,
 	'graph':0,		# graph 1 toggles plotter to start/stop
 	'maintain':1,	# maintain 1 attempts to stay at last heading command
 	'mode':1,		# mode 1 qtm, mode 0 bno
