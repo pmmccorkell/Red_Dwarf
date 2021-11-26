@@ -152,7 +152,7 @@ class Controller():
 		# return n
 		if ((n is False) or (n is None)):
 			return n
-		if (n in rangen):
+		elif (n in rangen):
 			print('n: ' +str(n))
 			return n
 		else:
