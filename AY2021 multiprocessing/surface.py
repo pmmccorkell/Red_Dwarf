@@ -44,7 +44,11 @@ class Controller():
 		self.roll = 0xffff
 
 		self.rangeHea = range(-180,180+1)
+		self.rangeHea_min = min(self.rangeHea)
+		self.rangeHea_max = max(self.rangeHea)
 		self.incrementHea = range(831,837+1)
+		self.incrementHea_min = min(self.incrementHea)
+		self.incrementHea_max = max(self.incrementHea)
 		self.rangeVel = range(-500,500+1)
 		self.rangeVel_min = min(self.rangeVel)
 		self.rangeVel_max = max(self.rangeVel)
