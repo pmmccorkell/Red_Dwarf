@@ -150,7 +150,8 @@ class Controller():
 		# 	n += 2*minn
 		# print('return: '+str(n))
 		# return n
-		n *= 1
+		if ((n is False) or (n is None)):
+			return n
 		if (n in rangen):
 			print('n: ' +str(n))
 			return n
