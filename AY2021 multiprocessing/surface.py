@@ -116,7 +116,8 @@ class Controller():
 	def azThrusterLogic(self):
 		# Get the values from each controller.
 		trig_speed=self.trigSpeedController()
-		heading_speed = self.headingController()
+		if (self.persistent_heading):
+			heading_speed = self.headingController()
 
 		# Form a superposition of the two controllers.
 		fwd_star_speed=(trig_speed['cos'] - heading_speed)
