@@ -154,7 +154,7 @@ class Controller():
 			if (n < minn):
 				self.wraparound(rangen,(n + (2 * maxn)))
 			elif (n > maxn):
-				self.wraparound(rangen, (n + 2 * minn))
+				self.wraparound(rangen, (n + (2 * minn)))
 	def clampyclamp(self,rangen,n):
 		minn = min(rangen)
 		maxn = max(rangen)
