@@ -77,6 +77,7 @@ class Controller():
 		print('desired hea')
 		desired_heading=self.wraparound(self.rangeHea,self.persistent_heading)
 		print('current hea')
+		self.heading = ((bool(self.heading) * self.heading) + ((not bool(self.heading)) * desired_heading)
 		current_heading=self.wraparound(self.rangeHea,self.heading)
 		if(self.DEBUG):
 			print("desired: "+str(desired_heading))
