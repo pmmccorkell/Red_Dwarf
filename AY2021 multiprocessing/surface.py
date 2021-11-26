@@ -110,8 +110,8 @@ class Controller():
 		}
 
 		# Error check and pull the persistent target values.
-		offset = self.wraparound(self.rangeOff,self.persistent_offset)
-		speed = self.clampyclamp(self.rangeVel,self.persistent_speed)
+		offset = self.wraparound(self.rangeOff_min,self.rangeOff_max,self.persistent_offset)
+		speed = self.clampyclamp(self.rangeVel_min,self.rangeVel_max,self.persistent_speed)
 
 		# convert offset to radians, and add 45deg for angled thrusters
 		offset_factor = ((twopi / 360) * offset) + (twopi/8)
