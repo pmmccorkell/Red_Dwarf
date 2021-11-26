@@ -58,7 +58,11 @@ class Controller():
 
 		#self.rangeOff = range(-180,180+1)
 		self.rangeOff = range(0,360+1)
+		self.rangeOff_min = min(self.rangeOff)
+		self.rangeOff_max = max(self.rangeOff)
 		self.incrementOff = range(851,857+1)
+		self.incrementOff_min = min(self.incrementOff)
+		self.incrementOff_max = max(self.incrementOff)
 
 		self.commands = {
 			'hea' :  self.heaCommand,
