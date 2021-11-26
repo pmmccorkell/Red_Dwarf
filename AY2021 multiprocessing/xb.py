@@ -34,11 +34,11 @@ class XBoxController:
 		self.debounce = 0.2
 
 		self.values = {
-			'scalar1':999,
-			'vector1':999,
-			'scalar2':999,
-			'vector2':999,
-			'vector2_x2':999,
+			'scalar1':0,
+			'vector1':0,
+			'scalar2':0,
+			'vector2':0,
+			'vector2_x2':0,
 			'graph' : 0,
 			'maintain' : 1,
 			'mode' : 1,
