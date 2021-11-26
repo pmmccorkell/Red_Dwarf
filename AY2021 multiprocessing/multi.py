@@ -233,9 +233,9 @@ def mbed_process_setup():
 	mbed_process.start()
 
 bno = {
-	'heading':999,
-	'roll':999,
-	'pitch':999,
+	'heading':0,
+	'roll':0,
+	'pitch':0,
 	'calibration':999,
 	'status':999
 }
