@@ -187,8 +187,8 @@ class Controller():
 		self.persistent_offset = self.wraparound(self.rangeOff,self.persistent_offset + (magnitude*resolution))
 
 	def heaCommand(self,val):
-		# if (self.DEBUG):
-		print('hea cmd:'+str(val))
+		if (self.DEBUG):
+			print('hea cmd:'+str(val))
 		if (val==999) or (val is None):
 			self.persistent_heading = False
 			self.pidHeading.clear()
