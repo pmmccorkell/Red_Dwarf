@@ -147,7 +147,6 @@ class Controller():
 		maxn = max(rangen)
 		minn = min(rangen)
 		return (((n-minn) % (maxn - minn)) + minn)
-
 	def clampyclamp(self,rangen,n):
 		minn = min(rangen)
 		maxn = max(rangen)
