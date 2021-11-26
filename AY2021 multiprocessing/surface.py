@@ -147,9 +147,9 @@ class Controller():
 		# maxn = max(rangen)
 		# minn = min(rangen)
 		return (((n-minn) % (maxn - minn)) + minn)
-	def clampyclamp(self,rangen,n):
-		minn = min(rangen)
-		maxn = max(rangen)
+	def clampyclamp(self,minn,maxn,n):
+		# minn = min(rangen)
+		# maxn = max(rangen)
 		return min(max(n, minn), maxn)
 
 	def incrementHeading(self,magnitude):
