@@ -148,6 +148,7 @@ class Controller():
 			n += 2*maxn
 		if n > maxn:
 			n += 2*minn
+		print('return: '+str(n))
 		return n
 		# if ((n is False) or (n is None)):
 		# 	return n
