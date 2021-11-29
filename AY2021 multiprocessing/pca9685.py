@@ -138,6 +138,8 @@ class Thruster:
 		self._tolerance_pw=0.0006			# ms
 		self._period = self._pca._period	# ms
 											# observed at 400Hz, +/- 1 bit in [0,4095] resolution results in precisely 0.0006000006000006497 ms difference in calculated pulsewidth
+
+	# Emergency lockout
 	def setEvent(self):
 		self._lock=1
 		self.set_pw(self._base_pw)
