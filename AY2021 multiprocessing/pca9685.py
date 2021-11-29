@@ -49,10 +49,10 @@ class PCA9685:
 			# rounding... -1 + 0.5 = - 0.5
 				# return int(scalar / (self._read(0xfe) + 1)+0.5)
 			prescale = int(scalar / freq - 1 + 0.5)
-			old_mode = self.REGISTER_MODE1 #Mode 1
-			self.REGISTER_MODE1 = (old_mode & 0x7F) | 0x10	# Mode 1, sleep
-			self.REGISTER_PRESCALE = prescale
-			self.REGISTER_MODE1 = old_mode # Mode 1
+			old_mode = self.REGISTER_MODE1 # get Mode 1 current state
+			self.REGISTER_MODE1 = (old_mode & 0x7F) | 0x10	# set Mode 1, sleep
+			self.REGISTER_PRESCALE = prescale # set the frequency via prescaler
+			self.REGISTER_MODE1 = old_mode # set Mode 1 back to original state
 			sleep(0.005)
 			self.REGISTER_MODE1 = old_mode | 0xA1  # Mode 1, autoincrement on
 			self.set_period()
