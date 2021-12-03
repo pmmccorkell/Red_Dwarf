@@ -368,7 +368,7 @@ def run():
 			sleep(3)
 			cycle=0
 		v+=direction*3
-		update_pwm(clampyclamp(-1*max_val,max_val,v))
+		update_pwm(clampyclamp((-1*max_val),max_val,v))
 		sleep(0.003)
 
 def exit_program():
