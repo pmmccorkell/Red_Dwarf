@@ -364,7 +364,7 @@ def run():
 			direction=1
 			cycle+=1
 		if cycle==2:
-			update_pwm(1)
+			update_pwm(0)
 			sleep(3)
 			cycle=0
 		v+=direction*3
