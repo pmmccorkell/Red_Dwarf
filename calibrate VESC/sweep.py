@@ -17,6 +17,16 @@ import atexit
 
 
 class Thruster:
+	def __init__(self,pca,channel,direction):
+		self._pca = pca						# pca9685 class
+		self._channel = channel				# [0, 15] servo channel
+		self._dir = direction				# [-1, 1] blade orientation
+		self._lock = 0						# [0, 1] lock the thruster in safe 1.5ms
+		self._max = self._pca._max			# us
+		self._base_pw = 1.5					# ms
+		self._tolerance_pw=0.0006			# ms
+		self._period = self._pca._period	# ms
+											# observed at 400Hz, +/- 1 bit in [0,4095] resolution results in precisely 0.0006000006000006497 ms difference in calculated pulsewidth
 
 	def setEvent(self):
 		self._lock=1
@@ -67,16 +77,6 @@ class Thruster:
 	def update_period(self):
 		self._period = self._pca._period
 
-	def __init__(self,pca,channel,direction):
-		self._pca = pca						# pca9685 class
-		self._channel = channel				# [0, 15] servo channel
-		self._dir = direction				# [-1, 1] blade orientation
-		self._lock = 0						# [0, 1] lock the thruster in safe 1.5ms
-		self._max = self._pca._max			# us
-		self._base_pw = 1.5					# ms
-		self._tolerance_pw=0.0006			# ms
-		self._period = self._pca._period	# ms
-											# observed at 400Hz, +/- 1 bit in [0,4095] resolution results in precisely 0.0006000006000006497 ms difference in calculated pulsewidth
 
 class PCA9685:
 	REGISTER_MODE1 = UnaryStruct(0x00, "<B")
@@ -369,7 +369,7 @@ def run():
 			sleep(3)
 			cycle=0
 		v+=direction*4
-		update_pwm(clampyclamp((-1*max_val),max_val,v))
+		update_pwm(v)
 		sleep(0.003)
 
 def exit_program():
