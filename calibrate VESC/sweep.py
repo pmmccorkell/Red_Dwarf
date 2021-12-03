@@ -357,8 +357,6 @@ def run():
 			sleep(1.5)
 			direction=-1
 		elif v<=(-1*max_val):
-		#	update_pwm(1)
-		#	sleep(3)
 			update_pwm(-1*max_val)
 			sleep(1.5)
 			direction=1
