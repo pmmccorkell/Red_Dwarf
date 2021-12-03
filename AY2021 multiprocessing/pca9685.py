@@ -146,9 +146,6 @@ class Thruster:
 	def clearEvent(self):
 		self._lock=0
 
-#	def cal_period(self,f):
-#		self._period = 1000/f
-
 	def clampESC(self,n):
 		minn = self._max * -1
 		maxn = self._max
