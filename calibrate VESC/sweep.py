@@ -344,7 +344,6 @@ def update_pwm(speed):
 def clampyclamp(self,minn,maxn,n):
 	return min(max(n, minn), maxn)
 
-
 def run():
 	global thrusters
 	thrusters = pwmControl()
