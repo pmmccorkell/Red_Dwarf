@@ -141,16 +141,16 @@ class pwmControl:
 			print(self.thruster_objects[key].update_period())
 		return self.update(0)
 
-	def cal_freq(self):
-		try:
-			self.servoboard.cal_period(freq_meas)
-		except:
-			print()
-			print("#### PCA9685 CALIBRATION ERROR DETECTED ####")
-			print("Instructions to clear error:")
-			print("Measure frequency of servo hat, and update freq_meas in pca9685config.py")
-			print()
-			raise
+	# def cal_freq(self):
+	# 	try:
+	# 		self.servoboard.cal_period(freq_meas)
+	# 	except:
+	# 		print()
+	# 		print("#### PCA9685 CALIBRATION ERROR DETECTED ####")
+	# 		print("Instructions to clear error:")
+	# 		print("Measure frequency of servo hat, and update freq_meas in pca9685config.py")
+	# 		print()
+	# 		raise
 
 	def exitProgram(self):
 		self.stopAllThrusters()
