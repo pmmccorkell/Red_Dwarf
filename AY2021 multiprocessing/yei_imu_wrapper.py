@@ -46,3 +46,10 @@ class YEI:
 
 	def close(self):
 		self.run = 0
+
+
+if __name__ == '__main__':
+	
+
+
+
