@@ -30,4 +30,7 @@ class YEI:
 
 	def stream(self):
 		while(self.run):
-
+			
+		
+	def close(self):
+		self.run = 0
