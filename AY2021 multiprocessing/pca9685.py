@@ -5,6 +5,9 @@
 #
 
 
+# sudo pip3 install adafruit-circuitpython-register
+# sudo pip3 install adafruit-circuitpython-busdevice
+
 from time import sleep
 from adafruit_register.i2c_struct import UnaryStruct
 from adafruit_register.i2c_struct_array import StructArray
@@ -46,10 +49,10 @@ class PCA9685:
 			# rounding... -1 + 0.5 = - 0.5
 				# return int(scalar / (self._read(0xfe) + 1)+0.5)
 			prescale = int(scalar / freq - 1 + 0.5)
-			old_mode = self.REGISTER_MODE1 #Mode 1
-			self.REGISTER_MODE1 = (old_mode & 0x7F) | 0x10	# Mode 1, sleep
-			self.REGISTER_PRESCALE = prescale
-			self.REGISTER_MODE1 = old_mode # Mode 1
+			old_mode = self.REGISTER_MODE1 # get Mode 1 current state
+			self.REGISTER_MODE1 = (old_mode & 0x7F) | 0x10	# set Mode 1, sleep
+			self.REGISTER_PRESCALE = prescale # set the frequency via prescaler
+			self.REGISTER_MODE1 = old_mode # set Mode 1 back to original state
 			sleep(0.005)
 			self.REGISTER_MODE1 = old_mode | 0xA1  # Mode 1, autoincrement on
 			self.set_period()
@@ -71,11 +74,11 @@ class PCA9685:
 	def get_max(self):
 		return self._max
 
-	#4095 (12bit) resolution. index is pin# (0-15), 
-	#on is the value [0,4096] that PWM goes high
-	#off is the value [0,4096] that PWM goes low
-	#special case of on=4096,off=0 --> pin is constant low
-	#on=0,off=4096 --> pin is constant high
+	# 4095 (12bit) resolution. index is pin# (0-15), 
+	# on is the value [0,4096] that PWM goes high
+	# off is the value [0,4096] that PWM goes low
+	# special case of on=4096,off=0 --> pin is constant low
+	# on=0,off=4096 --> pin is constant high
 	def pwm(self, index, on=None, off=None):
 		if on is None or off is None:
 			# data = self.i2c.readfrom_mem(self.address, 0x06 + 4 * index, 4)
@@ -121,3 +124,74 @@ class PCA9685:
 		self.zeroout()
 		self.reset()
 		print("pca9685 uninitialized")
+
+
+
+class Thruster:
+	def __init__(self,pca,channel,direction):
+		self._pca = pca						# pca9685 class
+		self._channel = channel				# [0, 15] servo channel
+		self._dir = direction				# [-1, 1] blade orientation
+		self._lock = 0						# [0, 1] lock the thruster in safe 1.5ms
+		self._max = self._pca._max			# us
+		self._base_pw = 1.5					# ms
+		self._tolerance_pw=0.0006			# ms
+		self._period = self._pca._period	# ms
+											# observed at 400Hz, +/- 1 bit in [0,4095] resolution results in precisely 0.0006000006000006497 ms difference in calculated pulsewidth
+
+	# Emergency lockout
+	def setEvent(self):
+		self._lock=1
+		self.set_pw(self._base_pw)
+	def clearEvent(self):
+		self._lock=0
+
+	def clampESC(self,n):
+		minn = self._max * -1
+		maxn = self._max
+		return min(max(n, minn), maxn)
+
+	def set_pw(self,val):
+		if (val>self._period):
+			print("max period exceeded: " + str(val))
+		else:
+			newduty = round((val / self._period) * 4095)
+			self._pca.duty(self._channel,newduty)
+	def get_pw(self):
+		g_pw = self._pca.duty(self._channel)/4095 * self._period
+		return g_pw
+
+	def set_speed(self,v):
+		if (self._lock == 1):
+			self.set_pw(self._base_pw)
+		else:
+			v*self._max
+			vel = self.clampESC(v)
+			# transform us to ms, and add to base 1.5 ms
+			target_pw = (self._dir * vel / 1000) + self._base_pw
+			self.set_pw(target_pw)
+		return self.get_speed()
+	def get_speed(self):
+		sp = ((self.get_pw() - self._base_pw) * 1000) / self._max
+		return sp
+
+	def update_period(self):
+		self._period = self._pca._period
+
+
+# For test purposes
+# if __name__ == "pca9685": 
+# 	import PCA9685
+# 	import busio
+# 	from board import SCL,SDA
+
+# 	i2c = busio.I2C(SCL,SDA)
+# 	pca = PCA9685(i2c)
+
+# 	pca.freq(400)
+
+# 	servo_chan = 0
+# 	direction = 1
+
+# 	thr = Thruster(pca,servo_chan,direction)
+# 	print("loaded as main")

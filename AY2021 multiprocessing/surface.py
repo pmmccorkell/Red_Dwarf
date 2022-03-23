@@ -9,23 +9,7 @@ from pid import PID
 from time import sleep, time
 from math import sin, cos
 from math import tau as twopi
-import logging
-import logging.handlers
 from datetime import datetime
-
-#						#
-#-----Logging Setup-----#
-#						#
-#filename = datetime.now().strftime('./log/AUV_%Y%m%d_%H:%M:%s.log')
-filename=datetime.now().strftime('/var/www/auv_logs/surface_%Y%m%d_%H:%M:%s.log')
-log = logging.getLogger()
-log.setLevel(logging.INFO)
-format = logging.Formatter('%(asctime)s : %(message)s')
-file_handler = logging.FileHandler(filename)
-file_handler.setLevel(logging.INFO)
-file_handler.setFormatter(format)
-log.addHandler(file_handler)
-
 
 class Controller():
 	def __init__(self):
@@ -39,15 +23,16 @@ class Controller():
 		self.ticker_rate = 0.02		# seconds
 
 		self.az_tolerance = 2		# degrees
-		self.heading_Kp = 0.008333	
-		self.heading_Ki = 0.0		
-		self.heading_Kd = 0.0		
+		self.heading_Kp = 4.2
+		self.heading_Ki = 1.8
+		self.heading_Kd = 0.0
 		self.pidHeading = PID(self.heading_Kp,self.heading_Ki,self.heading_Kd,self.ticker_rate,self.az_tolerance)
 
 		# import:
+		#############################
+		###### IMPLEMENT LATER ######
 		######## LEAK DETECT ########
-
-		######### Intake Commands ######
+		#############################
 
 		### stop all persistent ###
 		self.persistent_heading = False 
@@ -59,13 +44,25 @@ class Controller():
 		self.roll = 0xffff
 
 		self.rangeHea = range(-180,180+1)
+		self.rangeHea_min = min(self.rangeHea)
+		self.rangeHea_max = max(self.rangeHea)
 		self.incrementHea = range(831,837+1)
+		self.incrementHea_min = min(self.incrementHea)
+		self.incrementHea_max = max(self.incrementHea)
 		self.rangeVel = range(-500,500+1)
+		self.rangeVel_min = min(self.rangeVel)
+		self.rangeVel_max = max(self.rangeVel)
 		self.incrementVel = range(841,847+1)
+		self.incrementVel_min = min(self.incrementVel)
+		self.incrementVel_max = max(self.incrementVel)
 
 		#self.rangeOff = range(-180,180+1)
 		self.rangeOff = range(0,360+1)
+		self.rangeOff_min = min(self.rangeOff)
+		self.rangeOff_max = max(self.rangeOff)
 		self.incrementOff = range(851,857+1)
+		self.incrementOff_min = min(self.incrementOff)
+		self.incrementOff_max = max(self.incrementOff)
 
 		self.commands = {
 			'hea' :  self.heaCommand,
@@ -85,22 +82,15 @@ class Controller():
 		self.valueQueue = []
 
 
-		# self.increment = {
-		# 	'hea':incrementHeading,
-		# 	'vel':incrementSpeed,
-		# 	'off':incrementOffset
-		# }
-		################## Put this where increment commands are intaked ########
-		#	increment[select](magnitude)
-		##################################
-
-
 ######## Az Controller #########
 
 	def headingController(self):
 		speed=0
-		desired_heading=self.persistent_heading
-		current_heading=self.heading
+		desired_heading=self.wraparound(self.rangeHea_min,self.rangeHea_max,self.persistent_heading)
+		current_heading=self.wraparound(self.rangeHea_min,self.rangeHea_max,self.heading)
+		if(self.DEBUG):
+			print("desired: "+str(desired_heading))
+			print("current: "+str(current_heading))
 		if (desired_heading != False):
 			diff = abs(desired_heading-current_heading)
 			if (diff>180):
@@ -118,19 +108,29 @@ class Controller():
 			'cos' : 0,
 			'sin' : 0
 		}
+
+		# Error check and pull the persistent target values.
+		offset = self.wraparound(self.rangeOff_min,self.rangeOff_max,self.persistent_offset)
+		speed = self.clampyclamp(self.rangeVel_min,self.rangeVel_max,self.persistent_speed)
+
 		# convert offset to radians, and add 45deg for angled thrusters
-		offset_factor = ((twopi / 360) * self.persistent_offset) + (twopi/8)
-		
+		offset_factor = ((twopi / 360) * offset) + (twopi/8)
+
 		# transform the forward speed to trig
-		desired_speed['cos'] = (self.persistent_speed * cos(offset_factor))#/1000
-		desired_speed['sin'] = (self.persistent_speed * sin(offset_factor))#/1000
+		desired_speed['cos'] = (speed * cos(offset_factor))#/1000
+		desired_speed['sin'] = (speed * sin(offset_factor))#/1000
 		return desired_speed
 
 
 	def azThrusterLogic(self):
 		# Get the values from each controller.
 		trig_speed=self.trigSpeedController()
-		heading_speed = self.headingController()
+		if (self.persistent_heading):
+			heading_speed = self.headingController()
+		elif (self.persistent_heading == 999):
+			heading_speed = 0
+		else:
+			heading_speed = 0
 
 		# Form a superposition of the two controllers.
 		fwd_star_speed=(trig_speed['cos'] - heading_speed)
@@ -154,26 +154,39 @@ class Controller():
 		self.pidHeading.clear()
 		self.thrusters.stopAllThrusters()
 
+	def wraparound(self,minn,maxn,n):
+		# ((n+180) % 360) - 180
+		# maxn = max(rangen)
+		# minn = min(rangen)
+		return (((n-minn) % (maxn - minn)) + minn)
+	def clampyclamp(self,minn,maxn,n):
+		# minn = min(rangen)
+		# maxn = max(rangen)
+		return min(max(n, minn), maxn)
+
 	def incrementHeading(self,magnitude):
 		heading_resolution=3	# degrees
-		self.persistent_heading = heading+(magnitude*heading_resolution)
-		self.pidHeading.clear()
+		self.persistent_heading = self.wraparound(self.rangeHea_min,self.rangeHea_max,self.heading+(magnitude*heading_resolution))
+		if magnitude == 0:
+			self.pidHeading.clear()
 	def incrementSpeed(self,magnitude):
 		speed_resolution=27		# us
-		self.persistent_speed += (magniutde*speed_resolution)
+		self.persistent_speed = self.clampyclamp(self.rangeVel_min,self.rangeVel_max,self.persistent_speed + (magnitude*speed_resolution))
 	def incrementOffset(self,magnitude):
 		resolution=3	# degrees
-		self.persistent_offset += (magnitude*resolution)
+		self.persistent_offset = self.wraparound(self.rangeOff_min,self.rangeOff_max,self.persistent_offset + (magnitude*resolution))
 
 	def heaCommand(self,val):
 		if (self.DEBUG):
 			print('hea cmd:'+str(val))
-		if (val==999):
+		if (val==999) or (val is None):
 			self.persistent_heading = False
+			self.pidHeading.clear()
 		elif (val in self.rangeHea):
 			self.persistent_heading = val
+			self.pidHeading.clear()
 		elif (val in self.incrementHea):
-			self.incrementHeading(834-val)
+			self.incrementHeading(val-834)
 
 	def velCommand(self,val):
 		if (self.DEBUG):
@@ -192,7 +205,7 @@ class Controller():
 			self.persistent_offset=0
 		elif val in self.rangeOff:
 			self.persistent_offset=val
-		elif val in incrementOff:
+		elif val in self.incrementOff:
 			self.incrementOffset(854-val)
 
 	def stopCommand(self,val):
@@ -227,6 +240,7 @@ class Controller():
 		isCom = len(self.commandQueue)
 		isVal = len(self.valueQueue)
 		while(isCom):
+			print(isCom)
 			if (isCom and isVal):
 				self.commands[self.commandQueue.pop(0)](self.valueQueue.pop(0))
 				#processCommand(commandQueue.pop(0),valueQueue.pop(0))
@@ -234,4 +248,7 @@ class Controller():
 				self.commands[self.commandQueue.pop(0)](None)
 				#processCommand(commandQueue.pop(0),None)
 			isCom = len(self.commandQueue)
+
+
+
 

@@ -94,8 +94,18 @@ class Motion_Capture:
 		await self.connected.stream_frames(components=['6deuler'], on_packet=self.on_packet)
 
 
-# server = '192.168.5.4'
-server = '192.168.42.55'
+
+
+
+
+###############################################################
+###################### Debugging Section ######################
+###############################################################
+###############################################################
+
+# server = '192.168.5.4'	# SURF qtm server
+# server = '192.168.42.24'	# Pat's TSD office desktop on Robotics wireless
+server = '10.60.17.246'		# Pat's TSD office desktop on Mission wired
 pipe1, pipe2 = Pipe()
 
 def stream_data(qtm_ip):
@@ -134,11 +144,12 @@ def get_ip():
 	if IP.find('192.168.5') != -1:
 		server = '192.168.5.4'
 	elif IP.find('192.168.42') != -1:
-		server = '192.168.42.55'
+		server = '192.168.42.24'
 	print('found server: '+server)
 	return server
 
 if __name__ == '__main__':
 
 	print('running as main')
-	stream_data(get_ip())
+	# stream_data(get_ip())
+	stream_data(server)

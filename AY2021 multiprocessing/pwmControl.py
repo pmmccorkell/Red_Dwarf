@@ -5,13 +5,11 @@
 #
 
 
-from pca9685 import PCA9685
+from pca9685 import PCA9685, Thruster
 import busio
 from board import SCL,SDA
 from time import sleep
-from thruster import Thruster
 from json import dumps
-from pca9685config import *
 
 class pwmControl:
 	#					     #
@@ -143,16 +141,16 @@ class pwmControl:
 			print(self.thruster_objects[key].update_period())
 		return self.update(0)
 
-	def cal_freq(self):
-		try:
-			self.servoboard.cal_period(freq_meas)
-		except:
-			print()
-			print("#### PCA9685 CALIBRATION ERROR DETECTED ####")
-			print("Instructions to clear error:")
-			print("Measure frequency of servo hat, and update freq_meas in pca9685config.py")
-			print()
-			raise
+	# def cal_freq(self):
+	# 	try:
+	# 		self.servoboard.cal_period(freq_meas)
+	# 	except:
+	# 		print()
+	# 		print("#### PCA9685 CALIBRATION ERROR DETECTED ####")
+	# 		print("Instructions to clear error:")
+	# 		print("Measure frequency of servo hat, and update freq_meas in pca9685config.py")
+	# 		print()
+	# 		raise
 
 	def exitProgram(self):
 		self.stopAllThrusters()
