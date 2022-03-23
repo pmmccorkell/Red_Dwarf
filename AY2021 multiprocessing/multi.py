@@ -175,8 +175,16 @@ def xbox_read():
 		# for k in measured_active:
 		# 	measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
 
+		measured_active_buffer = {}
+		if (measured_active_index == 0):
+			measured_active_buffer = bno
+		elif (measured_active_index == 1):
+			measured_active_buffer = qtm
+		else:
+			measured_active_buffer = yei
+
 		for k in measured_active:
-			measured_active[k] = 
+			measured_active[k] = measured_active_buffer[k]
 
 		xbox = buffer
 
