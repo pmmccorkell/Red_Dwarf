@@ -442,6 +442,12 @@ def exit_program():
 	except Exception as e:
 		print(e)
 
+	print('Shutting down yei imu.')
+	try:
+		yei_imu.close()
+	except Exception as e:
+		print(e)
+
 	print('Shutting down mbed Serial.')
 	try:
 		imu.close()
