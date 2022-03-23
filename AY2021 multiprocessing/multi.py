@@ -91,6 +91,7 @@ def log_stream():
 #########################################################################
 #########################################################################
 
+measured_active_index = 0
 measured_active = {
 	'heading' : 0xffff
 }
@@ -173,9 +174,10 @@ xbox = {
 	'mode':1,		
 	'quit':0
 }
+last_mode = 0
 def xbox_read():
 	global xb_pipe_out, xbox
-	global vessel, qtm, bno, measured_active
+	global vessel, qtm, bno, measured_active, measured_active_index, last_mode
 	read_pipe = xb_pipe_out
 	buffer = {}
 	while (read_pipe.poll()):
