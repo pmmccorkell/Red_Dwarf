@@ -9,6 +9,10 @@ sudo apt-get install i2c-tools python3-smbus
 sudo pip3 install adafruit-circuitpython-register
 sudo pip3 install adafruit-circuitpython-busdevice
 
+Uses Python API from 3-Space:
+https://yostlabs.com/3-space-application-programming-interface/
+move ThreeSpaceAPI.py and USB_ExampleClass.py to same directory as multi.py
+
 Multiprocessing Only:
 Requires pyqtgraph for plotting, which additionally requires qt5, pyqt5, etc.
   - raspi4 solution:
@@ -21,3 +25,4 @@ Requires pyqtgraph for plotting, which additionally requires qt5, pyqt5, etc.
     https://github.com/Electron-Cash/Electron-Cash/issues/892
     sudo pip3 install --user -I PyQt5
     sudo pip3 install --user -I PyQt5-sip
+
