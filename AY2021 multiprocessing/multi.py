@@ -194,11 +194,10 @@ def yei_process_setup():
 	yei_process.start()
 
 yei = {
-	# 'heading':999,
-	# 'roll':999,
-	# 'pitch':999,
-	# 'calibration':999,
-	# 'status':999
+	'timestamp':999,
+	'heading':999,
+	'roll':999,
+	'pitch':999
 }
 def yei_read():
 	global yei_pipe_out, yei
