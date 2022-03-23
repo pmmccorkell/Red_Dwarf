@@ -30,10 +30,10 @@ class YEI:
 
 	def stream(self):
 		self.data = {
-			'timestamp':999,
-			'heading':999,
-			'roll':999,
-			'pitch':999
+			'timestamp':777,
+			'heading':777,
+			'roll':777,
+			'pitch':777
 		}
 		while(self.run):
 			buffer = tuple([360/tau*x for x in self.sensor.getTaredOrientationAsEulerAngles()])
@@ -61,10 +61,10 @@ if __name__ == '__main__':
 	yei_process.start()
 
 	yei = {
-		'timestamp':999,
-		'heading':999,
-		'roll':999,
-		'pitch':999
+		'timestamp':777,
+		'heading':777,
+		'roll':777,
+		'pitch':777
 	}
 
 	buffer = {}
