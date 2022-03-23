@@ -412,6 +412,10 @@ def exit_program():
 	except Exception as e:
 		print(e)
 	try:
+		yei_process.kill()
+	except Exception as e:
+		print(e)
+	try:
 		mbed_process.kill()
 	except Exception as e:
 		print(e)
