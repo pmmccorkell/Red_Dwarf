@@ -180,7 +180,7 @@ def xbox_read():
 			measured_active_buffer = bno
 		elif (measured_active_index == 1):
 			measured_active_buffer = qtm
-		else:
+		elif (measured_active_index == 2):
 			measured_active_buffer = yei
 
 		for k in measured_active:
