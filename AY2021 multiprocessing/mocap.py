@@ -63,12 +63,12 @@ class Motion_Capture:
 					# print('body_names: '+str(self.body_names))
 					self.data[self.body_names[body_count]] = {
 						'index':index,
-						'x':rigidbody[0][0],
-						'y':rigidbody[0][1],
-						'z':rigidbody[0][2],
-						'roll':rigidbody[1][0],
-						'pitch':rigidbody[1][1],
-						'heading':rigidbody[1][2]
+						'x':round(rigidbody[0][0],3),
+						'y':round(rigidbody[0][1],3)
+						'z':round(rigidbody[0][2],3),
+						'roll':round(rigidbody[1][0],3),
+						'pitch':round(rigidbody[1][1],3),
+						'heading':round(rigidbody[1][2],3),
 						# 'name':self.body_names[body_count]
 					}
 				body_count+=1
