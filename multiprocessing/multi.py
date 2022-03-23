@@ -29,6 +29,7 @@ qtm_server = '192.168.42.55'
 pwm_interval = 0.02		# seconds
 qtm_interval = 0.005	# seconds
 xbox_interval = 0.10	# seconds
+yei_interval = 0.02		# seconds
 mbed_interval = 0.02	# seconds
 plot_interval = .1		# seconds
 
@@ -48,6 +49,7 @@ class event_flags:
 pwm_flag = event_flags()
 qtm_flag = event_flags()
 xbox_flag = event_flags()
+yei_flag = event_flags()
 mbed_flag = event_flags()
 plot_flag = event_flags()
 
@@ -178,6 +180,43 @@ def xbox_stream():
 		xbox_read()
 		sleep(max(start-monotonic(),0))
 		# print(xbox)
+
+#########################################################################
+############################ YEI IMU Section ############################
+#########################################################################
+#########################################################################
+
+def yei_process_setup():
+	global yei_pipe_in,yei_pipe_out,yei_process,yei_imu,yei_process
+	yei_pipe_in,yei_pipe_out = Pipe()
+	############# yei_imu = yei_imu_wrapper.BNO(mbed_pipe_in)
+	yei_process = Process(target=yei_imu.stream,daemon=daemon_mode)
+	yei_process.start()
+
+yei = {
+	# 'heading':999,
+	# 'roll':999,
+	# 'pitch':999,
+	# 'calibration':999,
+	# 'status':999
+}
+def yei_read():
+	global yei_pipe_out, yei
+	read_pipe = yei_pipe_out
+	buffer = {}
+	while (read_pipe.poll()):
+		buffer = read_pipe.recv()
+	if buffer:
+		yei = buffer
+
+def yei_stream():
+	global yei_interval, yei_flag
+	interval = yei_interval
+	while(yei_flag.set_flag()):
+		start = monotonic()+interval
+		yei_read()
+		sleep(max(start-monotonic(),0))
+		# print('yei: '+str(yei))
 
 
 

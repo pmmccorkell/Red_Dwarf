@@ -126,3 +126,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 *.lnk
+multiprocessing/ThreeSpaceAPI.py
+multiprocessing/USB_ExampleClass.py
