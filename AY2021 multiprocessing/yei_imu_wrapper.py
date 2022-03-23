@@ -67,6 +67,13 @@ if __name__ == '__main__':
 		'pitch':999
 	}
 
-	
+	buffer = {}
+	while(1):
+		while(yei_pipe_out.poll()):
+			buffer = yei_pipe_out.recv()
+		if buffer:
+			yei = buffer
+			buffer = {}
+		print(yei)
 
 
