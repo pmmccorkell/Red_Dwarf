@@ -37,7 +37,8 @@ class YEI:
 		}
 		while(self.run):
 			buffer = tuple([360/tau*x for x in self.sensor.getTaredOrientationAsEulerAngles()])
-			self.data
+			for item in buffer:
+				self.data
 			self.comms.send(self.data)
 			sleep(0.01)
 
