@@ -189,8 +189,22 @@ def xbox_read():
 		buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
 		buffer['graph'] = xbox_debounce(xbox['graph'], buffer['graph'])
 
+		measured_active_index = (measured_active_index + (last_mode ^ buffer['mode'])) % 3
+		last_mode = buffer['mode']
+		measured_active_buffer = {}
+		if (measured_active_index == 0):
+			measured_active_buffer = bno
+		elif (measured_active_index == 1):
+			measured_active_buffer = qtm
+		elif (measured_active_index == 2):
+			measured_active_buffer = yei
+
 		for k in measured_active:
-			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
+			measured_active[k] = measured_active_buffer[k]
+
+		# for k in measured_active:
+		# 	measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
+
 		vessel.heading = measured_active['heading']
 
 		vessel.persistent_offset = buffer['offset']
