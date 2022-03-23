@@ -28,12 +28,11 @@ class YEI:
 		usb_comm = USB_ExampleClass.UsbCom(portName = port)
 		self.sensor = ThreeSpaceAPI.ThreeSpaceSensor(usb_comm)
 
-
 	def stream(self):
 		while(self.run):
 			self.data = tuple([360/tau*x for x in self.sensor.getTaredOrientationAsEulerAngles()])
 			self.comms.send(self.data)
 			sleep(0.01)
-		
+
 	def close(self):
 		self.run = 0
