@@ -51,6 +51,7 @@ class event_flags:
 pwm_flag = event_flags()
 qtm_flag = event_flags()
 xbox_flag = event_flags()
+yei_flag = event_flags()
 mbed_flag = event_flags()
 plot_flag = event_flags()
 log_flag = event_flags()
