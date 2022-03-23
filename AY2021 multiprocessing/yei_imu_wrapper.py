@@ -29,8 +29,15 @@ class YEI:
 		self.sensor = ThreeSpaceAPI.ThreeSpaceSensor(usb_comm)
 
 	def stream(self):
+		data = {
+			'timestamp':999,
+			'heading':999,
+			'roll':999,
+			'pitch':999
+		}
 		while(self.run):
-			self.data = tuple([360/tau*x for x in self.sensor.getTaredOrientationAsEulerAngles()])
+			buffer = tuple([360/tau*x for x in self.sensor.getTaredOrientationAsEulerAngles()])
+			self.data
 			self.comms.send(self.data)
 			sleep(0.01)
 
