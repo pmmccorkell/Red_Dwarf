@@ -4,21 +4,6 @@ from math import pi
 from time import sleep
 tau = 2*pi
 
-# com = USB_ExampleClass.UsbCom()
-# sensor = ThreeSpaceSensor(com)
-
-# --> enter /dev/ttyS21
-
-# reading = tuple([360/tau*x for x in sensor.getTaredOrientationAsEulerAngles()])
-
-# sensor.cleanup()
-
-# - create a container for this
-# - create a pipe to get latest vals
-# - integrate into log
-# - integrate into graph ?
-
-
 class YEI:
 	def __init__(self,communicator):
 		self.comms = communicator
