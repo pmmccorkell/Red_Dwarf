@@ -41,7 +41,7 @@ class YEI:
 			data['heading'] = buffer[1]
 			data['roll'] = buffer[2]
 			data['pitch'] = buffer[3]
-			self.comms.send(self.data)
+			self.comms.send(data)
 			sleep(0.01)
 
 	def close(self):
