@@ -64,7 +64,7 @@ class Motion_Capture:
 					self.data[self.body_names[body_count]] = {
 						'index':index,
 						'x':round(rigidbody[0][0],3),
-						'y':round(rigidbody[0][1],3)
+						'y':round(rigidbody[0][1],3),
 						'z':round(rigidbody[0][2],3),
 						'roll':round(rigidbody[1][0],3),
 						'pitch':round(rigidbody[1][1],3),
