@@ -31,7 +31,7 @@ class YEI:
 
 	def stream(self):
 		while(self.run):
-			self.data = tuple([360/tau*x for x in sensor.getTaredOrientationAsEulerAngles()])
+			self.data = tuple([360/tau*x for x in slef.sensor.getTaredOrientationAsEulerAngles()])
 			self.comms.send(self.data)
 			sleep(0.01)
 		
