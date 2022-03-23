@@ -2,6 +2,7 @@ import USB_ExampleClass
 # from ThreeSpaceAPI import *
 import ThreeSpaceAPI
 from math import pi
+from time import sleep
 tau = 2*pi
 
 # com = USB_ExampleClass.UsbCom()
@@ -30,7 +31,7 @@ class YEI:
 
 	def stream(self):
 		while(self.run):
-			
+			sleep(0.01)
 		
 	def close(self):
 		self.run = 0
