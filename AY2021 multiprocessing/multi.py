@@ -144,9 +144,10 @@ xbox = {
 }
 def xbox_read():
 	global xb_pipe_out, xbox
-	global vessel, qtm, bno, measured_active
+	global vessel, qtm, bno, measured_active, measured_active_index
 	read_pipe = xb_pipe_out
 	buffer = {}
+	last_mode = 0
 	while (read_pipe.poll()):
 		buffer = read_pipe.recv()
 	if buffer:
@@ -169,8 +170,11 @@ def xbox_read():
 		buffer['maintain'] = xbox_debounce(xbox['maintain'],buffer['maintain'])
 		buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
 
+		# for k in measured_active:
+		# 	measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
+
 		for k in measured_active:
-			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
+			measured_active[k] = 
 
 		xbox = buffer
 
