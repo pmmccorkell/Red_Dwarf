@@ -144,10 +144,9 @@ xbox = {
 }
 def xbox_read():
 	global xb_pipe_out, xbox
-	global vessel, qtm, bno, measured_active, measured_active_index
+	global vessel, qtm, bno, measured_active, measured_active_index, last_mode
 	read_pipe = xb_pipe_out
 	buffer = {}
-	last_mode = 0
 	while (read_pipe.poll()):
 		buffer = read_pipe.recv()
 	if buffer:
@@ -191,8 +190,9 @@ def xbox_read():
 		xbox = buffer
 
 def xbox_stream():
-	global xbox, measured_active, xbox_interval, xbox_flag
+	global xbox, measured_active, xbox_interval, xbox_flag, last_mode
 	interval = xbox_interval
+	last_mode = 0
 	while(xbox_flag.set_flag()):
 		start = monotonic()+interval
 		xbox_read()
