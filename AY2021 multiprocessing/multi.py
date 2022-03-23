@@ -64,6 +64,7 @@ plot_flag = event_flags()
 measured_active = {
 	'heading' : 0xffff
 }
+measured_active_index = 0
 
 def pwm_sensehat_setup():
 	global oled,dpad
