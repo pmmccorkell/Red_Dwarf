@@ -14,7 +14,7 @@ class YEI:
 
 	def stream(self):
 		self.data = {
-			'timestamp':'nobodycares',
+			# 'timestamp':'nobodycares',
 			'heading':777,
 			'roll':777,
 			'pitch':777
