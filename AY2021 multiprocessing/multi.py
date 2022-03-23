@@ -142,6 +142,7 @@ xbox = {
 	'mode':1,		# mode 1 qtm, mode 0 bno
 	'quit':0
 }
+last_mode = 0
 def xbox_read():
 	global xb_pipe_out, xbox
 	global vessel, qtm, bno, measured_active, measured_active_index, last_mode
@@ -192,7 +193,6 @@ def xbox_read():
 def xbox_stream():
 	global xbox, measured_active, xbox_interval, xbox_flag, last_mode
 	interval = xbox_interval
-	last_mode = 0
 	while(xbox_flag.set_flag()):
 		start = monotonic()+interval
 		xbox_read()
