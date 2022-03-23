@@ -181,6 +181,7 @@ def xbox_read():
 	read_pipe = xb_pipe_out
 	buffer = {}
 	measured_active_buffer = {}
+
 	while (read_pipe.poll()):
 		buffer = read_pipe.recv()
 	if buffer:
