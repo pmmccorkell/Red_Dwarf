@@ -8,6 +8,7 @@ from threading import Thread
 from multiprocessing import Process, Pipe
 import surface
 import xb
+import yei_imu_wrapper
 import mbed_wrapper
 # import plotting
 from time import sleep, time, monotonic
