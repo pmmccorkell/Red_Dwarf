@@ -486,6 +486,10 @@ def setup():
 	qtm_thread = Thread(target=qtm_stream,daemon=daemon_mode)
 	qtm_thread.start()
 
+	yei_process_setup()
+	yei_thread = Thread(target=yei_stream,daemon=daemon_mode)
+	yei_thread.start()
+
 	mbed_process_setup()
 	mbed_thread = Thread(target=mbed_stream,daemon=daemon_mode)
 	mbed_thread.start()
