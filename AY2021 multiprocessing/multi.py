@@ -9,27 +9,22 @@ from multiprocessing import Process, Pipe
 import surface
 import xb
 import mbed_wrapper
-import plotting
-from time import sleep, monotonic
+# import plotting
+from time import sleep, time, monotonic
 import atexit
 from gc import collect as trash
 import mocap
 import surface
-from json import dumps
-import logging
-import logging.handlers
-from datetime import datetime
-# import sensehat
+from json import dumps,loads
+import sensehat
 
 daemon_mode = True
-		
 
-max_speed = 500   # us		speed limit
+
+max_speed = 400   # us		speed limit
 rigid_body_name = 'RedDwarf'
-# qtm_server = '192.168.5.4'	# SURF qtm server
-# qtm_server = '192.168.42.24'	# Pat's TSD office desktop on Robotics wireless
-qtm_server = '10.60.17.245'		# Pat's TSD office desktop on Mission wired
-# qtm_server = '10.25.56.113'		# Pat's TSD office desktop on Mission wireless
+# qtm_server='192.168.5.4'   # IP of PC running QTM Motive
+qtm_server = '192.168.42.55'
 
 pwm_interval = 0.02		# seconds
 qtm_interval = 0.005	# seconds
@@ -37,7 +32,7 @@ xbox_interval = 0.10	# seconds
 yei_interval = 0.02		# seconds
 mbed_interval = 0.02	# seconds
 plot_interval = .1		# seconds
-log_interval = 0.02		# seconds
+
 
 ####################################
 # Event Flags for Thread signalling.
@@ -57,37 +52,8 @@ xbox_flag = event_flags()
 yei_flag = event_flags()
 mbed_flag = event_flags()
 plot_flag = event_flags()
-log_flag = event_flags()
 
-#########################################################################
-############################ Logging Section ############################
-#########################################################################
-#########################################################################
-def log_setup():
-	global log
-	filename=datetime.now().strftime('/logs/auv_logs/telemetry_%Y%m%d_%H:%M:%s.log')
-	log = logging.getLogger('telemetry logger')
-	log.propagate = False
-	log.setLevel(logging.INFO)
-	format = logging.Formatter('%(asctime)s.%(msecs)03d, %(message)s','%Y%m%d, %H%M%S')
-	file_handler = logging.FileHandler(filename)
-	file_handler.setLevel(logging.INFO)
-	file_handler.setFormatter(format)
-	log.addHandler(file_handler)
 
-	logline = 'KEY: date (yyyymmdd), time (hour+minutes+sec.ms), bno_heading (degrees), qtm_heading (degrees)'
-	log.info(logline)
-
-def log_stream():
-	global bno,qtm,log_interval,log
-	interval = log_interval
-	while(log_flag.set_flag()):
-		start= monotonic() + interval
-		delimiter = ', '
-		# logline = str(bno['heading']) + delimiter + str(qtm['heading'])
-		logline = "{:.3f}".format(bno['heading']) + delimiter + "{:.3f}".format(qtm['heading'])
-		log.info(logline)
-		sleep(max(start-monotonic(),0))
 
 #########################################################################
 ###################### PCA9685 PWM and ESC Section ######################
@@ -98,17 +64,16 @@ measured_active = {
 	'heading' : 0xffff
 }
 
-# def pwm_sensehat_setup():
-# 	global oled,dpad
-# 	oled = sensehat.OLED()
-	# dpad = sensehat.Joystick(oled,vessel.thrusters)
-
+def pwm_sensehat_setup():
+	global oled,dpad
+	oled = sensehat.OLED()
+	dpad = sensehat.Joystick(oled,vessel.thrusters)
 
 def pwm_setup():
 	global vessel
 	vessel = surface.Controller()
 	vessel.stopAll()
-	vessel.thrusters.servoboard.set_max(max_speed)
+	vessel.thrusters.servoboard.set_max(max_speed/1.2)
 
 	# pwm_sensehat_setup()
 
@@ -117,6 +82,7 @@ def pwm_controller_thread():
 	interval = pwm_interval
 	while(pwm_flag.set_flag()):
 		start=monotonic()+interval
+		# vessel.surfaceLoop()
 		vessel.azThrusterLogic()
 		sleep(max(start-monotonic(),0))
 
@@ -128,15 +94,14 @@ def pwm_controller_thread():
 ##################################################################################
 
 def xbox_process_setup():
-	global daemon_mode, xbox_controller
+	global daemon_mode
 	global xb_pipe_in,xb_pipe_out,xbox_process,xbox_controller
 	xb_pipe_in, xb_pipe_out = Pipe()
 	try:
 		xbox_controller = xb.XBoxController(xb_pipe_in)
 	except IOError as e:
-		# print("xbox controller failed.")
-		print(e)
 		exit_program()
+		print(e)
 		quit()
 	xbox_controller.max_speed = max_speed
 	xbox_process = Process(target=xbox_controller.stream,daemon=daemon_mode)
@@ -168,11 +133,10 @@ def xbox_debounce(val1,val2):
 	return returnval
 
 xbox = {
-	'facing':0,
-	'offset':0,
-	'speed':0,
-	'graph':0,		# graph 1 toggles plotter to start/stop
-	'maintain':1,	# maintain 1 attempts to stay at last heading command
+	'facing':999,
+	'offset':999,
+	'speed':999,
+	'maintain':1,
 	'mode':1,		# mode 1 qtm, mode 0 bno
 	'quit':0
 }
@@ -186,27 +150,25 @@ def xbox_read():
 	if buffer:
 		# print('xbox_read: '+str(buffer))
 
+		vessel.persistent_offset = buffer['offset']
+
+		# if (xbox['maintain']==1):
+		# 	vessel.issueCommand('hea',xbox['facing'])
+		# else:
+		# 	vessel.issueCommand('hea',999)
+		vessel.persistent_heading = bool(buffer['maintain']) and buffer['facing']
+
+		# if (xbox['speed']>10):
+		# 	vessel.issueCommand('vel',xbox['speed'])
+		# else:
+		# 	vessel.issueCommand('vel',999)
+		vessel.persistent_speed = bool(max(buffer['speed']-10,0)) * buffer['speed']
+
 		buffer['maintain'] = xbox_debounce(xbox['maintain'],buffer['maintain'])
 		buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
-		buffer['graph'] = xbox_debounce(xbox['graph'], buffer['graph'])
 
 		for k in measured_active:
 			measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
-		vessel.heading = measured_active['heading']
-
-		vessel.persistent_offset = buffer['offset']
-
-		# if (buffer['speed']>10):
-		# 	vessel.persistent_speed = buffer['speed']
-		# else:
-		# 	vessel.persistent_speed = 0
-		vessel.persistent_speed = bool(max(buffer['speed']-10,0)) * buffer['speed']
-
-		# if (buffer['maintain']==1):
-		# 	vessel.commands['hea'](buffer['facing'])
-		# else:
-		# 	vessel.commands['hea'](False)
-		vessel.commands['hea'](bool(buffer['maintain']) and buffer['facing'])
 
 		xbox = buffer
 
@@ -271,9 +233,9 @@ def mbed_process_setup():
 	mbed_process.start()
 
 bno = {
-	'heading':0,
-	'roll':0,
-	'pitch':0,
+	'heading':999,
+	'roll':999,
+	'pitch':999,
 	'calibration':999,
 	'status':999
 }
@@ -319,7 +281,7 @@ qtm = {
 	'z':999,
 	'roll':999,
 	'pitch':999,
-	'heading':0
+	'heading':999
 }
 def qtm_read(name):
 	global qtm_pipe_out, qtm
@@ -348,9 +310,9 @@ def qtm_stream():
 ##############################################################
 
 def plot_process_setup():
-	global plot_pipe_out,plot_process,plot_live,plot_interval
+	global plot_pipe_out,plot_process
 	plot_pipe_in,plot_pipe_out = Pipe()
-	plot_live = plotting.Plotting(plot_pipe_in,plot_interval)
+	plot_live = plotting.Plotting(plot_pipe_in)
 	plot_process = Process(target=plot_live.start_display,daemon=daemon_mode)
 	plot_process.start()
 
@@ -380,14 +342,13 @@ def plot_stream():
 def exit_program():
 	global pwm_flag,qtm_flag,xbox_flag,mbed_flag,plot_flag
 	global xbox_process,mbed_process,qtm_process
-	global qualisys,imu,xbox_controller,vessel
+	global qualisys,imu,xb_controller,vessel
 	print("Shutting down threads.")
 	pwm_flag.set_flag(0)
 	qtm_flag.set_flag(0)
 	xbox_flag.set_flag(0)
 	mbed_flag.set_flag(0)
 	plot_flag.set_flag(0)
-	log_flag.set_flag(0)
 	print()
 
 	for i in range(1,4):
@@ -411,8 +372,7 @@ def exit_program():
 	try:
 		plot_process.kill()
 	except Exception as e:
-		pass
-		# print(e)
+		print(e)
 	print()
 
 	print('Disconnecting QTM connection.')
@@ -423,7 +383,7 @@ def exit_program():
 
 	print('Closing xbox controller.')
 	try:
-		xbox_controller.close()
+		xb_controller.close()
 	except Exception as e:
 		print(e)
 
@@ -437,8 +397,9 @@ def exit_program():
 	try:
 		plot_live.close()
 	except Exception as e:
-		pass
-		# print(e)
+		print(e)
+
+	# print('Shutting down graphs.')
 
 	print()
 	print('Exiting Program.')
@@ -473,56 +434,27 @@ def setup():
 	xbox_thread = Thread(target=xbox_stream,daemon=daemon_mode)
 	xbox_thread.start()
 
-	log_setup()
-	log_thread = Thread(target=log_stream,daemon=daemon_mode)
-	log_thread.start()
+	# plot_process_setup
+	# plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
+	# plot_thread.start()
 
 def loop():
-	global vessel, daemon_mode
-	plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
-	plot_setup = 0
+	global vessel
 	while(not xbox['quit']):
 		# xbox_read()
 		# mbed_read()
 		# qtm_read(rigid_body_name)
 
-		print('MAIN xbx: '+dumps(xbox))
+		# print('MAIN xbx: '+dumps(xbox))
 		# print('MAIN qtm: '+dumps(qtm))
 		# print('MAIN bno: '+dumps(bno))
-		# print()
+		print()
 		print('MAIN use: '+dumps(measured_active))
-		print('qtm: ' + dumps(qtm))
-		print('imu: ' + dumps(bno))
-		#print('vessel: '+ str(vessel.thrusters.update()))
+		# print('vessel: '+ str(vessel.thrusters.update()))
 		print()
 		sleep(0.1)
 		trash()
-
-		# print(plot_thread.is_alive())
-
-		if (xbox['graph'] and (not plot_thread.is_alive())):
-			print()
-			print("starting graph mode")
-			plot_flag.set_flag(1)
-			if not plot_setup:
-				plot_process_setup()
-				plot_setup = 1
-			plot_thread.start()
-			xbox['graph'] = 0
-			sleep(0.1)
-			print("plot started")
-			print()
-
-		elif (xbox['graph'] and (plot_thread.is_alive())):
-			print()
-			print("stopping graph mode")
-			plot_flag.set_flag(0)
-			plot_thread.join()
-			plot_thread = Thread(target=plot_stream,daemon=daemon_mode)
-			xbox['graph'] = 0
-			sleep(0.1)
-			print("stopped graph mode")
-			print()
+	exit_program()
 
 setup()
 loop()
