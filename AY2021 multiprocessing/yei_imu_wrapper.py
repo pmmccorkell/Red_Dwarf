@@ -72,8 +72,9 @@ if __name__ == '__main__':
 		while(yei_pipe_out.poll()):
 			buffer = yei_pipe_out.recv()
 		if buffer:
+			print(buffer)
 			yei = buffer
 			buffer = {}
-		print(yei)
+		# print(yei)
 
 
