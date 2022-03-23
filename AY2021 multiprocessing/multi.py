@@ -189,7 +189,7 @@ def xbox_stream():
 def yei_process_setup():
 	global yei_pipe_in,yei_pipe_out,yei_process,yei_imu,yei_process
 	yei_pipe_in,yei_pipe_out = Pipe()
-	yei_imu = yei_imu_wrapper.YEI(mbed_pipe_in)
+	yei_imu = yei_imu_wrapper.YEI(yei_pipe_in)
 	yei_process = Process(target=yei_imu.stream,daemon=daemon_mode)
 	yei_process.start()
 
