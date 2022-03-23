@@ -60,5 +60,11 @@ if __name__ == '__main__':
 	yei_process = Process(target=yei_imu.stream,daemon=daemon_mode)
 	yei_process.start()
 
+yei = {
+	'timestamp':999,
+	'heading':999,
+	'roll':999,
+	'pitch':999
+}
 
 
