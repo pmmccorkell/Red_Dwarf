@@ -50,7 +50,15 @@ class YEI:
 
 if __name__ == '__main__':
 	print("running as main")
-	
+	from multiprocessing import Process, Pipe
+	daemon_mode = True
+
+	yei_pipe_in, yei_pipe_out = Pipe()
+	print("initiating YEI imu")
+	yei_imu = YEI(yei_pipe_in)
+	print("start process")
+	yei_process = Process(target=yei_imu.stream,daemon=daemon_mode)
+	yei_process.start()
 
 
 
