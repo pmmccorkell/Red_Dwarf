@@ -232,6 +232,41 @@ def xbox_stream():
 		sleep(max(start-monotonic(),0))
 		# print(xbox)
 
+#########################################################################
+############################ YEI IMU Section ############################
+#########################################################################
+#########################################################################
+
+def yei_process_setup():
+	global yei_pipe_in,yei_pipe_out,yei_process,yei_imu,yei_process
+	yei_pipe_in,yei_pipe_out = Pipe()
+	yei_imu = yei_imu_wrapper.YEI(yei_pipe_in)
+	yei_process = Process(target=yei_imu.stream,daemon=daemon_mode)
+	yei_process.start()
+
+yei = {
+	'timestamp':777,
+	'heading':777,
+	'roll':777,
+	'pitch':777
+}
+def yei_read():
+	global yei_pipe_out, yei
+	read_pipe = yei_pipe_out
+	buffer = {}
+	while (read_pipe.poll()):
+		buffer = read_pipe.recv()
+	if buffer:
+		yei = buffer
+
+def yei_stream():
+	global yei_interval, yei_flag
+	interval = yei_interval
+	while(yei_flag.set_flag()):
+		start = monotonic()+interval
+		yei_read()
+		sleep(max(start-monotonic(),0))
+		# print('yei: '+str(yei))
 
 
 #########################################################################
