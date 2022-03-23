@@ -13,6 +13,8 @@ Uses Python API from 3-Space:
 https://yostlabs.com/3-space-application-programming-interface/
 move ThreeSpaceAPI.py and USB_ExampleClass.py to same directory as multi.py
 
+Edit secrets.py with IP of QTM server.
+
 Multiprocessing Only:
 Requires pyqtgraph for plotting, which additionally requires qt5, pyqt5, etc.
   - raspi4 solution:
