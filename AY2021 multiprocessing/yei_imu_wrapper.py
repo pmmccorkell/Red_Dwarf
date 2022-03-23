@@ -1,5 +1,4 @@
 import USB_ExampleClass
-# from ThreeSpaceAPI import *
 import ThreeSpaceAPI
 from math import pi
 from time import sleep
