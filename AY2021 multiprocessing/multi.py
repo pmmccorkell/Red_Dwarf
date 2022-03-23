@@ -31,6 +31,7 @@ rigid_body_name = 'RedDwarf'
 pwm_interval = 0.02		# seconds
 qtm_interval = 0.005	# seconds
 xbox_interval = 0.10	# seconds
+yei_interval = 0.02		# seconds
 mbed_interval = 0.02	# seconds
 plot_interval = .1		# seconds
 log_interval = 0.02		# seconds
