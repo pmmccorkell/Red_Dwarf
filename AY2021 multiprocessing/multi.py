@@ -169,8 +169,7 @@ def xbox_read():
 
 		buffer['maintain'] = xbox_debounce(xbox['maintain'],buffer['maintain'])
 		buffer['mode'] = xbox_debounce(xbox['mode'],buffer['mode'])
-		measured_active_index += (last_mode ^ buffer['mode'])
-		measured_active_index = min(measured_active_index,2)
+		measured_active_index = ( measured_active_index + (last_mode ^ buffer['mode'])) % 3
 
 		# for k in measured_active:
 		# 	measured_active[k] = (buffer['mode'] * qtm[k]) + ((not buffer['mode']) * bno[k])
