@@ -518,6 +518,7 @@ def loop():
 		print('MAIN use: '+dumps(measured_active))
 		print('qtm: ' + dumps(qtm))
 		print('imu: ' + dumps(bno))
+		print('yei: ' + dumps(yei))
 		#print('vessel: '+ str(vessel.thrusters.update()))
 		print()
 		sleep(0.1)
