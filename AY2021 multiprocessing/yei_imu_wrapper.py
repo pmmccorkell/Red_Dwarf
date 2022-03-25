@@ -1,3 +1,9 @@
+# Patrick McCorkell
+# March 2022
+# US Naval Academy
+# Robotics and Control TSD
+#
+
 import USB_ExampleClass
 import ThreeSpaceAPI
 from math import pi
