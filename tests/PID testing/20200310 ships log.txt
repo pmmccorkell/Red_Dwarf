@@ -1,0 +1,52 @@
+Started with hardcoded gains:
+
+volatile float heading_Kp =0.0008333f;
+volatile float heading_Ki =0.0f;
+volatile float heading_Kd =0.0f;        
+
+volatile float depth_Kp =0.005f;
+volatile float depth_Ki =0.0f;
+volatile float depth_Kd =0.0f;
+
+volatile float pitch_Kp = 0.005f; //1.0f;
+volatile float pitch_Ki = 0.0f; //10.0f;
+volatile float pitch_Kd = 0.0f;  //0.0;
+
+
+
+Heading was slow but effective.
+Pitch was unable to reach settings.
+Depth was able to come right up to edge of settings but easily drifted off of setting
+
+
+Found pingponging at following gains:
+Heading 0.01
+Depth 0.02
+Pitch 0.03
+
+Pingponging recorded in videos:
+vi_0013	Heading=50 (+depth 60 + pitch 0)
+vi_0012 Depth=80 (+pitch 0)
+vi_0011 Pitch=0
+
+frame	~0.067
+
+Heading
+	Measured by video vi_0013:
+		13:41:
+			28.138
+			29.638
+
+Depth
+	Measured by video vi_0012:
+		13:35:
+			35.511
+			37.009
+
+Pitch
+	Measured by video vi_0011:
+		13:34:
+			34.801
+			36.332
+
+

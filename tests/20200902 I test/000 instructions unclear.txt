@@ -1,0 +1,17 @@
+factor = 4096/2 /Amp rating
+offset = mean of zero data
+s_10
+s_20
+...
+s_100
+
+s_in
+s_inmax
+
+
+plot(smooth, ((s_10-offset)*factor))
+hold on
+...
+plot(smooth, ((s_100-offset)*factor))
+
+
