@@ -1,3 +1,6 @@
+![My image](https://github.com/pmmccorkell-usna/Red_Dwarf/blob/main/media/1.jpg)
+
+
 Run as sudo required to manipulate drivers for xbox controller.
 
 Uses xbox-drv https://xboxdrv.gitlab.io/xboxdrv.html
