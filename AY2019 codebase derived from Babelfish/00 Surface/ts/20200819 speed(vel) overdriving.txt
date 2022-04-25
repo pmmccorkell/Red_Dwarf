@@ -1,0 +1,38 @@
+offset 270
+	vel 300
+		1.57 all
+	vel 100
+		1.712 all
+	vel 50
+		1.747 all
+	vel 0
+		1.782 all
+	vel 999
+		1.5 all
+
+offset 90
+	vel 300
+		1.429
+	vel 100
+		1.287
+	vel 50
+		1.252
+	vel 0
+		1.217
+	vel 999
+		1.5 all
+
+offset 315
+	Stbd-fore and Port-aft
+	vel 300
+		1.6
+	vel 100
+		1.8
+	vel 50
+		1.85
+	vel 0
+		1.9
+	vel 999
+		1.5 all
+
+	

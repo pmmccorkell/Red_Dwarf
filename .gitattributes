@@ -1,2 +1,22 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+media filter=lfs diff=lfs merge=lfs -text
+tests/*.mov filter=lfs diff=lfs merge=lfs -text
+tests/*.mp4 filter=lfs diff=lfs merge=lfs -text
+media/IMG_0970.jpg filter=lfs diff=lfs merge=lfs -text
+media/vlcsnap-2019-08-02-07h22m38s661.png filter=lfs diff=lfs merge=lfs -text
+media/zoomzoomzoom.MOV filter=lfs diff=lfs merge=lfs -text
+media/IMG_0965.MOV filter=lfs diff=lfs merge=lfs -text
+media/IMG_0969.jpg filter=lfs diff=lfs merge=lfs -text
+media/IMG_0960.jpg filter=lfs diff=lfs merge=lfs -text
+media/IMG_0966.MOV filter=lfs diff=lfs merge=lfs -text
+media/IMG_0964.jpg filter=lfs diff=lfs merge=lfs -text
+media/IMG_0968.jpg filter=lfs diff=lfs merge=lfs -text
+media/1.jpg filter=lfs diff=lfs merge=lfs -text
+media/IMAG6392.jpg filter=lfs diff=lfs merge=lfs -text
+media/vi_0211_20200824_131349_Trim.mp4 filter=lfs diff=lfs merge=lfs -text
+media/vlcsnap-2021-11-17-06h50m32s939.png filter=lfs diff=lfs merge=lfs -text
+media/vlcsnap-2021-11-17-06h51m34s750.png filter=lfs diff=lfs merge=lfs -text
+media/IMG_0959.jpg filter=lfs diff=lfs merge=lfs -text
+media/IMG_0971.jpg filter=lfs diff=lfs merge=lfs -text
+media/20-08-24[[:space:]]surface/vi_0211_20200824_131349.mp4 filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,53 @@
+Thruster port_thrust(p21,1);
+Thruster starboard_thrust(p22,-1);
+//Thruster steadystate(p23,1); //for test purposes, to keep ESC from making LOUD NOISES
+Thruster fore_thrust(p24,1);
+Thruster aft_thrust(p25,-1);
+
+
+
+
+
+Thruster fwd_port(p21,1);
+Thruster fwd_star(p22,-1);
+//Thruster steadystate(p23,1); //for test purposes, to keep ESC from making LOUD NOISES
+Thruster aft_port(p24,1);
+Thruster aft_star(p25,-1);
+
+
+keep json:
+	ser_p
+	ser_r
+	ser_cal
+
+
+change json:
+	ser_h		ser_f
+
+	ser_port	ser_pf
+	ser_aft		ser_sa
+	ser_stbd	ser_sf
+	ser_fwd		ser_pa
+
+
+remove json:
+	ser_d
+	h_gain
+
+add json:
+	ser_off		offset
+	ser_vel		speed
+	fP_gain
+	fI_gain
+	fD_gain
+	ser_max		max speed setting
+
+
+
+if ((off>=851) and (off<=857)) {
+
+
+
+
+
+

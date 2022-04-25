@@ -1,0 +1,40 @@
+- Placement for "front" ?
+	- If we maintain where it is now, boat-like movement gets kicked down road until somebody can do modeling and figure it out
+- Hats
+- BNO-055 drift:
+	- EMI proof it (ThorLabs has sheets, FY21)
+	- explore different IMUs (FY21)
+- Power Reduction options:
+	- move to 12V (order in FY21)
+	- reduce blades on thruster (IIRC Alex Laun was working on something)
+	- reduce surface area on blades (Dan designed a 3d printable lathe for blades and dremel tool)
+	- ESC development (Joe)
+- ESC cutoff switch
+- Remote Estop (keep alive from a central hub/RasPi station integrated with the ESC cutoff?)
+- LEDs to signal magnitude and direction to ESCs
+- Seamless external power supply w/battery connected
+	- low power schottky on external
+	- resistor between Vcc and Gnd on external w/ high side tap for Vsense -- any voltage on Vsense = external power, turns off power mosfets on battery and ESC cutoff
+- Redesign internal layout
+	- BNO and MBed board on back of plate
+	- placement for leak detector
+	- batt, ESC, Pi on top of plate
+	- separate with EMI foil
+- Battery things:
+	- INA226 power/current monitor
+	- shunt resistor for INA226
+	- read power monitoring on RasPi or 
+	- temp shutoff
+		- INA118 and read to RasPi
+		or
+		- PNP Q + Nch mosfet to switch off
+- Port and clean up mbed code
+	- move away from LPC1768
+	- a lot of "if" statements I should have optimized into "switch"
+- Redesign the mbed-bno-pwm breakout board
+	- Part of internal layout
+	- integrate battery monitor circuitry, ESC cutoff, leak detector
+	- smaller footprint with something professionally printed
+	- ideally dual use with UUV.
+
+

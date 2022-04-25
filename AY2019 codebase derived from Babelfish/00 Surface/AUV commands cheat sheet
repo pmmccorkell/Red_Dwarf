@@ -1,0 +1,34 @@
+Raw Serial Commands.
+Entry into Python interface(s) will make a lot of this transparent and perform calculations to simplify user experience.
+
+Movement
+	sto:000		stops all controllers.
+				xyz can be anything, convention is 000
+	hea:xyz		xyz=[000,360] degrees
+					xyz=999 stops heading controller, 
+					[831,837] left/right
+	vel:xyz		xyz=[0,800] ms PWM represents [1.1,1.9]ms
+					xyz=999 stops speed controller
+					[841,847] speed decrease/increase
+	off:xyz		xyz=[0,360] degrees
+					xyz=999 stops heading offset
+					[851,857] offset left/right
+
+Gains
+	format: xy * 10^(z-5)
+	Heading/Facing gains
+		hkp:xyz
+		hki:xyz
+		hkd:xyz
+
+BNO
+	pos:00x		x[0,7], changes BNO programmed orientation (see datasheet)
+	mod:00x		x[0,c], changes BNO sensor mode, ie Fusion vs. Magnetometer only (see datasheet)
+
+mBed
+	res:xyz		resets mBed
+				xyz can be anything, convention 000
+
+STOP
+	STOP		Event Horizon
+

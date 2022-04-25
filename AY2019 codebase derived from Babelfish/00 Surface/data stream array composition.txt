@@ -1,0 +1,66 @@
+data stream
+
+Array	Value	Name		Function found in
+
+status[0]
+	0x1234	key				az_data()	
+		more or less irrelevant at this point
+status[1]
+	prefix:
+	0000	ready preinit	global at top
+	ffff	ready init		main()
+	ffxy	ready horizon	EventHorizon()
+		where xy is the # of times EventHorizon() has been called
+status[2]
+	prefix:
+	c000	imu cal		az_data()
+
+
+
+IMU values			az_data()
+status[3]
+	prefix:
+	c100	heading		
+status[4]
+	prefix:
+	c300	roll		
+status[5]
+	prefix:
+	c500	pitch		
+
+
+PWM values			az_data()
+status[6]
+	f1		port forward PWM	
+status[7]
+	f2		star forward PWM	
+status[8]
+	f3		port aft PWM	
+status[9]
+	f4		star aft PWM		
+
+
+Gain values			k_data(float), az_data()
+status[10]
+	d11		Heading Kp
+status[11]
+	d12		Heading Ki
+status[12]
+	d13		Heading Kd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

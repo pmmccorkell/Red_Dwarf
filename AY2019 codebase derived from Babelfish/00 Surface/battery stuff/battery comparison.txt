@@ -1,0 +1,52 @@
+
+4.2 Vmax	1000mAh   per cell
+
+5s 3p	21 Vmax		3 Ah
+	run 1 thruster at 100% -> 31.21 Amps -> about 6 minutes
+
+3s 5p	12.6 Vmax	5 Ah
+	run 1 thruster at 100% -> 17.03 Amps -> about 18 minutes
+
+
+C-		charge gnd
+battery+	charge hot	discharge hot
+
+P-		discharge gnd
+
+B-		battery gnd
+
+B+ (optional)	battery high
+
+
+
+- Flexvolt	20/60	6Ah
+15x	18650 cels
+
+- XR	20	6Ah		https://www.youtube.com/watch?v=e7rb2zYU5WM
+10x	21700	5s2p
+samsung		30T INR 21700
+	- Elec attributes:
+		3000mAh
+		rated discharge - 10A x2 = 20A
+		rated charge - 4A x2 = 8A
+		standard charge - 1.5A x2 = 3A
+		max continuous discharge	35A(at 25C) -> 60% at 250 cycles
+		internal impedance after charge, <= 15mohm
+
+	- Phys attributes:
+		cell weight 70g
+		70.3 x 21.22mm
+
+	- Temps:
+		Charge 0 to 50 C
+		Discharge -20 to 80 C
+
+
+
+
+
+
+
+
+
+	
