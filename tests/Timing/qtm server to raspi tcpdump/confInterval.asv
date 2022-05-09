@@ -1,0 +1,37 @@
+% # Patrick McCorkell
+% # May 2022
+% # US Naval Academy
+% # Robotics and Control TSD
+% #
+
+classdef confInterval < matlab.mixin.SetGet
+    properties(GetAccess='public', SetAccess='public')
+        data_set
+        alpha
+        conf_interval
+    end % properties end
+
+    methods(Access='public')
+        function obj=confInterval(varargin)
+            if nargin > 1
+                obj.data_set = varargin{1};
+            else
+                obj.data_set = rand(500,1);
+            end
+            if nargin > 2
+                obj.alpha = varargin{2};
+            else
+                obj.alpha = 0.95;
+            end
+        end % init end
+
+        function calculate(obj)
+            mn = mean(obj.data_set);
+            std_dev = std(obj.data_set);
+            std_err = std_dev / (sqrt(length(obj.data_set)));
+            tscore = tinv([1-obj.alpha obj.alpha],length(obj.data_set)-1)
+            obj.conf_interval = mn + tscore
+        end % calculate end
+
+    end % methods end
+end % class end

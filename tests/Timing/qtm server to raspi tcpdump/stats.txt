@@ -1,0 +1,28 @@
+GNBA - 158,009 samples
+               data_set: [158009×1 double]
+                  alpha: 0.9900
+                     mn: 2.9385e-04
+                std_dev: 2.7985e-04
+                std_err: 7.0402e-07
+                 tscore: [-2.3264 2.3264]
+          conf_interval: [2.9221e-04 2.9548e-04]
+    conf_interval_range: 3.2756e-06
+
+
+
+Robotics - 58,201 samples
+               data_set: [58201×1 double]
+                  alpha: 0.9900
+                     mn: 3.0429e-04
+                std_dev: 2.6925e-04
+                std_err: 1.1161e-06
+                 tscore: [-2.3264 2.3264]
+          conf_interval: [3.0170e-04 3.0689e-04]
+    conf_interval_range: 5.1930e-06
+
+
+
+
+
+
+
