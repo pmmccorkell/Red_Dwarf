@@ -23,6 +23,12 @@ Robotics - 58,201 samples
 
 
 
+# of samples may play a part in slightly tighter stats for GNBA-R.
+# As seen in png images, most of the high RTT times occur during setup and teardown. 
+# 	Sample time can do dilute those abnormal periods.
+#	GNBA-R sampled for ~3x longer than Robotics due to Safety Standdown interruption.
+
+# Close enough to consider 'the same' in my imo humbly.
 
 
 
