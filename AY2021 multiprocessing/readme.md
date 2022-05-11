@@ -1,5 +1,7 @@
 
 Requires xbox360 controller w/ wifi dongle.
+Requires 3space IMU libraries for python:
+  https://yostlabs.com/3-space-application-programming-interface/
 
 sudo python3 multi.py
 
