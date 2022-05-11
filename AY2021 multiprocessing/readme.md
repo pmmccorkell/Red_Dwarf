@@ -1,16 +1,20 @@
+sudo python3 multi.py
 
-- Requires xbox360 controller w/ wifi dongle.
+
+- Requires xbox360 controller w/ wifi dongle and RasPi script to intercept driver:
+  - https://github.com/FRC4564/Xbox
 - Requires 3space IMU libraries for python:
   - https://yostlabs.com/3-space-application-programming-interface/
 
-sudo python3 multi.py
 
-left + right shoulder quits program
-
-left trigger starts / stops live graphing comparing available telemetry sources:
-- Qualisys Motion Capture camera system, from the QTM server
-- Bosch BNO-055 IMU
-- 3space IMU
+- Controller commands:
+  - left joystick moves boat in that vector (relative), ie forward / back / strafing
+  - right joystick changes heading, ie spins in place
+  - left + right shoulder quits program
+  - left trigger starts / stops live graphing comparing available telemetry sources:
+    - Qualisys Motion Capture camera system, from the QTM server
+    - Bosch BNO-055 IMU
+    - 3space IMU
 
 
 Adapted to test telemetry sources against each other, and compare to "absoute" telemetry Qualisys motion capture system.
