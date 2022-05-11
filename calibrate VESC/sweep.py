@@ -339,7 +339,7 @@ class pwmControl:
 def update_pwm(speed):
 	global thrusters
 	print(speed)
-	print(thrusters.update(speed))
+	print(thrusters.testThruster(speed))
 
 def clampyclamp(self,minn,maxn,n):
 	return min(max(n, minn), maxn)
