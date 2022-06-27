@@ -74,7 +74,7 @@ class Motion_Capture:
 				body_count+=1
 			# self.comms.put(self.data)
 			self.comms.send(self.data)
-			
+
 		else:
 			print("Unidentified packet type")
 
