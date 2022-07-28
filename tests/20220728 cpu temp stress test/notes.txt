@@ -1,0 +1,10 @@
+
+Reconnect fan
+start 67 C
+20s	under 65
+1:40	under 60
+4:20	under 55
+
+
+
+
